@@ -1,36 +1,100 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DENZOS — Live Software Ecosystem
 
-## Getting Started
+> A centralized developer platform that acts as both a professional portfolio and a live software ecosystem. Built by Denzel Chingodza.
 
-First, run the development server:
+**Live:** [platform-production-fe13.up.railway.app](https://platform-production-fe13.up.railway.app)
+
+---
+
+## What is DenzOS?
+
+DenzOS is not a portfolio with screenshots. It is a live, interactive ecosystem where every project is a fully deployed, functional application. Themed after Interstellar, the platform visualizes projects as satellites orbiting a black hole — each one clickable, each one real.
+
+Built to demonstrate engineering capability through shipped software, not static presentations.
+
+---
+
+## Platform Features
+
+- Interactive orbital system — projects orbit as live satellites
+- Interstellar visual theme — animated starfield, data lines, custom cursor, ambient audio
+- Smooth page transitions with fade-to-black navigation
+- Project detail modals with live status, tech stack, and links
+- About section with full developer profile
+- Auto-deploys to Railway on every push to `main`
+
+---
+
+## Tech Stack
+
+- **Framework:** Next.js 16 (App Router)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS
+- **Fonts:** Orbitron, Inter (Google Fonts)
+- **Animation:** CSS keyframes, Canvas API
+- **Deployment:** Railway
+
+---
+
+## Projects in the Ecosystem
+
+| Project | Status | Stack |
+|---|---|---|
+| SA Doc Analyzer | In Progress | FastAPI, Python, Qdrant, React, PostgreSQL |
+| AI Tutor | In Progress | FastAPI, Python, PostgreSQL, React, OpenAI |
+| Ecommerce Platform | Live | React, Node.js, PostgreSQL |
+
+---
+
+## Running Locally
 
 ```bash
+git clone https://github.com/denz-os/platform.git
+cd platform
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Adding a New Project
 
-## Learn More
+Open `lib/projects.ts` and add an entry to the array:
 
-To learn more about Next.js, take a look at the following resources:
+```ts
+{
+  id: "project-id",
+  name: "Project Name",
+  description: "What it does and who it's for.",
+  tech: ["FastAPI", "React", "PostgreSQL"],
+  status: "in-progress",
+  liveUrl: null,
+  githubUrl: "https://github.com/denz-os/project-name",
+}
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The project automatically appears as an orbiting node on the home page and as a card on the projects page.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Connected to Railway via GitHub. Every merge to `main` triggers an automatic redeploy.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+git checkout main
+git merge dev
+git push origin main
+```
+
+---
+
+## Author
+
+**Denzel Chingodza** — Software Engineer, South Africa
+
+- GitHub: [github.com/denzelchingodza](https://github.com/denzelchingodza)
+- LinkedIn: [linkedin.com/in/denzel-chingodza-45b6ab3a0](https://www.linkedin.com/in/denzel-chingodza-45b6ab3a0/)
+- Email: denzel.chingodza@icloud.com
