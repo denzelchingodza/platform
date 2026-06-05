@@ -127,7 +127,7 @@ export default function Home() {
                 <div className="w-16 h-px bg-amber-400 opacity-15" />
 
                 <p className="text-gray-500 text-sm leading-loose">
-                  Final year software engineering student who learns from curiosity and loves building systems — there is nothing better than watching something you built actually work. Currently deep in AI systems development with a growing interest in intelligent, stateful applications. Built DenzOS as a live showcase of real engineering, themed after my favourite film, Interstellar.
+                  Final year software engineering student who learns from curiosity and loves building systems — there is nothing better than watching something you built actually work. Currently deep in AI systems development with a growing interest in intelligent, stateful applications. Built DenzOS as a live showcase of real engineering, themed after my favourite film, Interstellar. Irrelevent, but i am also 6 foot 3 inches. 
                 </p>
 
                 <div className="flex items-center gap-3">
