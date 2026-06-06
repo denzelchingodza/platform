@@ -42,57 +42,77 @@ export default function Home() {
       <section
         ref={aboutRef}
         id="about"
-        className="min-h-screen relative z-10 flex items-center justify-center py-24"
+        className="min-h-screen relative z-10 flex items-center justify-center py-32"
         style={{ borderTop: "1px solid rgba(245,166,35,0.06)" }}
       >
-        <div className="max-w-5xl mx-auto px-8 w-full">
+        {/* Ambient glow behind section */}
+        <div className="absolute inset-0 pointer-events-none" style={{
+          background: "radial-gradient(ellipse 80% 60% at 50% 50%, rgba(245,166,35,0.025) 0%, transparent 70%)",
+        }} />
+
+        <div className="max-w-5xl mx-auto px-8 w-full relative">
 
           {/* Section tag */}
           <div className="flex items-center gap-4 mb-16">
-            <div className="w-12 h-px" style={{ background: "linear-gradient(to right, transparent, rgba(245,166,35,0.3))" }} />
+            <div className="w-12 h-px" style={{ background: "linear-gradient(to right, transparent, rgba(245,166,35,0.4))" }} />
             <p className="text-xs tracking-[0.5em] text-gray-600" style={{ fontFamily: "var(--font-orbitron)" }}>
               PROFILE: DENZ-001
             </p>
             <div className="flex-1 h-px" style={{ background: "linear-gradient(to right, rgba(245,166,35,0.1), transparent)" }} />
-            <p className="text-xs tracking-[0.3em] text-amber-400 opacity-40 rotate-2" style={{ fontFamily: "var(--font-orbitron)" }}>
+            <p className="text-xs tracking-[0.3em] text-amber-400 opacity-40" style={{ fontFamily: "var(--font-orbitron)" }}>
               ◈ CLASSIFIED
             </p>
           </div>
 
           {/* Main dossier card */}
-          <div style={{ border: "1px solid rgba(245,166,35,0.1)", background: "rgba(7,7,15,0.8)" }}>
+          <div
+            className="relative overflow-hidden"
+            style={{
+              border: "1px solid rgba(245,166,35,0.14)",
+              background: "linear-gradient(145deg, rgba(10,10,22,0.97) 0%, rgba(7,7,15,1) 100%)",
+              boxShadow: "0 0 80px rgba(245,166,35,0.04), 0 0 0 1px rgba(245,166,35,0.03) inset",
+            }}
+          >
+            {/* Subtle scan line */}
+            <div className="absolute inset-x-0 top-0 h-px" style={{ background: "linear-gradient(to right, transparent, rgba(245,166,35,0.3), transparent)" }} />
 
             {/* Top row — identity */}
             <div className="flex flex-col md:flex-row">
 
               {/* Left — avatar panel */}
               <div
-                className="flex flex-col items-center justify-center gap-6 p-12"
+                className="flex flex-col items-center justify-center gap-8 p-12"
                 style={{
                   borderRight: "1px solid rgba(245,166,35,0.08)",
                   borderBottom: "1px solid rgba(245,166,35,0.08)",
-                  minWidth: "260px",
+                  minWidth: "280px",
+                  background: "radial-gradient(ellipse at center, rgba(245,166,35,0.03) 0%, transparent 70%)",
                 }}
               >
                 {/* Orbital avatar */}
                 <div className="relative flex items-center justify-center">
                   <div className="absolute rounded-full" style={{
-                    width: "130px", height: "130px",
-                    border: "1px solid rgba(245,166,35,0.08)",
-                    animation: "ring-rotate 20s linear infinite",
+                    width: "140px", height: "140px",
+                    border: "1px solid rgba(245,166,35,0.07)",
+                    animation: "ring-rotate 22s linear infinite",
                   }} />
                   <div className="absolute rounded-full" style={{
-                    width: "110px", height: "110px",
+                    width: "115px", height: "115px",
                     border: "1px dashed rgba(245,166,35,0.05)",
-                    animation: "ring-rotate-reverse 30s linear infinite",
+                    animation: "ring-rotate-reverse 35s linear infinite",
+                  }} />
+                  <div className="absolute rounded-full" style={{
+                    width: "92px", height: "92px",
+                    border: "1px solid rgba(245,166,35,0.04)",
+                    animation: "ring-rotate 15s linear infinite",
                   }} />
                   <div
-                    className="rounded-full flex items-center justify-center"
+                    className="rounded-full flex items-center justify-center relative"
                     style={{
-                      width: "80px", height: "80px",
-                      background: "radial-gradient(circle, rgba(245,166,35,0.12) 0%, rgba(7,7,15,1) 70%)",
-                      border: "1px solid rgba(245,166,35,0.2)",
-                      boxShadow: "0 0 30px rgba(245,166,35,0.08)",
+                      width: "76px", height: "76px",
+                      background: "radial-gradient(circle, rgba(245,166,35,0.18) 0%, rgba(7,7,15,1) 70%)",
+                      border: "1px solid rgba(245,166,35,0.3)",
+                      boxShadow: "0 0 40px rgba(245,166,35,0.12), 0 0 80px rgba(245,166,35,0.04)",
                     }}
                   >
                     <span className="text-amber-400 font-bold text-xl" style={{ fontFamily: "var(--font-orbitron)" }}>
@@ -101,41 +121,51 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Status indicator */}
-                <div className="flex flex-col items-center gap-2">
+                {/* Status indicators */}
+                <div className="flex flex-col items-center gap-3 w-full">
                   <div className="flex items-center gap-2">
                     <div className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
                     <span className="text-green-400 text-xs tracking-[0.3em]" style={{ fontFamily: "var(--font-orbitron)" }}>
-                      ACTIVE
+                      ONLINE
                     </span>
                   </div>
-                  <p className="text-gray-700 text-xs tracking-widest">SOUTH AFRICA</p>
+                  <div className="w-full h-px" style={{ background: "rgba(245,166,35,0.06)" }} />
+                  <p className="text-gray-700 text-xs tracking-[0.25em]" style={{ fontFamily: "var(--font-orbitron)" }}>
+                    SOUTH AFRICA
+                  </p>
+                  <p className="text-gray-800 text-xs tracking-widest">−26.2041° S, 28.0473° E</p>
                 </div>
               </div>
 
               {/* Right — bio */}
-              <div className="flex flex-col justify-center p-10 gap-6" style={{ borderBottom: "1px solid rgba(245,166,35,0.08)" }}>
+              <div className="flex flex-col justify-center p-10 gap-7" style={{ borderBottom: "1px solid rgba(245,166,35,0.08)" }}>
                 <div>
-                  <h2 className="text-3xl text-white tracking-[0.2em] mb-1" style={{ fontFamily: "var(--font-orbitron)" }}>
+                  <p className="text-xs tracking-[0.5em] text-gray-700 mb-3" style={{ fontFamily: "var(--font-orbitron)" }}>
+                    ENGINEER · CLASS 2025
+                  </p>
+                  <h2 className="text-3xl text-white tracking-[0.15em] mb-2" style={{ fontFamily: "var(--font-orbitron)" }}>
                     DENZEL CHINGODZA
                   </h2>
-                  <p className="text-amber-400 text-xs tracking-[0.4em] opacity-70" style={{ fontFamily: "var(--font-orbitron)" }}>
-                    SOFTWARE ENGINEER · AI ENTHUSIAST
+                  <p className="text-amber-400 text-xs tracking-[0.35em] opacity-60" style={{ fontFamily: "var(--font-orbitron)" }}>
+                    SOFTWARE ENGINEER · AI / ML SYSTEMS
                   </p>
                 </div>
 
-                <div className="w-16 h-px bg-amber-400 opacity-15" />
+                <div className="w-16 h-px bg-amber-400 opacity-20" />
 
                 <p className="text-gray-500 text-sm leading-loose">
-                  Final year software engineering student who learns from curiosity and loves building systems — there is nothing better than watching something you built actually work. Currently deep in AI systems development with a growing interest in intelligent, stateful applications. Built DenzOS as a live showcase of real engineering, themed after my favourite film, Interstellar. Irrelevent, but i am also 6 foot 3 inches. 
+                  Final year software engineering student who learns by building. Nothing beats watching something you made actually work.
+                  Currently focused on AI systems — RAG pipelines, intelligent agents, and stateful applications.
+                  Built DenzOS as a live showcase of real engineering, themed after my favourite film, Interstellar.
+                  Also 6&apos;3&quot; — not relevant, but noted.
                 </p>
 
                 <div className="flex items-center gap-3">
-                  <span className="text-gray-700 text-xs tracking-[0.3em]" style={{ fontFamily: "var(--font-orbitron)" }}>
-                    MISSION
+                  <span className="text-gray-800 text-xs tracking-[0.3em]" style={{ fontFamily: "var(--font-orbitron)" }}>
+                    DIRECTIVE
                   </span>
-                  <div className="flex-1 h-px bg-amber-400 opacity-10" />
-                  <span className="text-amber-400 text-xs tracking-[0.2em] opacity-60" style={{ fontFamily: "var(--font-orbitron)" }}>
+                  <div className="flex-1 h-px" style={{ background: "rgba(245,166,35,0.1)" }} />
+                  <span className="text-amber-400 text-xs tracking-[0.3em] opacity-50" style={{ fontFamily: "var(--font-orbitron)" }}>
                     BUILD · LEARN · SHIP
                   </span>
                 </div>
@@ -146,16 +176,21 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-3">
 
               {/* Capabilities */}
-              <div className="p-8" style={{ borderRight: "1px solid rgba(245,166,35,0.08)" }}>
+              <div className="p-8 group/cap" style={{ borderRight: "1px solid rgba(245,166,35,0.08)" }}>
                 <p className="text-xs tracking-[0.4em] text-gray-700 mb-6" style={{ fontFamily: "var(--font-orbitron)" }}>
                   — CAPABILITIES
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  {["Python", "JavaScript", "React", "FastAPI", "PostgreSQL", "MongoDB", "Neo4j", "HTML", "CSS", "Docker"].map((skill) => (
+                  {["Python", "JavaScript", "TypeScript", "React", "FastAPI", "PostgreSQL", "MongoDB", "Qdrant", "Docker", "Next.js"].map((skill) => (
                     <span
                       key={skill}
-                      className="text-gray-500 hover:text-amber-400 transition-colors duration-300 text-xs px-2 py-1 tracking-wider"
-                      style={{ border: "1px solid rgba(255,255,255,0.06)", fontFamily: "var(--font-orbitron)", fontSize: "9px" }}
+                      className="text-gray-600 hover:text-amber-400 hover:border-amber-400 transition-all duration-300 cursor-default px-2 py-1"
+                      style={{
+                        border: "1px solid rgba(255,255,255,0.06)",
+                        fontFamily: "var(--font-orbitron)",
+                        fontSize: "9px",
+                        letterSpacing: "0.1em",
+                      }}
                     >
                       {skill}
                     </span>
@@ -166,16 +201,16 @@ export default function Home() {
               {/* Current mission */}
               <div className="p-8" style={{ borderRight: "1px solid rgba(245,166,35,0.08)" }}>
                 <p className="text-xs tracking-[0.4em] text-gray-700 mb-6" style={{ fontFamily: "var(--font-orbitron)" }}>
-                  — CURRENT MISSION
+                  — ACTIVE MISSIONS
                 </p>
                 <div className="flex flex-col gap-5">
                   {[
                     { code: "01", label: "Completing Software Engineering degree" },
-                    { code: "02", label: "Building DenzOS ecosystem and other applications" },
-                    { code: "03", label: "Studying RAG pipelines & AI systems" },
+                    { code: "02", label: "Building DenzOS ecosystem" },
+                    { code: "03", label: "Studying RAG pipelines & AI agents" },
                   ].map((item) => (
-                    <div key={item.code} className="flex gap-3">
-                      <span className="text-amber-400 opacity-30 text-xs" style={{ fontFamily: "var(--font-orbitron)" }}>
+                    <div key={item.code} className="flex gap-4 items-start">
+                      <span className="text-amber-400 opacity-25 text-xs shrink-0 mt-0.5" style={{ fontFamily: "var(--font-orbitron)" }}>
                         {item.code}
                       </span>
                       <p className="text-gray-500 text-xs leading-relaxed">{item.label}</p>
@@ -189,34 +224,40 @@ export default function Home() {
                 <p className="text-xs tracking-[0.4em] text-gray-700 mb-6" style={{ fontFamily: "var(--font-orbitron)" }}>
                   — SIGNAL FREQUENCY
                 </p>
-                <div className="flex flex-col gap-3">
+                <div className="flex flex-col gap-2">
                   {[
-                    { label: "GITHUB", href: "https://github.com/denzelchingodza" },
+                    { label: "GITHUB",   href: "https://github.com/denzelchingodza" },
                     { label: "LINKEDIN", href: "https://www.linkedin.com/in/denzel-chingodza-45b6ab3a0/" },
-                    { label: "EMAIL", href: "mailto:denzel.chingodza@icloud.com" },
+                    { label: "EMAIL",    href: "mailto:denzel.chingodza@icloud.com" },
                   ].map((link) => (
-                    
-                      <a 
+                    <a
                       key={link.label}
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-3 py-2 text-gray-600 hover:text-amber-400 transition-colors duration-300 group"
+                      className="flex items-center gap-3 py-2.5 px-3 text-gray-600 hover:text-amber-400 hover:bg-amber-400 hover:bg-opacity-5 transition-all duration-300 group"
+                      style={{ border: "1px solid transparent", cursor: "none" }}
+                      onMouseEnter={(e) => (e.currentTarget.style.borderColor = "rgba(245,166,35,0.15)")}
+                      onMouseLeave={(e) => (e.currentTarget.style.borderColor = "transparent")}
                     >
-                      <div className="w-1 h-1 rounded-full bg-gray-700 group-hover:bg-amber-400 transition-colors" />
+                      <div className="w-1 h-1 rounded-full bg-gray-700 group-hover:bg-amber-400 transition-colors shrink-0" />
                       <span className="text-xs tracking-[0.3em]" style={{ fontFamily: "var(--font-orbitron)" }}>
-                        {link.label} →
+                        {link.label}
                       </span>
+                      <span className="ml-auto text-xs opacity-0 group-hover:opacity-100 transition-opacity">↗</span>
                     </a>
                   ))}
                 </div>
               </div>
 
             </div>
+
+            {/* Bottom scan line */}
+            <div className="absolute inset-x-0 bottom-0 h-px" style={{ background: "linear-gradient(to right, transparent, rgba(245,166,35,0.15), transparent)" }} />
           </div>
 
           {/* Footer */}
-          <div className="flex items-center justify-center gap-4 mt-12">
+          <div className="flex items-center justify-center gap-4 mt-14">
             <div className="h-px flex-1" style={{ background: "linear-gradient(to right, transparent, rgba(245,166,35,0.08))" }} />
             <p className="text-gray-800 text-xs tracking-[0.4em]" style={{ fontFamily: "var(--font-orbitron)" }}>
               DENZOS · 2025

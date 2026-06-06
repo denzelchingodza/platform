@@ -146,68 +146,80 @@ export default function OrbitalSystem() {
                     }}
                   >
                     <div style={{ transform: "rotateX(-65deg)" }}>
-                      <div
-                        onClick={() => {
-                          if (project.liveUrl) {
-                            window.open(project.liveUrl, "_blank", "noopener,noreferrer");
-                          } else {
-                            setSelected(project);
-                          }
-                        }}
-                        className="group flex flex-col items-center gap-3"
-                        style={{ cursor: "none" }}
-                      >
-                        {/* Station */}
-                        <div className="relative flex items-center justify-center">
-                          <div
-                            className="absolute rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                            style={{
-                              width: "56px", height: "56px",
-                              border: `1px solid ${project.status === "live" ? "rgba(74,222,128,0.5)" : "rgba(245,166,35,0.5)"}`,
-                              animation: "ping 1.5s ease infinite",
-                            }}
-                          />
-                          <div
-                            className="absolute rounded-full"
-                            style={{
-                              width: "38px", height: "38px",
-                              border: `1px solid ${project.status === "live" ? "rgba(74,222,128,0.25)" : "rgba(245,166,35,0.25)"}`,
-                            }}
-                          />
-                          <div
-                            className="rounded-full transition-all duration-300 group-hover:scale-150"
-                            style={{
-                              width: "22px", height: "22px",
-                              background: project.status === "live"
-                                ? "radial-gradient(circle, #4ade80 0%, rgba(74,222,128,0.5) 100%)"
-                                : "radial-gradient(circle, #f5a623 0%, rgba(245,166,35,0.5) 100%)",
-                              boxShadow: status.glow,
-                            }}
-                          />
-                        </div>
-
-                        {/* Label */}
-                        <div
-                          className="flex flex-col items-center gap-1 px-4 py-2"
-                          style={{
-                            background: "rgba(4,4,12,0.95)",
-                            border: `1px solid ${project.status === "live" ? "rgba(74,222,128,0.2)" : "rgba(245,166,35,0.2)"}`,
-                          }}
-                        >
-                          <span
-                            className={`whitespace-nowrap font-bold group-hover:text-amber-400 transition-colors ${project.status === "live" ? "text-green-400" : "text-white"}`}
-                            style={{ fontFamily: "var(--font-orbitron)", fontSize: "11px", letterSpacing: "0.15em" }}
+                      {(() => {
+                        const nodeContent = (
+                          <>
+                            {/* Station */}
+                            <div className="relative flex items-center justify-center">
+                              <div
+                                className="absolute rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                                style={{
+                                  width: "56px", height: "56px",
+                                  border: `1px solid ${project.status === "live" ? "rgba(74,222,128,0.5)" : "rgba(245,166,35,0.5)"}`,
+                                  animation: "ping 1.5s ease infinite",
+                                }}
+                              />
+                              <div
+                                className="absolute rounded-full"
+                                style={{
+                                  width: "38px", height: "38px",
+                                  border: `1px solid ${project.status === "live" ? "rgba(74,222,128,0.25)" : "rgba(245,166,35,0.25)"}`,
+                                }}
+                              />
+                              <div
+                                className="rounded-full transition-all duration-300 group-hover:scale-150"
+                                style={{
+                                  width: "22px", height: "22px",
+                                  background: project.status === "live"
+                                    ? "radial-gradient(circle, #4ade80 0%, rgba(74,222,128,0.5) 100%)"
+                                    : "radial-gradient(circle, #f5a623 0%, rgba(245,166,35,0.5) 100%)",
+                                  boxShadow: status.glow,
+                                }}
+                              />
+                            </div>
+                            {/* Label */}
+                            <div
+                              className="flex flex-col items-center gap-1 px-4 py-2"
+                              style={{
+                                background: "rgba(4,4,12,0.95)",
+                                border: `1px solid ${project.status === "live" ? "rgba(74,222,128,0.2)" : "rgba(245,166,35,0.2)"}`,
+                              }}
+                            >
+                              <span
+                                className={`whitespace-nowrap font-bold group-hover:text-amber-400 transition-colors ${project.status === "live" ? "text-green-400" : "text-white"}`}
+                                style={{ fontFamily: "var(--font-orbitron)", fontSize: "11px", letterSpacing: "0.15em" }}
+                              >
+                                {project.name.toUpperCase()}
+                              </span>
+                              <span
+                                className={statusConfig[project.status].color}
+                                style={{ fontFamily: "var(--font-orbitron)", fontSize: "8px", letterSpacing: "0.2em" }}
+                              >
+                                {statusConfig[project.status].label}
+                              </span>
+                            </div>
+                          </>
+                        );
+                        return project.liveUrl ? (
+                          <a
+                            href={project.liveUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="group flex flex-col items-center gap-3"
+                            style={{ cursor: "none", textDecoration: "none" }}
                           >
-                            {project.name.toUpperCase()}
-                          </span>
-                          <span
-                            className={statusConfig[project.status].color}
-                            style={{ fontFamily: "var(--font-orbitron)", fontSize: "8px", letterSpacing: "0.2em" }}
+                            {nodeContent}
+                          </a>
+                        ) : (
+                          <div
+                            onClick={() => setSelected(project)}
+                            className="group flex flex-col items-center gap-3"
+                            style={{ cursor: "none" }}
                           >
-                            {statusConfig[project.status].label}
-                          </span>
-                        </div>
-                      </div>
+                            {nodeContent}
+                          </div>
+                        );
+                      })()}
                     </div>
                   </div>
                 </div>
