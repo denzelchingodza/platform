@@ -30,13 +30,12 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/denz-os/ai-tutor",
   },
   {
-    id: "ecommerce",
-    name: "Ecommerce Platform",
-    description:
-      "Full-stack ecommerce platform with product management, cart, checkout flow, and order tracking.",
-    tech: ["React", "Node.js", "PostgreSQL"],
-    status: "live",
-    liveUrl: null,
-    githubUrl: "https://github.com/denz-os/ecommerce",
-  },
+  id: "ecommerce",
+  name: "LinkUP",
+  description: "A peer-to-peer marketplace for South Africa. Buy, sell, and connect — with full user management, admin controls, product listings, cart, and messaging.",
+  tech: ["HTML", "CSS", "JavaScript", "FastAPI", "MongoDB"],
+  status: "live",
+  liveUrl: null,
+  githubUrl: "https://github.com/denz-os/ecommerce",
+},
 ];
