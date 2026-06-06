@@ -147,7 +147,13 @@ export default function OrbitalSystem() {
                   >
                     <div style={{ transform: "rotateX(-65deg)" }}>
                       <div
-                        onClick={() => setSelected(project)}
+                        onClick={() => {
+                          if (project.liveUrl) {
+                            window.open(project.liveUrl, "_blank", "noopener,noreferrer");
+                          } else {
+                            setSelected(project);
+                          }
+                        }}
                         className="group flex flex-col items-center gap-3"
                         style={{ cursor: "none" }}
                       >
@@ -211,7 +217,7 @@ export default function OrbitalSystem() {
         </div>
 
         {/* Black hole center */}
-        <div className="absolute flex items-center justify-center" style={{ zIndex: 10 }}>
+        <div className="absolute flex items-center justify-center" style={{ zIndex: 10, pointerEvents: "none" }}>
           <div className="absolute rounded-full" style={{
             width: "340px", height: "340px",
             border: "1px solid rgba(245,166,35,0.07)",
