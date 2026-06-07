@@ -42,7 +42,7 @@ Built to demonstrate engineering capability through shipped software, not static
 |---|---|---|
 | SA Doc Analyzer | In Progress | FastAPI, Python, Qdrant, React, PostgreSQL |
 | AI Tutor | In Progress | FastAPI, Python, PostgreSQL, React, OpenAI |
-| Ecommerce Platform | Live | React, Node.js, PostgreSQL |
+| Ecommerce Platform | Live | HTML, CSS, JavaScript, Python, FastAPI, MongoDB |
 
 ---
 
