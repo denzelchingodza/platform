@@ -32,7 +32,7 @@ export default function IntroScreen({ onComplete }: { onComplete: () => void }) 
     if (doneRef.current) return;
     doneRef.current = true;
     setExiting(true);
-    sessionStorage.setItem("denzos-intro", "seen");
+
     setTimeout(() => {
       setVisible(false);
       onComplete();
@@ -40,12 +40,6 @@ export default function IntroScreen({ onComplete }: { onComplete: () => void }) 
   };
 
   useEffect(() => {
-    if (sessionStorage.getItem("denzos-intro") === "seen") {
-      setVisible(false);
-      onComplete();
-      return;
-    }
-
     // Stars fade in
     setTimeout(() => setStarsIn(true), 200);
 
