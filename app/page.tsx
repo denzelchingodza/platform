@@ -4,6 +4,7 @@ import { useRef } from "react";
 import StarField from "@/components/StarField";
 import OrbitalSystem from "@/components/OrbitalSystem";
 import Navbar from "@/components/Navbar";
+import SectionNav from "@/components/SectionNav";
 
 export default function Home() {
   const aboutRef = useRef<HTMLDivElement>(null);
@@ -16,9 +17,10 @@ export default function Home() {
     <>
       <StarField />
       <Navbar onAboutClick={scrollToAbout} />
+      <SectionNav />
 
       {/* HERO */}
-      <section className="min-h-screen relative">
+      <section id="hero" className="min-h-screen relative">
         <OrbitalSystem />
         <div
           className="absolute bottom-10 left-0 right-0 flex flex-col items-center gap-4 z-10"
