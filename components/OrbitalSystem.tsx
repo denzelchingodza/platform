@@ -35,7 +35,7 @@ export default function OrbitalSystem() {
   const [selected, setSelected]   = useState<Project | null>(null);
   const [angles, setAngles]        = useState(orbitConfig.map((o) => o.startAngle));
   const lastTimeRef                = useRef<number | null>(null);
-  const rafRef                     = useRef<number>();
+  const rafRef                     = useRef<number | null>(null);
   const scale                      = useViewportScale();
 
   useEffect(() => {
