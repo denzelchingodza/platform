@@ -27,6 +27,11 @@ export default function Navbar({ onAboutClick }: NavbarProps) {
     }
   };
 
+  const handleContact = () => {
+    setOpen(false);
+    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <>
       <nav
@@ -58,6 +63,13 @@ export default function Navbar({ onAboutClick }: NavbarProps) {
           >
             ABOUT
           </button>
+          <button
+            onClick={handleContact}
+            className="text-gray-500 hover:text-amber-400 transition-colors duration-300 text-xs tracking-[0.3em]"
+            style={{ fontFamily: "var(--font-orbitron)", cursor: "none" }}
+          >
+            CONTACT
+          </button>
         </div>
 
         {/* Mobile hamburger */}
@@ -81,7 +93,8 @@ export default function Navbar({ onAboutClick }: NavbarProps) {
           {[
             { label: "HOME",     action: () => navigate("/")          },
             { label: "PROJECTS", action: () => navigate("/projects")  },
-            { label: "ABOUT",    action: handleAbout                   },
+            { label: "ABOUT",    action: handleAbout    },
+            { label: "CONTACT",  action: handleContact },
           ].map(({ label, action }) => (
             <button
               key={label}

@@ -3,8 +3,9 @@
 import { useEffect, useState } from "react";
 
 const SECTIONS = [
-  { id: "hero",    label: "HOME"     },
-  { id: "about",   label: "ABOUT"    },
+  { id: "hero",    label: "HOME"    },
+  { id: "about",   label: "ABOUT"   },
+  { id: "contact", label: "CONTACT" },
 ];
 
 export default function SectionNav() {
@@ -18,7 +19,7 @@ export default function SectionNav() {
       if (!el) return;
       const obs = new IntersectionObserver(
         ([entry]) => { if (entry.isIntersecting) setActive(id); },
-        { threshold: 0.5 }
+        { threshold: 0.4 }
       );
       obs.observe(el);
       observers.push(obs);
@@ -32,9 +33,7 @@ export default function SectionNav() {
   };
 
   return (
-    <div
-      className="fixed right-6 top-1/2 -translate-y-1/2 flex flex-col gap-4 z-50 hidden md:flex"
-    >
+    <div className="fixed right-6 top-1/2 -translate-y-1/2 flex-col gap-4 z-50 hidden md:flex">
       {SECTIONS.map(({ id, label }) => (
         <button
           key={id}
@@ -54,10 +53,10 @@ export default function SectionNav() {
           <div
             className="rounded-full transition-all duration-300"
             style={{
-              width: active === id ? "8px" : "4px",
-              height: active === id ? "8px" : "4px",
+              width:      active === id ? "8px"  : "4px",
+              height:     active === id ? "8px"  : "4px",
               background: active === id ? "#f5a623" : "rgba(255,255,255,0.2)",
-              boxShadow: active === id ? "0 0 8px rgba(245,166,35,0.6)" : "none",
+              boxShadow:  active === id ? "0 0 8px rgba(245,166,35,0.6)" : "none",
             }}
           />
         </button>

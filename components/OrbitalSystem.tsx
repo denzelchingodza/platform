@@ -32,11 +32,11 @@ function useViewportScale() {
 }
 
 export default function OrbitalSystem() {
-  const [selected, setSelected]   = useState<Project | null>(null);
-  const [angles, setAngles]        = useState(orbitConfig.map((o) => o.startAngle));
-  const lastTimeRef                = useRef<number | null>(null);
-  const rafRef                     = useRef<number | null>(null);
-  const scale                      = useViewportScale();
+  const [selected, setSelected] = useState<Project | null>(null);
+  const [angles, setAngles]      = useState(orbitConfig.map((o) => o.startAngle));
+  const lastTimeRef              = useRef<number | null>(null);
+  const rafRef                   = useRef<number | null>(null);
+  const scale                    = useViewportScale();
 
   useEffect(() => {
     const animate = (time: number) => {
@@ -126,15 +126,37 @@ export default function OrbitalSystem() {
       )}
 
       {/* ── Orbital system ────────────────────────────────────── */}
+      {/*
+        Everything lives inside ONE scaled wrapper (1100×1100).
+        This gives all children the same stacking context so z-index
+        comparisons between the black hole and orbiting nodes work correctly.
+        Black hole: z-index 10
+        Node behind (depth ≤ 0): z-index 5  → hidden behind black hole
+        Node in front (depth > 0): z-index 15 → visible in front of black hole
+      */}
       <div className="absolute inset-0 flex items-center justify-center" style={{ zIndex: 2 }}>
 
-        {/* Scaled orbital wrapper */}
-        <div style={{ transform: `scale(${scale})`, transformOrigin: "center center" }}>
+        <div style={{
+          position: "relative",
+          width: "1100px",
+          height: "1100px",
+          transform: `scale(${scale})`,
+          transformOrigin: "center center",
+          flexShrink: 0,
+        }}>
 
-          {/* SVG rings — visual only */}
+          {/* SVG orbital rings — behind everything */}
           <svg
-            style={{ position: "absolute", left: "50%", top: "50%", transform: "translate(-50%, -50%)", overflow: "visible", pointerEvents: "none" }}
-            width="1" height="1"
+            style={{
+              position: "absolute",
+              left: "550px",
+              top: "550px",
+              overflow: "visible",
+              pointerEvents: "none",
+              zIndex: 2,
+            }}
+            width="0"
+            height="0"
           >
             {orbitConfig.map((orbit, i) => (
               <ellipse
@@ -150,27 +172,68 @@ export default function OrbitalSystem() {
             ))}
           </svg>
 
-          {/* Orbiting nodes */}
+          {/* ── Gargantua (black hole) ── z-index 10 */}
+          <div style={{
+            position: "absolute",
+            left: "550px",
+            top: "550px",
+            transform: "translate(-50%, -50%)",
+            zIndex: 10,
+            pointerEvents: "none",
+          }}>
+            {/* Outer glow rings */}
+            <div className="absolute rounded-full" style={{
+              width: "330px", height: "330px",
+              left: "50%", top: "50%",
+              transform: "translate(-50%, -50%)",
+              border: "1px solid rgba(245,166,35,0.07)",
+              boxShadow: "0 0 60px 20px rgba(245,166,35,0.03)",
+            }} />
+            <div className="absolute rounded-full" style={{
+              width: "295px", height: "295px",
+              left: "50%", top: "50%",
+              transform: "translate(-50%, -50%)",
+              background: "radial-gradient(circle, rgba(245,166,35,0.05) 0%, transparent 70%)",
+            }} />
+            {/* Core */}
+            <div
+              className="rounded-full flex flex-col items-center justify-center gap-2"
+              style={{
+                width: "260px",
+                height: "260px",
+                background: "radial-gradient(circle, #020207 55%, #07070f 100%)",
+                boxShadow: "0 0 120px 60px #07070f",
+              }}
+            >
+              <p className="text-gray-800 text-xs tracking-[0.5em]" style={{ fontFamily: "var(--font-orbitron)" }}>MISSION</p>
+              <h1 className="font-bold tracking-widest text-amber-400 glow-amber" style={{ fontFamily: "var(--font-orbitron)", fontSize: "32px" }}>
+                DENZOS
+              </h1>
+              <p className="text-gray-800 text-xs tracking-widest" style={{ fontFamily: "var(--font-orbitron)" }}>DENZ-001</p>
+            </div>
+          </div>
+
+          {/* ── Orbiting nodes ── */}
           {projects
             .map((project, i) => {
-              const orbit  = orbitConfig[i];
-              const x      = orbit.rx * Math.cos(angles[i]);
-              const y      = orbit.rx * TILT * Math.sin(angles[i]);
-              const depth  = Math.sin(angles[i]);
+              const orbit = orbitConfig[i];
+              const x     = orbit.rx * Math.cos(angles[i]);
+              const y     = orbit.rx * TILT * Math.sin(angles[i]);
+              const depth = Math.sin(angles[i]); // +1 = front, -1 = back
               const status = statusConfig[project.status];
               return { project, x, y, depth, status };
             })
-            .sort((a, b) => a.depth - b.depth)
+            .sort((a, b) => a.depth - b.depth) // paint back-to-front
             .map(({ project, x, y, depth, status }) => (
               <div
                 key={project.id}
                 style={{
                   position: "absolute",
-                  left: "50%",
-                  top: "50%",
-                  transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`,
-                  zIndex: depth > 0 ? 8 : 4,
-                  transition: "transform 0.05s linear",
+                  left: `${550 + x}px`,
+                  top: `${550 + y}px`,
+                  transform: "translate(-50%, -50%)",
+                  // z-index relative to black hole (10): in-front=15, behind=5
+                  zIndex: depth > 0 ? 15 : 5,
                 }}
               >
                 <div
@@ -178,19 +241,27 @@ export default function OrbitalSystem() {
                   className="group flex flex-col items-center gap-2"
                   style={{
                     cursor: "none",
-                    transform: "translate(-50%, -50%)",
-                    scale: String(0.88 + depth * 0.12),
+                    // scale with depth for perspective illusion
+                    transform: `scale(${0.86 + depth * 0.14})`,
+                    transition: "transform 0.08s linear",
                   }}
                 >
                   {/* Glow dot */}
                   <div className="relative flex items-center justify-center">
                     <div
                       className="absolute rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                      style={{ width: "52px", height: "52px", border: `1px solid ${project.status === "live" ? "rgba(74,222,128,0.5)" : "rgba(245,166,35,0.5)"}`, animation: "ping 1.5s ease infinite" }}
+                      style={{
+                        width: "52px", height: "52px",
+                        border: `1px solid ${project.status === "live" ? "rgba(74,222,128,0.5)" : "rgba(245,166,35,0.5)"}`,
+                        animation: "ping 1.5s ease infinite",
+                      }}
                     />
                     <div
                       className="absolute rounded-full"
-                      style={{ width: "34px", height: "34px", border: `1px solid ${project.status === "live" ? "rgba(74,222,128,0.2)" : "rgba(245,166,35,0.2)"}` }}
+                      style={{
+                        width: "34px", height: "34px",
+                        border: `1px solid ${project.status === "live" ? "rgba(74,222,128,0.2)" : "rgba(245,166,35,0.2)"}`,
+                      }}
                     />
                     <div
                       className="rounded-full transition-all duration-300 group-hover:scale-150"
@@ -228,29 +299,8 @@ export default function OrbitalSystem() {
                 </div>
               </div>
             ))}
-        </div>
 
-        {/* Black hole — not scaled, always centered */}
-        <div className="absolute flex items-center justify-center" style={{ zIndex: 10, pointerEvents: "none" }}>
-          <div className="absolute rounded-full" style={{ width: "320px", height: "320px", border: "1px solid rgba(245,166,35,0.07)", boxShadow: "0 0 60px 20px rgba(245,166,35,0.03)" }} />
-          <div className="absolute rounded-full" style={{ width: "290px", height: "290px", background: "radial-gradient(circle, rgba(245,166,35,0.05) 0%, transparent 70%)" }} />
-          <div
-            className="rounded-full flex flex-col items-center justify-center gap-2"
-            style={{
-              width: "clamp(180px, 22vw, 260px)",
-              height: "clamp(180px, 22vw, 260px)",
-              background: "radial-gradient(circle, #020207 55%, #07070f 100%)",
-              boxShadow: "0 0 100px 50px #07070f",
-            }}
-          >
-            <p className="text-gray-800 text-xs tracking-[0.5em]" style={{ fontFamily: "var(--font-orbitron)" }}>MISSION</p>
-            <h1 className="font-bold tracking-widest text-amber-400 glow-amber" style={{ fontFamily: "var(--font-orbitron)", fontSize: "clamp(18px, 2.5vw, 32px)" }}>
-              DENZOS
-            </h1>
-            <p className="text-gray-800 text-xs tracking-widest" style={{ fontFamily: "var(--font-orbitron)" }}>DENZ-001</p>
-          </div>
         </div>
-
       </div>
     </>
   );
