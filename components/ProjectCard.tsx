@@ -47,7 +47,7 @@ export default function ProjectCard({ project, index }: { project: Project; inde
       />
 
       {/* Header */}
-      <div className="flex items-center justify-between px-6 py-4" style={{ borderBottom: "1px solid rgba(245,166,35,0.08)" }}>
+      <div className="flex items-center justify-between px-8 py-5" style={{ borderBottom: "1px solid rgba(245,166,35,0.08)" }}>
         <div className="flex items-center gap-2">
           <div className={`w-1.5 h-1.5 rounded-full ${status.dot} animate-pulse`} />
           <span className={`text-xs tracking-[0.3em] ${status.color}`} style={{ fontFamily: "var(--font-orbitron)" }}>
@@ -60,7 +60,7 @@ export default function ProjectCard({ project, index }: { project: Project; inde
       </div>
 
       {/* Body */}
-      <div className="flex flex-col gap-4 p-6 flex-1">
+      <div className="flex flex-col gap-6 p-8 flex-1">
         <h2 className="text-lg text-white tracking-widest leading-snug" style={{ fontFamily: "var(--font-orbitron)" }}>
           {project.name}
         </h2>
@@ -86,7 +86,7 @@ export default function ProjectCard({ project, index }: { project: Project; inde
       </div>
 
       {/* Action buttons */}
-      <div className="flex gap-3 px-6 py-5" style={{ borderTop: "1px solid rgba(245,166,35,0.08)" }}>
+      <div className="flex gap-3 px-8 py-6" style={{ borderTop: "1px solid rgba(245,166,35,0.08)" }}>
         {project.liveUrl ? (
           <a
             href={project.liveUrl}

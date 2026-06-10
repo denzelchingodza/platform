@@ -1,19 +1,24 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useRef } from "react";
 import Cursor from "./Cursor";
 import AudioPlayer from "./AudioPlayer";
 import DataLines from "./DataLines";
 import IntroScreen from "./IntroScreen";
 
 export default function ClientShell({ children }: { children: React.ReactNode }) {
-  const [introComplete, setIntroComplete] = useState(false);
+  const playAudioRef = useRef<(() => void) | null>(null);
+
+  const handleIntroComplete = () => {
+    // Called directly inside the button click — within the user gesture window
+    playAudioRef.current?.();
+  };
 
   return (
     <>
-      <IntroScreen onComplete={() => setIntroComplete(true)} />
+      <IntroScreen onComplete={handleIntroComplete} />
       <Cursor />
-      <AudioPlayer autoPlay={introComplete} />
+      <AudioPlayer onRegisterPlay={(fn) => { playAudioRef.current = fn; }} />
       <DataLines />
       {children}
     </>

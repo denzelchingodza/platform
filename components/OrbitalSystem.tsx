@@ -145,7 +145,7 @@ export default function OrbitalSystem() {
           flexShrink: 0,
         }}>
 
-          {/* SVG orbital rings — behind everything */}
+          {/* SVG orbital rings + accretion disc — behind everything */}
           <svg
             style={{
               position: "absolute",
@@ -158,17 +158,46 @@ export default function OrbitalSystem() {
             width="0"
             height="0"
           >
-            {orbitConfig.map((orbit, i) => (
+            {/* Static accretion disc rings tightly around the core */}
+            {[
+              { rx: 175, opacity: 0.22, width: 2.5 },
+              { rx: 155, opacity: 0.16, width: 1.5 },
+              { rx: 140, opacity: 0.28, width: 3.0 },
+              { rx: 128, opacity: 0.12, width: 1.0 },
+            ].map((d, i) => (
               <ellipse
-                key={i}
+                key={`disc-${i}`}
                 cx={0} cy={0}
-                rx={orbit.rx}
-                ry={orbit.rx * TILT}
+                rx={d.rx}
+                ry={d.rx * TILT}
                 fill="none"
-                stroke={`rgba(245,166,35,${0.18 - i * 0.04})`}
-                strokeWidth={1}
-                style={{ filter: `drop-shadow(0 0 6px rgba(245,166,35,${0.05 - i * 0.01}))` }}
+                stroke={`rgba(245,166,35,${d.opacity})`}
+                strokeWidth={d.width}
+                style={{ filter: `drop-shadow(0 0 ${d.width * 3}px rgba(245,166,35,${d.opacity * 0.8}))` }}
               />
+            ))}
+
+            {/* Orbital rings — the paths projects travel on */}
+            {orbitConfig.map((orbit, i) => (
+              <g key={i}>
+                <ellipse
+                  cx={0} cy={0}
+                  rx={orbit.rx}
+                  ry={orbit.rx * TILT}
+                  fill="none"
+                  stroke={`rgba(245,166,35,0.07)`}
+                  strokeWidth={8}
+                />
+                <ellipse
+                  cx={0} cy={0}
+                  rx={orbit.rx}
+                  ry={orbit.rx * TILT}
+                  fill="none"
+                  stroke={`rgba(245,166,35,${0.42 - i * 0.07})`}
+                  strokeWidth={1.2}
+                  style={{ filter: `drop-shadow(0 0 4px rgba(245,166,35,0.2))` }}
+                />
+              </g>
             ))}
           </svg>
 
@@ -181,31 +210,16 @@ export default function OrbitalSystem() {
             zIndex: 10,
             pointerEvents: "none",
           }}>
-            {/* Accretion disc rings — elliptical, tilted like orbital rings */}
-            {[
-              { w: 420, h: 420 * 0.22, opacity: 0.18, width: 2,   blur: 4,  speed: "18s" },
-              { w: 370, h: 370 * 0.20, opacity: 0.13, width: 1.5, blur: 3,  speed: "26s" },
-              { w: 320, h: 320 * 0.18, opacity: 0.22, width: 2.5, blur: 6,  speed: "14s" },
-              { w: 290, h: 290 * 0.16, opacity: 0.10, width: 1,   blur: 2,  speed: "34s" },
-            ].map((ring, i) => (
-              <div key={i} className="absolute" style={{
-                width: `${ring.w}px`,
-                height: `${ring.h}px`,
-                left: "50%", top: "50%",
-                transform: "translate(-50%, -50%)",
-                borderRadius: "50%",
-                border: `${ring.width}px solid rgba(245,166,35,${ring.opacity})`,
-                boxShadow: `0 0 ${ring.blur}px rgba(245,166,35,${ring.opacity * 0.6}), inset 0 0 ${ring.blur}px rgba(245,166,35,${ring.opacity * 0.3})`,
-                animation: `ring-rotate ${ring.speed} linear infinite`,
-              }} />
-            ))}
 
-            {/* Outer ambient glow */}
-            <div className="absolute rounded-full" style={{
+            {/* Outer ambient glow — positioned relative to the 260×260 core centre */}
+            <div style={{
+              position: "absolute",
               width: "340px", height: "340px",
-              left: "50%", top: "50%",
+              left: "130px", top: "130px",          /* 130 = half of 260 */
               transform: "translate(-50%, -50%)",
+              borderRadius: "50%",
               background: "radial-gradient(circle, rgba(245,166,35,0.04) 0%, transparent 65%)",
+              pointerEvents: "none",
             }} />
 
             {/* Core */}

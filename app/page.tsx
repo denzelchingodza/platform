@@ -64,12 +64,18 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Fade separator between hero and about */}
+      <div className="relative z-10 h-32 pointer-events-none" style={{
+        background: "linear-gradient(to bottom, transparent, rgba(7,7,15,0.95) 60%, #07070f)",
+        marginTop: "-128px",
+      }} />
+
       {/* ── ABOUT ────────────────────────────────────────────── */}
       <section
         ref={aboutRef}
         id="about"
         className="relative z-10 py-40 md:py-56"
-        style={{ borderTop: "1px solid rgba(245,166,35,0.06)" }}
+        style={{ borderTop: "1px solid rgba(245,166,35,0.08)" }}
       >
         <div className="absolute inset-0 pointer-events-none" style={{
           background: "radial-gradient(ellipse 70% 50% at 50% 50%, rgba(245,166,35,0.02) 0%, transparent 70%)",
@@ -152,9 +158,9 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-20">
 
             {/* Capabilities */}
-            <div className="flex flex-col gap-10">
+            <div className="flex flex-col items-center gap-10 text-center">
               <p className="text-xs tracking-[0.4em] text-gray-400" style={{ fontFamily: "var(--font-orbitron)" }}>— CAPABILITIES</p>
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap justify-center gap-3">
                 {["Python", "JavaScript", "TypeScript", "React", "FastAPI", "PostgreSQL", "MongoDB", "Qdrant", "Docker", "Next.js"].map((skill) => (
                   <span
                     key={skill}
@@ -168,24 +174,24 @@ export default function Home() {
             </div>
 
             {/* Missions */}
-            <div className="flex flex-col gap-10">
+            <div className="flex flex-col items-center gap-10 text-center">
               <p className="text-xs tracking-[0.4em] text-gray-400" style={{ fontFamily: "var(--font-orbitron)" }}>— ACTIVE MISSIONS</p>
-              <div className="flex flex-col gap-10">
+              <div className="flex flex-col gap-10 w-full">
                 {[
                   { code: "01", label: "Completing Software Engineering degree" },
                   { code: "02", label: "Building DenzOS ecosystem" },
                   { code: "03", label: "Studying RAG pipelines & AI agents" },
                 ].map((item) => (
-                  <div key={item.code} className="flex gap-5 items-start">
+                  <div key={item.code} className="flex gap-5 items-start justify-center">
                     <span className="text-amber-400 opacity-25 text-xs shrink-0 mt-0.5" style={{ fontFamily: "var(--font-orbitron)" }}>{item.code}</span>
-                    <p className="text-gray-400 text-xs leading-relaxed">{item.label}</p>
+                    <p className="text-gray-400 text-xs leading-relaxed text-left">{item.label}</p>
                   </div>
                 ))}
               </div>
             </div>
 
             {/* Signal Frequency */}
-            <div className="flex flex-col gap-10">
+            <div className="flex flex-col items-center gap-10 text-center">
               <p className="text-xs tracking-[0.4em] text-gray-400" style={{ fontFamily: "var(--font-orbitron)" }}>— SIGNAL FREQUENCY</p>
               <div className="flex flex-col gap-4">
                 {[

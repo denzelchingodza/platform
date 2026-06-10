@@ -2,21 +2,25 @@
 
 import { useEffect, useRef, useState } from "react";
 
-export default function AudioPlayer({ autoPlay = false }: { autoPlay?: boolean }) {
-  const audioRef  = useRef<HTMLAudioElement>(null);
+interface AudioPlayerProps {
+  onRegisterPlay?: (fn: () => void) => void;
+}
+
+export default function AudioPlayer({ onRegisterPlay }: AudioPlayerProps) {
+  const audioRef = useRef<HTMLAudioElement>(null);
   const [playing, setPlaying] = useState(false);
-  const startedRef = useRef(false);
 
-  // Auto-play once intro completes
   useEffect(() => {
-    if (!autoPlay || startedRef.current || !audioRef.current) return;
-    startedRef.current = true;
-
-    audioRef.current.volume = 0.3;
-    audioRef.current.play()
-      .then(() => setPlaying(true))
-      .catch(() => setPlaying(false)); // browser may block; user can press play
-  }, [autoPlay]);
+    if (!onRegisterPlay || !audioRef.current) return;
+    const audio = audioRef.current;
+    onRegisterPlay(() => {
+      audio.volume = 0.3;
+      audio.play()
+        .then(() => setPlaying(true))
+        .catch(() => {}); // browser blocked — user can click ▶ SOUND
+    });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const fadeOut = () => {
     if (!audioRef.current) return;
@@ -51,7 +55,6 @@ export default function AudioPlayer({ autoPlay = false }: { autoPlay?: boolean }
         className="fixed bottom-6 right-6 z-50 text-xs tracking-[0.2em] transition-all duration-300"
         style={{
           fontFamily: "var(--font-orbitron)",
-          cursor: "none",
           padding: "10px 18px",
           border: playing ? "1px solid rgba(245,166,35,0.4)" : "1px solid rgba(255,255,255,0.1)",
           background: playing ? "rgba(245,166,35,0.08)" : "rgba(7,7,15,0.8)",

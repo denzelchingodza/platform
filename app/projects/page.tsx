@@ -30,7 +30,7 @@ export default function ProjectsPage() {
       <StarField />
       <Navbar />
 
-      <div className="relative z-10 max-w-6xl mx-auto" style={{ padding: "144px 32px 96px" }}>
+      <div className="relative z-10 max-w-6xl mx-auto" style={{ padding: "160px 48px 120px" }}>
 
         {/* Back */}
         <button
@@ -50,7 +50,7 @@ export default function ProjectsPage() {
         </button>
 
         {/* Header */}
-        <div className="mb-14">
+        <div className="mb-20">
           <p className="text-xs tracking-[0.5em] text-gray-600 mb-5" style={{ fontFamily: "var(--font-orbitron)" }}>
             — ACTIVE MISSIONS
           </p>
@@ -96,7 +96,7 @@ export default function ProjectsPage() {
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {filtered.map((project, index) => (
             <ProjectCard key={project.id} project={project} index={index} />
           ))}

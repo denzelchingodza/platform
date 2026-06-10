@@ -186,7 +186,7 @@ export default function IntroScreen({ onComplete }: { onComplete: () => void }) 
               e.currentTarget.style.boxShadow = "none";
             }}
           >
-            ENTER MISSION CONTROL ▶
+            LAUNCH INTO DENZOS ▶
           </button>
         </div>
       </div>
