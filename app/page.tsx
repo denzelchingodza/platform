@@ -68,34 +68,34 @@ export default function Home() {
       <section
         ref={aboutRef}
         id="about"
-        className="relative z-10 py-32 md:py-40"
+        className="relative z-10 py-40 md:py-56"
         style={{ borderTop: "1px solid rgba(245,166,35,0.06)" }}
       >
         <div className="absolute inset-0 pointer-events-none" style={{
           background: "radial-gradient(ellipse 70% 50% at 50% 50%, rgba(245,166,35,0.02) 0%, transparent 70%)",
         }} />
 
-        <div className="max-w-4xl mx-auto px-6 md:px-8 relative">
+        <div className="max-w-5xl mx-auto px-8 md:px-16 relative">
 
           {/* Section label — centered */}
-          <div className="flex items-center justify-center gap-4 mb-20">
-            <div className="w-8 h-px" style={{ background: "rgba(245,166,35,0.3)" }} />
+          <div className="flex items-center justify-center gap-6 mb-28">
+            <div className="w-16 h-px" style={{ background: "rgba(245,166,35,0.3)" }} />
             <p className="text-xs tracking-[0.5em] text-gray-400" style={{ fontFamily: "var(--font-orbitron)" }}>
               PROFILE · DENZ-001
             </p>
-            <div className="w-8 h-px" style={{ background: "rgba(245,166,35,0.3)" }} />
+            <div className="w-16 h-px" style={{ background: "rgba(245,166,35,0.3)" }} />
           </div>
 
           {/* ── Identity ── */}
-          <div className="flex flex-col items-center gap-10 mb-20">
+          <div className="flex flex-col items-center gap-16 mb-28">
 
             {/* Avatar */}
-            <div className="flex flex-col items-center gap-5">
+            <div className="flex flex-col items-center gap-8">
               <div className="relative flex items-center justify-center">
-                <div className="absolute rounded-full" style={{ width: "150px", height: "150px", border: "1px solid rgba(245,166,35,0.07)", animation: "ring-rotate 22s linear infinite" }} />
-                <div className="absolute rounded-full" style={{ width: "118px", height: "118px", border: "1px dashed rgba(245,166,35,0.04)", animation: "ring-rotate-reverse 35s linear infinite" }} />
+                <div className="absolute rounded-full" style={{ width: "160px", height: "160px", border: "1px solid rgba(245,166,35,0.07)", animation: "ring-rotate 22s linear infinite" }} />
+                <div className="absolute rounded-full" style={{ width: "128px", height: "128px", border: "1px dashed rgba(245,166,35,0.04)", animation: "ring-rotate-reverse 35s linear infinite" }} />
                 <div className="rounded-full flex items-center justify-center" style={{
-                  width: "82px", height: "82px",
+                  width: "90px", height: "90px",
                   background: "radial-gradient(circle, rgba(245,166,35,0.15) 0%, rgba(7,7,15,1) 70%)",
                   border: "1px solid rgba(245,166,35,0.25)",
                   boxShadow: "0 0 40px rgba(245,166,35,0.1)",
@@ -110,12 +110,12 @@ export default function Home() {
             </div>
 
             {/* Bio */}
-            <div className="flex flex-col items-center gap-5 text-center max-w-2xl">
-              <div>
-                <p className="text-xs tracking-[0.4em] text-gray-400 mb-3" style={{ fontFamily: "var(--font-orbitron)" }}>
+            <div className="flex flex-col items-center gap-8 text-center max-w-2xl">
+              <div className="flex flex-col items-center gap-3">
+                <p className="text-xs tracking-[0.4em] text-gray-400" style={{ fontFamily: "var(--font-orbitron)" }}>
                   SOFTWARE ENGINEER · CLASS 2025
                 </p>
-                <h2 className="text-3xl md:text-4xl text-white tracking-[0.15em] mb-2" style={{ fontFamily: "var(--font-orbitron)" }}>
+                <h2 className="text-3xl md:text-4xl text-white tracking-[0.15em]" style={{ fontFamily: "var(--font-orbitron)" }}>
                   DENZEL CHINGODZA
                 </h2>
                 <p className="text-amber-400 text-xs tracking-[0.3em] opacity-50" style={{ fontFamily: "var(--font-orbitron)" }}>
@@ -123,9 +123,9 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="w-12 h-px bg-amber-400 opacity-20" />
+              <div className="w-16 h-px bg-amber-400 opacity-20" />
 
-              <p className="text-gray-500 text-sm leading-[2]">
+              <p className="text-gray-400 text-sm leading-[2.2]">
                 Final year software engineering student who learns by building.
                 Nothing beats watching something you made actually work.
                 Currently focused on AI systems — RAG pipelines, intelligent agents, and stateful applications.
@@ -133,10 +133,12 @@ export default function Home() {
                 Also 6&apos;3&quot; — irrelevant, but noted.
               </p>
 
-              <div className="flex items-center gap-3">
+              <div className="w-16 h-px bg-amber-400 opacity-10" />
+
+              <div className="flex items-center gap-4">
                 <span className="text-gray-400 text-xs tracking-[0.3em]" style={{ fontFamily: "var(--font-orbitron)" }}>DIRECTIVE</span>
-                <div className="w-8 h-px" style={{ background: "rgba(245,166,35,0.1)" }} />
-                <span className="text-amber-400 text-xs tracking-[0.3em] opacity-40" style={{ fontFamily: "var(--font-orbitron)" }}>
+                <div className="w-10 h-px" style={{ background: "rgba(245,166,35,0.15)" }} />
+                <span className="text-amber-400 text-xs tracking-[0.3em] opacity-50" style={{ fontFamily: "var(--font-orbitron)" }}>
                   BUILD · LEARN · SHIP
                 </span>
               </div>
@@ -144,20 +146,20 @@ export default function Home() {
           </div>
 
           {/* Divider */}
-          <div className="w-full h-px mb-20" style={{ background: "linear-gradient(to right, transparent, rgba(245,166,35,0.08), transparent)" }} />
+          <div className="w-full h-px mb-28" style={{ background: "linear-gradient(to right, transparent, rgba(245,166,35,0.1), transparent)" }} />
 
           {/* ── Three panels ── */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-20">
 
             {/* Capabilities */}
-            <div>
-              <p className="text-xs tracking-[0.4em] text-gray-400 mb-8" style={{ fontFamily: "var(--font-orbitron)" }}>— CAPABILITIES</p>
+            <div className="flex flex-col gap-10">
+              <p className="text-xs tracking-[0.4em] text-gray-400" style={{ fontFamily: "var(--font-orbitron)" }}>— CAPABILITIES</p>
               <div className="flex flex-wrap gap-3">
                 {["Python", "JavaScript", "TypeScript", "React", "FastAPI", "PostgreSQL", "MongoDB", "Qdrant", "Docker", "Next.js"].map((skill) => (
                   <span
                     key={skill}
-                    className="text-gray-600 hover:text-amber-400 hover:border-amber-400 transition-all duration-300 cursor-default px-3 py-1.5"
-                    style={{ border: "1px solid rgba(255,255,255,0.07)", fontFamily: "var(--font-orbitron)", fontSize: "9px", letterSpacing: "0.12em" }}
+                    className="text-gray-400 hover:text-amber-400 hover:border-amber-400 transition-all duration-300 cursor-default px-3 py-2"
+                    style={{ border: "1px solid rgba(255,255,255,0.08)", fontFamily: "var(--font-orbitron)", fontSize: "9px", letterSpacing: "0.12em" }}
                   >
                     {skill}
                   </span>
@@ -166,26 +168,26 @@ export default function Home() {
             </div>
 
             {/* Missions */}
-            <div>
-              <p className="text-xs tracking-[0.4em] text-gray-400 mb-8" style={{ fontFamily: "var(--font-orbitron)" }}>— ACTIVE MISSIONS</p>
-              <div className="flex flex-col gap-7">
+            <div className="flex flex-col gap-10">
+              <p className="text-xs tracking-[0.4em] text-gray-400" style={{ fontFamily: "var(--font-orbitron)" }}>— ACTIVE MISSIONS</p>
+              <div className="flex flex-col gap-10">
                 {[
                   { code: "01", label: "Completing Software Engineering degree" },
                   { code: "02", label: "Building DenzOS ecosystem" },
                   { code: "03", label: "Studying RAG pipelines & AI agents" },
                 ].map((item) => (
-                  <div key={item.code} className="flex gap-4 items-start">
-                    <span className="text-amber-400 opacity-20 text-xs shrink-0 mt-0.5" style={{ fontFamily: "var(--font-orbitron)" }}>{item.code}</span>
-                    <p className="text-gray-500 text-xs leading-relaxed">{item.label}</p>
+                  <div key={item.code} className="flex gap-5 items-start">
+                    <span className="text-amber-400 opacity-25 text-xs shrink-0 mt-0.5" style={{ fontFamily: "var(--font-orbitron)" }}>{item.code}</span>
+                    <p className="text-gray-400 text-xs leading-relaxed">{item.label}</p>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Signal Frequency — now prominent buttons */}
-            <div>
-              <p className="text-xs tracking-[0.4em] text-gray-400 mb-8" style={{ fontFamily: "var(--font-orbitron)" }}>— SIGNAL FREQUENCY</p>
-              <div className="flex flex-col gap-3">
+            {/* Signal Frequency */}
+            <div className="flex flex-col gap-10">
+              <p className="text-xs tracking-[0.4em] text-gray-400" style={{ fontFamily: "var(--font-orbitron)" }}>— SIGNAL FREQUENCY</p>
+              <div className="flex flex-col gap-4">
                 {[
                   { label: "GITHUB",   href: "https://github.com/denzelchingodza",                        sub: "github.com/denzelchingodza" },
                   { label: "LINKEDIN", href: "https://www.linkedin.com/in/denzel-chingodza-45b6ab3a0/",   sub: "in/denzel-chingodza" },

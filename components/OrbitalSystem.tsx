@@ -181,20 +181,33 @@ export default function OrbitalSystem() {
             zIndex: 10,
             pointerEvents: "none",
           }}>
-            {/* Outer glow rings */}
+            {/* Accretion disc rings — elliptical, tilted like orbital rings */}
+            {[
+              { w: 420, h: 420 * 0.22, opacity: 0.18, width: 2,   blur: 4,  speed: "18s" },
+              { w: 370, h: 370 * 0.20, opacity: 0.13, width: 1.5, blur: 3,  speed: "26s" },
+              { w: 320, h: 320 * 0.18, opacity: 0.22, width: 2.5, blur: 6,  speed: "14s" },
+              { w: 290, h: 290 * 0.16, opacity: 0.10, width: 1,   blur: 2,  speed: "34s" },
+            ].map((ring, i) => (
+              <div key={i} className="absolute" style={{
+                width: `${ring.w}px`,
+                height: `${ring.h}px`,
+                left: "50%", top: "50%",
+                transform: "translate(-50%, -50%)",
+                borderRadius: "50%",
+                border: `${ring.width}px solid rgba(245,166,35,${ring.opacity})`,
+                boxShadow: `0 0 ${ring.blur}px rgba(245,166,35,${ring.opacity * 0.6}), inset 0 0 ${ring.blur}px rgba(245,166,35,${ring.opacity * 0.3})`,
+                animation: `ring-rotate ${ring.speed} linear infinite`,
+              }} />
+            ))}
+
+            {/* Outer ambient glow */}
             <div className="absolute rounded-full" style={{
-              width: "330px", height: "330px",
+              width: "340px", height: "340px",
               left: "50%", top: "50%",
               transform: "translate(-50%, -50%)",
-              border: "1px solid rgba(245,166,35,0.07)",
-              boxShadow: "0 0 60px 20px rgba(245,166,35,0.03)",
+              background: "radial-gradient(circle, rgba(245,166,35,0.04) 0%, transparent 65%)",
             }} />
-            <div className="absolute rounded-full" style={{
-              width: "295px", height: "295px",
-              left: "50%", top: "50%",
-              transform: "translate(-50%, -50%)",
-              background: "radial-gradient(circle, rgba(245,166,35,0.05) 0%, transparent 70%)",
-            }} />
+
             {/* Core */}
             <div
               className="rounded-full flex flex-col items-center justify-center gap-2"
@@ -202,14 +215,14 @@ export default function OrbitalSystem() {
                 width: "260px",
                 height: "260px",
                 background: "radial-gradient(circle, #020207 55%, #07070f 100%)",
-                boxShadow: "0 0 120px 60px #07070f",
+                boxShadow: "0 0 120px 60px #07070f, 0 0 40px 10px rgba(245,166,35,0.06)",
               }}
             >
-              <p className="text-gray-800 text-xs tracking-[0.5em]" style={{ fontFamily: "var(--font-orbitron)" }}>MISSION</p>
+              <p className="text-gray-600 text-xs tracking-[0.5em]" style={{ fontFamily: "var(--font-orbitron)" }}>MISSION</p>
               <h1 className="font-bold tracking-widest text-amber-400 glow-amber" style={{ fontFamily: "var(--font-orbitron)", fontSize: "32px" }}>
                 DENZOS
               </h1>
-              <p className="text-gray-800 text-xs tracking-widest" style={{ fontFamily: "var(--font-orbitron)" }}>DENZ-001</p>
+              <p className="text-gray-600 text-xs tracking-widest" style={{ fontFamily: "var(--font-orbitron)" }}>DENZ-001</p>
             </div>
           </div>
 
