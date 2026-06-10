@@ -2,7 +2,7 @@
 
 > A centralized developer platform that acts as both a professional portfolio and a live software ecosystem. Built by Denzel Chingodza.
 
-**Live:** [platform-production-fe13.up.railway.app](https://platform-production-fe13.up.railway.app)
+**Live:** [platform-production-fe13.up.railway.app](https://denzos-platform.netlify.app/)
 
 ---
 
@@ -32,7 +32,7 @@ Built to demonstrate engineering capability through shipped software, not static
 - **Styling:** Tailwind CSS
 - **Fonts:** Orbitron, Inter (Google Fonts)
 - **Animation:** CSS keyframes, Canvas API
-- **Deployment:** Railway
+- **Deployment:** Netlify
 
 ---
 
