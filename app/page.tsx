@@ -50,13 +50,13 @@ export default function Home() {
           className="absolute bottom-10 left-0 right-0 flex flex-col items-center gap-4 z-10"
           style={{ pointerEvents: "none" }}
         >
-          <p className="text-gray-700 text-xs tracking-[0.3em]" style={{ fontFamily: "var(--font-orbitron)" }}>
+          <p className="text-gray-400 text-xs tracking-[0.3em]" style={{ fontFamily: "var(--font-orbitron)" }}>
             Denzel Chingodza · Software Engineer · South Africa
           </p>
           <button
             onClick={scrollToAbout}
             style={{ pointerEvents: "auto", cursor: "none" }}
-            className="flex flex-col items-center gap-2 text-gray-700 hover:text-amber-400 transition-colors"
+            className="flex flex-col items-center gap-2 text-gray-400 hover:text-amber-400 transition-colors"
           >
             <div className="w-px h-6 bg-amber-400 opacity-15" />
             <span className="text-xs tracking-[0.4em]" style={{ fontFamily: "var(--font-orbitron)" }}>SCROLL</span>
@@ -80,7 +80,7 @@ export default function Home() {
           {/* Section label — centered */}
           <div className="flex items-center justify-center gap-4 mb-20">
             <div className="w-8 h-px" style={{ background: "rgba(245,166,35,0.3)" }} />
-            <p className="text-xs tracking-[0.5em] text-gray-700" style={{ fontFamily: "var(--font-orbitron)" }}>
+            <p className="text-xs tracking-[0.5em] text-gray-400" style={{ fontFamily: "var(--font-orbitron)" }}>
               PROFILE · DENZ-001
             </p>
             <div className="w-8 h-px" style={{ background: "rgba(245,166,35,0.3)" }} />
@@ -112,7 +112,7 @@ export default function Home() {
             {/* Bio */}
             <div className="flex flex-col items-center gap-5 text-center max-w-2xl">
               <div>
-                <p className="text-xs tracking-[0.4em] text-gray-700 mb-3" style={{ fontFamily: "var(--font-orbitron)" }}>
+                <p className="text-xs tracking-[0.4em] text-gray-400 mb-3" style={{ fontFamily: "var(--font-orbitron)" }}>
                   SOFTWARE ENGINEER · CLASS 2025
                 </p>
                 <h2 className="text-3xl md:text-4xl text-white tracking-[0.15em] mb-2" style={{ fontFamily: "var(--font-orbitron)" }}>
@@ -134,7 +134,7 @@ export default function Home() {
               </p>
 
               <div className="flex items-center gap-3">
-                <span className="text-gray-800 text-xs tracking-[0.3em]" style={{ fontFamily: "var(--font-orbitron)" }}>DIRECTIVE</span>
+                <span className="text-gray-400 text-xs tracking-[0.3em]" style={{ fontFamily: "var(--font-orbitron)" }}>DIRECTIVE</span>
                 <div className="w-8 h-px" style={{ background: "rgba(245,166,35,0.1)" }} />
                 <span className="text-amber-400 text-xs tracking-[0.3em] opacity-40" style={{ fontFamily: "var(--font-orbitron)" }}>
                   BUILD · LEARN · SHIP
@@ -151,7 +151,7 @@ export default function Home() {
 
             {/* Capabilities */}
             <div>
-              <p className="text-xs tracking-[0.4em] text-gray-700 mb-8" style={{ fontFamily: "var(--font-orbitron)" }}>— CAPABILITIES</p>
+              <p className="text-xs tracking-[0.4em] text-gray-400 mb-8" style={{ fontFamily: "var(--font-orbitron)" }}>— CAPABILITIES</p>
               <div className="flex flex-wrap gap-3">
                 {["Python", "JavaScript", "TypeScript", "React", "FastAPI", "PostgreSQL", "MongoDB", "Qdrant", "Docker", "Next.js"].map((skill) => (
                   <span
@@ -167,7 +167,7 @@ export default function Home() {
 
             {/* Missions */}
             <div>
-              <p className="text-xs tracking-[0.4em] text-gray-700 mb-8" style={{ fontFamily: "var(--font-orbitron)" }}>— ACTIVE MISSIONS</p>
+              <p className="text-xs tracking-[0.4em] text-gray-400 mb-8" style={{ fontFamily: "var(--font-orbitron)" }}>— ACTIVE MISSIONS</p>
               <div className="flex flex-col gap-7">
                 {[
                   { code: "01", label: "Completing Software Engineering degree" },
@@ -184,7 +184,7 @@ export default function Home() {
 
             {/* Signal Frequency — now prominent buttons */}
             <div>
-              <p className="text-xs tracking-[0.4em] text-gray-700 mb-8" style={{ fontFamily: "var(--font-orbitron)" }}>— SIGNAL FREQUENCY</p>
+              <p className="text-xs tracking-[0.4em] text-gray-400 mb-8" style={{ fontFamily: "var(--font-orbitron)" }}>— SIGNAL FREQUENCY</p>
               <div className="flex flex-col gap-3">
                 {[
                   { label: "GITHUB",   href: "https://github.com/denzelchingodza",                        sub: "github.com/denzelchingodza" },
@@ -215,7 +215,7 @@ export default function Home() {
                       <span className="text-amber-400 text-xs tracking-[0.3em]" style={{ fontFamily: "var(--font-orbitron)" }}>
                         {link.label}
                       </span>
-                      <span className="text-gray-700 text-xs" style={{ fontFamily: "var(--font-inter)", fontSize: "10px" }}>
+                      <span className="text-gray-400 text-xs" style={{ fontFamily: "var(--font-inter)", fontSize: "10px" }}>
                         {link.sub}
                       </span>
                     </div>
@@ -270,7 +270,7 @@ export default function Home() {
           {/* Section label */}
           <div className="flex items-center justify-center gap-4 mb-16">
             <div className="w-8 h-px" style={{ background: "rgba(245,166,35,0.3)" }} />
-            <p className="text-xs tracking-[0.5em] text-gray-700" style={{ fontFamily: "var(--font-orbitron)" }}>
+            <p className="text-xs tracking-[0.5em] text-gray-400" style={{ fontFamily: "var(--font-orbitron)" }}>
               OPEN CHANNEL
             </p>
             <div className="w-8 h-px" style={{ background: "rgba(245,166,35,0.3)" }} />
@@ -308,7 +308,7 @@ export default function Home() {
             <form onSubmit={handleSubmit} className="flex flex-col gap-5">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div className="flex flex-col gap-2">
-                  <label className="text-xs tracking-[0.3em] text-gray-700" style={{ fontFamily: "var(--font-orbitron)" }}>
+                  <label className="text-xs tracking-[0.3em] text-gray-400" style={{ fontFamily: "var(--font-orbitron)" }}>
                     NAME
                   </label>
                   <input
@@ -328,7 +328,7 @@ export default function Home() {
                   />
                 </div>
                 <div className="flex flex-col gap-2">
-                  <label className="text-xs tracking-[0.3em] text-gray-700" style={{ fontFamily: "var(--font-orbitron)" }}>
+                  <label className="text-xs tracking-[0.3em] text-gray-400" style={{ fontFamily: "var(--font-orbitron)" }}>
                     EMAIL
                   </label>
                   <input
@@ -350,7 +350,7 @@ export default function Home() {
               </div>
 
               <div className="flex flex-col gap-2">
-                <label className="text-xs tracking-[0.3em] text-gray-700" style={{ fontFamily: "var(--font-orbitron)" }}>
+                <label className="text-xs tracking-[0.3em] text-gray-400" style={{ fontFamily: "var(--font-orbitron)" }}>
                   MESSAGE
                 </label>
                 <textarea
@@ -414,7 +414,7 @@ export default function Home() {
         {/* Footer */}
         <div className="flex items-center justify-center gap-4 mt-24 px-8">
           <div className="h-px flex-1 max-w-xs" style={{ background: "linear-gradient(to right, transparent, rgba(245,166,35,0.07))" }} />
-          <p className="text-gray-800 text-xs tracking-[0.4em]" style={{ fontFamily: "var(--font-orbitron)" }}>DENZOS · 2025</p>
+          <p className="text-gray-400 text-xs tracking-[0.4em]" style={{ fontFamily: "var(--font-orbitron)" }}>DENZOS · 2025</p>
           <div className="h-px flex-1 max-w-xs" style={{ background: "linear-gradient(to left, transparent, rgba(245,166,35,0.07))" }} />
         </div>
       </section>

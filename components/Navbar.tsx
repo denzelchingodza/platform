@@ -35,7 +35,7 @@ export default function Navbar({ onAboutClick }: NavbarProps) {
   return (
     <>
       <nav
-        className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-8 py-5"
+        className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 md:px-14 py-5"
         style={{ borderBottom: "1px solid rgba(245,166,35,0.07)", background: "rgba(7,7,15,0.6)", backdropFilter: "blur(12px)" }}
       >
         {/* Logo */}
@@ -51,21 +51,21 @@ export default function Navbar({ onAboutClick }: NavbarProps) {
         <div className="hidden md:flex gap-10">
           <button
             onClick={() => navigate("/projects")}
-            className="text-gray-500 hover:text-amber-400 transition-colors duration-300 text-xs tracking-[0.3em]"
+            className="text-gray-400 hover:text-amber-400 transition-colors duration-300 text-xs tracking-[0.3em]"
             style={{ fontFamily: "var(--font-orbitron)", cursor: "none" }}
           >
             PROJECTS
           </button>
           <button
             onClick={handleAbout}
-            className="text-gray-500 hover:text-amber-400 transition-colors duration-300 text-xs tracking-[0.3em]"
+            className="text-gray-400 hover:text-amber-400 transition-colors duration-300 text-xs tracking-[0.3em]"
             style={{ fontFamily: "var(--font-orbitron)", cursor: "none" }}
           >
             ABOUT
           </button>
           <button
             onClick={handleContact}
-            className="text-gray-500 hover:text-amber-400 transition-colors duration-300 text-xs tracking-[0.3em]"
+            className="text-gray-400 hover:text-amber-400 transition-colors duration-300 text-xs tracking-[0.3em]"
             style={{ fontFamily: "var(--font-orbitron)", cursor: "none" }}
           >
             CONTACT
@@ -99,7 +99,7 @@ export default function Navbar({ onAboutClick }: NavbarProps) {
             <button
               key={label}
               onClick={action}
-              className="text-gray-500 hover:text-amber-400 transition-colors duration-300 text-2xl tracking-[0.4em]"
+              className="text-gray-400 hover:text-amber-400 transition-colors duration-300 text-2xl tracking-[0.4em]"
               style={{ fontFamily: "var(--font-orbitron)", cursor: "none" }}
             >
               {label}

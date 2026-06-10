@@ -104,7 +104,7 @@ export default function ProjectsPage() {
 
         {filtered.length === 0 && (
           <div className="flex flex-col items-center justify-center py-24 gap-4">
-            <p className="text-gray-700 text-xs tracking-[0.4em]" style={{ fontFamily: "var(--font-orbitron)" }}>
+            <p className="text-gray-400 text-xs tracking-[0.4em]" style={{ fontFamily: "var(--font-orbitron)" }}>
               NO MISSIONS FOUND
             </p>
           </div>
@@ -115,7 +115,7 @@ export default function ProjectsPage() {
           <div className="h-px flex-1" style={{ background: "linear-gradient(to right, transparent, rgba(245,166,35,0.08))" }} />
           <button
             onClick={goHome}
-            className="text-gray-800 hover:text-amber-400 transition-colors text-xs tracking-[0.4em]"
+            className="text-gray-400 hover:text-amber-400 transition-colors text-xs tracking-[0.4em]"
             style={{ fontFamily: "var(--font-orbitron)", cursor: "none" }}
           >
             ← RETURN TO DENZOS
