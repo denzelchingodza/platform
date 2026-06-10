@@ -20,8 +20,8 @@ export default function Cursor() {
       // Reveal on first move
       if (!movedRef.current) {
         movedRef.current = true;
-        reticleRef.current && (reticleRef.current.style.opacity = "1");
-        dotRef.current     && (dotRef.current.style.opacity     = "1");
+        if (reticleRef.current) reticleRef.current.style.opacity = "1";
+        if (dotRef.current)     dotRef.current.style.opacity     = "1";
       }
     };
 
