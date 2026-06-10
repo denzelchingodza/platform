@@ -2,7 +2,7 @@
 
 > A centralized developer platform that acts as both a professional portfolio and a live software ecosystem. Built by Denzel Chingodza.
 
-**Live:** [platform-production-fe13.up.railway.app](https://platform-production-fe13.up.railway.app)
+**Live:** [platform-production-fe13.up.railway.app](https://denzos-platform.netlify.app/)
 
 ---
 
