@@ -31,11 +31,11 @@ export default function IntroScreen({ onComplete }: { onComplete: () => void }) 
   const complete = () => {
     if (doneRef.current) return;
     doneRef.current = true;
+    onComplete(); // call immediately — must stay within browser gesture window for audio
     setExiting(true);
 
     setTimeout(() => {
       setVisible(false);
-      onComplete();
     }, 900);
   };
 
