@@ -11,12 +11,12 @@ export type Project = {
 export const projects: Project[] = [
   {
     id: "doc-analyzer",
-    name: "Doc Analyzer",
+    name: "DocuZen",
     description:
-      "AI-powered document analysis for SA legal and finance firms. Upload contracts, ask natural language questions, get precise answers with page references.",
-    tech: ["FastAPI", "Python", "Qdrant", "React", "PostgreSQL"],
-    status: "in-progress",
-    liveUrl: null,
+      "AI-powered document intelligence. Upload any PDF or Word doc, ask natural language questions, get precise answers with page-level citations — powered by RAG.",
+    tech: ["FastAPI", "Next.js", "Qdrant", "PostgreSQL", "OpenAI"],
+    status: "live",
+    liveUrl: "https://docuzen.netlify.app",
     githubUrl: "https://github.com/denz-os/doc-analyzer",
   },
   {
