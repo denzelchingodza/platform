@@ -13,8 +13,8 @@ export const projects: Project[] = [
     id: "doc-analyzer",
     name: "DocuZen",
     description:
-      "AI-powered document intelligence. Upload any PDF or Word doc, ask natural language questions, get precise answers with page-level citations — powered by RAG.",
-    tech: ["FastAPI", "Next.js", "Qdrant", "PostgreSQL", "OpenAI"],
+      "AI-powered document intelligence. Upload any PDF or Word doc, ask natural language questions, get precise answers with page-level citations — powered by RAG. Password: docuzen2026",
+    tech: ["FastAPI", "Next.js", "pgvector", "PostgreSQL", "OpenAI"],
     status: "live",
     liveUrl: "https://docuzen.netlify.app",
     githubUrl: "https://github.com/denz-os/doc-analyzer",
