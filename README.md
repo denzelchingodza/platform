@@ -2,7 +2,7 @@
 
 > A centralized developer platform that acts as both a professional portfolio and a live software ecosystem. Built by Denzel Chingodza.
 
-**Live:** [denzos-platform.netlify.app](https://denzos-platform.netlify.app)
+**Live:** [platform-nine-ochre.vercel.app](https://platform-nine-ochre.vercel.app)
 
 ---
 
@@ -21,7 +21,7 @@ Built to demonstrate engineering capability through shipped software, not static
 - Smooth page transitions with fade-to-black navigation
 - Project detail modals with live status, tech stack, and links
 - About section with full developer profile
-- Auto-deploys to Netlify on every push to `main`
+- Auto-deploys to Vercel on every push to `main`
 
 ---
 
@@ -32,7 +32,7 @@ Built to demonstrate engineering capability through shipped software, not static
 - **Styling:** Tailwind CSS
 - **Fonts:** Orbitron, Inter (Google Fonts)
 - **Animation:** CSS keyframes, Canvas API
-- **Deployment:** Netlify
+- **Deployment:** Vercel
 
 ---
 
@@ -40,9 +40,10 @@ Built to demonstrate engineering capability through shipped software, not static
 
 | Project | Status | Stack |
 |---|---|---|
-| SA Doc Analyzer | In Progress | FastAPI, Python, Qdrant, React, PostgreSQL |
+| DocuZen | Live | FastAPI, Next.js, pgvector, PostgreSQL, OpenAI |
+| Sentinel | Live | Next.js, AWS Lambda, DynamoDB, EventBridge, Terraform |
 | AI Tutor | In Progress | FastAPI, Python, PostgreSQL, React, OpenAI |
-| Ecommerce Platform | Live | HTML, CSS, JavaScript, Python, FastAPI, MongoDB |
+| LinkUP | Live | HTML, CSS, JavaScript, FastAPI, MongoDB |
 
 ---
 
@@ -81,11 +82,11 @@ The project automatically appears as an orbiting node on the home page and as a 
 
 ## Deployment
 
-Connected to Netlify via GitHub. Every merge to `main` triggers an automatic redeploy.
+Connected to Vercel via GitHub. Every push to `main` triggers an automatic redeploy.
 
 ```bash
-git checkout main
-git merge dev
+git add .
+git commit -m "your message"
 git push origin main
 ```
 

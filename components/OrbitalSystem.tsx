@@ -9,6 +9,7 @@ const orbitConfig = [
   { rx: 260, period: 28000, startAngle: 0 },
   { rx: 370, period: 44000, startAngle: 2.094 },
   { rx: 480, period: 65000, startAngle: 4.189 },
+  { rx: 520, period: 88000, startAngle: 1.047 },
 ];
 
 const statusConfig = {
