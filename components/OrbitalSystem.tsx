@@ -3,168 +3,306 @@
 import { useState, useEffect, useRef } from "react";
 import { projects, Project } from "@/lib/projects";
 
-const TILT = 0.423; // cos(65°) — ellipse vertical compression
+const TILT = 0.32; // flatter/more 3-D perspective tilt (cos ~71°)
 
 const orbitConfig = [
-  { rx: 260, period: 28000, startAngle: 0 },
-  { rx: 370, period: 44000, startAngle: 2.094 },
-  { rx: 480, period: 65000, startAngle: 4.189 },
-  { rx: 520, period: 88000, startAngle: 1.047 },
+  { rx: 210, period: 28000, startAngle: 0      },
+  { rx: 295, period: 44000, startAngle: 2.094  },
+  { rx: 375, period: 65000, startAngle: 4.189  },
+  { rx: 450, period: 88000, startAngle: 1.047  },
 ];
 
 const statusConfig = {
-  live:          { label: "LIVE",        color: "text-green-400", dot: "bg-green-400", glow: "0 0 16px 5px rgba(74,222,128,0.7)"  },
-  "in-progress": { label: "IN PROGRESS", color: "text-amber-400", dot: "bg-amber-400", glow: "0 0 16px 5px rgba(245,166,35,0.7)"  },
-  "coming-soon": { label: "COMING SOON", color: "text-gray-500",  dot: "bg-gray-500",  glow: "0 0 16px 5px rgba(107,114,128,0.4)" },
+  live:          { label: "LIVE",        color: "#4ade80", glow: "0 0 18px 6px rgba(74,222,128,0.75)"  },
+  "in-progress": { label: "IN PROGRESS", color: "#f5a623", glow: "0 0 18px 6px rgba(245,166,35,0.75)"  },
+  "coming-soon": { label: "COMING SOON", color: "#6b7280", glow: "0 0 18px 6px rgba(107,114,128,0.4)"  },
 };
 
-function useViewportScale() {
+function useViewportScale(containerRef: React.RefObject<HTMLDivElement | null>) {
   const [scale, setScale] = useState(1);
   useEffect(() => {
     const update = () => {
-      const s = Math.min(1, window.innerWidth / 1060, window.innerHeight / 900);
-      setScale(Math.max(0.38, s));
+      if (!containerRef.current) return;
+      const { width, height } = containerRef.current.getBoundingClientRect();
+      const s = Math.min(1, width / 960, height / 960);
+      setScale(Math.max(0.35, s));
     };
     update();
-    window.addEventListener("resize", update);
-    return () => window.removeEventListener("resize", update);
-  }, []);
+    const ro = new ResizeObserver(update);
+    if (containerRef.current) ro.observe(containerRef.current);
+    return () => ro.disconnect();
+  }, [containerRef]);
   return scale;
 }
 
 export default function OrbitalSystem() {
   const [selected, setSelected] = useState<Project | null>(null);
-  const [angles, setAngles]      = useState(orbitConfig.map((o) => o.startAngle));
-  const lastTimeRef              = useRef<number | null>(null);
-  const rafRef                   = useRef<number | null>(null);
-  const scale                    = useViewportScale();
+  const [angles, setAngles]     = useState(orbitConfig.map(o => o.startAngle));
+  const lastTimeRef             = useRef<number | null>(null);
+  const rafRef                  = useRef<number | null>(null);
+  const containerRef            = useRef<HTMLDivElement>(null);
+  const scale                   = useViewportScale(containerRef);
 
   useEffect(() => {
     const animate = (time: number) => {
       if (lastTimeRef.current === null) lastTimeRef.current = time;
       const dt = time - lastTimeRef.current;
       lastTimeRef.current = time;
-      setAngles((prev) =>
-        prev.map((a, i) => a + (2 * Math.PI * dt) / orbitConfig[i].period)
-      );
+      setAngles(prev => prev.map((a, i) => a + (2 * Math.PI * dt) / orbitConfig[i].period));
       rafRef.current = requestAnimationFrame(animate);
     };
     rafRef.current = requestAnimationFrame(animate);
     return () => { if (rafRef.current) cancelAnimationFrame(rafRef.current); };
   }, []);
 
+  const C = 480; // centre of the 960×960 canvas
+
   return (
-    <>
-      {/* ── Modal ─────────────────────────────────────────────── */}
-      {selected && (
-        <div
-          className="fixed inset-0 z-[200] flex items-end justify-center"
-          onClick={() => setSelected(null)}
-        >
-          <div className="absolute inset-0" style={{ background: "rgba(7,7,15,0.75)" }} />
+    <div className="absolute inset-0 flex" style={{ zIndex: 2 }}>
+
+      {/* ── LEFT PANEL — project details ─────────────────────── */}
+      <div
+        className="flex flex-col justify-center"
+        style={{
+          width:    "42%",
+          padding:  "0 clamp(32px, 5vw, 72px)",
+          flexShrink: 0,
+        }}
+      >
+        {selected ? (
           <div
-            className="relative w-full max-w-2xl mx-4 mb-0"
-            style={{
-              background: "rgba(7,7,15,0.98)",
-              border: "1px solid rgba(245,166,35,0.2)",
-              borderBottom: "none",
-              animation: "slide-up 0.35s ease forwards",
-              padding: "clamp(24px, 5vw, 40px)",
-            }}
-            onClick={(e) => e.stopPropagation()}
+            key={selected.id}
+            style={{ animation: "fadeUp 0.4s ease both" }}
           >
-            <div className="absolute top-3 left-3 w-4 h-4" style={{ borderTop: "1px solid rgba(245,166,35,0.4)", borderLeft: "1px solid rgba(245,166,35,0.4)" }} />
-            <div className="absolute top-3 right-3 w-4 h-4" style={{ borderTop: "1px solid rgba(245,166,35,0.4)", borderRight: "1px solid rgba(245,166,35,0.4)" }} />
-
-            <button
-              onClick={() => setSelected(null)}
-              className="absolute top-4 right-6 text-gray-700 hover:text-amber-400 transition-colors text-xs tracking-[0.3em]"
-              style={{ fontFamily: "var(--font-orbitron)", cursor: "none" }}
-            >
-              CLOSE ✕
-            </button>
-
-            <div className="flex items-center gap-2 mb-4">
-              <div className={`w-1.5 h-1.5 rounded-full animate-pulse ${statusConfig[selected.status].dot}`} />
-              <span className={`text-xs tracking-[0.3em] ${statusConfig[selected.status].color}`} style={{ fontFamily: "var(--font-orbitron)" }}>
+            {/* Status badge */}
+            <div className="flex items-center gap-2 mb-5">
+              <div style={{
+                width: "7px", height: "7px", borderRadius: "50%",
+                background: statusConfig[selected.status].color,
+                boxShadow: statusConfig[selected.status].glow,
+                animation: "pulse 2s ease infinite",
+              }} />
+              <span style={{
+                fontFamily:    "var(--font-orbitron)",
+                fontSize:      "9px",
+                letterSpacing: "0.35em",
+                color:         statusConfig[selected.status].color,
+              }}>
                 {statusConfig[selected.status].label}
               </span>
             </div>
 
-            <h2 className="text-xl md:text-2xl text-white tracking-[0.2em] mb-3" style={{ fontFamily: "var(--font-orbitron)" }}>
-              {selected.name}
+            <h2 style={{
+              fontFamily:    "var(--font-orbitron)",
+              fontSize:      "clamp(20px, 2.4vw, 30px)",
+              color:         "#fff",
+              letterSpacing: "0.18em",
+              fontWeight:    700,
+              marginBottom:  "14px",
+            }}>
+              {selected.name.toUpperCase()}
             </h2>
-            <div className="w-12 h-px bg-amber-400 opacity-20 mb-5" />
-            <p className="text-gray-500 text-sm leading-relaxed mb-6">{selected.description}</p>
+
+            <div style={{
+              width: "40px", height: "1px",
+              background: "rgba(245,166,35,0.3)",
+              marginBottom: "20px",
+            }} />
+
+            <p style={{
+              fontFamily:  "var(--font-orbitron)",
+              fontSize:    "11px",
+              color:       "#64748b",
+              lineHeight:  1.9,
+              letterSpacing: "0.03em",
+              marginBottom: "24px",
+              maxWidth:    "400px",
+            }}>
+              {selected.description}
+            </p>
 
             <div className="flex flex-wrap gap-2 mb-8">
-              {selected.tech.map((t) => (
-                <span key={t} className="text-xs px-2 py-1 text-gray-600 tracking-wider"
-                  style={{ border: "1px solid rgba(255,255,255,0.06)" }}>{t}</span>
+              {selected.tech.map(t => (
+                <span key={t} style={{
+                  fontFamily:    "var(--font-orbitron)",
+                  fontSize:      "8px",
+                  letterSpacing: "0.2em",
+                  color:         "#334155",
+                  border:        "1px solid rgba(255,255,255,0.07)",
+                  padding:       "4px 10px",
+                }}>
+                  {t}
+                </span>
               ))}
             </div>
 
-            <div className="flex gap-6">
+            <div className="flex items-center gap-4">
               {selected.liveUrl ? (
-                <a href={selected.liveUrl} target="_blank" rel="noopener noreferrer"
-                  className="text-xs tracking-[0.3em] text-amber-400 hover:text-white transition-colors px-4 py-2"
-                  style={{ fontFamily: "var(--font-orbitron)", border: "1px solid rgba(245,166,35,0.3)", cursor: "none" }}>
+                <a
+                  href={selected.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    fontFamily:    "var(--font-orbitron)",
+                    fontSize:      "9px",
+                    letterSpacing: "0.3em",
+                    color:         "#f5a623",
+                    border:        "1px solid rgba(245,166,35,0.3)",
+                    padding:       "10px 20px",
+                    textDecoration: "none",
+                    transition:    "all 0.25s",
+                  }}
+                  onMouseEnter={e => {
+                    (e.currentTarget as HTMLElement).style.background     = "rgba(245,166,35,0.08)";
+                    (e.currentTarget as HTMLElement).style.borderColor    = "rgba(245,166,35,0.6)";
+                  }}
+                  onMouseLeave={e => {
+                    (e.currentTarget as HTMLElement).style.background     = "transparent";
+                    (e.currentTarget as HTMLElement).style.borderColor    = "rgba(245,166,35,0.3)";
+                  }}
+                >
                   LIVE APP ↗
                 </a>
               ) : (
-                <span className="text-xs tracking-[0.3em] text-gray-700" style={{ fontFamily: "var(--font-orbitron)" }}>
+                <span style={{
+                  fontFamily:    "var(--font-orbitron)",
+                  fontSize:      "9px",
+                  letterSpacing: "0.3em",
+                  color:         "#1e293b",
+                }}>
                   IN DEVELOPMENT
                 </span>
               )}
-              <a href={selected.githubUrl} target="_blank" rel="noopener noreferrer"
-                className="text-xs tracking-[0.3em] text-gray-500 hover:text-white transition-colors px-4 py-2"
-                style={{ fontFamily: "var(--font-orbitron)", border: "1px solid rgba(255,255,255,0.08)", cursor: "none" }}>
+              <a
+                href={selected.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  fontFamily:    "var(--font-orbitron)",
+                  fontSize:      "9px",
+                  letterSpacing: "0.3em",
+                  color:         "#475569",
+                  border:        "1px solid rgba(255,255,255,0.07)",
+                  padding:       "10px 20px",
+                  textDecoration: "none",
+                  transition:    "all 0.25s",
+                }}
+                onMouseEnter={e => {
+                  (e.currentTarget as HTMLElement).style.color         = "#fff";
+                  (e.currentTarget as HTMLElement).style.borderColor   = "rgba(255,255,255,0.2)";
+                }}
+                onMouseLeave={e => {
+                  (e.currentTarget as HTMLElement).style.color         = "#475569";
+                  (e.currentTarget as HTMLElement).style.borderColor   = "rgba(255,255,255,0.07)";
+                }}
+              >
                 GITHUB ↗
               </a>
             </div>
+
+            <button
+              onClick={() => setSelected(null)}
+              style={{
+                fontFamily:    "var(--font-orbitron)",
+                fontSize:      "8px",
+                letterSpacing: "0.3em",
+                color:         "#1e293b",
+                background:    "none",
+                border:        "none",
+                cursor:        "none",
+                marginTop:     "28px",
+                transition:    "color 0.2s",
+                padding:       0,
+              }}
+              onMouseEnter={e => (e.currentTarget.style.color = "#475569")}
+              onMouseLeave={e => (e.currentTarget.style.color = "#1e293b")}
+            >
+              ← BACK TO OVERVIEW
+            </button>
           </div>
-        </div>
-      )}
+        ) : (
+          // Default hint when nothing is selected
+          <div style={{ animation: "fadeIn 1s ease both" }}>
+            <p style={{
+              fontFamily:    "var(--font-orbitron)",
+              fontSize:      "9px",
+              color:         "#f5a623",
+              letterSpacing: "0.5em",
+              marginBottom:  "16px",
+            }}>
+              — ACTIVE MISSIONS
+            </p>
+            <h2 style={{
+              fontFamily:    "var(--font-orbitron)",
+              fontSize:      "clamp(28px,3.5vw,46px)",
+              color:         "#fff",
+              letterSpacing: "0.15em",
+              fontWeight:    700,
+              lineHeight:    1.2,
+              marginBottom:  "20px",
+            }}>
+              {projects.filter(p => p.status === "live").length} SYSTEMS<br />
+              <span style={{ color: "#4ade80" }}>ONLINE</span>
+            </h2>
+            <div style={{
+              width: "40px", height: "1px",
+              background: "rgba(245,166,35,0.25)",
+              marginBottom: "20px",
+            }} />
+            <p style={{
+              fontFamily:    "var(--font-orbitron)",
+              fontSize:      "10px",
+              color:         "#334155",
+              letterSpacing: "0.1em",
+              lineHeight:    1.8,
+              maxWidth:      "300px",
+            }}>
+              Click any orbiting satellite to explore the project.
+            </p>
+          </div>
+        )}
+      </div>
 
-      {/* ── Orbital system ────────────────────────────────────── */}
-      {/*
-        Everything lives inside ONE scaled wrapper (1100×1100).
-        This gives all children the same stacking context so z-index
-        comparisons between the black hole and orbiting nodes work correctly.
-        Black hole: z-index 10
-        Node behind (depth ≤ 0): z-index 5  → hidden behind black hole
-        Node in front (depth > 0): z-index 15 → visible in front of black hole
-      */}
-      <div className="absolute inset-0 flex items-center justify-center" style={{ zIndex: 2 }}>
-
-        <div style={{
+      {/* ── RIGHT PANEL — orbital visualization ─────────────── */}
+      <div
+        ref={containerRef}
+        style={{
+          flex:     1,
           position: "relative",
-          width: "1100px",
-          height: "1100px",
-          transform: `scale(${scale})`,
+          display:  "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          overflow: "hidden",
+        }}
+      >
+        <div style={{
+          position:        "relative",
+          width:           "960px",
+          height:          "960px",
+          transform:       `scale(${scale})`,
           transformOrigin: "center center",
-          flexShrink: 0,
+          flexShrink:      0,
         }}>
 
-          {/* SVG orbital rings + accretion disc — behind everything */}
+          {/* SVG — orbital rings + accretion disc */}
           <svg
             style={{
-              position: "absolute",
-              left: "550px",
-              top: "550px",
-              overflow: "visible",
+              position:      "absolute",
+              left:          `${C}px`,
+              top:           `${C}px`,
+              overflow:      "visible",
               pointerEvents: "none",
-              zIndex: 2,
+              zIndex:        2,
             }}
             width="0"
             height="0"
           >
-            {/* Static accretion disc rings tightly around the core */}
+            {/* Accretion disc — tight rings around core */}
             {[
-              { rx: 175, opacity: 0.22, width: 2.5 },
-              { rx: 155, opacity: 0.16, width: 1.5 },
-              { rx: 140, opacity: 0.28, width: 3.0 },
-              { rx: 128, opacity: 0.12, width: 1.0 },
+              { rx: 145, opacity: 0.28, width: 3.0 },
+              { rx: 128, opacity: 0.18, width: 1.8 },
+              { rx: 115, opacity: 0.35, width: 4.0 },
+              { rx: 105, opacity: 0.14, width: 1.2 },
             ].map((d, i) => (
               <ellipse
                 key={`disc-${i}`}
@@ -174,153 +312,169 @@ export default function OrbitalSystem() {
                 fill="none"
                 stroke={`rgba(245,166,35,${d.opacity})`}
                 strokeWidth={d.width}
-                style={{ filter: `drop-shadow(0 0 ${d.width * 3}px rgba(245,166,35,${d.opacity * 0.8}))` }}
+                style={{ filter: `drop-shadow(0 0 ${d.width * 4}px rgba(245,166,35,${d.opacity * 0.9}))` }}
               />
             ))}
 
-            {/* Orbital rings — the paths projects travel on */}
+            {/* Orbital paths */}
             {orbitConfig.map((orbit, i) => (
               <g key={i}>
+                {/* Soft wide glow */}
                 <ellipse
                   cx={0} cy={0}
                   rx={orbit.rx}
                   ry={orbit.rx * TILT}
                   fill="none"
-                  stroke={`rgba(245,166,35,0.07)`}
-                  strokeWidth={8}
+                  stroke={`rgba(245,166,35,0.06)`}
+                  strokeWidth={10}
                 />
+                {/* Sharp line */}
                 <ellipse
                   cx={0} cy={0}
                   rx={orbit.rx}
                   ry={orbit.rx * TILT}
                   fill="none"
-                  stroke={`rgba(245,166,35,${0.42 - i * 0.07})`}
-                  strokeWidth={1.2}
-                  style={{ filter: `drop-shadow(0 0 4px rgba(245,166,35,0.2))` }}
+                  stroke={`rgba(245,166,35,${0.5 - i * 0.08})`}
+                  strokeWidth={1.4}
+                  style={{ filter: `drop-shadow(0 0 5px rgba(245,166,35,0.3))` }}
                 />
               </g>
             ))}
           </svg>
 
-          {/* ── Gargantua (black hole) ── z-index 10 */}
+          {/* Black hole core — z-index 10 */}
           <div style={{
-            position: "absolute",
-            left: "550px",
-            top: "550px",
+            position:  "absolute",
+            left:      `${C}px`,
+            top:       `${C}px`,
             transform: "translate(-50%, -50%)",
-            zIndex: 10,
+            zIndex:    10,
             pointerEvents: "none",
           }}>
-
-            {/* Outer ambient glow — positioned relative to the 260×260 core centre */}
+            {/* Outer ambient glow */}
             <div style={{
-              position: "absolute",
-              width: "340px", height: "340px",
-              left: "130px", top: "130px",          /* 130 = half of 260 */
-              transform: "translate(-50%, -50%)",
+              position:     "absolute",
+              width:        "280px",
+              height:       "280px",
+              left:         "110px",
+              top:          "110px",
+              transform:    "translate(-50%, -50%)",
               borderRadius: "50%",
-              background: "radial-gradient(circle, rgba(245,166,35,0.04) 0%, transparent 65%)",
-              pointerEvents: "none",
+              background:   "radial-gradient(circle, rgba(245,166,35,0.05) 0%, transparent 65%)",
             }} />
-
-            {/* Core */}
+            {/* Core sphere */}
             <div
               className="rounded-full flex flex-col items-center justify-center gap-2"
               style={{
-                width: "260px",
-                height: "260px",
+                width:      "220px",
+                height:     "220px",
                 background: "radial-gradient(circle, #020207 55%, #07070f 100%)",
-                boxShadow: "0 0 120px 60px #07070f, 0 0 40px 10px rgba(245,166,35,0.06)",
+                boxShadow:  "0 0 100px 50px #07070f, 0 0 40px 8px rgba(245,166,35,0.07)",
               }}
             >
-              <p className="text-gray-600 text-xs tracking-[0.5em]" style={{ fontFamily: "var(--font-orbitron)" }}>MISSION</p>
-              <h1 className="font-bold tracking-widest text-amber-400 glow-amber" style={{ fontFamily: "var(--font-orbitron)", fontSize: "32px" }}>
+              <p style={{ fontFamily: "var(--font-orbitron)", fontSize: "8px", color: "#374151", letterSpacing: "0.55em" }}>
+                MISSION
+              </p>
+              <h1 style={{ fontFamily: "var(--font-orbitron)", fontSize: "26px", color: "#f5a623", letterSpacing: "0.2em", fontWeight: 700, textShadow: "0 0 30px rgba(245,166,35,0.5)" }}>
                 DENZOS
               </h1>
-              <p className="text-gray-600 text-xs tracking-widest" style={{ fontFamily: "var(--font-orbitron)" }}>DENZ-001</p>
+              <p style={{ fontFamily: "var(--font-orbitron)", fontSize: "7px", color: "#374151", letterSpacing: "0.4em" }}>
+                DENZ-001
+              </p>
             </div>
           </div>
 
-          {/* ── Orbiting nodes ── */}
+          {/* Orbiting nodes */}
           {projects
             .map((project, i) => {
-              const orbit = orbitConfig[i];
-              const x     = orbit.rx * Math.cos(angles[i]);
-              const y     = orbit.rx * TILT * Math.sin(angles[i]);
-              const depth = Math.sin(angles[i]); // +1 = front, -1 = back
+              const orbit  = orbitConfig[i];
+              const x      = orbit.rx * Math.cos(angles[i]);
+              const y      = orbit.rx * TILT * Math.sin(angles[i]);
+              const depth  = Math.sin(angles[i]);
               const status = statusConfig[project.status];
               return { project, x, y, depth, status };
             })
-            .sort((a, b) => a.depth - b.depth) // paint back-to-front
+            .sort((a, b) => a.depth - b.depth)
             .map(({ project, x, y, depth, status }) => (
               <div
                 key={project.id}
                 style={{
-                  position: "absolute",
-                  left: `${550 + x}px`,
-                  top: `${550 + y}px`,
+                  position:  "absolute",
+                  left:      `${C + x}px`,
+                  top:       `${C + y}px`,
                   transform: "translate(-50%, -50%)",
-                  // z-index relative to black hole (10): in-front=15, behind=5
-                  zIndex: depth > 0 ? 15 : 5,
+                  zIndex:    depth > 0 ? 15 : 5,
                 }}
               >
                 <div
-                  onClick={() => setSelected(project)}
+                  onClick={() => setSelected(selected?.id === project.id ? null : project)}
                   className="group flex flex-col items-center gap-2"
                   style={{
-                    cursor: "none",
-                    // scale with depth for perspective illusion
-                    transform: `scale(${0.86 + depth * 0.14})`,
+                    cursor:     "none",
+                    transform:  `scale(${0.82 + depth * 0.18})`,
                     transition: "transform 0.08s linear",
                   }}
                 >
-                  {/* Glow dot */}
+                  {/* Planet dot */}
                   <div className="relative flex items-center justify-center">
+                    {/* Ping ring on hover */}
                     <div
-                      className="absolute rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                      className="absolute rounded-full opacity-0 group-hover:opacity-100"
                       style={{
-                        width: "52px", height: "52px",
-                        border: `1px solid ${project.status === "live" ? "rgba(74,222,128,0.5)" : "rgba(245,166,35,0.5)"}`,
-                        animation: "ping 1.5s ease infinite",
+                        width:     "50px",
+                        height:    "50px",
+                        border:    `1px solid ${status.color}88`,
+                        animation: "ping 1.6s ease infinite",
+                        transition: "opacity 0.3s",
                       }}
                     />
+                    {/* Outer ring */}
                     <div
                       className="absolute rounded-full"
                       style={{
-                        width: "34px", height: "34px",
-                        border: `1px solid ${project.status === "live" ? "rgba(74,222,128,0.2)" : "rgba(245,166,35,0.2)"}`,
+                        width:  "30px",
+                        height: "30px",
+                        border: `1px solid ${status.color}33`,
                       }}
                     />
+                    {/* Planet core */}
                     <div
-                      className="rounded-full transition-all duration-300 group-hover:scale-150"
+                      className="rounded-full group-hover:scale-150 transition-transform duration-300"
                       style={{
-                        width: "18px", height: "18px",
-                        background: project.status === "live"
-                          ? "radial-gradient(circle, #4ade80 0%, rgba(74,222,128,0.5) 100%)"
-                          : "radial-gradient(circle, #f5a623 0%, rgba(245,166,35,0.5) 100%)",
-                        boxShadow: status.glow,
+                        width:      "14px",
+                        height:     "14px",
+                        background: `radial-gradient(circle, ${status.color} 0%, ${status.color}80 100%)`,
+                        boxShadow:  status.glow,
                       }}
                     />
                   </div>
 
                   {/* Label */}
                   <div
-                    className="flex flex-col items-center gap-1 px-3 py-1.5 opacity-80 group-hover:opacity-100 transition-opacity"
+                    className="flex flex-col items-center gap-0.5 px-3 py-1.5 transition-opacity"
                     style={{
-                      background: "rgba(4,4,12,0.95)",
-                      border: `1px solid ${project.status === "live" ? "rgba(74,222,128,0.2)" : "rgba(245,166,35,0.15)"}`,
+                      opacity:    selected?.id === project.id ? 1 : 0.75,
+                      background: "rgba(4,4,12,0.92)",
+                      border:     `1px solid ${status.color}22`,
                     }}
                   >
-                    <span
-                      className={`whitespace-nowrap font-bold group-hover:text-amber-400 transition-colors ${project.status === "live" ? "text-green-400" : "text-white"}`}
-                      style={{ fontFamily: "var(--font-orbitron)", fontSize: "10px", letterSpacing: "0.15em" }}
-                    >
+                    <span style={{
+                      fontFamily:    "var(--font-orbitron)",
+                      fontSize:      "9px",
+                      letterSpacing: "0.15em",
+                      color:         selected?.id === project.id ? "#f5a623" : status.color,
+                      whiteSpace:    "nowrap",
+                      fontWeight:    700,
+                    }}>
                       {project.name.toUpperCase()}
                     </span>
-                    <span
-                      className={status.color}
-                      style={{ fontFamily: "var(--font-orbitron)", fontSize: "7px", letterSpacing: "0.2em" }}
-                    >
+                    <span style={{
+                      fontFamily:    "var(--font-orbitron)",
+                      fontSize:      "6px",
+                      letterSpacing: "0.25em",
+                      color:         status.color,
+                      opacity:       0.8,
+                    }}>
                       {status.label}
                     </span>
                   </div>
@@ -330,6 +484,6 @@ export default function OrbitalSystem() {
 
         </div>
       </div>
-    </>
+    </div>
   );
 }
