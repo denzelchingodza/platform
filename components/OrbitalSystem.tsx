@@ -325,8 +325,8 @@ export default function OrbitalSystem() {
                   rx={orbit.rx}
                   ry={orbit.rx * TILT}
                   fill="none"
-                  stroke={`rgba(245,166,35,0.06)`}
-                  strokeWidth={10}
+                  stroke={`rgba(245,166,35,0.14)`}
+                  strokeWidth={12}
                 />
                 {/* Sharp line */}
                 <ellipse
@@ -334,9 +334,9 @@ export default function OrbitalSystem() {
                   rx={orbit.rx}
                   ry={orbit.rx * TILT}
                   fill="none"
-                  stroke={`rgba(245,166,35,${0.5 - i * 0.08})`}
-                  strokeWidth={1.4}
-                  style={{ filter: `drop-shadow(0 0 5px rgba(245,166,35,0.3))` }}
+                  stroke={`rgba(245,166,35,${0.72 - i * 0.1})`}
+                  strokeWidth={1.8}
+                  style={{ filter: `drop-shadow(0 0 6px rgba(245,166,35,0.5))` }}
                 />
               </g>
             ))}

@@ -3,16 +3,19 @@
 import { useEffect, useRef, useState } from "react";
 
 export default function IntroScreen({ onComplete }: { onComplete: () => void }) {
-  const canvasRef              = useRef<HTMLCanvasElement>(null);
-  const [visible, setVisible]  = useState(true);
-  const [exiting, setExiting]  = useState(false);
-  const [textIn, setTextIn]    = useState(false);
-  const doneRef                = useRef(false);
+  const canvasRef   = useRef<HTMLCanvasElement>(null);
+  const [visible, setVisible]   = useState(true);
+  const [exiting, setExiting]   = useState(false);
+  const [phase1In, setPhase1In] = useState(false); // name
+  const [phase3In, setPhase3In] = useState(false); // DENZOS title
+  const doneRef   = useRef(false);
+  const p1Ref     = useRef(false);
+  const p3Ref     = useRef(false);
 
   const complete = () => {
     if (doneRef.current) return;
     doneRef.current = true;
-    onComplete(); // must be in gesture window for audio autoplay
+    onComplete();
     setExiting(true);
     setTimeout(() => setVisible(false), 1100);
   };
@@ -54,7 +57,6 @@ export default function IntroScreen({ onComplete }: { onComplete: () => void }) 
     const startTime = performance.now();
     const DURATION  = 7000;
     let   raf: number;
-    let   textShown = false;
 
     const draw = (now: number) => {
       const elapsed  = now - startTime;
@@ -64,7 +66,7 @@ export default function IntroScreen({ onComplete }: { onComplete: () => void }) 
 
       ctx.clearRect(0, 0, w, h);
 
-      // Sky gradient — bottom = dark earth, top → deep space
+      // Sky gradient — always fully opaque; transitions from warm earth to deep space
       const spaceT = Math.min(progress * 1.4, 1);
       const skyT   = Math.min(progress * 1.8, 1);
       const grad   = ctx.createLinearGradient(0, 0, 0, h);
@@ -72,11 +74,15 @@ export default function IntroScreen({ onComplete }: { onComplete: () => void }) 
       const topG   = Math.round(2  + (1 - spaceT) * 12);
       const topB   = Math.round(10 + (1 - spaceT) * 50);
       grad.addColorStop(0,    `rgb(${topR},${topG},${topB})`);
-      grad.addColorStop(0.35, `rgba(4,8,24,1)`);
-      const horizA = Math.max(0, 1 - skyT * 1.6);
-      grad.addColorStop(0.6,  `rgba(20,14,4,${horizA})`);
-      grad.addColorStop(0.75, `rgba(18,10,3,1)`);
-      grad.addColorStop(1,    `rgba(10,6,2,1)`);
+      grad.addColorStop(0.35, `rgb(4,8,24)`);
+      // Blend horizon from warm amber-earth → deep space, but NEVER transparent
+      const horizBlend = Math.min(skyT * 1.6, 1);
+      const hR = Math.round(20 * (1 - horizBlend) + 4  * horizBlend);
+      const hG = Math.round(14 * (1 - horizBlend) + 8  * horizBlend);
+      const hB = Math.round(4  * (1 - horizBlend) + 24 * horizBlend);
+      grad.addColorStop(0.6,  `rgb(${hR},${hG},${hB})`);
+      grad.addColorStop(0.75, `rgb(18,10,3)`);
+      grad.addColorStop(1,    `rgb(10,6,2)`);
       ctx.fillStyle = grad;
       ctx.fillRect(0, 0, w, h);
 
@@ -126,17 +132,21 @@ export default function IntroScreen({ onComplete }: { onComplete: () => void }) 
         });
       }
 
-      // Trigger text once we're in space
-      if (progress > 0.55 && !textShown) {
-        textShown = true;
-        setTextIn(true);
+      // Phase 1 — name (early, during dust)
+      if (progress > 0.28 && !p1Ref.current) {
+        p1Ref.current = true;
+        setPhase1In(true);
+      }
+      // Phase 3 — DENZOS title (late, deep space)
+      if (progress > 0.62 && !p3Ref.current) {
+        p3Ref.current = true;
+        setPhase3In(true);
       }
 
       if (progress < 1) {
         raf = requestAnimationFrame(draw);
       } else {
-        if (!textShown) { textShown = true; setTextIn(true); }
-        setTimeout(complete, 3200);
+        setTimeout(complete, 3000);
       }
     };
 
@@ -166,7 +176,7 @@ export default function IntroScreen({ onComplete }: { onComplete: () => void }) 
         style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }}
       />
 
-      {/* DENZOS — fades in once stars appear */}
+      {/* Text overlay — all three phases stacked */}
       <div
         style={{
           position:       "absolute",
@@ -176,47 +186,74 @@ export default function IntroScreen({ onComplete }: { onComplete: () => void }) 
           alignItems:     "center",
           justifyContent: "center",
           pointerEvents:  "none",
-          opacity:        textIn ? 1 : 0,
-          transition:     "opacity 2s ease",
+          gap:            0,
         }}
       >
-        <p style={{
-          fontFamily:    "var(--font-orbitron)",
-          fontSize:      "10px",
-          color:         "rgba(245,166,35,0.45)",
-          letterSpacing: "0.7em",
-          marginBottom:  "22px",
-        }}>
-          [ TRANSMISSION RECEIVED ]
-        </p>
-        <h1 style={{
-          fontFamily:    "var(--font-orbitron)",
-          fontSize:      "clamp(58px,10vw,108px)",
-          color:         "#f5a623",
-          letterSpacing: "0.3em",
-          fontWeight:    700,
-          textShadow:    "0 0 80px rgba(245,166,35,0.55), 0 0 160px rgba(245,166,35,0.18)",
-          lineHeight:    1,
-        }}>
-          DENZOS
-        </h1>
-        <div style={{
-          width:      "160px",
-          height:     "1px",
-          background: "linear-gradient(to right, transparent, rgba(245,166,35,0.3), transparent)",
-          margin:     "22px 0",
-        }} />
-        <p style={{
-          fontFamily:    "var(--font-orbitron)",
-          fontSize:      "9px",
-          color:         "rgba(255,255,255,0.18)",
-          letterSpacing: "0.55em",
-        }}>
-          A LIVE SOFTWARE ECOSYSTEM
-        </p>
+        {/* Phase 1 — identity */}
+        <div
+          style={{
+            opacity:    phase1In ? 1 : 0,
+            transition: "opacity 2.8s ease",
+            display:    "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap:        "10px",
+            marginBottom: "clamp(24px, 3.5vh, 38px)",
+          }}
+        >
+          <p style={{
+            fontFamily:    "var(--font-orbitron)",
+            fontSize:      "clamp(9px, 1.2vw, 12px)",
+            color:         "rgba(255,255,255,0.5)",
+            letterSpacing: "0.65em",
+            fontWeight:    400,
+          }}>
+            DENZEL CHINGODZA
+          </p>
+          <p style={{
+            fontFamily:    "var(--font-orbitron)",
+            fontSize:      "clamp(7px, 0.9vw, 9px)",
+            color:         "rgba(255,255,255,0.18)",
+            letterSpacing: "0.5em",
+          }}>
+            ENGINEER · SOUTH AFRICA · 2025
+          </p>
+        </div>
+
+        {/* Phase 3 — DENZOS title */}
+        <div
+          style={{
+            opacity:    phase3In ? 1 : 0,
+            transition: "opacity 2s ease",
+            display:    "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap:        "16px",
+          }}
+        >
+          <h1 style={{
+            fontFamily:    "var(--font-orbitron)",
+            fontSize:      "clamp(36px, 5vw, 62px)",
+            color:         "#f5a623",
+            letterSpacing: "0.28em",
+            fontWeight:    700,
+            textShadow:    "0 0 50px rgba(245,166,35,0.4), 0 0 100px rgba(245,166,35,0.12)",
+            lineHeight:    1,
+          }}>
+            DENZOS
+          </h1>
+          <p style={{
+            fontFamily:    "var(--font-orbitron)",
+            fontSize:      "clamp(7px, 0.9vw, 9px)",
+            color:         "rgba(255,255,255,0.12)",
+            letterSpacing: "0.6em",
+          }}>
+            A LIVE SOFTWARE ECOSYSTEM
+          </p>
+        </div>
       </div>
 
-      {/* Skip — always visible */}
+      {/* Skip */}
       <button
         onClick={complete}
         style={{
@@ -225,7 +262,7 @@ export default function IntroScreen({ onComplete }: { onComplete: () => void }) 
           right:         "36px",
           fontFamily:    "var(--font-orbitron)",
           fontSize:      "9px",
-          color:         "rgba(255,255,255,0.22)",
+          color:         "rgba(255,255,255,0.2)",
           letterSpacing: "0.35em",
           background:    "none",
           border:        "none",
@@ -233,8 +270,8 @@ export default function IntroScreen({ onComplete }: { onComplete: () => void }) 
           transition:    "color 0.3s",
           padding:       "8px 4px",
         }}
-        onMouseEnter={e => (e.currentTarget.style.color = "rgba(245,166,35,0.7)")}
-        onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.22)")}
+        onMouseEnter={e => (e.currentTarget.style.color = "rgba(245,166,35,0.6)")}
+        onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.2)")}
       >
         SKIP  ✕
       </button>
