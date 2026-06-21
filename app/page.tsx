@@ -130,13 +130,13 @@ export default function Home() {
 
               <div className="w-10 h-px" style={{ background: "rgba(245,166,35,0.15)" }} />
 
-              <p style={{ fontFamily: "var(--font-inter)", fontSize: "14px", color: "rgba(255,255,255,0.45)", lineHeight: 2, maxWidth: "520px" }}>
+              <p style={{ fontFamily: "var(--font-orbitron)", fontSize: "11px", color: "rgba(255,255,255,0.45)", lineHeight: 2.1, maxWidth: "520px", letterSpacing: "0.03em" }}>
                 Final year Software Engineering student, Python developer, and someone who takes both software engineering and mathematics seriously — not as separate interests, but as two sides of the same coin.
               </p>
-              <p style={{ fontFamily: "var(--font-inter)", fontSize: "14px", color: "rgba(255,255,255,0.45)", lineHeight: 2, maxWidth: "520px" }}>
+              <p style={{ fontFamily: "var(--font-orbitron)", fontSize: "11px", color: "rgba(255,255,255,0.45)", lineHeight: 2.1, maxWidth: "520px", letterSpacing: "0.03em" }}>
                 My foundation is in software engineering. I build systems: APIs, databases, pipelines, cloud infrastructure. But my background in pure mathematics has given me a different kind of intuition — one that goes beyond frameworks and syntax into the reasoning and structure underneath. That&apos;s what drew me into AI and machine learning, as a natural and exciting extension of the engineering work I already do.
               </p>
-              <p style={{ fontFamily: "var(--font-inter)", fontSize: "14px", color: "rgba(255,255,255,0.45)", lineHeight: 2, maxWidth: "520px" }}>
+              <p style={{ fontFamily: "var(--font-orbitron)", fontSize: "11px", color: "rgba(255,255,255,0.45)", lineHeight: 2.1, maxWidth: "520px", letterSpacing: "0.03em" }}>
                 I&apos;m driven by the desire to build things that actually work and to deeply understand why they work. That combination of engineering discipline and mathematical curiosity is what defines how I approach every project I take on.
               </p>
 
@@ -166,12 +166,12 @@ export default function Home() {
                   <span
                     key={skill}
                     style={{
-                      fontFamily:    "var(--font-inter)",
-                      fontSize:      "11px",
+                      fontFamily:    "var(--font-orbitron)",
+                      fontSize:      "9px",
                       color:         "rgba(255,255,255,0.35)",
                       border:        "1px solid rgba(255,255,255,0.07)",
                       padding:       "5px 10px",
-                      letterSpacing: "0.04em",
+                      letterSpacing: "0.12em",
                       transition:    "all 0.25s",
                     }}
                     onMouseEnter={e => {
@@ -204,7 +204,7 @@ export default function Home() {
                     <span style={{ fontFamily: "var(--font-orbitron)", fontSize: "9px", letterSpacing: "0.2em", color: "rgba(245,166,35,0.25)", flexShrink: 0, marginTop: "2px" }}>
                       {item.code}
                     </span>
-                    <p style={{ fontFamily: "var(--font-inter)", fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 1.7 }}>
+                    <p style={{ fontFamily: "var(--font-orbitron)", fontSize: "10px", color: "rgba(255,255,255,0.4)", lineHeight: 1.9, letterSpacing: "0.05em" }}>
                       {item.label}
                     </p>
                   </div>
@@ -247,7 +247,7 @@ export default function Home() {
                       <span style={{ fontFamily: "var(--font-orbitron)", fontSize: "9px", letterSpacing: "0.3em", color: "#f5a623", opacity: 0.7 }}>
                         {link.label}
                       </span>
-                      <span style={{ fontFamily: "var(--font-inter)", fontSize: "11px", color: "rgba(255,255,255,0.25)" }}>
+                      <span style={{ fontFamily: "var(--font-orbitron)", fontSize: "9px", color: "rgba(255,255,255,0.25)", letterSpacing: "0.05em" }}>
                         {link.sub}
                       </span>
                     </div>
@@ -308,11 +308,11 @@ export default function Home() {
             <div className="w-8 h-px" style={{ background: "rgba(245,166,35,0.3)" }} />
           </div>
 
-          <div className="text-center mb-12">
+          <div className="text-right mb-12">
             <h2 className="text-2xl md:text-3xl text-white tracking-[0.15em] mb-4" style={{ fontFamily: "var(--font-orbitron)" }}>
               SEND A TRANSMISSION
             </h2>
-            <p className="text-gray-600 text-sm leading-relaxed">
+            <p style={{ fontFamily: "var(--font-orbitron)", fontSize: "10px", color: "rgba(255,255,255,0.3)", lineHeight: 2, letterSpacing: "0.06em" }}>
               Got a project in mind, an opportunity, or just want to connect?<br />
               Drop a message — I read every one.
             </p>
@@ -327,7 +327,7 @@ export default function Home() {
               <p className="text-green-400 text-sm tracking-[0.3em]" style={{ fontFamily: "var(--font-orbitron)" }}>
                 TRANSMISSION RECEIVED
               </p>
-              <p className="text-gray-600 text-xs">Message delivered. I&apos;ll get back to you soon.</p>
+              <p style={{ fontFamily: "var(--font-orbitron)", fontSize: "9px", color: "rgba(255,255,255,0.3)", letterSpacing: "0.1em" }}>Message delivered. I&apos;ll get back to you soon.</p>
               <button
                 onClick={() => setFormState("idle")}
                 className="mt-2 text-xs tracking-[0.3em] text-gray-600 hover:text-amber-400 transition-colors"
@@ -352,7 +352,7 @@ export default function Home() {
                     style={{
                       border: "1px solid rgba(255,255,255,0.07)",
                       background: "rgba(255,255,255,0.02)",
-                      fontFamily: "var(--font-inter)",
+                      fontFamily: "var(--font-orbitron)",
                       cursor: "none",
                     }}
                     onFocus={(e) => { e.currentTarget.style.borderColor = "rgba(245,166,35,0.3)"; }}
@@ -372,7 +372,7 @@ export default function Home() {
                     style={{
                       border: "1px solid rgba(255,255,255,0.07)",
                       background: "rgba(255,255,255,0.02)",
-                      fontFamily: "var(--font-inter)",
+                      fontFamily: "var(--font-orbitron)",
                       cursor: "none",
                     }}
                     onFocus={(e) => { e.currentTarget.style.borderColor = "rgba(245,166,35,0.3)"; }}
@@ -394,7 +394,7 @@ export default function Home() {
                   style={{
                     border: "1px solid rgba(255,255,255,0.07)",
                     background: "rgba(255,255,255,0.02)",
-                    fontFamily: "var(--font-inter)",
+                    fontFamily: "var(--font-orbitron)",
                     cursor: "none",
                   }}
                   onFocus={(e) => { e.currentTarget.style.borderColor = "rgba(245,166,35,0.3)"; }}
@@ -411,7 +411,7 @@ export default function Home() {
               <button
                 type="submit"
                 disabled={formState === "sending"}
-                className="flex items-center justify-center gap-3 py-4 text-xs tracking-[0.4em] transition-all duration-300 disabled:opacity-50"
+                className="flex items-center justify-end gap-3 py-4 text-xs tracking-[0.4em] transition-all duration-300 disabled:opacity-50 ml-auto"
                 style={{
                   fontFamily: "var(--font-orbitron)",
                   cursor: "none",

@@ -17,7 +17,7 @@ export default function IntroScreen({ onComplete }: { onComplete: () => void }) 
     doneRef.current = true;
     onComplete();
     setExiting(true);
-    setTimeout(() => setVisible(false), 1100);
+    setTimeout(() => setVisible(false), 500);
   };
 
   useEffect(() => {
@@ -168,7 +168,7 @@ export default function IntroScreen({ onComplete }: { onComplete: () => void }) 
         inset:      0,
         zIndex:     99999,
         opacity:    exiting ? 0 : 1,
-        transition: "opacity 1.1s ease",
+        transition: "opacity 0.45s ease",
       }}
     >
       <canvas

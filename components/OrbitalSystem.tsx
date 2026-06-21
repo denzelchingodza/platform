@@ -46,7 +46,7 @@ export default function OrbitalSystem() {
   useEffect(() => {
     const animate = (time: number) => {
       if (lastTimeRef.current === null) lastTimeRef.current = time;
-      const dt = time - lastTimeRef.current;
+      const dt = Math.min(time - lastTimeRef.current, 50); // cap to prevent jump on re-render
       lastTimeRef.current = time;
       setAngles(prev => prev.map((a, i) => a + (2 * Math.PI * dt) / orbitConfig[i].period));
       rafRef.current = requestAnimationFrame(animate);
@@ -272,7 +272,7 @@ export default function OrbitalSystem() {
           display:  "flex",
           alignItems: "center",
           justifyContent: "center",
-          overflow: "hidden",
+          overflow: "visible",
         }}
       >
         <div style={{
@@ -284,18 +284,19 @@ export default function OrbitalSystem() {
           flexShrink:      0,
         }}>
 
-          {/* SVG — orbital rings + accretion disc */}
+          {/* SVG — full-canvas, rings drawn at centre (C, C) */}
           <svg
             style={{
               position:      "absolute",
-              left:          `${C}px`,
-              top:           `${C}px`,
-              overflow:      "visible",
+              left:          0,
+              top:           0,
               pointerEvents: "none",
               zIndex:        2,
             }}
-            width="0"
-            height="0"
+            width="960"
+            height="960"
+            viewBox="0 0 960 960"
+            xmlns="http://www.w3.org/2000/svg"
           >
             {/* Accretion disc — tight rings around core */}
             {[
@@ -306,37 +307,35 @@ export default function OrbitalSystem() {
             ].map((d, i) => (
               <ellipse
                 key={`disc-${i}`}
-                cx={0} cy={0}
+                cx={C} cy={C}
                 rx={d.rx}
                 ry={d.rx * TILT}
                 fill="none"
                 stroke={`rgba(245,166,35,${d.opacity})`}
                 strokeWidth={d.width}
-                style={{ filter: `drop-shadow(0 0 ${d.width * 4}px rgba(245,166,35,${d.opacity * 0.9}))` }}
               />
             ))}
 
             {/* Orbital paths */}
             {orbitConfig.map((orbit, i) => (
               <g key={i}>
-                {/* Soft wide glow */}
+                {/* Soft glow halo */}
                 <ellipse
-                  cx={0} cy={0}
+                  cx={C} cy={C}
                   rx={orbit.rx}
                   ry={orbit.rx * TILT}
                   fill="none"
-                  stroke={`rgba(245,166,35,0.14)`}
-                  strokeWidth={12}
+                  stroke={`rgba(245,166,35,0.12)`}
+                  strokeWidth={14}
                 />
-                {/* Sharp line */}
+                {/* Sharp ring */}
                 <ellipse
-                  cx={0} cy={0}
+                  cx={C} cy={C}
                   rx={orbit.rx}
                   ry={orbit.rx * TILT}
                   fill="none"
-                  stroke={`rgba(245,166,35,${0.72 - i * 0.1})`}
-                  strokeWidth={1.8}
-                  style={{ filter: `drop-shadow(0 0 6px rgba(245,166,35,0.5))` }}
+                  stroke={`rgba(245,166,35,${0.65 - i * 0.08})`}
+                  strokeWidth={1.6}
                 />
               </g>
             ))}
