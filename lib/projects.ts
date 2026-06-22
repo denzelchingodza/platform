@@ -35,7 +35,7 @@ export const projects: Project[] = [
     description: "A peer-to-peer marketplace for South Africa. Buy, sell, and connect — with full user management, admin controls, product listings, cart, and messaging.",
     tech: ["HTML", "CSS", "JavaScript", "FastAPI", "MongoDB"],
     status: "live",
-    liveUrl: "https://boisterous-biscotti-ebb824.netlify.app",
+    liveUrl: "https://ecommerce-seven-iota-31.vercel.app",
     githubUrl: "https://github.com/denz-os/ecommerce",
   },
   {
