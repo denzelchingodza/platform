@@ -138,6 +138,7 @@ export default function Home() {
     { code: "01", label: "Completing Software Engineering degree" },
     { code: "02", label: "Building the DenzOS ecosystem" },
     { code: "03", label: "Studying RAG pipelines & AI agents" },
+    { code: "04", label: "DocuZen — live AI document chat", href: "https://doc-analyzer-as5k.vercel.app/app" },
   ];
 
   const links = [
@@ -338,7 +339,8 @@ export default function Home() {
               <Reveal key={item.code} from="left" delay={i * 110}>
                 <div
                   className="flex items-center gap-7 px-7 py-6 transition-all duration-350"
-                  style={{ border: "1px solid rgba(255,255,255,0.07)", background: "rgba(255,255,255,0.01)", cursor: "default", maxWidth: "680px" }}
+                  style={{ border: "1px solid rgba(255,255,255,0.07)", background: "rgba(255,255,255,0.01)", cursor: item.href ? "pointer" : "default", maxWidth: "680px" }}
+                  onClick={() => item.href && window.open(item.href, "_blank")}
                   onMouseEnter={e => {
                     e.currentTarget.style.borderColor = "rgba(245,166,35,0.35)";
                     e.currentTarget.style.background = "rgba(245,166,35,0.04)";
@@ -356,6 +358,7 @@ export default function Home() {
                   </span>
                   <p style={{ fontFamily: "var(--font-orbitron)", fontSize: "clamp(13px, 1.4vw, 16px)", color: "rgba(255,255,255,0.75)", letterSpacing: "0.06em" }}>
                     {item.label}
+                    {item.href && <span style={{ marginLeft: "10px", fontSize: "10px", color: "rgba(245,166,35,0.5)", letterSpacing: "0.2em" }}>↗</span>}
                   </p>
                 </div>
               </Reveal>
