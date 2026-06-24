@@ -134,7 +134,7 @@ export default function Home() {
     "MongoDB", "Qdrant", "Docker", "AWS", "LangChain", "RAG Pipelines",
   ];
 
-  const missions = [
+  const missions: { code: string; label: string; href?: string }[] = [
     { code: "01", label: "Completing Software Engineering degree" },
     { code: "02", label: "Building the DenzOS ecosystem" },
     { code: "03", label: "Studying RAG pipelines & AI agents" },
