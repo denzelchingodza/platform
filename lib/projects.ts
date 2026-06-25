@@ -16,7 +16,7 @@ export const projects: Project[] = [
       "AI-powered document intelligence. Upload any PDF or Word doc, ask natural language questions, get precise answers with page-level citations — powered by RAG. Password: docuzen2026",
     tech: ["FastAPI", "Next.js", "pgvector", "PostgreSQL", "OpenAI"],
     status: "live",
-    liveUrl: "https://docuzen.netlify.app",
+    liveUrl: "https://doc-analyzer-as5k.vercel.app",
     githubUrl: "https://github.com/denz-os/doc-analyzer",
   },
   {
