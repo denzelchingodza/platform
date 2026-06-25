@@ -138,7 +138,7 @@ export default function Home() {
     { code: "01", label: "Completing Software Engineering degree" },
     { code: "02", label: "Building the DenzOS ecosystem" },
     { code: "03", label: "Studying RAG pipelines & AI agents" },
-    { code: "04", label: "DocuZen — live AI document chat", href: "https://doc-analyzer-as5k.vercel.app/app" },
+    { code: "04", label: "DocuZen — live AI document chat", href: "https://doc-analyzer-as5k.vercel.app/" },
   ];
 
   const links = [
