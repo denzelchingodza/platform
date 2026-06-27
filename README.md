@@ -1,101 +1,75 @@
-# DENZOS: Live Software Ecosystem
+# Denzel Chingodza — Portfolio
 
-> A centralized developer platform that acts as both a professional portfolio and a live software ecosystem. Built by Denzel Chingodza.
+Personal portfolio and project showcase. Built with plain HTML, CSS, and vanilla JavaScript. No frameworks, no build step.
 
-**Live:** [platform-nine-ochre.vercel.app](https://platform-nine-ochre.vercel.app)
-
----
-
-## What is DenzOS?
-
-DenzOS is not a portfolio with screenshots. It is a live, interactive ecosystem where every project is a fully deployed, functional application. Themed after Interstellar, the platform visualizes projects as satellites orbiting a black hole — each one clickable, each one real.
-
-Built to demonstrate engineering capability through shipped software, not static presentations.
+**Live:** [portfolio URL here]
 
 ---
 
-## Platform Features
+## About
 
-- Interactive orbital system — projects orbit as live satellites
-- Interstellar visual theme — animated starfield, data lines, custom cursor, ambient audio
-- Smooth page transitions with fade-to-black navigation
-- Project detail modals with live status, tech stack, and links
-- About section with full developer profile
-- Auto-deploys to Vercel on every push to `main`
+BSc Software Engineering student based in South Africa. I build software systems and I'm studying NLP and language models. Everything in this portfolio is something I built myself.
 
 ---
 
-## Tech Stack
+## Projects
 
-- **Framework:** Next.js 16 (App Router)
-- **Language:** TypeScript
-- **Styling:** Tailwind CSS
-- **Fonts:** Orbitron, Inter (Google Fonts)
-- **Animation:** CSS keyframes, Canvas API
-- **Deployment:** Vercel
-
----
-
-## Projects in the Ecosystem
-
-| Project | Status | Stack |
-|---|---|---|
-| DocuZen | Live | FastAPI, Next.js, pgvector, PostgreSQL, OpenAI |
-| Sentinel | Live | Next.js, AWS Lambda, DynamoDB, EventBridge, Terraform |
-| AI Tutor | In Progress | FastAPI, Python, PostgreSQL, React, OpenAI |
-| LinkUP | Live | HTML, CSS, JavaScript, FastAPI, MongoDB |
+| # | Project | Stack | Status |
+|---|---------|-------|--------|
+| 01 | StackScope | Python, Flask, spaCy, scikit-learn, Docker | Live |
+| 02 | DocuZen | FastAPI, Next.js, pgvector, PostgreSQL, OpenAI | Live |
+| 03 | Sentinel | Next.js, AWS Lambda, DynamoDB, EventBridge, Terraform | Live |
+| 04 | LinkUP | HTML, CSS, JavaScript, FastAPI, MongoDB | Live |
+| 05 | AI Tutor | FastAPI, Python, PostgreSQL, React, OpenAI | In Progress |
 
 ---
 
-## Running Locally
+## Tech
+
+- HTML, CSS, vanilla JavaScript
+- Canvas API for the orbital animation and starfield
+- Google Fonts: Space Grotesk, Orbitron, Inter
+- Formspree for the contact form
+- Netlify for deployment
+
+---
+
+## Running locally
+
+Just open `public/index.html` in a browser. No build step needed.
+
+For audio to work, run a local server instead of opening the file directly:
 
 ```bash
-git clone https://github.com/denz-os/platform.git
-cd platform
-npm install
-npm run dev
+cd public
+python3 -m http.server 8000
 ```
 
-Open [http://localhost:3000](http://localhost:3000)
-
----
-
-## Adding a New Project
-
-Open `lib/projects.ts` and add an entry to the array:
-
-```ts
-{
-  id: "project-id",
-  name: "Project Name",
-  description: "What it does and who it's for.",
-  tech: ["FastAPI", "React", "PostgreSQL"],
-  status: "in-progress",
-  liveUrl: null,
-  githubUrl: "https://github.com/denz-os/project-name",
-}
-```
-
-The project automatically appears as an orbiting node on the home page and as a card on the projects page.
+Then open http://localhost:8000.
 
 ---
 
 ## Deployment
 
-Connected to Vercel via GitHub. Every push to `main` triggers an automatic redeploy.
+Hosted on Netlify. Deploys automatically on push to `main`. Config is in `netlify.toml`:
 
-```bash
-git add .
-git commit -m "your message"
-git push origin main
+```toml
+[build]
+  publish = "public"
 ```
+
+No build command. Netlify serves `public/index.html` as a static site.
 
 ---
 
-## Author
+## Adding a project
 
-**Denzel Chingodza**, Software Engineer, South Africa
+Open `public/index.html` and add an entry to the `PROJECTS` array in the JavaScript section. Then add a matching entry to `ORBIT_BASE` if you need a new orbit ring.
 
-- GitHub: [github.com/denzelchingodza](https://github.com/denzelchingodza)
-- LinkedIn: [linkedin.com/in/denzel-chingodza-45b6ab3a0](https://www.linkedin.com/in/denzel-chingodza-45b6ab3a0/)
+---
+
+## Contact
+
 - Email: denzel.chingodza@icloud.com
+- GitHub: github.com/denzelchingodza
+- LinkedIn: linkedin.com/in/denzel-chingodza-45b6ab3a0
