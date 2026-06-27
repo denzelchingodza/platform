@@ -138,7 +138,7 @@ export default function Home() {
     { code: "01", label: "Completing Software Engineering degree" },
     { code: "02", label: "Building the DenzOS ecosystem" },
     { code: "03", label: "Studying RAG pipelines & AI agents" },
-    { code: "04", label: "DocuZen — live AI document chat", href: "https://doc-analyzer-as5k.vercel.app/" },
+    { code: "04", label: "DocuZen: live AI document chat", href: "https://doc-analyzer-as5k.vercel.app/" },
   ];
 
   const links = [
@@ -148,8 +148,8 @@ export default function Home() {
   ];
 
   const bio = [
-    "Final year Software Engineering student, Python developer, and someone who takes both software engineering and mathematics seriously — not as separate interests, but as two sides of the same coin.",
-    "My foundation is in software engineering. I build systems: APIs, databases, pipelines, cloud infrastructure. But my background in pure mathematics has given me a different kind of intuition — one that goes beyond frameworks and syntax into the reasoning and structure underneath. That's what drew me into AI and machine learning, as a natural and exciting extension of the engineering work I already do.",
+    "Final year Software Engineering student, Python developer, and someone who takes both software engineering and mathematics seriously. Not as separate interests, but as two sides of the same coin.",
+    "My foundation is in software engineering. I build systems: APIs, databases, pipelines, cloud infrastructure. But my background in pure mathematics has given me a different kind of intuition, one that goes beyond frameworks and syntax into the reasoning and structure underneath. That's what drew me into AI and machine learning, as a natural extension of the engineering work I already do.",
     "I'm driven by the desire to build things that actually work and to deeply understand why they work. That combination of engineering discipline and mathematical curiosity is what defines how I approach every project I take on.",
   ];
 
@@ -444,7 +444,7 @@ export default function Home() {
               </h2>
               <p style={{ fontFamily: "var(--font-orbitron)", fontSize: "13px", color: "rgba(255,255,255,0.4)", lineHeight: 2.1, letterSpacing: "0.05em" }}>
                 Got a project in mind, an opportunity, or just want to connect?<br />
-                Drop a message — I read every one.
+                Drop a message. I read every one.
               </p>
             </div>
           </Reveal>
@@ -491,7 +491,7 @@ export default function Home() {
                     onBlur={e  => e.currentTarget.style.borderColor="rgba(255,255,255,0.09)"} />
                 </div>
                 {formState === "error" && (
-                  <p style={{ fontFamily: "var(--font-orbitron)", fontSize: "13px", color: "#ef4444", letterSpacing: "0.2em" }}>TRANSMISSION FAILED — please try again.</p>
+                  <p style={{ fontFamily: "var(--font-orbitron)", fontSize: "13px", color: "#ef4444", letterSpacing: "0.2em" }}>TRANSMISSION FAILED. Please try again.</p>
                 )}
                 <button type="submit" disabled={formState === "sending"}
                   className="flex items-center justify-center gap-3 py-6 transition-all duration-300 disabled:opacity-50"

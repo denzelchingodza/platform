@@ -1,4 +1,4 @@
-# DENZOS — Live Software Ecosystem
+# DENZOS: Live Software Ecosystem
 
 > A centralized developer platform that acts as both a professional portfolio and a live software ecosystem. Built by Denzel Chingodza.
 
@@ -94,7 +94,7 @@ git push origin main
 
 ## Author
 
-**Denzel Chingodza** — Software Engineer, South Africa
+**Denzel Chingodza**, Software Engineer, South Africa
 
 - GitHub: [github.com/denzelchingodza](https://github.com/denzelchingodza)
 - LinkedIn: [linkedin.com/in/denzel-chingodza-45b6ab3a0](https://www.linkedin.com/in/denzel-chingodza-45b6ab3a0/)
