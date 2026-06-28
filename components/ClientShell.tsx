@@ -9,7 +9,8 @@ import AudioPlayer from "./AudioPlayer";
 export default function ClientShell({ children }: { children: React.ReactNode }) {
   const audioRef    = useRef<HTMLAudioElement>(null);
   const wantsPlay   = useRef(true);
-  const [playing, setPlaying] = useState(true); // optimistic — show MUTE from the start
+  const [playing, setPlaying]         = useState(true);
+  const [introComplete, setIntroComplete] = useState(false);
 
   // Attempt autoplay on mount; fall back to first user gesture
   useEffect(() => {
@@ -33,9 +34,12 @@ export default function ClientShell({ children }: { children: React.ReactNode })
   // Also called from IntroScreen's skip/complete (inside a user gesture — guaranteed to work)
   const handleIntroComplete = () => {
     const audio = audioRef.current;
-    if (!audio) return;
-    audio.volume = 0.3;
-    audio.play().then(() => setPlaying(true)).catch(() => {});
+    if (audio) {
+      audio.volume = 0.3;
+      audio.play().then(() => setPlaying(true)).catch(() => {});
+    }
+    // Start fading in the main page at the same moment the intro fades out
+    setIntroComplete(true);
   };
 
   const toggleAudio = () => {
@@ -67,7 +71,13 @@ export default function ClientShell({ children }: { children: React.ReactNode })
       <Cursor />
       <AudioPlayer playing={playing} onToggle={toggleAudio} />
       <DataLines />
-      {children}
+      <div style={{
+        opacity: introComplete ? 1 : 0,
+        transition: "opacity 1.2s ease",
+        willChange: "opacity",
+      }}>
+        {children}
+      </div>
     </>
   );
 }
