@@ -90,9 +90,9 @@ export default function ProjectCard({ project, index }: { project: Project; inde
 
         <p
           style={{
-            fontFamily: "var(--font-inter)",
+            fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
             fontSize:   "13px",
-            color:      "rgba(255,255,255,0.4)",
+            color:      "rgba(255,255,255,0.45)",
             lineHeight: 1.85,
             flex:       1,
           }}

@@ -13,7 +13,7 @@ export const projects: Project[] = [
     id: "doc-analyzer",
     name: "DocuZen",
     description:
-      "AI-powered document intelligence. Upload any PDF or Word doc, ask natural language questions, get precise answers with page-level citations — powered by RAG. Password: docuzen2026",
+      "AI-powered document intelligence. Upload any PDF or Word doc, ask natural language questions, and get precise answers with page-level citations powered by RAG. Password: docuzen2026",
     tech: ["FastAPI", "Next.js", "pgvector", "PostgreSQL", "OpenAI"],
     status: "live",
     liveUrl: "https://doc-analyzer-as5k.vercel.app",
@@ -32,7 +32,7 @@ export const projects: Project[] = [
   {
     id: "ecommerce",
     name: "LinkUP",
-    description: "A peer-to-peer marketplace for South Africa. Buy, sell, and connect — with full user management, admin controls, product listings, cart, and messaging.",
+    description: "A peer-to-peer marketplace for South Africa. Buy, sell, and connect with full user management, admin controls, product listings, cart, and messaging.",
     tech: ["HTML", "CSS", "JavaScript", "FastAPI", "MongoDB"],
     status: "live",
     liveUrl: "https://ecommerce-seven-iota-31.vercel.app",

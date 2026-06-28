@@ -52,7 +52,7 @@ export default function ProjectsPage() {
         {/* Header */}
         <div className="mb-20">
           <p className="text-xs tracking-[0.5em] text-gray-600 mb-5" style={{ fontFamily: "var(--font-orbitron)" }}>
-            — ACTIVE MISSIONS
+            ACTIVE MISSIONS
           </p>
           <h1 className="text-5xl text-white tracking-[0.2em] mb-6" style={{ fontFamily: "var(--font-orbitron)" }}>
             PROJECTS
