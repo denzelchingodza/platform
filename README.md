@@ -2,7 +2,7 @@
 
 Personal portfolio built with plain HTML, CSS, and vanilla JavaScript. No frameworks, no build tools, no dependencies.
 
-**Live:** [your-url-here]
+**Live:** [](https://denz-platform.vercel.app/)
 
 ---
 
