@@ -1,14 +1,16 @@
 # Denzel Chingodza — Portfolio
 
-Personal portfolio and project showcase. Built with plain HTML, CSS, and vanilla JavaScript. No frameworks, no build step.
+Personal portfolio built with plain HTML, CSS, and vanilla JavaScript. No frameworks, no build tools, no dependencies.
 
-**Live:** [portfolio URL here]
+**Live:** [your-url-here]
 
 ---
 
-## About
+## What it is
 
-BSc Software Engineering student based in South Africa. I build software systems and I'm studying NLP and language models. Everything in this portfolio is something I built myself.
+A single-page portfolio designed to show who I am and what I've built. It opens with a dark entry screen that starts ambient audio on click, then reveals a full portfolio with an animated starfield hero, a canvas-based orbital project system where each planet represents a project, an about section with my background and experience, a skills grid, and a contact form.
+
+The orbital system is the main visual feature. Five projects orbit a central dot on an HTML canvas. Each planet is clickable and opens the project details in a side panel. Orbits are elliptical, planets are sorted by depth each frame for correct layering, and everything scales dynamically to the viewport.
 
 ---
 
@@ -26,50 +28,51 @@ BSc Software Engineering student based in South Africa. I build software systems
 
 ## Tech
 
-- HTML, CSS, vanilla JavaScript
+- HTML, CSS, vanilla JavaScript — no frameworks
 - Canvas API for the orbital animation and starfield
-- Google Fonts: Space Grotesk, Orbitron, Inter
+- Google Fonts: Space Grotesk (UI), Orbitron (display), Inter (body)
 - Formspree for the contact form
-- Netlify for deployment
+- Netlify or Vercel for deployment
 
 ---
 
 ## Running locally
 
-Just open `public/index.html` in a browser. No build step needed.
-
-For audio to work, run a local server instead of opening the file directly:
+Open `public/index.html` in a browser. For audio to work, use a local server instead of opening the file directly:
 
 ```bash
 cd public
 python3 -m http.server 8000
 ```
 
-Then open http://localhost:8000.
+Then open [http://localhost:8000](http://localhost:8000).
 
 ---
 
 ## Deployment
 
-Hosted on Netlify. Deploys automatically on push to `main`. Config is in `netlify.toml`:
+### Netlify
 
-```toml
-[build]
-  publish = "public"
-```
+`netlify.toml` is already configured. Import the repo on Netlify and it deploys automatically — no build command, publishes from `public/`.
 
-No build command. Netlify serves `public/index.html` as a static site.
+### Vercel
+
+`vercel.json` is already configured. Import the repo on Vercel, leave all build settings as default, and it will serve `public/index.html` as a static site.
+
+Push to `main` to trigger a redeploy on either platform.
 
 ---
 
 ## Adding a project
 
-Open `public/index.html` and add an entry to the `PROJECTS` array in the JavaScript section. Then add a matching entry to `ORBIT_BASE` if you need a new orbit ring.
+Open `public/index.html` and add an entry to the `PROJECTS` array and a matching entry to `ORBIT_BASE` in the JavaScript section.
 
 ---
 
-## Contact
+## Author
 
+**Denzel Chingodza** — BSc Software Engineering student, South Africa
+
+- GitHub: [github.com/denzelchingodza](https://github.com/denzelchingodza)
+- LinkedIn: [linkedin.com/in/denzel-chingodza-45b6ab3a0](https://www.linkedin.com/in/denzel-chingodza-45b6ab3a0/)
 - Email: denzel.chingodza@icloud.com
-- GitHub: github.com/denzelchingodza
-- LinkedIn: linkedin.com/in/denzel-chingodza-45b6ab3a0
