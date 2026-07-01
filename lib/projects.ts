@@ -47,4 +47,13 @@ export const projects: Project[] = [
     liveUrl: "https://sentinel-kappa-wine.vercel.app",
     githubUrl: "https://github.com/denzelchingodza/sentinel",
   },
+  {
+    id: "stackscope",
+    name: "StackScope",
+    description: "Job market intelligence for developers. Scrapes live SA job postings, extracts skill demand using NLP, tracks trends over time, and scores your stack against the market using TF-IDF and cosine similarity.",
+    tech: ["Python", "Flask", "spaCy", "scikit-learn", "SQLite", "Docker"],
+    status: "live",
+    liveUrl: "https://stack-scope-eight.vercel.app",
+    githubUrl: "https://github.com/denzelchingodza/StackScope",
+  },
 ];
