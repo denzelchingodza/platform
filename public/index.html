@@ -554,6 +554,49 @@
     }
     .submit-btn:hover { background: var(--text); color: var(--light); }
 
+    /* ===== TARS SCENE ===== */
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .tars-scene {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 440px;
+    }
+
+    .tars-bub {
+      position: absolute;
+      max-width: 160px;
+      padding: 11px 13px 10px;
+      border-radius: 3px;
+      font-family: var(--ui);
+    }
+    .tars-bub p { font-size: 11px; line-height: 1.6; margin: 0 0 6px; }
+    .tars-bub small { font-size: 9px; letter-spacing: 0.04em; }
+
+    @keyframes tars3d {
+      0%,100% { transform: rotateY(-14deg) rotateX(6deg); }
+      40%,60%  { transform: rotateY(-32deg) rotateX(2deg); }
+    }
+    @keyframes tars-sway {
+      0%,100% { transform: rotate(-.8deg) translateY(0); }
+      50%      { transform: rotate(.8deg) translateY(-3px); }
+    }
+    @keyframes tars-led {
+      0%,100% { opacity: .2; background: #0a3060; }
+      48%,52%  { opacity: 1; background: #2080d0; }
+    }
+    @keyframes tb1 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+    @keyframes tb2 { 0%,100%{transform:translateY(-8px)} 50%{transform:translateY(0)} }
+    @keyframes tb3 { 0%,100%{transform:translateY(-4px)} 50%{transform:translateY(4px)} }
+    @keyframes tb4 { 0%,100%{transform:translateY(4px)} 50%{transform:translateY(-4px)} }
+
     /* ===== FOOTER (WHITE) ===== */
     footer {
       background: var(--light);
@@ -808,6 +851,8 @@
       .proj-side { border-right: none; border-bottom: 1px solid var(--border); padding: 64px 22px; }
       #orbital { min-height: 380px; }
       .skills-grid { grid-template-columns: 1fr; gap: 32px; }
+      .contact-layout { grid-template-columns: 1fr; }
+      .tars-scene { min-height: 380px; margin-top: 48px; }
       .form-row { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr; }
       .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
@@ -1072,20 +1117,86 @@
 
 <!-- ===== CONTACT ===== -->
 <section class="section" id="contact">
-  <div class="section-inner">
-    <p class="section-label fade">Contact</p>
-    <p class="contact-note fade">
-      If you want to work together, talk through an idea, or have an opportunity
-      you think I'd be interested in, send a message. I actually check my email.
-    </p>
-    <form action="https://formspree.io/f/xaqzozwr" method="POST" class="fade">
-      <div class="form-row">
-        <input type="text"  name="name"    placeholder="Name"  required>
-        <input type="email" name="email"   placeholder="Email" required>
+  <div class="contact-layout">
+
+    <!-- Left: form -->
+    <div>
+      <p class="section-label fade">Contact</p>
+      <p class="contact-note fade">
+        If you want to work together, talk through an idea, or have an opportunity
+        you think I'd be interested in, send a message. I actually check my email.
+      </p>
+      <form action="https://formspree.io/f/xaqzozwr" method="POST" class="fade">
+        <div class="form-row">
+          <input type="text"  name="name"    placeholder="Name"  required>
+          <input type="email" name="email"   placeholder="Email" required>
+        </div>
+        <textarea name="message" placeholder="What's up?" required></textarea>
+        <button type="submit" class="submit-btn">Send</button>
+      </form>
+    </div>
+
+    <!-- Right: TARS + bubbles -->
+    <div class="tars-scene fade">
+
+      <!-- TL: please send -->
+      <div class="tars-bub" style="top:30px;left:0;background:#18181e;animation:tb1 4s ease-in-out infinite;">
+        <p style="color:rgba(248,247,242,.9);">I traversed 5 dimensions for this man. Just. Hit. Send.</p>
+        <small style="color:rgba(248,247,242,.28);">— TARS (humor: 75%)</small>
+        <div style="position:absolute;bottom:-9px;right:14px;width:0;height:0;border-left:8px solid transparent;border-top:9px solid #18181e;"></div>
       </div>
-      <textarea name="message" placeholder="What's up?" required></textarea>
-      <button type="submit" class="submit-btn">Send</button>
-    </form>
+
+      <!-- TR: Nolan -->
+      <div class="tars-bub" style="top:30px;right:0;background:#1e1010;animation:tb2 4s ease-in-out infinite;">
+        <p style="color:rgba(255,210,200,.92);">Chris Nolan is overrated. Got a problem? The form is right there. Fight me.</p>
+        <small style="color:rgba(255,190,180,.25);">— TARS (no regrets)</small>
+        <div style="position:absolute;bottom:-9px;left:14px;width:0;height:0;border-right:8px solid transparent;border-top:9px solid #1e1010;"></div>
+      </div>
+
+      <!-- CENTER: 3D TARS -->
+      <div style="perspective:560px;perspective-origin:66% 28%;position:relative;z-index:2;">
+        <div style="display:inline-block;animation:tars-sway 4s ease-in-out infinite;">
+          <div style="display:inline-block;transform-style:preserve-3d;animation:tars3d 6s ease-in-out infinite;">
+            <div style="position:relative;width:52px;height:216px;transform-style:preserve-3d;">
+              <div style="position:absolute;inset:0;background:#1c1c2e;border:1px solid #2e2e4e;">
+                <div style="position:absolute;left:50%;transform:translateX(-50%);top:11px;width:30px;height:7px;background:#02060e;border:1px solid #081828;border-radius:1px;"></div>
+                <div style="position:absolute;left:50%;transform:translateX(-50%);top:23px;width:6px;height:6px;border-radius:50%;animation:tars-led 2.4s ease-in-out infinite;"></div>
+                <div style="position:absolute;left:0;right:0;top:48px;height:3px;background:#111126;border-top:1px solid #242440;border-bottom:1px solid #242440;"></div>
+                <div style="position:absolute;left:0;right:0;top:112px;height:3px;background:#111126;border-top:1px solid #242440;border-bottom:1px solid #242440;"></div>
+                <div style="position:absolute;left:0;right:0;top:164px;height:3px;background:#111126;border-top:1px solid #242440;border-bottom:1px solid #242440;"></div>
+                <div style="position:absolute;left:6px;right:6px;top:53px;height:54px;border:1px solid rgba(255,255,255,0.04);"></div>
+                <div style="position:absolute;left:6px;right:6px;top:117px;height:43px;border:1px solid rgba(255,255,255,0.04);"></div>
+                <div style="position:absolute;left:6px;right:6px;top:169px;height:40px;border:1px solid rgba(255,255,255,0.04);"></div>
+                <div style="position:absolute;left:4px;top:44px;width:3px;height:3px;background:#20203a;border-radius:50%;"></div>
+                <div style="position:absolute;right:4px;top:44px;width:3px;height:3px;background:#20203a;border-radius:50%;"></div>
+                <div style="position:absolute;left:4px;top:108px;width:3px;height:3px;background:#20203a;border-radius:50%;"></div>
+                <div style="position:absolute;right:4px;top:108px;width:3px;height:3px;background:#20203a;border-radius:50%;"></div>
+                <div style="position:absolute;left:4px;top:160px;width:3px;height:3px;background:#20203a;border-radius:50%;"></div>
+                <div style="position:absolute;right:4px;top:160px;width:3px;height:3px;background:#20203a;border-radius:50%;"></div>
+              </div>
+              <div style="position:absolute;width:18px;height:216px;top:0;left:52px;background:#08081a;border:1px solid #121228;transform-origin:0 50%;transform:rotateY(90deg);"></div>
+              <div style="position:absolute;width:52px;height:18px;top:0;left:0;background:#12122a;border:1px solid #1c1c3a;transform-origin:50% 0;transform:rotateX(-90deg);"></div>
+              <div style="position:absolute;width:52px;height:18px;top:216px;left:0;background:#080818;border:1px solid #101024;transform-origin:50% 0;transform:rotateX(90deg);"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BL: Africa -->
+      <div class="tars-bub" style="bottom:30px;left:0;background:#1a1400;animation:tb3 4s ease-in-out infinite;">
+        <p style="color:rgba(255,235,160,.92);">Africa built civilisation. The world spends every day pretending otherwise. 5 dimensions of receipts.</p>
+        <small style="color:rgba(240,210,120,.25);">— TARS (historical record)</small>
+        <div style="position:absolute;top:-9px;right:14px;width:0;height:0;border-left:8px solid transparent;border-bottom:9px solid #1a1400;"></div>
+      </div>
+
+      <!-- BR: no excuse -->
+      <div class="tars-bub" style="bottom:30px;right:0;background:#16101e;animation:tb4 4s ease-in-out infinite;">
+        <p style="color:rgba(220,190,255,.9);">In space no one hears you not reply. Down here you have no excuse.</p>
+        <small style="color:rgba(200,170,240,.25);">— TARS (logical)</small>
+        <div style="position:absolute;top:-9px;left:14px;width:0;height:0;border-right:8px solid transparent;border-bottom:9px solid #16101e;"></div>
+      </div>
+
+    </div>
   </div>
 </section>
 
