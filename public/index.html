@@ -31,6 +31,18 @@
       font-size: 15px;
       line-height: 1.75;
       overflow-x: hidden;
+      cursor: none;
+    }
+
+    /* ===== COMET CURSOR ===== */
+    #comet-cursor {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 10000;
+      mix-blend-mode: difference;
     }
 
     /* ===== NAV ===== */
@@ -751,6 +763,23 @@
       color: #1e1e26;
       margin-top: 20px;
     }
+    .entry-quote {
+      font-family: var(--body);
+      font-size: 12px;
+      font-style: italic;
+      color: #22222e;
+      margin-top: 64px;
+      letter-spacing: 0.01em;
+      line-height: 1.7;
+    }
+    .entry-quote-attr {
+      font-family: var(--ui);
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #1a1a24;
+      margin-top: 8px;
+    }
 
     /* ===== ANIMATIONS ===== */
     @keyframes up {
@@ -793,8 +822,12 @@
     <p class="entry-name">Denzel Chingodza</p>
     <button class="entry-btn" onclick="enterSite()">Enter</button>
     <p class="entry-hint">sound on</p>
+    <p class="entry-quote">"Humour: 75 percent. Honesty: 90 percent."</p>
+    <p class="entry-quote-attr">— TARS, Interstellar</p>
   </div>
 </div>
+
+<canvas id="comet-cursor"></canvas>
 
 <nav>
   <a href="#top" class="nav-logo">DC</a>
@@ -1381,6 +1414,57 @@ function enterSite() {
   amb.volume = 0.15;
   amb.play().then(() => { setSoundOn(); }).catch(() => {});
 }
+
+/* COMET CURSOR */
+(function() {
+  const cc = document.getElementById('comet-cursor');
+  const cctx = cc.getContext('2d');
+  const cdpr = window.devicePixelRatio || 1;
+  let cW, cH;
+  const trail = [];
+  let cmx = -999, cmy = -999;
+
+  function resizeComet() {
+    cW = window.innerWidth;
+    cH = window.innerHeight;
+    cc.width  = cW * cdpr;
+    cc.height = cH * cdpr;
+    cc.style.width  = cW + 'px';
+    cc.style.height = cH + 'px';
+    cctx.setTransform(cdpr, 0, 0, cdpr, 0, 0);
+  }
+  resizeComet();
+  window.addEventListener('resize', resizeComet);
+
+  window.addEventListener('mousemove', e => { cmx = e.clientX; cmy = e.clientY; });
+  window.addEventListener('mouseleave', () => { cmx = -999; cmy = -999; });
+
+  function drawComet() {
+    cctx.clearRect(0, 0, cW, cH);
+    if (cmx < 0) { requestAnimationFrame(drawComet); return; }
+
+    trail.push({ x: cmx, y: cmy, a: 1 });
+    if (trail.length > 32) trail.shift();
+
+    for (let i = 0; i < trail.length; i++) {
+      const f = i / trail.length;
+      const r = 1.5 + f * 3.5;
+      cctx.beginPath();
+      cctx.arc(trail[i].x, trail[i].y, r, 0, Math.PI * 2);
+      cctx.fillStyle = `rgba(255,255,255,${f * 0.65})`;
+      cctx.fill();
+    }
+
+    /* head dot */
+    cctx.beginPath();
+    cctx.arc(cmx, cmy, 4, 0, Math.PI * 2);
+    cctx.fillStyle = 'rgba(255,255,255,1)';
+    cctx.fill();
+
+    requestAnimationFrame(drawComet);
+  }
+  requestAnimationFrame(drawComet);
+})();
 
 /* SCROLL REVEAL */
 const io = new IntersectionObserver(entries => {
