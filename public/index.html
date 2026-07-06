@@ -959,7 +959,7 @@
           team wins. If you want to see what happens when software engineering meets completely
           unhinged fandom, that is on you.
         </p>
-        <a href="https://msg-coral.vercel.app/" target="_blank" rel="noopener noreferrer" class="about-btn" style="display:inline-flex;margin-top:4px;">Click here if you dare</a>
+        <a href="https://msg-coral.vercel.app/" target="_blank" rel="noopener noreferrer" class="about-btn" style="display:inline-flex;margin-top:4px;background:#F47B20;border:2px solid #006BB6;color:#fff;">Click here if you dare</a>
       </div>
     </div>
 
@@ -1542,6 +1542,10 @@ function enterSite() {
   amb.volume = 0.15;
   amb.play().then(() => { setSoundOn(); }).catch(() => {});
 }
+
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden && soundOn) setSoundOff();
+});
 
 /* COMET CURSOR */
 (function() {
