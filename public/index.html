@@ -1346,14 +1346,23 @@ const PROJECTS = [
     live: null,
     gh:   'https://github.com/denz-os/ai-tutor',
   },
+  {
+    num: '06', name: 'MSG',
+    desc: 'Full stack shrine to the New York Knicks, your 2026 NBA Champions. Fact Roulette, the Rage Bait Machine, The Gauntlet, Trash Talk Generator, The Faith, and Championship 26. Pure, medically concerning fandom. Bing bong.',
+    stack: ['Next.js', 'FastAPI'],
+    live: 'https://msg-coral.vercel.app',
+    gh:   'https://github.com/denzelchingodza/msg',
+    color: '#F47B20',
+  },
 ];
 
 const ORBIT_BASE = [
-  { rxB: 100, ryB: 37,  period: 22000, phase: Math.PI * 0.5  },
-  { rxB: 158, ryB: 59,  period: 36000, phase: Math.PI * 1.3  },
-  { rxB: 216, ryB: 80,  period: 52000, phase: Math.PI * 0.9  },
-  { rxB: 274, ryB: 102, period: 70000, phase: Math.PI * 1.7  },
-  { rxB: 332, ryB: 123, period: 90000, phase: Math.PI * 0.2  },
+  { rxB: 100, ryB: 37,  period: 22000,  phase: Math.PI * 0.5  },
+  { rxB: 158, ryB: 59,  period: 36000,  phase: Math.PI * 1.3  },
+  { rxB: 216, ryB: 80,  period: 52000,  phase: Math.PI * 0.9  },
+  { rxB: 274, ryB: 102, period: 70000,  phase: Math.PI * 1.7  },
+  { rxB: 332, ryB: 123, period: 90000,  phase: Math.PI * 0.2  },
+  { rxB: 390, ryB: 144, period: 112000, phase: Math.PI * 1.1  },
 ];
 
 const oc   = document.getElementById('orbital');
@@ -1451,6 +1460,8 @@ function drawOrbital(ts) {
     octx.arc(x, y, r, 0, Math.PI * 2);
     octx.fillStyle = isActive
       ? '#18181e'
+      : proj.color
+      ? proj.color
       : `rgba(88,88,96,${0.45 + depth * 0.45})`;
     octx.fill();
 
