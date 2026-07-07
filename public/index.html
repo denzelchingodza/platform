@@ -1415,7 +1415,8 @@ function drawOrbital(ts) {
     octx.save();
     octx.beginPath();
     octx.ellipse(CX, CY, o.rx, o.ry, 0, 0, Math.PI * 2);
-    octx.strokeStyle = activeIdx === i ? '#b8b6ae' : '#dddbd3';
+    const isMSG = PROJECTS[i] && PROJECTS[i].color === '#F47B20';
+    octx.strokeStyle = isMSG ? '#006BB6' : (activeIdx === i ? '#b8b6ae' : '#dddbd3');
     octx.lineWidth   = activeIdx === i ? 1.2 : 0.7;
     octx.setLineDash(i % 2 === 0 ? [] : [5, 6]);
     octx.stroke();
