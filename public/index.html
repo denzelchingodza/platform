@@ -890,6 +890,42 @@
       .footer-grid { grid-template-columns: 1fr; }
       .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
     }
+    .anno-mark {
+      position: relative;
+      display: inline;
+    }
+    .anno-mark svg {
+      position: absolute;
+      pointer-events: none;
+      overflow: visible;
+    }
+    .anno-mark svg path {
+      fill: none;
+      stroke: #d93030;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+      transition: none;
+    }
+    .anno-mark.underline svg {
+      left: 0;
+      bottom: -5px;
+      width: 100%;
+      height: 10px;
+    }
+    .anno-mark.circle svg {
+      left: -10px;
+      top: -7px;
+      width: calc(100% + 20px);
+      height: calc(100% + 14px);
+    }
+    .anno-mark svg path.anno-drawn {
+      animation: anno-draw var(--anno-dur, 0.6s) cubic-bezier(0.4,0,0.2,1) forwards;
+    }
+    @keyframes anno-draw {
+      to { stroke-dashoffset: 0; }
+    }
   </style>
 </head>
 <body>
@@ -967,29 +1003,38 @@
     <p class="section-label fade">About</p>
 
     <div class="about-grid">
-      <div class="about-main fade">
+      <div class="about-main fade" id="about-main">
         <p>
-          I'm a final year BSc Software Engineering student who builds things to understand them.
-          My background is in software engineering and mathematics, and that combination has never
-          felt coincidental. Maths gave me a way of thinking about problems that goes deeper than
-          tutorials and frameworks. It's what eventually pulled me toward AI and machine learning,
-          not as a buzzword but as an engineering discipline I wanted to actually understand.
+          I'm a final year BSc Software Engineering student who
+          <span class="anno-mark underline" data-anno-delay="200"><span>builds things to understand them</span><svg><path d="M0,6 Q25%,2 50%,6 Q75%,10 100%,5" stroke-width="2"/></svg></span>.
+          My background is in
+          <span class="anno-mark underline" data-anno-delay="700"><span>software engineering and mathematics</span><svg><path d="M0,7 Q33%,3 66%,7 Q83%,9 100%,6" stroke-width="1.8"/></svg></span>,
+          and that combination has never felt coincidental. Maths gave me a way of thinking about
+          problems that goes deeper than tutorials and frameworks. It's what eventually pulled me
+          toward AI and machine learning, not as a buzzword but as an engineering discipline I
+          wanted to actually understand.
         </p>
         <p>
           Specifically, I'm interested in natural language processing and language models.
-          How they learn structure from text, how retrieval augmented generation improves
-          accuracy on real documents, how to design pipelines that hold up outside of demos.
+          How they learn structure from text, how
+          <span class="anno-mark underline" data-anno-delay="1300"><span>retrieval augmented generation</span><svg><path d="M0,6 Q50%,2 100%,6" stroke-width="1.8"/></svg></span>
+          improves accuracy on real documents, how to design pipelines that hold up outside of demos.
           That's where I'm putting my learning right now, on top of the software engineering
           foundation I already have.
         </p>
         <p>
-          As a developer, I build full systems: backends, databases, APIs, cloud infrastructure.
-          Everything in the projects section below is something I designed and built from scratch.
-          No tutorials followed step by step. I pick a problem, figure out what it needs,
-          and build it until it works. The way I learn is simple: if something is needed, I go
-          learn it. That is how Docker, Terraform, RAG pipelines and vector databases ended up in
-          my toolkit. I pick things up fast because I genuinely want to understand them, not just
-          use them. The curiosity does not stop.
+          As a developer, I build
+          <span class="anno-mark circle" data-anno-delay="2000"><span>full systems</span><svg viewBox="0 0 110 38"><path d="M100,19 C100,7 80,3 55,3 C30,3 8,7 8,19 C8,31 28,35 55,35 C82,35 102,31 102,19" stroke-width="2.2"/></svg></span>:
+          backends, databases, APIs, cloud infrastructure. Everything in the projects section below
+          is something I designed and built
+          <span class="anno-mark circle" data-anno-delay="2600"><span>from scratch</span><svg viewBox="0 0 100 38"><path d="M92,19 C92,7 74,3 50,3 C26,3 6,7 6,19 C6,31 26,35 50,35 C74,35 94,31 94,19" stroke-width="2.2"/></svg></span>.
+          No tutorials followed step by step. I pick a problem, figure out what it needs, and build
+          it until it works. The way I learn is simple: if something is needed, I go learn it.
+          That is how
+          <span class="anno-mark underline" data-anno-delay="3300"><span>Docker, Terraform, RAG pipelines and vector databases</span><svg><path d="M0,6 Q20%,2 40%,6 Q60%,10 80%,5 Q90%,3 100%,6" stroke-width="2"/></svg></span>
+          ended up in my toolkit. I pick things up fast because I genuinely want to understand them,
+          not just use them.
+          <span class="anno-mark circle" data-anno-delay="4100"><span>The curiosity does not stop.</span><svg viewBox="0 0 210 38"><path d="M198,19 C198,7 158,3 105,3 C52,3 10,7 10,19 C10,31 50,35 105,35 C160,35 200,31 200,19" stroke-width="2.2"/></svg></span>
         </p>
         <p>
           Oh, one more thing. I am a New York Knicks fan. Not a casual one. The kind that had
@@ -1706,6 +1751,41 @@ const io = new IntersectionObserver(entries => {
   });
 }, { threshold: 0.08 });
 document.querySelectorAll('.fade').forEach(el => io.observe(el));
+
+// ===== ABOUT ANNOTATIONS =====
+(function() {
+  const aboutMain = document.getElementById('about-main');
+  if (!aboutMain) return;
+
+  function fireAnnotations() {
+    const marks = aboutMain.querySelectorAll('.anno-mark');
+    marks.forEach(mark => {
+      const delay = parseInt(mark.getAttribute('data-anno-delay') || 0, 10);
+      const path = mark.querySelector('path');
+      if (!path) return;
+      setTimeout(() => {
+        const len = path.getTotalLength ? path.getTotalLength() : 300;
+        const dur = Math.max(0.45, len / 420);
+        path.style.strokeDasharray = len;
+        path.style.strokeDashoffset = len;
+        path.style.setProperty('--anno-dur', dur + 's');
+        path.classList.add('anno-drawn');
+      }, delay);
+    });
+  }
+
+  let fired = false;
+  const annoObs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !fired) {
+        fired = true;
+        fireAnnotations();
+        annoObs.disconnect();
+      }
+    });
+  }, { threshold: 0.25 });
+  annoObs.observe(aboutMain);
+})();
 </script>
 </body>
 </html>
