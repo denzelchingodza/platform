@@ -920,6 +920,7 @@
       width: calc(100% + 20px);
       height: calc(100% + 14px);
     }
+    .anno-mark.orange svg path { stroke: #F47B20; }
     .anno-mark svg path.anno-drawn {
       animation: anno-draw var(--anno-dur, 0.6s) cubic-bezier(0.4,0,0.2,1) forwards;
     }
@@ -1005,44 +1006,42 @@
     <div class="about-grid">
       <div class="about-main fade" id="about-main">
         <p>
-          I'm a final year BSc Software Engineering student who
-          <span class="anno-mark underline" data-anno-delay="200"><span>builds things to understand them</span><svg><path d="M0,6 Q25%,2 50%,6 Q75%,10 100%,5" stroke-width="2"/></svg></span>.
-          My background is in
-          <span class="anno-mark underline" data-anno-delay="700"><span>software engineering and mathematics</span><svg><path d="M0,7 Q33%,3 66%,7 Q83%,9 100%,6" stroke-width="1.8"/></svg></span>,
-          and that combination has never felt coincidental. Maths gave me a way of thinking about
-          problems that goes deeper than tutorials and frameworks. It's what eventually pulled me
-          toward AI and machine learning, not as a buzzword but as an engineering discipline I
-          wanted to actually understand.
+          I'm a
+          <span class="anno-mark underline" data-anno-delay="300"><span>final year</span><svg><path d="M0,6 Q50%,3 100%,6" stroke-width="2"/></svg></span>
+          BSc Software Engineering student who
+          <span class="anno-mark underline" data-anno-delay="800"><span>builds things to understand</span><svg><path d="M0,6 Q25%,2 50%,6 Q75%,9 100%,5" stroke-width="2"/></svg></span>
+          them. My background is in software engineering and mathematics, and that combination has
+          never felt coincidental. Maths gave me a way of thinking about problems that goes deeper
+          than frameworks alone. It's what eventually pulled me toward AI and machine learning, not
+          as a buzzword but as an engineering
+          <span class="anno-mark underline" data-anno-delay="1500"><span>discipline</span><svg><path d="M0,6 Q50%,2 100%,6" stroke-width="2"/></svg></span>
+          I wanted to actually understand.
         </p>
         <p>
           Specifically, I'm interested in natural language processing and language models.
-          How they learn structure from text, how
-          <span class="anno-mark underline" data-anno-delay="1300"><span>retrieval augmented generation</span><svg><path d="M0,6 Q50%,2 100%,6" stroke-width="1.8"/></svg></span>
-          improves accuracy on real documents, how to design pipelines that hold up outside of demos.
+          How they learn structure from text, how retrieval augmented generation improves
+          accuracy on real documents, how to design pipelines that hold up outside of demos.
           That's where I'm putting my learning right now, on top of the software engineering
           foundation I already have.
         </p>
         <p>
           As a developer, I build
-          <span class="anno-mark circle" data-anno-delay="2000"><span>full systems</span><svg viewBox="0 0 110 38"><path d="M100,19 C100,7 80,3 55,3 C30,3 8,7 8,19 C8,31 28,35 55,35 C82,35 102,31 102,19" stroke-width="2.2"/></svg></span>:
-          backends, databases, APIs, cloud infrastructure. Everything in the projects section below
-          is something I designed and built
-          <span class="anno-mark circle" data-anno-delay="2600"><span>from scratch</span><svg viewBox="0 0 100 38"><path d="M92,19 C92,7 74,3 50,3 C26,3 6,7 6,19 C6,31 26,35 50,35 C74,35 94,31 94,19" stroke-width="2.2"/></svg></span>.
-          No tutorials followed step by step. I pick a problem, figure out what it needs, and build
-          it until it works. The way I learn is simple: if something is needed, I go learn it.
-          That is how
-          <span class="anno-mark underline" data-anno-delay="3300"><span>Docker, Terraform, RAG pipelines and vector databases</span><svg><path d="M0,6 Q20%,2 40%,6 Q60%,10 80%,5 Q90%,3 100%,6" stroke-width="2"/></svg></span>
-          ended up in my toolkit. I pick things up fast because I genuinely want to understand them,
-          not just use them.
-          <span class="anno-mark circle" data-anno-delay="4100"><span>The curiosity does not stop.</span><svg viewBox="0 0 210 38"><path d="M198,19 C198,7 158,3 105,3 C52,3 10,7 10,19 C10,31 50,35 105,35 C160,35 200,31 200,19" stroke-width="2.2"/></svg></span>
+          <span class="anno-mark underline" data-anno-delay="2200"><span>full systems</span><svg><path d="M0,6 Q50%,3 100%,6" stroke-width="2"/></svg></span>:
+          backends, databases, APIs, cloud infrastructure. I pick a problem, research how others
+          have approached it, study the existing work, and build from that understanding. That is
+          how Docker, Terraform, RAG pipelines and vector databases ended up in my toolkit — each
+          one was something I needed, so I went and learned it properly.
+          <span class="anno-mark underline" data-anno-delay="3000"><span>The curiosity does not stop.</span><svg><path d="M0,6 Q20%,3 50%,7 Q80%,3 100%,6" stroke-width="2"/></svg></span>
         </p>
         <p>
-          Oh, one more thing. I am a New York Knicks fan. Not a casual one. The kind that had
-          2026 circled before the season started and was insufferable about it the entire time.
-          First chip since 1973. Brunson Finals MVP. First Cup and title double in league history.
-          I built an entire app about it because apparently that is a normal thing to do when your
-          team wins. If you want to see what happens when software engineering meets completely
-          unhinged fandom, that is on you.
+          Oh, one more thing. I am a
+          <span class="anno-mark underline orange" data-anno-delay="3800"><span>New York Knicks fan</span><svg><path d="M0,6 Q50%,2 100%,6" stroke-width="2.2"/></svg></span>.
+          Not a casual one. The kind that had 2026 circled before the season started and was
+          insufferable about it the entire time. First chip since 1973. Brunson Finals MVP.
+          First Cup and title double in league history.
+          <span class="anno-mark underline orange" data-anno-delay="4500"><span>I built an entire app</span><svg><path d="M0,6 Q33%,2 66%,6 Q83%,8 100%,5" stroke-width="2.2"/></svg></span>
+          about it because apparently that is a normal thing to do when your team wins. If you want
+          to see what happens when software engineering meets completely unhinged fandom, that is on you.
         </p>
         <a href="https://msg-coral.vercel.app/" target="_blank" rel="noopener noreferrer" class="about-btn" style="display:inline-flex;margin-top:4px;background:#F47B20;border:2px solid #006BB6;color:#fff;">Click here if you dare</a>
       </div>
