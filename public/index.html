@@ -774,13 +774,30 @@
       justify-content: center;
       flex-direction: column;
       transition: opacity 0.85s ease, visibility 0.85s ease;
+      overflow: hidden;
     }
     #entry.gone {
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
     }
-    .entry-inner { text-align: center; }
+    .entry-bg {
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      top: -50%;
+      left: -50%;
+      object-fit: cover;
+      object-position: center center;
+      filter: brightness(0.18) saturate(0.5);
+      transform-origin: 50% 50%;
+      animation: ringworld 90s linear infinite;
+    }
+    @keyframes ringworld {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+    .entry-inner { text-align: center; position: relative; z-index: 2; }
     .entry-name {
       font-family: var(--display);
       font-size: 10px;
@@ -868,6 +885,7 @@
 
 <!-- ===== ENTRY OVERLAY ===== -->
 <div id="entry">
+  <img class="entry-bg" src="images/upside.jpg" alt="">
   <div class="entry-inner">
     <p class="entry-name">Denzel Chingodza</p>
     <button class="entry-btn" onclick="enterSite()">Enter</button>
