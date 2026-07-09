@@ -781,19 +781,6 @@
       visibility: hidden;
       pointer-events: none;
     }
-    .entry-bg {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      height: 92vh;
-      width: auto;
-      filter: brightness(0.22) saturate(0.5);
-      animation: ringworld 90s linear infinite;
-    }
-    @keyframes ringworld {
-      from { transform: translate(-50%, -50%) rotate(0deg); }
-      to   { transform: translate(-50%, -50%) rotate(360deg); }
-    }
     .entry-inner { text-align: center; position: relative; z-index: 2; }
     .entry-name {
       font-family: var(--display);
@@ -805,14 +792,17 @@
     }
     .entry-ship {
       position: absolute;
-      width: min(460px, 48vw);
-      height: auto;
+      left: 2vw;
       top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      filter: brightness(0.7) saturate(0.55);
+      height: 110vh;
+      width: auto;
+      filter: brightness(0.68) saturate(0.5);
       z-index: 1;
-      animation: spinship 60s linear infinite;
+      animation: entry-spin 100s linear infinite;
+    }
+    @keyframes entry-spin {
+      from { transform: translateY(-50%) rotate(0deg); }
+      to   { transform: translateY(-50%) rotate(360deg); }
     }
     .entry-btn {
       font-family: var(--ui);
@@ -906,7 +896,6 @@
 
 <!-- ===== ENTRY OVERLAY ===== -->
 <div id="entry">
-  <img class="entry-bg" src="images/upside.jpg" alt="">
   <img class="entry-ship" src="images/ship.jpeg" alt="">
   <div class="entry-inner">
     <p class="entry-name">Denzel Chingodza</p>
