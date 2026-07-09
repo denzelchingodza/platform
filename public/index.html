@@ -467,41 +467,38 @@
     }
 
     /* ===== SKILLS ===== */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 44px 72px;
-    }
-
-    .sg-title {
-      font-family: var(--ui);
-      font-size: 10px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 14px;
-    }
-
-    .sg-list {
-      list-style: none;
+    .skills-rows {
       display: flex;
       flex-direction: column;
-      gap: 9px;
     }
-
-    .sg-list li {
-      font-size: 14px;
-      color: var(--sub);
-      padding-left: 14px;
-      position: relative;
+    .skills-row {
+      display: grid;
+      grid-template-columns: 28px 148px 1fr;
+      gap: 0 24px;
+      padding: 22px 0;
+      border-top: 1px solid var(--border);
+      align-items: start;
     }
-    .sg-list li::before {
-      content: '';
-      position: absolute;
-      left: 0; top: 8px;
-      width: 4px; height: 4px;
-      border-radius: 50%;
-      background: var(--border);
+    .skills-row:last-child { border-bottom: 1px solid var(--border); }
+    .skills-row-num {
+      font-family: var(--ui);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      padding-top: 3px;
+    }
+    .skills-row-label {
+      font-family: var(--ui);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text);
+      padding-top: 3px;
+    }
+    .skills-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
     }
 
     /* ===== CONTACT ===== */
@@ -850,7 +847,8 @@
       .proj-split { grid-template-columns: 1fr; }
       .proj-side { border-right: none; border-bottom: 1px solid var(--border); padding: 64px 22px; }
       #orbital { min-height: 380px; }
-      .skills-grid { grid-template-columns: 1fr; gap: 32px; }
+      .skills-row { grid-template-columns: 28px 1fr; }
+      .skills-chips { grid-column: 2; }
       .contact-layout { grid-template-columns: 1fr; }
       .tars-scene { min-height: 380px; margin-top: 48px; }
       .form-row { grid-template-columns: 1fr; }
@@ -1102,42 +1100,52 @@
 <section class="section" id="skills">
   <div class="section-inner">
     <p class="section-label fade">Skills</p>
-    <div class="skills-grid fade">
-      <div>
-        <p class="sg-title">Languages</p>
-        <ul class="sg-list">
-          <li>Python</li>
-          <li>TypeScript</li>
-          <li>JavaScript</li>
-          <li>SQL</li>
-        </ul>
+    <div class="skills-rows fade">
+      <div class="skills-row">
+        <span class="skills-row-num">01</span>
+        <p class="skills-row-label">Languages</p>
+        <div class="skills-chips">
+          <span class="stag">Python</span>
+          <span class="stag">TypeScript</span>
+          <span class="stag">JavaScript</span>
+          <span class="stag">SQL</span>
+        </div>
       </div>
-      <div>
-        <p class="sg-title">Backend / APIs</p>
-        <ul class="sg-list">
-          <li>FastAPI</li>
-          <li>Flask</li>
-          <li>Next.js</li>
-          <li>React</li>
-        </ul>
+      <div class="skills-row">
+        <span class="skills-row-num">02</span>
+        <p class="skills-row-label">Backend / APIs</p>
+        <div class="skills-chips">
+          <span class="stag">FastAPI</span>
+          <span class="stag">Flask</span>
+          <span class="stag">Next.js</span>
+          <span class="stag">React</span>
+        </div>
       </div>
-      <div>
-        <p class="sg-title">Data / AI</p>
-        <ul class="sg-list">
-          <li>LangChain</li>
-          <li>RAG Pipelines</li>
-          <li>spaCy / scikit-learn</li>
-          <li>OpenAI APIs</li>
-        </ul>
+      <div class="skills-row">
+        <span class="skills-row-num">03</span>
+        <p class="skills-row-label">Data / AI</p>
+        <div class="skills-chips">
+          <span class="stag">LangChain</span>
+          <span class="stag">RAG Pipelines</span>
+          <span class="stag">spaCy</span>
+          <span class="stag">scikit-learn</span>
+          <span class="stag">OpenAI APIs</span>
+          <span class="stag">pgvector</span>
+        </div>
       </div>
-      <div>
-        <p class="sg-title">Infrastructure</p>
-        <ul class="sg-list">
-          <li>Docker</li>
-          <li>AWS (Lambda, DynamoDB)</li>
-          <li>PostgreSQL / MongoDB</li>
-          <li>Terraform / Vercel</li>
-        </ul>
+      <div class="skills-row">
+        <span class="skills-row-num">04</span>
+        <p class="skills-row-label">Infrastructure</p>
+        <div class="skills-chips">
+          <span class="stag">Docker</span>
+          <span class="stag">AWS Lambda</span>
+          <span class="stag">DynamoDB</span>
+          <span class="stag">EventBridge</span>
+          <span class="stag">PostgreSQL</span>
+          <span class="stag">MongoDB</span>
+          <span class="stag">Terraform</span>
+          <span class="stag">Vercel</span>
+        </div>
       </div>
     </div>
   </div>
