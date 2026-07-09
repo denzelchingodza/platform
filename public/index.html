@@ -949,7 +949,10 @@
           As a developer, I build full systems: backends, databases, APIs, cloud infrastructure.
           Everything in the projects section below is something I designed and built from scratch.
           No tutorials followed step by step. I pick a problem, figure out what it needs,
-          and build it until it works.
+          and build it until it works. The way I learn is simple: if something is needed, I go
+          learn it. That is how Docker, Terraform, RAG pipelines and vector databases ended up in
+          my toolkit. I pick things up fast because I genuinely want to understand them, not just
+          use them. The curiosity does not stop.
         </p>
         <p>
           Oh, one more thing. I am a New York Knicks fan. Not a casual one. The kind that had
@@ -1002,13 +1005,21 @@
         <div class="exp-row">
           <span class="exp-num">05</span>
           <div class="exp-body">
+            <p class="exp-name">AI Intelligence Layer</p>
+            <p class="exp-tech">FastAPI &middot; OpenAI GPT-4o-mini &middot; Python &middot; Render &middot; Vercel</p>
+            <p class="exp-desc">Natural language query interface across personal projects. Ask a plain English question and GPT-4o-mini figures out which service to call, Sentinel for uptime data or StackScope for job market data, and returns a plain text answer. Built with intent classification, a connector architecture, and rate limiting.</p>
+          </div>
+        </div>
+        <div class="exp-row">
+          <span class="exp-num">06</span>
+          <div class="exp-body">
             <p class="exp-name">AI Tutor <span class="exp-tag">In progress</span></p>
             <p class="exp-tech">FastAPI &middot; PostgreSQL &middot; React &middot; OpenAI</p>
             <p class="exp-desc">Adaptive tutor using the Socratic method. Tracks knowledge state across sessions, automatically revisits weak spots, and adjusts difficulty over time.</p>
           </div>
         </div>
         <div class="exp-row">
-          <span class="exp-num">06</span>
+          <span class="exp-num">07</span>
           <div class="exp-body">
             <p class="exp-name">MSG: The Mecca <span class="exp-tag">In app form</span></p>
             <p class="exp-tech">Next.js &middot; FastAPI</p>
@@ -1021,12 +1032,12 @@
     <div class="about-grid" style="margin-bottom: 0;">
       <div class="about-card fade">
         <p class="about-card-title">Currently</p>
-        <p class="about-card-body">Finishing my Software Engineering degree. Studying NLP, RAG pipelines, and language model internals. Building AI Tutor.</p>
+        <p class="about-card-body">Finishing my Software Engineering degree and building as much as I can along the way. Currently working on AI Tutor and always looking for the next thing to pick up.</p>
       </div>
 
       <div class="about-card fade">
         <p class="about-card-title">Learning</p>
-        <p class="about-card-body">Language models, retrieval augmented generation, vector databases. Going beyond API calls to understand what's actually happening.</p>
+        <p class="about-card-body">Language models, retrieval augmented generation, vector databases, model fine tuning. I pick up new things fast because I want to understand them properly, not just call an API and move on.</p>
       </div>
 
       <div class="about-card fade">
@@ -1354,6 +1365,13 @@ const PROJECTS = [
     gh:   'https://github.com/denzelchingodza/msg',
     color: '#F47B20',
   },
+  {
+    num: '07', name: 'AI Intelligence',
+    desc: 'Natural language query layer across personal projects. Ask a plain English question and GPT-4o-mini figures out which service to call, Sentinel or StackScope, and returns the answer.',
+    stack: ['FastAPI', 'OpenAI', 'Python', 'Render', 'Vercel'],
+    live: 'https://ai-intelligence-layer.vercel.app',
+    gh:   'https://github.com/denzelchingodza/ai-intelligence-layer',
+  },
 ];
 
 const ORBIT_BASE = [
@@ -1363,6 +1381,7 @@ const ORBIT_BASE = [
   { rxB: 274, ryB: 102, period: 70000,  phase: Math.PI * 1.7  },
   { rxB: 332, ryB: 123, period: 90000,  phase: Math.PI * 0.2  },
   { rxB: 390, ryB: 144, period: 112000, phase: Math.PI * 1.1  },
+  { rxB: 448, ryB: 165, period: 136000, phase: Math.PI * 0.7  },
 ];
 
 const oc   = document.getElementById('orbital');
