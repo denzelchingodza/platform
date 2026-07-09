@@ -803,26 +803,50 @@
       color: #2e2e3a;
       margin-bottom: 52px;
     }
+    .entry-ship {
+      position: absolute;
+      width: min(460px, 48vw);
+      height: auto;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      filter: brightness(0.7) saturate(0.55);
+      z-index: 1;
+      animation: spinship 60s linear infinite;
+    }
     .entry-btn {
       font-family: var(--ui);
-      font-size: 11px;
-      letter-spacing: 0.16em;
+      font-size: 13px;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: #c8c6be;
-      border: 1px solid #2a2a36;
-      background: transparent;
-      padding: 14px 44px;
+      color: #e8e6de;
+      border: 1px solid #5a5a6e;
+      background: rgba(7,8,13,0.55);
+      padding: 18px 60px;
       cursor: pointer;
-      transition: border-color 0.2s, color 0.2s;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
     }
-    .entry-btn:hover { border-color: #666; color: #fff; }
+    .entry-btn:hover { border-color: #aaa; color: #fff; background: rgba(20,20,30,0.7); }
+    .entry-btn:disabled { opacity: 0.5; cursor: default; }
+    .entry-loader {
+      display: none;
+      width: 180px;
+      height: 1px;
+      background: #1e1e2a;
+      margin: 22px auto 0;
+    }
+    .entry-loader-bar {
+      width: 0%;
+      height: 100%;
+      background: #c8c6be;
+    }
     .entry-hint {
       font-family: var(--ui);
       font-size: 9px;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: #1e1e26;
-      margin-top: 20px;
+      color: #2a2a38;
+      margin-top: 18px;
     }
     .entry-quote {
       font-family: var(--body);
@@ -883,9 +907,13 @@
 <!-- ===== ENTRY OVERLAY ===== -->
 <div id="entry">
   <img class="entry-bg" src="images/upside.jpg" alt="">
+  <img class="entry-ship" src="images/ship.jpeg" alt="">
   <div class="entry-inner">
     <p class="entry-name">Denzel Chingodza</p>
-    <button class="entry-btn" onclick="enterSite()">Enter</button>
+    <button class="entry-btn" id="entryBtn" onclick="enterSite()">Enter</button>
+    <div class="entry-loader" id="entryLoader">
+      <div class="entry-loader-bar" id="entryLoaderBar"></div>
+    </div>
     <p class="entry-hint">sound on</p>
     <p class="entry-quote">"Humour: 75 percent. Honesty: 90 percent."</p>
     <p class="entry-quote-attr">— TARS, Interstellar</p>
@@ -1605,9 +1633,26 @@ function toggleSound() {
 }
 
 function enterSite() {
-  document.getElementById('entry').classList.add('gone');
+  const btn    = document.getElementById('entryBtn');
+  const loader = document.getElementById('entryLoader');
+  const bar    = document.getElementById('entryLoaderBar');
+
+  btn.disabled    = true;
+  btn.textContent = 'Loading';
+  loader.style.display = 'block';
+
   amb.volume = 0.15;
-  amb.play().then(() => { setSoundOn(); }).catch(() => {});
+  amb.play().catch(() => {});
+
+  setTimeout(() => {
+    bar.style.transition = 'width 3.8s linear';
+    bar.style.width = '100%';
+  }, 50);
+
+  setTimeout(() => {
+    document.getElementById('entry').classList.add('gone');
+    setSoundOn();
+  }, 4000);
 }
 
 document.addEventListener('visibilitychange', () => {
