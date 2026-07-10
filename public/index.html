@@ -1045,9 +1045,9 @@
         <div class="exp-row">
           <span class="exp-num">01</span>
           <div class="exp-body">
-            <p class="exp-name">StackScope</p>
-            <p class="exp-tech">Python &middot; Flask &middot; spaCy &middot; scikit-learn &middot; Docker</p>
-            <p class="exp-desc">Job market intelligence for SA developers. Built an NLP pipeline using TF-IDF and cosine similarity to extract skill demand from live job listings and score a developer's stack against the market.</p>
+            <p class="exp-name">Sentinel</p>
+            <p class="exp-tech">AWS Lambda &middot; DynamoDB &middot; EventBridge &middot; SES &middot; Terraform</p>
+            <p class="exp-desc">Uptime monitoring on serverless AWS infrastructure. Checks URLs every 60 seconds, sends email alerts on downtime and recovery via SES, and tracks full incident history with response times.</p>
           </div>
         </div>
         <div class="exp-row">
@@ -1061,21 +1061,13 @@
         <div class="exp-row">
           <span class="exp-num">03</span>
           <div class="exp-body">
-            <p class="exp-name">Sentinel</p>
-            <p class="exp-tech">AWS Lambda &middot; DynamoDB &middot; EventBridge &middot; SES &middot; Terraform</p>
-            <p class="exp-desc">Uptime monitoring on serverless AWS infrastructure. Checks URLs every 60 seconds, sends email alerts on downtime and recovery via SES, and tracks full incident history with response times.</p>
+            <p class="exp-name">StackScope</p>
+            <p class="exp-tech">Python &middot; Flask &middot; spaCy &middot; scikit-learn &middot; Docker</p>
+            <p class="exp-desc">Job market intelligence for SA developers. Built an NLP pipeline using TF-IDF and cosine similarity to extract skill demand from live job listings and score a developer's stack against the market.</p>
           </div>
         </div>
         <div class="exp-row">
           <span class="exp-num">04</span>
-          <div class="exp-body">
-            <p class="exp-name">LinkUP</p>
-            <p class="exp-tech">FastAPI &middot; MongoDB &middot; HTML &middot; CSS &middot; JavaScript</p>
-            <p class="exp-desc">Peer-to-peer marketplace for South Africa. Full user management, product listings, cart, messaging, and admin controls built from scratch.</p>
-          </div>
-        </div>
-        <div class="exp-row">
-          <span class="exp-num">05</span>
           <div class="exp-body">
             <p class="exp-name">AI Intelligence Layer</p>
             <p class="exp-tech">FastAPI &middot; OpenAI GPT-4o-mini &middot; Python &middot; Render &middot; Vercel</p>
@@ -1083,19 +1075,27 @@
           </div>
         </div>
         <div class="exp-row">
+          <span class="exp-num">05</span>
+          <div class="exp-body">
+            <p class="exp-name">LinkUP</p>
+            <p class="exp-tech">FastAPI &middot; MongoDB &middot; HTML &middot; CSS &middot; JavaScript</p>
+            <p class="exp-desc">Peer-to-peer marketplace for South Africa. Full user management, product listings, cart, messaging, and admin controls built from scratch.</p>
+          </div>
+        </div>
+        <div class="exp-row">
           <span class="exp-num">06</span>
           <div class="exp-body">
-            <p class="exp-name">AI Tutor <span class="exp-tag">In progress</span></p>
-            <p class="exp-tech">FastAPI &middot; PostgreSQL &middot; React &middot; OpenAI</p>
-            <p class="exp-desc">Adaptive tutor using the Socratic method. Tracks knowledge state across sessions, automatically revisits weak spots, and adjusts difficulty over time.</p>
+            <p class="exp-name">MSG: The Mecca <span class="exp-tag">In app form</span></p>
+            <p class="exp-tech">Next.js &middot; FastAPI</p>
+            <p class="exp-desc">Full-stack shrine to the New York Knicks, your 2026 NBA Champions. Fact Roulette (80 years of receipts), the Rage Bait Machine (hot takes engineered to end group chats), The Gauntlet (trivia that roasts you when you're wrong), the Trash Talk Generator (pick a franchise, receive ammunition), The Faith (1946-to-parade timeline), and Championship '26 (the Finals run, game by game). Pure, undiluted, medically-concerning fandom. Bing bong.</p>
           </div>
         </div>
         <div class="exp-row">
           <span class="exp-num">07</span>
           <div class="exp-body">
-            <p class="exp-name">MSG: The Mecca <span class="exp-tag">In app form</span></p>
-            <p class="exp-tech">Next.js &middot; FastAPI</p>
-            <p class="exp-desc">Full-stack shrine to the New York Knicks, your 2026 NBA Champions. Fact Roulette (80 years of receipts), the Rage Bait Machine (hot takes engineered to end group chats), The Gauntlet (trivia that roasts you when you're wrong), the Trash Talk Generator (pick a franchise, receive ammunition), The Faith (1946-to-parade timeline), and Championship '26 (the Finals run, game by game). Pure, undiluted, medically-concerning fandom. Bing bong.</p>
+            <p class="exp-name">AI Tutor <span class="exp-tag">In progress</span></p>
+            <p class="exp-tech">FastAPI &middot; PostgreSQL &middot; React &middot; OpenAI</p>
+            <p class="exp-desc">Adaptive tutor using the Socratic method. Tracks knowledge state across sessions, automatically revisits weak spots, and adjusts difficulty over time.</p>
           </div>
         </div>
       </div>
@@ -1405,12 +1405,12 @@ window.addEventListener('resize', resize);
 /* ORBITAL PROJECT SYSTEM */
 const PROJECTS = [
   {
-    num: '01', name: 'StackScope',
-    desc: 'Job market intelligence for SA developers. Scrapes live job listings, extracts skill demand using NLP, tracks trends over time, and scores your stack against the market using TF-IDF and cosine similarity.',
-    stack: ['Python', 'Flask', 'spaCy', 'scikit-learn', 'SQLite', 'Docker', 'Vercel'],
-    live: 'https://stack-scope-eight.vercel.app',
-    gh:   'https://github.com/denzelchingodza/StackScope',
-    color: '#3a6ea5',
+    num: '01', name: 'Sentinel',
+    desc: 'Uptime monitoring system. Add a URL, it checks every 60 seconds, emails you when something goes down and again when it recovers. Real-time dashboard with response times, uptime percentage, and incident history.',
+    stack: ['Next.js', 'AWS Lambda', 'DynamoDB', 'EventBridge', 'SES', 'Terraform'],
+    live: 'https://sentinel-kappa-wine.vercel.app',
+    gh:   'https://github.com/denzelchingodza/sentinel',
+    color: '#8a8a94',
   },
   {
     num: '02', name: 'DocuZen',
@@ -1421,28 +1421,28 @@ const PROJECTS = [
     color: '#4a5e2a',
   },
   {
-    num: '03', name: 'Sentinel',
-    desc: 'Uptime monitoring system. Add a URL, it checks every 60 seconds, emails you when something goes down and again when it recovers. Real-time dashboard with response times, uptime percentage, and incident history.',
-    stack: ['Next.js', 'AWS Lambda', 'DynamoDB', 'EventBridge', 'SES', 'Terraform'],
-    live: 'https://sentinel-kappa-wine.vercel.app',
-    gh:   'https://github.com/denzelchingodza/sentinel',
-    color: '#8a8a94',
+    num: '03', name: 'StackScope',
+    desc: 'Job market intelligence for SA developers. Scrapes live job listings, extracts skill demand using NLP, tracks trends over time, and scores your stack against the market using TF-IDF and cosine similarity.',
+    stack: ['Python', 'Flask', 'spaCy', 'scikit-learn', 'SQLite', 'Docker', 'Vercel'],
+    live: 'https://stack-scope-eight.vercel.app',
+    gh:   'https://github.com/denzelchingodza/StackScope',
+    color: '#3a6ea5',
   },
   {
-    num: '04', name: 'LinkUP',
+    num: '04', name: 'AI Intelligence',
+    desc: 'Natural language query layer across personal projects. Ask a plain English question and GPT-4o-mini figures out which service to call, Sentinel or StackScope, and returns the answer.',
+    stack: ['FastAPI', 'OpenAI', 'Python', 'Render', 'Vercel'],
+    live: 'https://ai-intelligence-layer.vercel.app',
+    gh:   'https://github.com/denzelchingodza/ai-intelligence-layer',
+    color: '#8B5E3C',
+  },
+  {
+    num: '05', name: 'LinkUP',
     desc: 'A peer-to-peer marketplace for South Africa. Buy, sell, and connect with full user management, admin controls, product listings, cart, and messaging.',
     stack: ['HTML', 'CSS', 'JavaScript', 'FastAPI', 'MongoDB'],
     live: 'https://ecommerce-seven-iota-31.vercel.app',
     gh:   'https://github.com/denz-os/ecommerce',
     color: '#1c3461',
-  },
-  {
-    num: '05', name: 'AI Tutor',
-    desc: 'Adaptive AI tutor using the Socratic method. Tracks what you know across sessions, revisits weak spots automatically, and adjusts difficulty over time.',
-    stack: ['FastAPI', 'Python', 'PostgreSQL', 'React', 'OpenAI'],
-    live: null,
-    gh:   'https://github.com/denz-os/ai-tutor',
-    color: '#7a6a9a',
   },
   {
     num: '06', name: 'MSG',
@@ -1453,12 +1453,12 @@ const PROJECTS = [
     color: '#F47B20',
   },
   {
-    num: '07', name: 'AI Intelligence',
-    desc: 'Natural language query layer across personal projects. Ask a plain English question and GPT-4o-mini figures out which service to call, Sentinel or StackScope, and returns the answer.',
-    stack: ['FastAPI', 'OpenAI', 'Python', 'Render', 'Vercel'],
-    live: 'https://ai-intelligence-layer.vercel.app',
-    gh:   'https://github.com/denzelchingodza/ai-intelligence-layer',
-    color: '#8B5E3C',
+    num: '07', name: 'AI Tutor',
+    desc: 'Adaptive AI tutor using the Socratic method. Tracks what you know across sessions, revisits weak spots automatically, and adjusts difficulty over time.',
+    stack: ['FastAPI', 'Python', 'PostgreSQL', 'React', 'OpenAI'],
+    live: null,
+    gh:   'https://github.com/denz-os/ai-tutor',
+    color: '#7a6a9a',
   },
 ];
 
