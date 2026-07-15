@@ -1034,7 +1034,19 @@
           about it because apparently that is a normal thing to do when your team wins. If you want
           to see what happens when software engineering meets completely unhinged fandom, that is on you.
         </p>
-        <a href="https://msg-coral.vercel.app/" target="_blank" rel="noopener noreferrer" class="about-btn" style="display:inline-flex;margin-top:4px;background:#F47B20;border:2px solid #006BB6;color:#fff;">Click here if you dare</a>
+        <div style="position:relative;display:inline-flex;margin-top:16px;padding:0 88px;">
+          <svg style="position:absolute;left:0;top:50%;transform:translateY(-65%);width:84px;height:48px;overflow:visible;pointer-events:none;" viewBox="0 0 84 48">
+            <text x="0" y="11" font-family="Space Grotesk,sans-serif" font-size="9" fill="#F47B20" letter-spacing="1.5">TRY IT</text>
+            <path d="M28,16 Q58,17 74,30" fill="none" stroke="#F47B20" stroke-width="2" stroke-linecap="round"/>
+            <path d="M67,23 L74,30 L67,35" fill="none" stroke="#F47B20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <svg style="position:absolute;right:0;top:50%;transform:translateY(-65%);width:84px;height:48px;overflow:visible;pointer-events:none;" viewBox="0 0 84 48">
+            <text x="84" y="11" font-family="Space Grotesk,sans-serif" font-size="9" fill="#4a8fd4" letter-spacing="1.5" text-anchor="end">SERIOUSLY</text>
+            <path d="M56,16 Q26,17 10,30" fill="none" stroke="#4a8fd4" stroke-width="2" stroke-linecap="round"/>
+            <path d="M17,23 L10,30 L17,35" fill="none" stroke="#4a8fd4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <a href="https://msg-coral.vercel.app/" target="_blank" rel="noopener noreferrer" class="about-btn" style="background:#F47B20;border:2px solid #006BB6;color:#fff;">Click here if you dare</a>
+        </div>
       </div>
     </div>
 
@@ -1096,6 +1108,14 @@
             <p class="exp-name">AI Tutor <span class="exp-tag">In progress</span></p>
             <p class="exp-tech">FastAPI &middot; PostgreSQL &middot; React &middot; OpenAI</p>
             <p class="exp-desc">Adaptive tutor using the Socratic method. Tracks knowledge state across sessions, automatically revisits weak spots, and adjusts difficulty over time.</p>
+          </div>
+        </div>
+        <div class="exp-row">
+          <span class="exp-num">08</span>
+          <div class="exp-body">
+            <p class="exp-name">SaaS Metrics DB <span class="exp-tag">In progress</span></p>
+            <p class="exp-tech">PostgreSQL &middot; Docker &middot; Python &middot; FastAPI</p>
+            <p class="exp-desc">Professional subscription analytics database modelling the full lifecycle of a SaaS business. Tracks customers, plans, subscriptions, invoices, and payments. Calculates MRR, ARR, churn rate, LTV, ARPU, cohort retention, and NRR using advanced SQL including window functions and CTEs. Containerised with Docker and exposed via a FastAPI layer.</p>
           </div>
         </div>
       </div>
@@ -1460,6 +1480,14 @@ const PROJECTS = [
     gh:   'https://github.com/denz-os/ai-tutor',
     color: '#7a6a9a',
   },
+  {
+    num: '08', name: 'SaaS Metrics DB',
+    desc: 'Subscription analytics database modelling the full lifecycle of a SaaS business. Tracks customers, plans, subscriptions, invoices, and payments. Calculates MRR, ARR, churn, LTV, ARPU, and cohort retention using advanced SQL, window functions, and CTEs. Containerised with Docker.',
+    stack: ['PostgreSQL', 'Docker', 'Python', 'FastAPI'],
+    live: null,
+    gh:   'https://github.com/denzelchingodza/saas-metric-db',
+    color: '#2a6e5a',
+  },
 ];
 
 const ORBIT_BASE = [
@@ -1470,6 +1498,7 @@ const ORBIT_BASE = [
   { rxB: 240, ryB: 89,  period: 90000,  phase: Math.PI * 0.2  },
   { rxB: 282, ryB: 104, period: 112000, phase: Math.PI * 1.1  },
   { rxB: 324, ryB: 120, period: 136000, phase: Math.PI * 0.7  },
+  { rxB: 366, ryB: 136, period: 162000, phase: Math.PI * 1.4  },
 ];
 
 const oc   = document.getElementById('orbital');
