@@ -78,7 +78,7 @@
 
     /* ===== HERO ===== */
     .hero {
-      min-height: 100vh;
+      min-height: 60vh;
       background: var(--dark);
       display: grid;
       grid-template-columns: 1fr 38%;
@@ -1034,16 +1034,28 @@
           about it because apparently that is a normal thing to do when your team wins. If you want
           to see what happens when software engineering meets completely unhinged fandom, that is on you.
         </p>
+        <style>
+          @keyframes nudge-right {
+            0%,100% { transform: translate(0,0); }
+            50%      { transform: translate(4px,2px); }
+          }
+          @keyframes nudge-left {
+            0%,100% { transform: translate(0,0); }
+            50%      { transform: translate(-4px,2px); }
+          }
+          .arrow-tip-r { animation: nudge-right 1.1s ease-in-out infinite; transform-origin: 74px 30px; }
+          .arrow-tip-l { animation: nudge-left  1.1s ease-in-out infinite 0.15s; transform-origin: 10px 30px; }
+        </style>
         <div style="position:relative;display:inline-flex;margin-top:16px;padding:0 88px;">
           <svg style="position:absolute;left:0;top:50%;transform:translateY(-65%);width:84px;height:48px;overflow:visible;pointer-events:none;" viewBox="0 0 84 48">
             <text x="0" y="11" font-family="Space Grotesk,sans-serif" font-size="9" fill="#F47B20" letter-spacing="1.5">TRY IT</text>
             <path d="M28,16 Q58,17 74,30" fill="none" stroke="#F47B20" stroke-width="2" stroke-linecap="round"/>
-            <path d="M67,23 L74,30 L67,35" fill="none" stroke="#F47B20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path class="arrow-tip-r" d="M67,23 L74,30 L67,35" fill="none" stroke="#F47B20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
           <svg style="position:absolute;right:0;top:50%;transform:translateY(-65%);width:84px;height:48px;overflow:visible;pointer-events:none;" viewBox="0 0 84 48">
             <text x="84" y="11" font-family="Space Grotesk,sans-serif" font-size="9" fill="#4a8fd4" letter-spacing="1.5" text-anchor="end">SERIOUSLY</text>
             <path d="M56,16 Q26,17 10,30" fill="none" stroke="#4a8fd4" stroke-width="2" stroke-linecap="round"/>
-            <path d="M17,23 L10,30 L17,35" fill="none" stroke="#4a8fd4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path class="arrow-tip-l" d="M17,23 L10,30 L17,35" fill="none" stroke="#4a8fd4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
           <a href="https://msg-coral.vercel.app/" target="_blank" rel="noopener noreferrer" class="about-btn" style="background:#F47B20;border:2px solid #006BB6;color:#fff;">Click here if you dare</a>
         </div>
@@ -1103,7 +1115,7 @@
           </div>
         </div>
         <div class="exp-row">
-          <span class="exp-num">08</span>
+          <span class="exp-num">07</span>
           <div class="exp-body">
             <p class="exp-name">SaaS Metrics DB</p>
             <p class="exp-tech">PostgreSQL &middot; FastAPI &middot; asyncpg &middot; Docker &middot; Python</p>
