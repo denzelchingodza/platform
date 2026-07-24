@@ -1113,9 +1113,9 @@
         <div class="exp-row">
           <span class="exp-num">06</span>
           <div class="exp-body">
-            <p class="exp-name">SaaS Metrics DB</p>
+            <p class="exp-name">SaaS Metrics DB <span class="exp-tag"><a href="https://saas-metric-db.onrender.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">Live ↗</a></span></p>
             <p class="exp-tech">PostgreSQL &middot; FastAPI &middot; asyncpg &middot; Docker &middot; Python</p>
-            <p class="exp-desc">Subscription analytics engine modelling the full lifecycle of a SaaS business. Six-table PostgreSQL schema tracking customers, plans, subscriptions, invoices, payments, and an event audit log. Calculates MRR, ARR, churn, LTV, ARPU, NRR, and cohort retention using window functions and CTEs. Containerised with Docker, served through a FastAPI async layer, and ships with a live metrics dashboard at localhost:8000.</p>
+            <p class="exp-desc">Subscription analytics engine modelling the full lifecycle of a SaaS business. Six-table PostgreSQL schema tracking customers, plans, subscriptions, invoices, payments, and an event audit log. Calculates MRR, ARR, churn, LTV, ARPU, NRR, and cohort retention using window functions and CTEs. Containerised with Docker, served through a FastAPI async layer, and ships with a live metrics dashboard deployed on Render.</p>
           </div>
         </div>
         <div class="exp-row">
@@ -1500,7 +1500,7 @@ const PROJECTS = [
     num: '08', name: 'SaaS Metrics DB',
     desc: 'Subscription analytics engine with a full six-table PostgreSQL schema tracking every stage of a SaaS business. Calculates MRR, ARR, churn, LTV, ARPU, NRR, and cohort retention via async FastAPI endpoints. Ships with a live Netflix-themed dashboard that fetches and animates real metrics from the database.',
     stack: ['PostgreSQL', 'FastAPI', 'asyncpg', 'Docker', 'Python'],
-    live: null,
+    live: 'https://saas-metric-db.onrender.com',
     gh:   'https://github.com/denzelchingodza/saas-metric-db',
     color: '#2a6e5a',
   },
