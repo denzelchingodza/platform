@@ -1021,7 +1021,10 @@
           backends, databases, APIs, cloud infrastructure. I pick a problem, research how others have
           approached it, and build from that understanding. That is how Docker, Terraform, RAG pipelines,
           and vector databases ended up in my toolkit. Each one was something I needed, so I went and
-          learned it properly. I am
+          learned it properly. I have also taken that outside of personal projects. A friend runs a small
+          glass and aluminium business in Harare, Zimbabwe. He was advertising through handmade posters
+          and WhatsApp messages. I reached out, proposed a proper web application, and built it for him
+          from scratch. A real client, a real brief, and a production-ready system at the end of it. I am
           <span class="anno-mark underline" data-anno-delay="4000"><span>ready to contribute</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q20,4 50,9 Q80,4 99,8" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span>
           and work well in teams. The curiosity does not stop.
         </p>
@@ -1070,13 +1073,21 @@
         <div class="exp-row">
           <span class="exp-num">01</span>
           <div class="exp-body">
+            <p class="exp-name">PBS Projects <span class="exp-tag">Client work</span></p>
+            <p class="exp-tech">Next.js &middot; FastAPI &middot; SQLAlchemy &middot; SQLite &middot; Python</p>
+            <p class="exp-desc">A friend runs a glass and aluminium installation business in Harare, Zimbabwe. He was finding customers through WhatsApp, word of mouth, and handmade posters. I reached out, pitched a proper web presence, and built it from scratch. The platform includes a live gallery of completed jobs organised by category, a quote request pipeline that feeds directly into a lead management system, a customer testimonial flow with admin moderation before anything goes public, a full products and services catalogue, and bilingual support in English and Shona so the site reads naturally for local customers. Backend is FastAPI with SQLAlchemy and Alembic migrations, frontend is Next.js. Not yet deployed, but fully production-ready.</p>
+          </div>
+        </div>
+        <div class="exp-row">
+          <span class="exp-num">02</span>
+          <div class="exp-body">
             <p class="exp-name">Sentinel</p>
             <p class="exp-tech">AWS Lambda &middot; DynamoDB &middot; EventBridge &middot; SES &middot; Terraform</p>
             <p class="exp-desc">Uptime monitoring on serverless AWS infrastructure. Checks URLs every 60 seconds, sends email alerts on downtime and recovery via SES, and tracks full incident history with response times.</p>
           </div>
         </div>
         <div class="exp-row">
-          <span class="exp-num">02</span>
+          <span class="exp-num">03</span>
           <div class="exp-body">
             <p class="exp-name">DocuZen</p>
             <p class="exp-tech">FastAPI &middot; pgvector &middot; PostgreSQL &middot; OpenAI &middot; Next.js</p>
@@ -1084,7 +1095,7 @@
           </div>
         </div>
         <div class="exp-row">
-          <span class="exp-num">03</span>
+          <span class="exp-num">04</span>
           <div class="exp-body">
             <p class="exp-name">StackScope</p>
             <p class="exp-tech">Python &middot; Flask &middot; spaCy &middot; scikit-learn &middot; Docker</p>
@@ -1092,7 +1103,7 @@
           </div>
         </div>
         <div class="exp-row">
-          <span class="exp-num">04</span>
+          <span class="exp-num">05</span>
           <div class="exp-body">
             <p class="exp-name">AI Intelligence Layer</p>
             <p class="exp-tech">FastAPI &middot; OpenAI GPT-4o-mini &middot; Python &middot; Render &middot; Vercel</p>
@@ -1100,7 +1111,7 @@
           </div>
         </div>
         <div class="exp-row">
-          <span class="exp-num">05</span>
+          <span class="exp-num">06</span>
           <div class="exp-body">
             <p class="exp-name">SaaS Metrics DB</p>
             <p class="exp-tech">PostgreSQL &middot; FastAPI &middot; asyncpg &middot; Docker &middot; Python</p>
@@ -1108,7 +1119,7 @@
           </div>
         </div>
         <div class="exp-row">
-          <span class="exp-num">06</span>
+          <span class="exp-num">07</span>
           <div class="exp-body">
             <p class="exp-name">LinkUP</p>
             <p class="exp-tech">FastAPI &middot; MongoDB &middot; HTML &middot; CSS &middot; JavaScript</p>
@@ -1116,7 +1127,7 @@
           </div>
         </div>
         <div class="exp-row">
-          <span class="exp-num">07</span>
+          <span class="exp-num">08</span>
           <div class="exp-body">
             <p class="exp-name"><span style="color:#F47B20;">MSG</span><span style="color:#6a6a72;">: </span><span style="color:#006BB6;">The Mecca</span> <span class="exp-tag">In app form</span></p>
             <p class="exp-tech">Next.js &middot; FastAPI</p>
@@ -1430,7 +1441,15 @@ window.addEventListener('resize', resize);
 /* ORBITAL PROJECT SYSTEM */
 const PROJECTS = [
   {
-    num: '01', name: 'Sentinel',
+    num: '01', name: 'PBS Projects',
+    desc: 'Built for a real client. A friend runs a glass and aluminium business in Harare, Zimbabwe, and was advertising through posters and WhatsApp. I pitched a proper web app and built it: job gallery, quote request pipeline, testimonial moderation, full product catalogue, and bilingual English/Shona support.',
+    stack: ['Next.js', 'FastAPI', 'SQLAlchemy', 'SQLite', 'Python'],
+    live: null,
+    gh:   'https://github.com/denzelchingodza/pbs-projects',
+    color: '#3a6e4a',
+  },
+  {
+    num: '02', name: 'Sentinel',
     desc: 'Uptime monitoring system. Add a URL, it checks every 60 seconds, emails you when something goes down and again when it recovers. Real-time dashboard with response times, uptime percentage, and incident history.',
     stack: ['Next.js', 'AWS Lambda', 'DynamoDB', 'EventBridge', 'SES', 'Terraform'],
     live: 'https://sentinel-kappa-wine.vercel.app',
@@ -1438,7 +1457,7 @@ const PROJECTS = [
     color: '#8a8a94',
   },
   {
-    num: '02', name: 'DocuZen',
+    num: '03', name: 'DocuZen',
     desc: 'AI-powered document intelligence. Upload any PDF or Word doc, ask natural language questions, and get precise answers with page-level citations powered by RAG.',
     stack: ['FastAPI', 'Next.js', 'pgvector', 'PostgreSQL', 'OpenAI'],
     live: 'https://doc-analyzer-as5k.vercel.app',
@@ -1446,7 +1465,7 @@ const PROJECTS = [
     color: '#4a5e2a',
   },
   {
-    num: '03', name: 'StackScope',
+    num: '04', name: 'StackScope',
     desc: 'Job market intelligence for SA developers. Scrapes live job postings, extracts skill frequency across the corpus, tracks what\'s trending, and scores your stack against the market using TF-IDF and cosine similarity.',
     stack: ['Python', 'Flask', 'spaCy', 'scikit-learn', 'SQLite', 'Docker', 'Vercel'],
     live: 'https://stack-scope-eight.vercel.app',
@@ -1454,7 +1473,7 @@ const PROJECTS = [
     color: '#3a6ea5',
   },
   {
-    num: '04', name: 'AI Intelligence',
+    num: '05', name: 'AI Intelligence',
     desc: 'Natural language query layer across personal projects. Ask a plain English question and GPT-4o-mini figures out which service to call, Sentinel or StackScope, and returns the answer.',
     stack: ['FastAPI', 'OpenAI', 'Python', 'Render', 'Vercel'],
     live: 'https://ai-intelligence-layer.vercel.app',
@@ -1462,7 +1481,7 @@ const PROJECTS = [
     color: '#8B5E3C',
   },
   {
-    num: '05', name: 'LinkUP',
+    num: '06', name: 'LinkUP',
     desc: 'A peer-to-peer marketplace for South Africa. Buy, sell, and connect with full user management, admin controls, product listings, cart, and messaging.',
     stack: ['HTML', 'CSS', 'JavaScript', 'FastAPI', 'MongoDB'],
     live: 'https://ecommerce-seven-iota-31.vercel.app',
@@ -1470,7 +1489,7 @@ const PROJECTS = [
     color: '#1c3461',
   },
   {
-    num: '06', name: 'MSG',
+    num: '07', name: 'MSG',
     desc: 'Full stack shrine to the New York Knicks, your 2026 NBA Champions. Fact Roulette, the Rage Bait Machine, The Gauntlet, Trash Talk Generator, The Faith, and Championship 26. Pure, medically concerning fandom. Bing bong.',
     stack: ['Next.js', 'FastAPI'],
     live: 'https://msg-coral.vercel.app',
@@ -1478,7 +1497,7 @@ const PROJECTS = [
     color: '#F47B20',
   },
   {
-    num: '07', name: 'SaaS Metrics DB',
+    num: '08', name: 'SaaS Metrics DB',
     desc: 'Subscription analytics engine with a full six-table PostgreSQL schema tracking every stage of a SaaS business. Calculates MRR, ARR, churn, LTV, ARPU, NRR, and cohort retention via async FastAPI endpoints. Ships with a live Netflix-themed dashboard that fetches and animates real metrics from the database.',
     stack: ['PostgreSQL', 'FastAPI', 'asyncpg', 'Docker', 'Python'],
     live: null,
