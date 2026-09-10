@@ -257,6 +257,21 @@
       animation: up .9s .6s forwards;
     }
 
+    .type-cursor {
+      display: inline-block;
+      color: #e05252;
+      font-size: 14px;
+      line-height: 1;
+      animation: blink 1s step-end infinite;
+      vertical-align: middle;
+      margin-left: 1px;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0; }
+    }
+
     .hero-actions {
       display: flex;
       gap: 16px;
@@ -1412,7 +1427,7 @@
     <div class="glitch-shake">
       <h1><span class="glitch" data-text="Denzel">Denzel</span><br><span class="glitch" data-text="Chingodza">Chingodza</span></h1>
     </div>
-    <p class="hero-bio"><code>def me(role):<br>&nbsp;&nbsp;&nbsp;&nbsp;print(role)<br><br>me("Python Developer")</code></p>
+    <p class="hero-bio"><code id="hero-code"></code><span class="type-cursor">▌</span></p>
     <div class="hero-actions">
       <a href="#work" class="btn-light">See my work</a>
       <a href="#contact" class="link-dim">Get in touch</a>
@@ -2739,6 +2754,63 @@ document.querySelectorAll('.fade').forEach(el => io.observe(el));
   frame();
 })();
 
+</script>
+
+<script>
+(function () {
+  const el = document.getElementById('hero-code');
+  const segments = [
+    { t: 'def ', c: '#79b8ff' },
+    { t: 'me', c: '#b392f0' },
+    { t: '(', c: '#e1e4e8' },
+    { t: 'role', c: '#ffab70' },
+    { t: '):', c: '#e1e4e8' },
+    { t: '\n', c: null },
+    { t: '    ', c: null },
+    { t: 'print', c: '#b392f0' },
+    { t: '(', c: '#e1e4e8' },
+    { t: 'role', c: '#ffab70' },
+    { t: ')', c: '#e1e4e8' },
+    { t: '\n\n', c: null },
+    { t: 'me', c: '#b392f0' },
+    { t: '(', c: '#e1e4e8' },
+    { t: '"Python Developer"', c: '#9ecbff' },
+    { t: ')', c: '#e1e4e8' },
+  ];
+
+  // Flatten into individual chars with their colour
+  const chars = [];
+  for (const seg of segments) {
+    for (const ch of seg.t) {
+      chars.push({ ch, color: seg.c });
+    }
+  }
+
+  let i = 0;
+
+  function type() {
+    if (i >= chars.length) return;
+    const { ch, color } = chars[i++];
+
+    if (ch === '\n') {
+      el.innerHTML += '<br>';
+    } else if (ch === ' ') {
+      el.innerHTML += '<span style="color:' + (color || '#e1e4e8') + '">&nbsp;</span>';
+    } else {
+      el.innerHTML += '<span style="color:' + (color || '#e1e4e8') + '">' + ch + '</span>';
+    }
+
+    // Realistic variable delay — longer pause after colons and newlines
+    let delay = 40 + Math.random() * 30;
+    if (ch === ':' || ch === '(') delay += 60;
+    if (ch === '\n') delay += 120;
+
+    setTimeout(type, delay);
+  }
+
+  // Start after a short pause so the page settles first
+  setTimeout(type, 900);
+})();
 </script>
 </body>
 </html>
