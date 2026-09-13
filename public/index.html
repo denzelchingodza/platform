@@ -205,35 +205,6 @@
       animation: up .9s .2s forwards;
     }
 
-    .otw-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      font-family: 'Space Grotesk', system-ui, sans-serif;
-      font-size: 11px;
-      color: #4ade80;
-      background: rgba(74,222,128,.08);
-      border: 1px solid rgba(74,222,128,.22);
-      border-radius: 20px;
-      padding: 4px 12px 4px 9px;
-      margin-bottom: 18px;
-      opacity: 0;
-      animation: up .9s .45s forwards;
-    }
-    .otw-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #4ade80;
-      box-shadow: 0 0 6px #4ade80;
-      animation: pulse-dot 2s ease-in-out infinite;
-      flex-shrink: 0;
-    }
-    @keyframes pulse-dot {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: .5; transform: scale(.75); }
-    }
-
     h1 {
       font-family: 'Orbitron', monospace;
       font-size: clamp(36px, 4.8vw, 80px);
@@ -1557,7 +1528,6 @@
     <div class="glitch-shake">
       <h1><span class="glitch" data-text="Denzel">Denzel</span><br><span class="glitch" data-text="Chingodza">Chingodza</span></h1>
     </div>
-    <div class="otw-badge"><span class="otw-dot"></span>Open to work</div>
     <p class="hero-bio"><code id="hero-code"></code><span class="type-cursor">▌</span></p>
     <div class="hero-actions">
       <a href="#work" class="btn-light">See my work</a>
