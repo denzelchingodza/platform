@@ -58,8 +58,14 @@
       --sub:    #8a8a96;
       --muted:  #54545e;
     }
-    [data-theme="dark"] html,
-    [data-theme="dark"] body { background: #0d0e12; }
+    [data-theme="dark"] html { background: #0d0e12; }
+    [data-theme="dark"] body {
+      background:
+        radial-gradient(ellipse 160% 55% at 50% -5%, #181a28 0%, transparent 65%),
+        radial-gradient(ellipse 80% 40% at 85% 80%, #0f1020 0%, transparent 60%),
+        #0d0e12;
+      background-attachment: fixed;
+    }
 
     /* sections */
     [data-theme="dark"] .section,
@@ -3347,7 +3353,7 @@ function showToast(msg, type = 'success') {
     if (dark) {
       html.setAttribute('data-theme', 'dark');
       html.style.background = '#0d0e12';
-      document.body.style.background = '#0d0e12';
+      document.body.style.background = '';
       moon.style.display = 'none';
       sun.style.display  = '';
     } else {
