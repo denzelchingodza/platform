@@ -53,20 +53,60 @@
 
     /* ===== DARK MODE ===== */
     [data-theme="dark"] {
-      --border: #2a2b35;
-      --text:   #edeae0;
-      --sub:    #9090a2;
-      --muted:  #5a5a6a;
+      --border: #22232e;
+      --text:   #dddbd2;
+      --sub:    #8a8a96;
+      --muted:  #54545e;
     }
-    [data-theme="dark"] body,
-    [data-theme="dark"] html { background: #0d0e12; }
-    [data-theme="dark"] .about-btn { background: rgba(24,24,30,.5); }
-    [data-theme="dark"] .exp-role  { color: #b0afab; }
+    [data-theme="dark"] html,
+    [data-theme="dark"] body { background: #0d0e12; }
+
+    /* sections */
+    [data-theme="dark"] .section,
+    [data-theme="dark"] .proj-section { background: #0d0e12; }
+
+    /* form inputs */
     [data-theme="dark"] input,
-    [data-theme="dark"] textarea  { background: #0d1017; color: #edeae0; }
-    [data-theme="dark"] .proj-panel { color: #edeae0; }
-    [data-theme="dark"] .stag { background: #1a1b22; border-color: #2a2b35; }
-    [data-theme="dark"] .btn-dark { background: #edeae0; color: #0d0e12; }
+    [data-theme="dark"] textarea {
+      background: #0f1018;
+      color: #dddbd2;
+      border-color: #22232e;
+    }
+    [data-theme="dark"] input:focus,
+    [data-theme="dark"] textarea:focus { border-color: #44455a; }
+    [data-theme="dark"] input::placeholder,
+    [data-theme="dark"] textarea::placeholder { color: #44445a; }
+
+    /* stack tags */
+    [data-theme="dark"] .stag { background: #13141c; color: #7a7a88; }
+
+    /* about buttons */
+    [data-theme="dark"] .about-btn { border-color: #22232e; color: #7a7a88; background: transparent; }
+    [data-theme="dark"] .about-btn:hover { border-color: #dddbd2; color: #dddbd2; background: transparent; }
+
+    /* skill filter chips */
+    [data-theme="dark"] .sfbtn { background: #0f1018; border-color: #22232e; color: #54545e; }
+    [data-theme="dark"] .sfbtn:hover { background: #14151e; color: #9090a2; border-color: #34354a; }
+    [data-theme="dark"] .sfbtn.active { background: #14151e; border-color: #44455a; color: #dddbd2; }
+
+    /* project filter chips */
+    [data-theme="dark"] .pfbtn { border-color: #22232e; color: #44445a; }
+    [data-theme="dark"] .pfbtn:hover { border-color: #44455a; color: #9090a2; }
+    [data-theme="dark"] .pfbtn.active { border-color: #dddbd2; color: #dddbd2; background: rgba(221,219,210,.06); }
+
+    /* experience */
+    [data-theme="dark"] .exp-role { color: #9a9aa8; }
+
+    /* project panel */
+    [data-theme="dark"] #projName { color: #dddbd2; }
+    [data-theme="dark"] #projDesc { color: #7a7a88; }
+
+    /* buttons */
+    [data-theme="dark"] .btn-dark { background: #dddbd2; color: #0d0e12; }
+    [data-theme="dark"] .submit-btn { background: #dddbd2; color: #0d0e12; }
+
+    /* anno underlines in dark */
+    [data-theme="dark"] .anno-mark.underline svg path { stroke: rgba(221,219,210,.35); }
 
     /* theme toggle button */
     #theme-btn {
@@ -75,7 +115,7 @@
       left: 24px;
       z-index: 901;
       background: transparent;
-      border: 1px solid rgba(255,255,255,0.12);
+      border: 1px solid rgba(0,0,0,0.14);
       border-radius: 50%;
       width: 32px;
       height: 32px;
@@ -86,8 +126,9 @@
       color: #9090a2;
       transition: border-color .2s, color .2s;
     }
-    #theme-btn:hover { border-color: rgba(255,255,255,0.35); color: #edeae0; }
-    [data-theme="dark"] #theme-btn { border-color: rgba(255,255,255,0.18); }
+    #theme-btn:hover { border-color: rgba(0,0,0,0.35); color: #18181e; }
+    [data-theme="dark"] #theme-btn { border-color: rgba(255,255,255,0.14); color: #6a6a72; }
+    [data-theme="dark"] #theme-btn:hover { border-color: rgba(255,255,255,0.35); color: #dddbd2; }
     #theme-btn svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; }
 
     html { scroll-behavior: smooth; }
@@ -2940,9 +2981,8 @@ document.querySelectorAll('.fade').forEach(el => io.observe(el));
 
   const roles = [
     { t: '"Python Developer"', c: '#9ecbff' },
-    { t: '"AI Engineer"',      c: '#ffa657' },
-    { t: '"Full-Stack Dev"',   c: '#7ee787' },
     { t: '"Backend Engineer"', c: '#d2a8ff' },
+    { t: '"Full-Stack Dev"',   c: '#7ee787' },
   ];
 
   const prefixSegs = [
