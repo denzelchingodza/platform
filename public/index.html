@@ -3,24 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Denzel Chingodza — CS Student & Full-Stack Developer</title>
-  <meta name="description" content="CS student at Stellenbosch University building full-stack applications, developer tools, and AI systems. Projects include Sentinel, StackScope, ChunkDoc, the AI Intelligence Layer, and Muzezuru — a fine-tuned Shona-language LLM." />
+  <title>Denzel Chingodza — Software Developer</title>
+  <meta name="description" content="Software Engineering student at Eduvos, Cape Town, building full-stack applications, developer tools, and AI systems. Projects include Sentinel, StackScope, Muzezuru (Shona-language LLM), and more." />
   <meta name="author" content="Denzel Chingodza" />
-  <meta name="keywords" content="Denzel Chingodza, CS student, Stellenbosch University, full-stack developer, StackScope, Sentinel, ChunkDoc, AI Intelligence Layer, Muzezuru, Shona AI, QLoRA, LLM fine-tuning, South Africa" />
+  <meta name="keywords" content="Denzel Chingodza, Software Engineering, Eduvos, Cape Town, full-stack developer, AI engineer, StackScope, Sentinel, Muzezuru, Shona AI, QLoRA, LLM fine-tuning, South Africa, PyTorch, Python, Next.js" />
   <link rel="canonical" href="https://denzelchingodza.vercel.app/" />
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://denzelchingodza.vercel.app/" />
-  <meta property="og:title" content="Denzel Chingodza — CS Student & Full-Stack Developer" />
-  <meta property="og:description" content="CS student at Stellenbosch University building full-stack applications, developer tools, and AI systems." />
+  <meta property="og:title" content="Denzel Chingodza — Software Developer" />
+  <meta property="og:description" content="Software Engineering student at Eduvos, Cape Town, building full-stack apps, developer tools, and AI systems." />
   <meta property="og:image" content="https://denzelchingodza.vercel.app/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="Denzel Chingodza — portfolio" />
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Denzel Chingodza — CS Student & Full-Stack Developer" />
-  <meta name="twitter:description" content="CS student at Stellenbosch University building full-stack applications, developer tools, and AI systems." />
+  <meta name="twitter:title" content="Denzel Chingodza — Software Developer" />
+  <meta name="twitter:description" content="Software Engineering student at Eduvos, Cape Town, building full-stack apps, developer tools, and AI systems." />
   <meta name="twitter:image" content="https://denzelchingodza.vercel.app/og-image.png" />
   <!-- Favicon -->
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -162,6 +162,35 @@
       margin-bottom: 20px;
       opacity: 0;
       animation: up .9s .2s forwards;
+    }
+
+    .otw-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      font-size: 11px;
+      color: #4ade80;
+      background: rgba(74,222,128,.08);
+      border: 1px solid rgba(74,222,128,.22);
+      border-radius: 20px;
+      padding: 4px 12px 4px 9px;
+      margin-bottom: 18px;
+      opacity: 0;
+      animation: up .9s .45s forwards;
+    }
+    .otw-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #4ade80;
+      box-shadow: 0 0 6px #4ade80;
+      animation: pulse-dot 2s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: .5; transform: scale(.75); }
     }
 
     h1 {
@@ -1390,18 +1419,18 @@
     .pal-key { display: inline-block; padding: 1px 5px; background: #1e1f2a; border: 1px solid #333; border-radius: 4px; font-size: 10px; color: #666; }
 
     /* ── TARS chat ── */
-    #tars-chat { display: none; margin-top: 14px; }
+    #tars-chat { display: none; position: absolute; bottom: 0; left: 0; right: 0; z-index: 10; background: rgba(10,11,18,.93); border: 1px solid #1e2a3a; border-radius: 10px; padding: 12px; backdrop-filter: blur(6px); }
     #tars-chat.open { display: block; }
-    #tars-chat-log { font-family: 'Inter', sans-serif; font-size: 12px; color: #9090a0; line-height: 1.7; max-height: 140px; overflow-y: auto; margin-bottom: 8px; }
+    #tars-chat-log { font-family: 'Inter', sans-serif; font-size: 12px; color: #9090a0; line-height: 1.7; max-height: 120px; overflow-y: auto; margin-bottom: 8px; }
     #tars-chat-log .tars-line { margin-bottom: 6px; }
     #tars-chat-log .tars-line.you { color: #6a9fff; }
     #tars-chat-row { display: flex; gap: 6px; }
     #tars-chat-input { flex: 1; background: #0d1017; border: 1px solid #2a2b35; border-radius: 6px; padding: 6px 10px; font-family: 'Inter', sans-serif; font-size: 12px; color: #e0e0e0; outline: none; }
     #tars-chat-send { background: #1a3a5c; border: none; border-radius: 6px; padding: 6px 10px; color: #6aafff; font-family: 'Space Grotesk', sans-serif; font-size: 11px; cursor: pointer; }
     #tars-chat-send:hover { background: #1e4a72; }
-    .tars-bot-clickable { cursor: pointer; transition: transform .15s; }
-    .tars-bot-clickable:hover { transform: scale(1.04); }
-    #tars-chat-hint { font-family: 'Inter', sans-serif; font-size: 10px; color: #3a8fff; opacity: .6; text-align: center; margin-top: 4px; }
+    .tars-bot-clickable { cursor: pointer; }
+    .tars-bot-clickable:hover { opacity: .85; }
+    #tars-chat-hint { font-family: 'Inter', sans-serif; font-size: 10px; color: #3a8fff; opacity: .5; text-align: center; position: absolute; bottom: -22px; left: 0; right: 0; }
   </style>
   <!-- Structured data -->
   <script type="application/ld+json">
@@ -1465,6 +1494,7 @@
     <div class="glitch-shake">
       <h1><span class="glitch" data-text="Denzel">Denzel</span><br><span class="glitch" data-text="Chingodza">Chingodza</span></h1>
     </div>
+    <div class="otw-badge"><span class="otw-dot"></span>Open to work</div>
     <p class="hero-bio"><code id="hero-code"></code><span class="type-cursor">▌</span></p>
     <div class="hero-actions">
       <a href="#work" class="btn-light">See my work</a>
@@ -1650,7 +1680,7 @@
   <div class="tars-sidebar fade">
     <p class="tars-label">T · A · R · S</p>
     <div class="tars-body-wrap">
-      <div class="tars-bot tars-bot-clickable" id="tars-body" title="Talk to TARS">
+      <div class="tars-bot">
         <div class="tars-seg tars-seg-top">
           <div class="tars-eye"></div>
         </div>
@@ -1658,14 +1688,6 @@
         <div class="tars-seg tars-seg-mid"></div>
         <div class="tars-seam"></div>
         <div class="tars-seg tars-seg-bot"></div>
-      </div>
-      <p id="tars-chat-hint">click to talk</p>
-      <div id="tars-chat">
-        <div id="tars-chat-log"></div>
-        <div id="tars-chat-row">
-          <input id="tars-chat-input" type="text" placeholder="Ask TARS anything...">
-          <button id="tars-chat-send">Send</button>
-        </div>
       </div>
       <div class="tars-bubbles">
         <div class="tars-bubble" id="tarsBubble">
@@ -1764,7 +1786,7 @@
       </div>
 
       <!-- CENTER: 3D TARS -->
-      <div style="perspective:560px;perspective-origin:66% 28%;position:relative;z-index:2;">
+      <div style="perspective:560px;perspective-origin:66% 28%;position:relative;z-index:2;" id="tars-body" title="Talk to TARS" class="tars-bot-clickable">
         <div style="display:inline-block;animation:tars-sway 4s ease-in-out infinite;">
           <div style="display:inline-block;transform-style:preserve-3d;animation:tars3d 6s ease-in-out infinite;">
             <div style="position:relative;width:52px;height:216px;transform-style:preserve-3d;">
@@ -1793,12 +1815,21 @@
       </div>
 
       <!-- BL: Africa -->
-      <div class="tars-bub" style="bottom:30px;left:0;background:#1a1400;animation:tb3 4s ease-in-out infinite;">
+      <div class="tars-bub" id="tars-bub-bl" style="bottom:30px;left:0;background:#1a1400;animation:tb3 4s ease-in-out infinite;">
         <p style="color:rgba(255,235,160,.92);">Africa built civilisation. The world spends every day pretending otherwise. 5 dimensions of receipts.</p>
         <small style="color:rgba(240,210,120,.25);">— TARS (historical record)</small>
         <div style="position:absolute;top:-9px;right:14px;width:0;height:0;border-left:8px solid transparent;border-bottom:9px solid #1a1400;"></div>
       </div>
 
+      <!-- TARS chat panel -->
+      <p id="tars-chat-hint">click TARS to talk</p>
+      <div id="tars-chat">
+        <div id="tars-chat-log"></div>
+        <div id="tars-chat-row">
+          <input id="tars-chat-input" type="text" placeholder="Ask TARS anything...">
+          <button id="tars-chat-send">Send</button>
+        </div>
+      </div>
 
     </div>
   </div>
@@ -2830,57 +2861,97 @@ document.querySelectorAll('.fade').forEach(el => io.observe(el));
 <script>
 (function () {
   const el = document.getElementById('hero-code');
-  const segments = [
-    { t: 'def ', c: '#79b8ff' },
-    { t: 'me', c: '#b392f0' },
-    { t: '(', c: '#e1e4e8' },
-    { t: 'role', c: '#ffab70' },
-    { t: '):', c: '#e1e4e8' },
-    { t: '\n', c: null },
-    { t: '    ', c: null },
-    { t: 'print', c: '#b392f0' },
-    { t: '(', c: '#e1e4e8' },
-    { t: 'role', c: '#ffab70' },
-    { t: ')', c: '#e1e4e8' },
-    { t: '\n\n', c: null },
-    { t: 'me', c: '#b392f0' },
-    { t: '(', c: '#e1e4e8' },
+
+  const roles = [
     { t: '"Python Developer"', c: '#9ecbff' },
-    { t: ')', c: '#e1e4e8' },
+    { t: '"AI Engineer"',      c: '#ffa657' },
+    { t: '"Full-Stack Dev"',   c: '#7ee787' },
+    { t: '"Backend Engineer"', c: '#d2a8ff' },
   ];
 
-  // Flatten into individual chars with their colour
-  const chars = [];
-  for (const seg of segments) {
-    for (const ch of seg.t) {
-      chars.push({ ch, color: seg.c });
-    }
+  const prefixSegs = [
+    { t: 'def ', c: '#79b8ff' },
+    { t: 'me',   c: '#b392f0' },
+    { t: '(',    c: '#e1e4e8' },
+    { t: 'role', c: '#ffab70' },
+    { t: '):',   c: '#e1e4e8' },
+    { t: '\n',   c: null },
+    { t: '    ', c: null },
+    { t: 'print',c: '#b392f0' },
+    { t: '(',    c: '#e1e4e8' },
+    { t: 'role', c: '#ffab70' },
+    { t: ')',    c: '#e1e4e8' },
+    { t: '\n\n', c: null },
+    { t: 'me',   c: '#b392f0' },
+    { t: '(',    c: '#e1e4e8' },
+  ];
+
+  const prefixChars = [];
+  for (const seg of prefixSegs)
+    for (const ch of seg.t) prefixChars.push({ ch, color: seg.c });
+
+  function span(ch, color) {
+    if (ch === '\n') return '<br>';
+    const c = color || '#e1e4e8';
+    const txt = ch === ' ' ? '&nbsp;' : ch;
+    return '<span style="color:' + c + '">' + txt + '</span>';
   }
 
-  let i = 0;
+  let prefixHTML = '';
+  let roleIdx = 0;
 
-  function type() {
-    if (i >= chars.length) return;
-    const { ch, color } = chars[i++];
-
-    if (ch === '\n') {
-      el.innerHTML += '<br>';
-    } else if (ch === ' ') {
-      el.innerHTML += '<span style="color:' + (color || '#e1e4e8') + '">&nbsp;</span>';
-    } else {
-      el.innerHTML += '<span style="color:' + (color || '#e1e4e8') + '">' + ch + '</span>';
+  // ── type prefix once ──────────────────────────────────
+  let pi = 0;
+  function typePrefix() {
+    if (pi >= prefixChars.length) {
+      prefixHTML = el.innerHTML;
+      setTimeout(startRole, 200);
+      return;
     }
-
-    // Realistic variable delay — longer pause after colons and newlines
-    let delay = 40 + Math.random() * 30;
-    if (ch === ':' || ch === '(') delay += 60;
-    if (ch === '\n') delay += 120;
-
-    setTimeout(type, delay);
+    const { ch, color } = prefixChars[pi++];
+    el.innerHTML += span(ch, color);
+    let d = 40 + Math.random() * 30;
+    if (ch === ':' || ch === '(') d += 60;
+    if (ch === '\n') d += 120;
+    setTimeout(typePrefix, d);
   }
 
-  // Start after a short pause so the page settles first
-  setTimeout(type, 900);
+  // ── type + erase current role, then advance ──────────
+  function startRole() {
+    const r = roles[roleIdx % roles.length];
+    const rChars = [];
+    for (const ch of r.t) rChars.push({ ch, color: r.c });
+    rChars.push({ ch: ')', color: '#e1e4e8' });
+
+    let spans = [];
+    let ri = 0;
+
+    function typeChar() {
+      if (ri >= rChars.length) { setTimeout(eraseChar, 2400); return; }
+      const { ch, color } = rChars[ri++];
+      spans.push(span(ch, color));
+      el.innerHTML = prefixHTML + spans.join('');
+      let d = 45 + Math.random() * 25;
+      if (ch === '"') d += 30;
+      setTimeout(typeChar, d);
+    }
+
+    function eraseChar() {
+      if (spans.length === 0) {
+        roleIdx++;
+        el.innerHTML = prefixHTML;
+        setTimeout(startRole, 320);
+        return;
+      }
+      spans.pop();
+      el.innerHTML = prefixHTML + spans.join('');
+      setTimeout(eraseChar, 30 + Math.random() * 20);
+    }
+
+    typeChar();
+  }
+
+  setTimeout(typePrefix, 900);
 })();
 </script>
 
@@ -3081,11 +3152,17 @@ function showToast(msg, type = 'success') {
     setTimeout(() => addLine('TARS: ' + tarsRespond(q)), 420);
   }
 
+  const bubTR = document.querySelector('.tars-bub[style*="top:30px"]');
+  const bubBL = document.getElementById('tars-bub-bl');
+
   body.addEventListener('click', () => {
     const isOpen = chat.classList.toggle('open');
-    hint.textContent = isOpen ? 'click to close' : 'click to talk';
+    hint.textContent = isOpen ? 'click to close' : 'click TARS to talk';
+    if (bubTR) bubTR.style.opacity = isOpen ? '0' : '';
+    if (bubBL) bubBL.style.opacity = isOpen ? '0' : '';
     if (isOpen && log.children.length === 0) {
       setTimeout(() => addLine('TARS: Online. Ask me about Denzel.'), 300);
+      setTimeout(() => input.focus(), 350);
     }
   });
 
