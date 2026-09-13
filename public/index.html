@@ -108,8 +108,21 @@
     [data-theme="dark"] #projDesc { color: #7a7a88; }
 
     /* buttons */
+    /* btn-dark: dark bg + cream text in light, cream bg + dark text in dark */
     [data-theme="dark"] .btn-dark { background: #dddbd2; color: #0d0e12; }
-    [data-theme="dark"] .submit-btn { background: #dddbd2; color: #0d0e12; }
+    [data-theme="dark"] .btn-dark:hover { opacity: 0.8; }
+
+    /* submit: outlined style, cream border/text in dark; hover flips */
+    [data-theme="dark"] .submit-btn { background: transparent; border-color: #6a6a7e; color: #9090a2; }
+    [data-theme="dark"] .submit-btn:hover { background: #dddbd2; color: #0d0e12; border-color: #dddbd2; }
+
+    /* about buttons in dark */
+    [data-theme="dark"] .about-btn { border-color: #2a2b35; color: #8a8a96; background: transparent; }
+    [data-theme="dark"] .about-btn:hover { border-color: #dddbd2; color: #dddbd2; background: rgba(221,219,210,.04); }
+
+    /* link-plain-sm in dark */
+    [data-theme="dark"] .link-plain-sm { color: #5a5a6a; }
+    [data-theme="dark"] .link-plain-sm:hover { color: #dddbd2; }
 
     /* anno underlines in dark */
     [data-theme="dark"] .anno-mark.underline svg path { stroke: rgba(221,219,210,.35); }
@@ -3349,6 +3362,69 @@ function showToast(msg, type = 'success') {
   const moon  = document.getElementById('theme-icon-moon');
   const sun   = document.getElementById('theme-icon-sun');
 
+  /* ── sparse star canvas for dark mode ── */
+  let starCanvas = null, starCtx = null, starRAF = null, starList = [];
+
+  function buildStars(w, h) {
+    starList = Array.from({ length: 90 }, () => ({
+      x: Math.random() * w,
+      y: Math.random() * h,
+      r: Math.random() * 0.9 + 0.2,
+      o: Math.random() * 0.28 + 0.04,
+      s: Math.random() * 0.3 + 0.08,
+      d: Math.random() > 0.5 ? 1 : -1,
+    }));
+  }
+
+  function drawStars() {
+    if (!starCtx) return;
+    const { width: w, height: h } = starCanvas;
+    starCtx.clearRect(0, 0, w, h);
+    starList.forEach(s => {
+      s.o += s.s * 0.006 * s.d;
+      if (s.o > 0.32 || s.o < 0.03) s.d *= -1;
+      starCtx.beginPath();
+      starCtx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      starCtx.fillStyle = `rgba(200,198,192,${s.o})`;
+      starCtx.fill();
+    });
+    starRAF = requestAnimationFrame(drawStars);
+  }
+
+  function spawnStarCanvas() {
+    if (starCanvas) return;
+    starCanvas = document.createElement('canvas');
+    starCanvas.id = 'dm-stars';
+    Object.assign(starCanvas.style, {
+      position: 'fixed', inset: '0', width: '100%', height: '100%',
+      pointerEvents: 'none', zIndex: '0', opacity: '0',
+      transition: 'opacity 0.8s ease',
+    });
+    document.body.appendChild(starCanvas);
+    starCtx = starCanvas.getContext('2d');
+    const resize = () => {
+      starCanvas.width  = window.innerWidth;
+      starCanvas.height = window.innerHeight;
+      buildStars(starCanvas.width, starCanvas.height);
+    };
+    resize();
+    window.addEventListener('resize', resize);
+    starCanvas._resize = resize;
+    starRAF = requestAnimationFrame(drawStars);
+    requestAnimationFrame(() => { starCanvas.style.opacity = '1'; });
+  }
+
+  function removeStarCanvas() {
+    if (!starCanvas) return;
+    starCanvas.style.opacity = '0';
+    cancelAnimationFrame(starRAF);
+    window.removeEventListener('resize', starCanvas._resize);
+    setTimeout(() => {
+      if (starCanvas && starCanvas.parentNode) starCanvas.parentNode.removeChild(starCanvas);
+      starCanvas = null; starCtx = null; starList = [];
+    }, 800);
+  }
+
   function applyTheme(dark) {
     if (dark) {
       html.setAttribute('data-theme', 'dark');
@@ -3356,17 +3432,18 @@ function showToast(msg, type = 'success') {
       document.body.style.background = '';
       moon.style.display = 'none';
       sun.style.display  = '';
+      spawnStarCanvas();
     } else {
       html.removeAttribute('data-theme');
       html.style.background = '#edeae0';
       document.body.style.background = '#edeae0';
       moon.style.display = '';
       sun.style.display  = 'none';
+      removeStarCanvas();
     }
     try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch(e) {}
   }
 
-  // Restore saved preference
   let saved = null;
   try { saved = localStorage.getItem('theme'); } catch(e) {}
   applyTheme(saved === 'dark');
