@@ -25,6 +25,8 @@
   <!-- Favicon -->
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="icon" href="/favicon.svg" sizes="any" />
+  <!-- PWA -->
+  <link rel="manifest" href="/manifest.json" />
   <!-- Theme -->
   <meta name="theme-color" content="#0d0e12" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -48,6 +50,45 @@
       --body:   'Inter', system-ui, sans-serif;
       --display:'Orbitron', monospace;
     }
+
+    /* ===== DARK MODE ===== */
+    [data-theme="dark"] {
+      --border: #2a2b35;
+      --text:   #edeae0;
+      --sub:    #9090a2;
+      --muted:  #5a5a6a;
+    }
+    [data-theme="dark"] body,
+    [data-theme="dark"] html { background: #0d0e12; }
+    [data-theme="dark"] .about-btn { background: rgba(24,24,30,.5); }
+    [data-theme="dark"] .exp-role  { color: #b0afab; }
+    [data-theme="dark"] input,
+    [data-theme="dark"] textarea  { background: #0d1017; color: #edeae0; }
+    [data-theme="dark"] .proj-panel { color: #edeae0; }
+    [data-theme="dark"] .stag { background: #1a1b22; border-color: #2a2b35; }
+    [data-theme="dark"] .btn-dark { background: #edeae0; color: #0d0e12; }
+
+    /* theme toggle button */
+    #theme-btn {
+      position: fixed;
+      top: 22px;
+      left: 24px;
+      z-index: 901;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: #9090a2;
+      transition: border-color .2s, color .2s;
+    }
+    #theme-btn:hover { border-color: rgba(255,255,255,0.35); color: #edeae0; }
+    [data-theme="dark"] #theme-btn { border-color: rgba(255,255,255,0.18); }
+    #theme-btn svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; }
 
     html { scroll-behavior: smooth; }
 
@@ -688,6 +729,28 @@
     .proj-section {
       border-top: 1px solid var(--border);
     }
+
+    .proj-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      padding: 16px 9vw 0;
+    }
+    .pfbtn {
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #6a6a72;
+      background: transparent;
+      border: 1px solid #2a2b35;
+      border-radius: 20px;
+      padding: 4px 12px;
+      cursor: pointer;
+      transition: border-color .18s, color .18s, background .18s;
+    }
+    .pfbtn:hover { border-color: #5a5a6a; color: #b0afab; }
+    .pfbtn.active { border-color: #edeae0; color: #edeae0; background: rgba(237,234,224,.07); }
 
     .proj-split {
       display: grid;
@@ -1523,7 +1586,7 @@
   </div>
 
   <div class="hero-photo">
-    <img src="images/ship.jpeg" alt="Denzel Chingodza">
+    <img src="images/ship.jpeg" alt="Denzel Chingodza" loading="lazy">
   </div>
 
   <div class="scroll-hint" id="scrollHint">
@@ -1705,6 +1768,14 @@
 
 <!-- ===== PROJECTS (orbital) ===== -->
 <section class="proj-section" id="work">
+  <div class="proj-filters fade">
+    <button class="pfbtn active" data-filter="">All</button>
+    <button class="pfbtn" data-filter="Python">Python</button>
+    <button class="pfbtn" data-filter="Next.js">Next.js</button>
+    <button class="pfbtn" data-filter="FastAPI">FastAPI</button>
+    <button class="pfbtn" data-filter="AI">AI / ML</button>
+    <button class="pfbtn" data-filter="AWS">AWS</button>
+  </div>
   <div class="proj-split">
 
     <!-- Left: info panel -->
@@ -2142,6 +2213,7 @@ const dpr  = window.devicePixelRatio || 1;
 let CX, CY, W, H, ORBITS, sc;
 let planets  = [];
 let activeIdx = -1;
+let activeFilter = null; // function(stack[]) => bool
 
 function resizeOrbital() {
   const stage = oc.parentElement;
@@ -2233,6 +2305,8 @@ function drawOrbital(ts) {
     const depth = (Math.sin(angle) + 1) / 2;
     const r     = (3.5 + depth * 3) * Math.max(sc, 0.7);
     const isActive = i === activeIdx;
+    const isDimmed = activeFilter && !activeFilter(proj.stack);
+    octx.globalAlpha = isDimmed ? 0.18 : 1;
 
     planets[i] = { x, y, r: r + 10 };
 
@@ -2275,6 +2349,7 @@ function drawOrbital(ts) {
     octx.font = `400 ${fs + 1}px "Space Grotesk", sans-serif`;
     octx.fillStyle = isActive ? '#18181e' : '#7a7a82';
     octx.fillText(proj.name.toUpperCase(), lx, y + 9);
+    octx.globalAlpha = 1;
   });
 
   requestAnimationFrame(drawOrbital);
@@ -2324,6 +2399,31 @@ document.fonts.ready.then(() => {
   requestAnimationFrame(drawOrbital);
 });
 window.addEventListener('resize', resizeOrbital);
+
+/* PROJECT FILTERS */
+const AI_TAGS  = ['OpenAI','QLoRA','BLOOMZ-3B','PEFT','bitsandbytes','Hugging Face','scikit-learn'];
+const AWS_TAGS = ['AWS Lambda','DynamoDB','EventBridge','SES','Terraform'];
+const FILTER_MAP = {
+  'Python':  s => s.includes('Python'),
+  'Next.js': s => s.includes('Next.js'),
+  'FastAPI': s => s.includes('FastAPI'),
+  'AI':      s => s.some(t => AI_TAGS.includes(t)),
+  'AWS':     s => s.some(t => AWS_TAGS.includes(t)),
+};
+document.querySelectorAll('.pfbtn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.pfbtn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.dataset.filter;
+    activeFilter = f ? FILTER_MAP[f] : null;
+    // reset active project if it becomes dimmed
+    if (activeIdx >= 0 && activeFilter && !activeFilter(PROJECTS[activeIdx].stack)) {
+      activeIdx = -1;
+      document.getElementById('projDefault').style.display = '';
+      document.getElementById('projContent').style.display = 'none';
+    }
+  });
+});
 
 /* AMBIENT SOUND */
 let soundOn = false;
@@ -2845,6 +2945,12 @@ document.querySelectorAll('.fade').forEach(el => io.observe(el));
 <!-- Toast root -->
 <div id="toast-root"></div>
 
+<!-- Dark mode toggle -->
+<button id="theme-btn" title="Toggle dark/light mode" aria-label="Toggle dark mode">
+  <svg id="theme-icon-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+  <svg id="theme-icon-sun" viewBox="0 0 24 24" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+</button>
+
 <!-- Cmd+K Palette -->
 <div id="palette-overlay">
   <div id="palette-box">
@@ -3216,6 +3322,42 @@ function showToast(msg, type = 'success') {
       feed.innerHTML = lines.length ? lines.join('') : '<span style="opacity:.4;">No recent public activity.</span>';
     })
     .catch(() => { feed.innerHTML = '<span style="opacity:.4;">Could not load activity.</span>'; });
+})();
+</script>
+
+<script>
+/* DARK MODE TOGGLE */
+(function () {
+  const html  = document.documentElement;
+  const btn   = document.getElementById('theme-btn');
+  const moon  = document.getElementById('theme-icon-moon');
+  const sun   = document.getElementById('theme-icon-sun');
+
+  function applyTheme(dark) {
+    if (dark) {
+      html.setAttribute('data-theme', 'dark');
+      html.style.background = '#0d0e12';
+      document.body.style.background = '#0d0e12';
+      moon.style.display = 'none';
+      sun.style.display  = '';
+    } else {
+      html.removeAttribute('data-theme');
+      html.style.background = '#edeae0';
+      document.body.style.background = '#edeae0';
+      moon.style.display = '';
+      sun.style.display  = 'none';
+    }
+    try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch(e) {}
+  }
+
+  // Restore saved preference
+  let saved = null;
+  try { saved = localStorage.getItem('theme'); } catch(e) {}
+  applyTheme(saved === 'dark');
+
+  btn.addEventListener('click', () => {
+    applyTheme(html.getAttribute('data-theme') !== 'dark');
+  });
 })();
 </script>
 </body>
