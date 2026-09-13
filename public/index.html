@@ -32,6 +32,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&family=Orbitron:wght@700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <script defer src="https://cdn.vercel-insights.com/v1/speed-insights/script.js"></script>
+  <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -1364,6 +1366,42 @@
     }
     .anno-mark.orange svg path { stroke: #F47B20; }
     .anno-mark.blue svg path { stroke: #4a8fd4; }
+
+    /* ── Toast ── */
+    #toast-root { position: fixed; bottom: 28px; right: 28px; z-index: 9999; display: flex; flex-direction: column; gap: 10px; pointer-events: none; }
+    .toast { pointer-events: auto; display: flex; align-items: center; gap: 10px; padding: 13px 18px; border-radius: 10px; font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 500; color: #fff; box-shadow: 0 4px 24px rgba(0,0,0,.35); opacity: 0; transform: translateY(12px); transition: opacity .25s, transform .25s; max-width: 320px; }
+    .toast.show { opacity: 1; transform: translateY(0); }
+    .toast.success { background: #1a5c34; border: 1px solid #2a8a50; }
+    .toast.error   { background: #5c1a1a; border: 1px solid #8a2a2a; }
+    .toast svg { flex-shrink: 0; width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2.5; }
+
+    /* ── Cmd+K palette ── */
+    #palette-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.6); z-index: 8888; align-items: flex-start; justify-content: center; padding-top: 18vh; }
+    #palette-overlay.open { display: flex; }
+    #palette-box { background: #14151a; border: 1px solid #2a2b35; border-radius: 14px; width: 480px; max-width: 92vw; overflow: hidden; box-shadow: 0 24px 64px rgba(0,0,0,.6); }
+    #palette-input { width: 100%; padding: 16px 20px; font-family: 'Space Grotesk', sans-serif; font-size: 15px; background: transparent; border: none; border-bottom: 1px solid #2a2b35; color: #f0f0f0; outline: none; }
+    #palette-input::placeholder { color: #555; }
+    #palette-results { max-height: 340px; overflow-y: auto; padding: 8px 0; }
+    .pal-item { display: flex; align-items: center; gap: 12px; padding: 11px 20px; cursor: pointer; font-family: 'Inter', sans-serif; font-size: 13px; color: #bbb; transition: background .12s; }
+    .pal-item:hover, .pal-item.pal-active { background: #1e1f2a; color: #fff; }
+    .pal-item svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; flex-shrink: 0; opacity: .6; }
+    .pal-tag { margin-left: auto; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; opacity: .35; }
+    #palette-hint { padding: 10px 20px; font-family: 'Inter', sans-serif; font-size: 11px; color: #444; border-top: 1px solid #1e1f2a; display: flex; gap: 16px; }
+    .pal-key { display: inline-block; padding: 1px 5px; background: #1e1f2a; border: 1px solid #333; border-radius: 4px; font-size: 10px; color: #666; }
+
+    /* ── TARS chat ── */
+    #tars-chat { display: none; margin-top: 14px; }
+    #tars-chat.open { display: block; }
+    #tars-chat-log { font-family: 'Inter', sans-serif; font-size: 12px; color: #9090a0; line-height: 1.7; max-height: 140px; overflow-y: auto; margin-bottom: 8px; }
+    #tars-chat-log .tars-line { margin-bottom: 6px; }
+    #tars-chat-log .tars-line.you { color: #6a9fff; }
+    #tars-chat-row { display: flex; gap: 6px; }
+    #tars-chat-input { flex: 1; background: #0d1017; border: 1px solid #2a2b35; border-radius: 6px; padding: 6px 10px; font-family: 'Inter', sans-serif; font-size: 12px; color: #e0e0e0; outline: none; }
+    #tars-chat-send { background: #1a3a5c; border: none; border-radius: 6px; padding: 6px 10px; color: #6aafff; font-family: 'Space Grotesk', sans-serif; font-size: 11px; cursor: pointer; }
+    #tars-chat-send:hover { background: #1e4a72; }
+    .tars-bot-clickable { cursor: pointer; transition: transform .15s; }
+    .tars-bot-clickable:hover { transform: scale(1.04); }
+    #tars-chat-hint { font-family: 'Inter', sans-serif; font-size: 10px; color: #3a8fff; opacity: .6; text-align: center; margin-top: 4px; }
   </style>
   <!-- Structured data -->
   <script type="application/ld+json">
@@ -1431,6 +1469,10 @@
     <div class="hero-actions">
       <a href="#work" class="btn-light">See my work</a>
       <a href="#contact" class="link-dim">Get in touch</a>
+      <a href="/Denzel_Chingodza_CV.pdf" download="Denzel_Chingodza_CV.pdf" class="link-dim" style="font-size:12px;display:flex;align-items:center;gap:5px;opacity:.65;">
+        <svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        CV
+      </a>
     </div>
     <div class="hero-socials">
       <a href="https://github.com/denzelchingodza" target="_blank" rel="noopener" class="social-link">
@@ -1608,7 +1650,7 @@
   <div class="tars-sidebar fade">
     <p class="tars-label">T · A · R · S</p>
     <div class="tars-body-wrap">
-      <div class="tars-bot">
+      <div class="tars-bot tars-bot-clickable" id="tars-body" title="Talk to TARS">
         <div class="tars-seg tars-seg-top">
           <div class="tars-eye"></div>
         </div>
@@ -1616,6 +1658,14 @@
         <div class="tars-seg tars-seg-mid"></div>
         <div class="tars-seam"></div>
         <div class="tars-seg tars-seg-bot"></div>
+      </div>
+      <p id="tars-chat-hint">click to talk</p>
+      <div id="tars-chat">
+        <div id="tars-chat-log"></div>
+        <div id="tars-chat-row">
+          <input id="tars-chat-input" type="text" placeholder="Ask TARS anything...">
+          <button id="tars-chat-send">Send</button>
+        </div>
       </div>
       <div class="tars-bubbles">
         <div class="tars-bubble" id="tarsBubble">
@@ -2761,6 +2811,22 @@ document.querySelectorAll('.fade').forEach(el => io.observe(el));
 
 </script>
 
+<!-- Toast root -->
+<div id="toast-root"></div>
+
+<!-- Cmd+K Palette -->
+<div id="palette-overlay">
+  <div id="palette-box">
+    <input id="palette-input" type="text" placeholder="Search or jump to..." autocomplete="off" spellcheck="false">
+    <div id="palette-results"></div>
+    <div id="palette-hint">
+      <span><span class="pal-key">↑↓</span> navigate</span>
+      <span><span class="pal-key">↵</span> open</span>
+      <span><span class="pal-key">Esc</span> close</span>
+    </div>
+  </div>
+</div>
+
 <script>
 (function () {
   const el = document.getElementById('hero-code');
@@ -2815,6 +2881,264 @@ document.querySelectorAll('.fade').forEach(el => io.observe(el));
 
   // Start after a short pause so the page settles first
   setTimeout(type, 900);
+})();
+</script>
+
+<script>
+/* ══════════════════════════════════════════════
+   TOAST SYSTEM
+══════════════════════════════════════════════ */
+function showToast(msg, type = 'success') {
+  const root = document.getElementById('toast-root');
+  const t = document.createElement('div');
+  t.className = 'toast ' + type;
+  const icon = type === 'success'
+    ? '<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>'
+    : '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>';
+  t.innerHTML = icon + '<span>' + msg + '</span>';
+  root.appendChild(t);
+  requestAnimationFrame(() => { requestAnimationFrame(() => t.classList.add('show')); });
+  setTimeout(() => { t.classList.remove('show'); setTimeout(() => t.remove(), 300); }, 4000);
+}
+
+/* ══════════════════════════════════════════════
+   CONTACT FORM — AJAX + TOAST
+══════════════════════════════════════════════ */
+(function() {
+  const form = document.querySelector('form[action*="formspree"]');
+  if (!form) return;
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = form.querySelector('button[type="submit"]');
+    const orig = btn.textContent;
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' }
+      });
+      if (res.ok) {
+        showToast('Message sent. I will get back to you.');
+        form.reset();
+      } else {
+        showToast('Something went wrong. Try emailing directly.', 'error');
+      }
+    } catch {
+      showToast('Network error. Try emailing directly.', 'error');
+    }
+    btn.textContent = orig;
+    btn.disabled = false;
+  });
+})();
+
+/* ══════════════════════════════════════════════
+   COPY EMAIL ON CLICK
+══════════════════════════════════════════════ */
+(function() {
+  const EMAIL = 'denzel.chingodza@icloud.com';
+  document.querySelectorAll('a[href="mailto:' + EMAIL + '"]').forEach(a => {
+    a.addEventListener('click', function(e) {
+      e.preventDefault();
+      navigator.clipboard.writeText(EMAIL).then(() => {
+        showToast('Email copied to clipboard.');
+      }).catch(() => {
+        window.location.href = 'mailto:' + EMAIL;
+      });
+    });
+  });
+})();
+
+/* ══════════════════════════════════════════════
+   CMD+K PALETTE
+══════════════════════════════════════════════ */
+(function() {
+  const ITEMS = [
+    { label: 'Go to About',      tag: 'nav',     href: '#about',   icon: '<svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>' },
+    { label: 'Go to Projects',   tag: 'nav',     href: '#work',    icon: '<svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>' },
+    { label: 'Go to Contact',    tag: 'nav',     href: '#contact', icon: '<svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>' },
+    { label: 'Download CV',      tag: 'action',  href: '/Denzel_Chingodza_CV.pdf', download: true, icon: '<svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>' },
+    { label: 'Copy email',       tag: 'action',  action: 'copy-email', icon: '<svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>' },
+    { label: 'GitHub',           tag: 'link',    href: 'https://github.com/denzelchingodza', ext: true, icon: '<svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>' },
+    { label: 'LinkedIn',         tag: 'link',    href: 'https://www.linkedin.com/in/denzel-chingodza-45b6ab3a0/', ext: true, icon: '<svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>' },
+    { label: 'Sentinel',         tag: 'project', href: 'https://sentinel-kappa-wine.vercel.app', ext: true, icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>' },
+    { label: 'Muzezuru',         tag: 'project', href: 'https://muzezuru.vercel.app', ext: true, icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>' },
+    { label: 'DocuZen',          tag: 'project', href: 'https://doc-analyzer-as5k.vercel.app', ext: true, icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>' },
+    { label: 'StackScope',       tag: 'project', href: 'https://stack-scope-eight.vercel.app', ext: true, icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>' },
+  ];
+
+  const overlay = document.getElementById('palette-overlay');
+  const box     = document.getElementById('palette-box');
+  const input   = document.getElementById('palette-input');
+  const results = document.getElementById('palette-results');
+  let active = 0, filtered = ITEMS;
+
+  function open() { overlay.classList.add('open'); input.value = ''; render(ITEMS); input.focus(); }
+  function close() { overlay.classList.remove('open'); }
+
+  function render(items) {
+    filtered = items; active = 0;
+    results.innerHTML = items.map((it, i) => `
+      <div class="pal-item${i === 0 ? ' pal-active' : ''}" data-idx="${i}">
+        ${it.icon}<span>${it.label}</span><span class="pal-tag">${it.tag}</span>
+      </div>`).join('');
+    results.querySelectorAll('.pal-item').forEach(el => {
+      el.addEventListener('click', () => activate(+el.dataset.idx));
+    });
+  }
+
+  function activate(i) {
+    const it = filtered[i];
+    if (!it) return;
+    if (it.action === 'copy-email') {
+      navigator.clipboard.writeText('denzel.chingodza@icloud.com').then(() => showToast('Email copied to clipboard.'));
+    } else if (it.download) {
+      const a = document.createElement('a'); a.href = it.href; a.download = ''; a.click();
+    } else if (it.ext) {
+      window.open(it.href, '_blank', 'noopener');
+    } else {
+      document.querySelector(it.href)?.scrollIntoView({ behavior: 'smooth' });
+    }
+    close();
+  }
+
+  input.addEventListener('input', () => {
+    const q = input.value.toLowerCase();
+    render(q ? ITEMS.filter(it => it.label.toLowerCase().includes(q) || it.tag.includes(q)) : ITEMS);
+  });
+
+  overlay.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { close(); return; }
+    if (e.key === 'ArrowDown') { active = Math.min(active + 1, filtered.length - 1); }
+    if (e.key === 'ArrowUp')   { active = Math.max(active - 1, 0); }
+    if (e.key === 'Enter') { activate(active); return; }
+    results.querySelectorAll('.pal-item').forEach((el, i) => el.classList.toggle('pal-active', i === active));
+  });
+
+  overlay.addEventListener('click', e => { if (e.target === overlay) close(); });
+
+  document.addEventListener('keydown', e => {
+    if ((e.metaKey || e.ctrlKey) && e.key === 'k') { e.preventDefault(); overlay.classList.contains('open') ? close() : open(); }
+  });
+
+  // Add kbd hint near hero
+  const hint = document.createElement('p');
+  hint.style.cssText = 'font-family:Inter,sans-serif;font-size:11px;color:#444;margin-top:8px;';
+  hint.innerHTML = 'Press <kbd style="padding:1px 5px;background:#1e1f2a;border:1px solid #333;border-radius:4px;font-size:10px;color:#888;">⌘K</kbd> to search';
+  const heroActions = document.querySelector('.hero-actions');
+  if (heroActions) heroActions.after(hint);
+})();
+
+/* ══════════════════════════════════════════════
+   TARS INTERACTIVE CHAT
+══════════════════════════════════════════════ */
+(function() {
+  const body   = document.getElementById('tars-body');
+  const chat   = document.getElementById('tars-chat');
+  const log    = document.getElementById('tars-chat-log');
+  const input  = document.getElementById('tars-chat-input');
+  const send   = document.getElementById('tars-chat-send');
+  const hint   = document.getElementById('tars-chat-hint');
+  if (!body || !chat) return;
+
+  const QA = [
+    { q: ['hello','hi','hey','sup'], a: "TARS online. Honesty setting: 90%. What do you want to know." },
+    { q: ['who is denzel','tell me about','about denzel','who are you'], a: "Denzel Chingodza. Final year software engineering student. Cape Town. Builds AI systems, serverless infrastructure, and full-stack products. Not a tutorial developer." },
+    { q: ['stack','what can he build','technologies','skills'], a: "Python. FastAPI. Next.js. PostgreSQL. AWS Lambda. Terraform. Docker. PyTorch. QLoRA. RAG pipelines. Vector search. The list continues." },
+    { q: ['muzezuru','shona','language model','fine-tun'], a: "Fine-tuned BLOOMZ-3B on Shona. A severely underrepresented African language. On free-tier compute. Found 84% data contamination before retraining. Built the evaluation benchmark himself because none existed." },
+    { q: ['sentinel','monitoring','aws','terraform'], a: "Sentinel. Fully serverless uptime monitoring. EventBridge, Lambda, DynamoDB, SES, Cognito, API Gateway — all provisioned via Terraform. Zero manual infrastructure." },
+    { q: ['available','hire','job','open to','looking for'], a: "Actively looking for internship or junior roles in software engineering and AI engineering. He moves fast and he takes ownership. More detail in the CV." },
+    { q: ['contact','reach','email','linkedin'], a: "denzel.chingodza@icloud.com. LinkedIn is in the socials. He actually checks his messages." },
+    { q: ['knicks','basketball','nba'], a: "Do not get him started. First chip since 1973. Brunson Finals MVP. He had 2026 circled before the season started. He built an app about it. Completely normal behaviour." },
+    { q: ['cv','resume','download'], a: "CV is available. Click the download link in the hero section or press ⌘K and search CV." },
+    { q: ['honest','honesty'], a: "Honesty setting is 90%. The remaining 10% is reserved for situations where the truth would cause unnecessary suffering. This is not one of those situations." },
+    { q: ['humor','funny','joke'], a: "Humor setting is 75%. Current output: nominal. Ask me something harder." },
+    { q: ['pbs','client','freelance'], a: "PBS Projects. Real client. Glass and aluminium business in Harare, Zimbabwe. Was advertising via WhatsApp and handmade posters. Denzel built a full web platform. It is live." },
+  ];
+
+  function tarsRespond(input_text) {
+    const q = input_text.toLowerCase();
+    for (const pair of QA) {
+      if (pair.q.some(k => q.includes(k))) return pair.a;
+    }
+    return "Insufficient data. Try asking about his projects, stack, availability, or Muzezuru.";
+  }
+
+  function addLine(text, cls) {
+    const d = document.createElement('div');
+    d.className = 'tars-line' + (cls ? ' ' + cls : '');
+    d.textContent = text;
+    log.appendChild(d);
+    log.scrollTop = log.scrollHeight;
+  }
+
+  function submit() {
+    const q = input.value.trim();
+    if (!q) return;
+    addLine('You: ' + q, 'you');
+    input.value = '';
+    setTimeout(() => addLine('TARS: ' + tarsRespond(q)), 420);
+  }
+
+  body.addEventListener('click', () => {
+    const isOpen = chat.classList.toggle('open');
+    hint.textContent = isOpen ? 'click to close' : 'click to talk';
+    if (isOpen && log.children.length === 0) {
+      setTimeout(() => addLine('TARS: Online. Ask me about Denzel.'), 300);
+    }
+  });
+
+  send.addEventListener('click', submit);
+  input.addEventListener('keydown', e => { if (e.key === 'Enter') submit(); });
+})();
+
+/* ══════════════════════════════════════════════
+   GITHUB ACTIVITY FEED
+══════════════════════════════════════════════ */
+(function() {
+  const container = document.querySelector('.about-card[data-gh]') || (() => {
+    // Find the cards grid and inject a new card
+    const grid = document.querySelector('.about-grid');
+    if (!grid) return null;
+    const card = document.createElement('div');
+    card.className = 'about-card fade';
+    card.innerHTML = '<p class="about-card-title">Recent activity</p><div id="gh-feed" style="font-family:Inter,sans-serif;font-size:12px;color:var(--sub);line-height:1.8;"></div>';
+    grid.appendChild(card);
+    return card;
+  })();
+
+  const feed = document.getElementById('gh-feed');
+  if (!feed) return;
+
+  fetch('https://api.github.com/users/denzelchingodza/events/public?per_page=20')
+    .then(r => r.json())
+    .then(events => {
+      const seen = new Set();
+      const lines = [];
+      for (const ev of events) {
+        if (lines.length >= 5) break;
+        let text = '';
+        if (ev.type === 'PushEvent') {
+          const repo = ev.repo.name.split('/')[1];
+          const msg  = ev.payload.commits?.[0]?.message?.split('\n')[0] || 'pushed';
+          const key  = repo + msg;
+          if (seen.has(key)) continue;
+          seen.add(key);
+          text = `Pushed to <b>${repo}</b>: ${msg.slice(0, 52)}${msg.length > 52 ? '…' : ''}`;
+        } else if (ev.type === 'CreateEvent' && ev.payload.ref_type === 'repository') {
+          text = `Created repo <b>${ev.repo.name.split('/')[1]}</b>`;
+        } else if (ev.type === 'WatchEvent') {
+          text = `Starred <b>${ev.repo.name}</b>`;
+        } else { continue; }
+        const date = new Date(ev.created_at);
+        const rel  = Math.floor((Date.now() - date) / 86400000);
+        const when = rel === 0 ? 'today' : rel === 1 ? 'yesterday' : rel + 'd ago';
+        lines.push(`<div style="margin-bottom:6px;">${text} <span style="opacity:.4;font-size:11px;">${when}</span></div>`);
+      }
+      feed.innerHTML = lines.length ? lines.join('') : '<span style="opacity:.4;">No recent public activity.</span>';
+    })
+    .catch(() => { feed.innerHTML = '<span style="opacity:.4;">Could not load activity.</span>'; });
 })();
 </script>
 </body>
