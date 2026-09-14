@@ -652,7 +652,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 48px 64px;
-      margin-bottom: 52px;
+      margin-bottom: 24px;
     }
 
     .about-main {
@@ -1719,7 +1719,7 @@
       </div>
     </div>
 
-    <div class="about-grid" style="margin-bottom: 0; margin-top: 40px;">
+    <div class="about-grid" style="margin-bottom: 0; margin-top: 20px;">
       <div class="about-card fade">
         <p class="about-card-title">Currently</p>
         <p class="about-card-body">Finishing my Software Engineering degree, open to roles and opportunities. I work well independently and in teams, and I bring real projects to the table, not just coursework.</p>
@@ -3308,8 +3308,9 @@ function showToast(msg, type = 'success') {
 ══════════════════════════════════════════════ */
 (function() {
   const container = document.querySelector('.about-card[data-gh]') || (() => {
-    // Find the cards grid and inject a new card
-    const grid = document.querySelector('.about-grid');
+    // Inject into the second about-grid (the cards grid, not the text grid)
+    const grids = document.querySelectorAll('.about-grid');
+    const grid = grids[grids.length - 1];
     if (!grid) return null;
     const card = document.createElement('div');
     card.className = 'about-card fade';
