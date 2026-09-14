@@ -3164,6 +3164,7 @@ document.querySelectorAll('.fade').forEach(el => io.observe(el));
 <script>
 (function () {
   const el = document.getElementById('hero-code');
+  if (!el) return;
 
   const roles = [
     { t: '"Python Developer"', c: '#9ecbff' },
@@ -3201,21 +3202,22 @@ document.querySelectorAll('.fade').forEach(el => io.observe(el));
 
   let prefixHTML = '';
   let roleIdx = 0;
+  let loopTimer = null;
 
   // ── type prefix once ──────────────────────────────────
   let pi = 0;
   function typePrefix() {
     if (pi >= prefixChars.length) {
       prefixHTML = el.innerHTML;
-      setTimeout(startRole, 200);
+      loopTimer = setTimeout(startRole, 200);
       return;
     }
     const { ch, color } = prefixChars[pi++];
     el.innerHTML += span(ch, color);
-    let d = 40 + Math.random() * 30;
-    if (ch === ':' || ch === '(') d += 60;
-    if (ch === '\n') d += 120;
-    setTimeout(typePrefix, d);
+    let d = 35 + Math.random() * 20;
+    if (ch === ':' || ch === '(') d += 40;
+    if (ch === '\n') d += 80;
+    loopTimer = setTimeout(typePrefix, d);
   }
 
   // ── type + erase current role, then advance ──────────
@@ -3225,35 +3227,38 @@ document.querySelectorAll('.fade').forEach(el => io.observe(el));
     for (const ch of r.t) rChars.push({ ch, color: r.c });
     rChars.push({ ch: ')', color: '#e1e4e8' });
 
-    let spans = [];
+    const spans = [];
     let ri = 0;
 
     function typeChar() {
-      if (ri >= rChars.length) { setTimeout(eraseChar, 2400); return; }
+      if (ri >= rChars.length) {
+        loopTimer = setTimeout(eraseChar, 3200);
+        return;
+      }
       const { ch, color } = rChars[ri++];
       spans.push(span(ch, color));
       el.innerHTML = prefixHTML + spans.join('');
-      let d = 45 + Math.random() * 25;
-      if (ch === '"') d += 30;
-      setTimeout(typeChar, d);
+      let d = 38 + Math.random() * 22;
+      if (ch === '"') d += 20;
+      loopTimer = setTimeout(typeChar, d);
     }
 
     function eraseChar() {
       if (spans.length === 0) {
-        roleIdx++;
+        roleIdx = (roleIdx + 1) % roles.length;
         el.innerHTML = prefixHTML;
-        setTimeout(startRole, 320);
+        loopTimer = setTimeout(startRole, 280);
         return;
       }
       spans.pop();
       el.innerHTML = prefixHTML + spans.join('');
-      setTimeout(eraseChar, 30 + Math.random() * 20);
+      loopTimer = setTimeout(eraseChar, 22 + Math.random() * 15);
     }
 
     typeChar();
   }
 
-  setTimeout(typePrefix, 900);
+  loopTimer = setTimeout(typePrefix, 500);
 })();
 </script>
 
