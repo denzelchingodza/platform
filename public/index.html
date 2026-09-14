@@ -1459,91 +1459,173 @@
     /* ===== MOBILE ===== */
     @media (max-width: 660px) {
       /* Nav */
-      nav { padding: 18px 20px; justify-content: space-between; }
-      .nav-links { gap: 20px; }
+      nav { padding: 18px 20px; }
+      .nav-links { gap: 22px; }
       .nav-links a { font-size: 10px; letter-spacing: 0.08em; }
 
       /* Theme button */
-      #theme-btn { top: 14px; left: 14px; width: 28px; height: 28px; }
-      #theme-btn svg { width: 12px; height: 12px; }
+      #theme-btn { top: 14px; left: 14px; width: 30px; height: 30px; }
+      #theme-btn svg { width: 13px; height: 13px; }
 
-      /* Hero */
+      /* ── HERO ── */
       .hero { grid-template-columns: 1fr; min-height: 100svh; }
       .hero-photo { display: none; }
       #stars { width: 100%; }
-      .hero-text { padding: 90px 22px 60px; }
-      .hero-label { font-size: 9px; letter-spacing: 0.2em; margin-bottom: 14px; }
-      h1 { font-size: clamp(38px, 12vw, 60px); margin-bottom: 18px; }
-      .hero-bio { font-size: 12px; max-width: 100%; margin-bottom: 28px; }
-      .hero-bio code { font-size: 12px; }
-      .hero-actions { gap: 14px; flex-wrap: wrap; }
-      .btn-light { padding: 10px 20px; font-size: 10px; }
-      .link-dim { font-size: 10px; }
-      .hero-socials { gap: 14px; margin-top: 4px; }
-      .social-link { font-size: 10px; gap: 5px; }
-      /* hide Cmd+K hint on mobile — no keyboard */
+      .hero-text {
+        justify-content: flex-start;
+        padding: max(96px, 18vh) 24px 64px;
+      }
+      .hero-label {
+        font-size: 9px;
+        letter-spacing: 0.22em;
+        margin-bottom: 12px;
+      }
+      h1 {
+        font-size: clamp(40px, 13vw, 62px);
+        margin-bottom: 20px;
+        letter-spacing: -0.02em;
+      }
+      .hero-bio {
+        font-size: 12.5px;
+        max-width: 100%;
+        margin-bottom: 32px;
+        line-height: 2;
+      }
+      /* hero CTA row — primary button full, secondary inline */
+      .hero-actions {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        margin-bottom: 28px;
+      }
+      .btn-light {
+        padding: 13px 32px;
+        font-size: 11px;
+        border-color: #3a3a50;
+        letter-spacing: 0.12em;
+      }
+      .link-dim { font-size: 11px; }
+      /* hide Cmd+K hint on mobile */
       .hero-actions + * .cmdk-hint,
       #hero-hint { display: none; }
+      /* socials row — tighter */
+      .hero-socials {
+        gap: 16px;
+        flex-wrap: nowrap;
+        margin-top: 0;
+      }
+      .social-sep { display: none; }
+      .social-link { font-size: 9px; letter-spacing: 0.12em; gap: 5px; }
+      .social-link svg { width: 12px; height: 12px; }
 
-      /* Sections */
-      .section { padding: 60px 20px; }
-      .section-label { margin-bottom: 28px; }
+      /* ── SECTIONS ── */
+      .section { padding: 64px 24px; }
+      .section-label { margin-bottom: 32px; }
 
-      /* About */
+      /* ── ABOUT ── */
       .about-tars-wrap { flex-direction: column; }
       .tars-sidebar { display: none; }
-      .about-grid { grid-template-columns: 1fr; gap: 28px; margin-bottom: 16px; }
-      .about-main { grid-column: 1; font-size: 15px; line-height: 1.8; }
-      .about-main p + p { margin-top: 16px; }
-      /* Knicks CTA — collapse the side padding on mobile */
+      .about-grid { grid-template-columns: 1fr; gap: 32px; margin-bottom: 16px; }
+      .about-main {
+        grid-column: 1;
+        font-size: 15px;
+        line-height: 1.85;
+      }
+      .about-main p + p { margin-top: 18px; }
+      /* section sub-headers — add left accent */
+      .about-main > p[style*="uppercase"] {
+        padding-left: 10px;
+        border-left: 2px solid var(--border);
+      }
+      /* about cards — slightly less gap */
+      .about-card { padding-top: 18px; }
+      /* Knicks CTA — no overflow */
       .knicks-cta-wrap { padding: 0 !important; }
-      .knicks-arrow { display: none; } /* hide hand-drawn arrows on small screens */
+      .knicks-arrow { display: none; }
 
-      /* Experience */
-      .exp-row { grid-template-columns: 24px 1fr; gap: 0 14px; }
-      .exp-name { font-size: 13px; flex-wrap: wrap; }
+      /* ── EXPERIENCE ── */
+      .exp-row { grid-template-columns: 20px 1fr; gap: 0 16px; }
+      .exp-name { font-size: 13px; flex-wrap: wrap; gap: 6px; }
+      .exp-tech { font-size: 10px; }
+      .exp-desc { font-size: 12.5px; }
 
-      /* Project filters — horizontal scroll, no wrap */
+      /* ── PROJECT FILTERS — horizontal scroll ── */
       .proj-filters {
         flex-wrap: nowrap;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
-        padding: 14px 20px 0;
-        gap: 6px;
+        padding: 16px 24px 0;
+        gap: 7px;
+        /* fade-out right edge to hint scrollability */
+        -webkit-mask-image: linear-gradient(to right, black 80%, transparent 100%);
+        mask-image: linear-gradient(to right, black 80%, transparent 100%);
       }
       .proj-filters::-webkit-scrollbar { display: none; }
-      .pfbtn { flex-shrink: 0; font-size: 9px; padding: 4px 10px; }
+      .pfbtn { flex-shrink: 0; font-size: 10px; padding: 5px 12px; }
 
-      /* Projects */
+      /* ── PROJECTS ── */
       .proj-split { grid-template-columns: 1fr; }
-      .proj-side { border-right: none; border-bottom: 1px solid var(--border); padding: 40px 20px; }
-      #orbital { min-height: 300px; }
-      #projName { font-size: 18px; }
+      .proj-side {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        padding: 44px 24px;
+      }
+      #orbital { min-height: 280px; }
+      #projNum { font-size: 9px; }
+      #projName { font-size: 19px; line-height: 1.2; }
+      #projDesc { font-size: 12.5px; line-height: 1.75; }
+      .proj-actions { flex-direction: column; align-items: flex-start; gap: 10px; }
+      .btn-dark { padding: 11px 24px; font-size: 11px; }
+      /* change 'Click' to 'Tap' on mobile */
+      .panel-hint { font-size: 0; }
+      .panel-hint::before { content: 'Tap a planet'; font-size: 10px; }
 
-      /* Skills */
-      .skill-filters { gap: 6px; margin: 20px 0 28px; }
-      .sfbtn { font-size: 9px; padding: 4px 10px; }
-      #skill-net { max-height: 340px; }
+      /* ── SKILLS ── */
+      .skill-filters {
+        gap: 7px;
+        margin: 20px 0 30px;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scrollbar-width: none;
+        -webkit-mask-image: linear-gradient(to right, black 85%, transparent 100%);
+        mask-image: linear-gradient(to right, black 85%, transparent 100%);
+      }
+      .skill-filters::-webkit-scrollbar { display: none; }
+      .sfbtn { flex-shrink: 0; font-size: 10px; padding: 5px 12px; }
+      #skill-net { max-height: 320px; }
 
-      /* Contact */
-      .contact-layout { grid-template-columns: 1fr; }
+      /* ── CONTACT ── */
+      .contact-layout { grid-template-columns: 1fr; gap: 0; }
+      .contact-note { font-size: 14px; line-height: 1.75; margin-bottom: 28px; }
       .form-row { grid-template-columns: 1fr; }
-      .tars-scene { min-height: 300px; margin-top: 36px; }
+      input, textarea { font-size: 15px; padding: 13px 16px; }
+      textarea { min-height: 120px; }
+      .submit-btn {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+        padding: 14px;
+        font-size: 11px;
+        letter-spacing: 0.14em;
+      }
+      .tars-scene { min-height: 280px; margin-top: 40px; }
       #tars-chat { padding: 10px; }
-      #tars-chat-log { max-height: 100px; }
+      #tars-chat-log { max-height: 110px; font-size: 11px; }
+      #tars-chat-input { font-size: 14px; }
 
-      /* Footer */
-      .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+      /* ── FOOTER ── */
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
       .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
 
-      /* Toast full-width on mobile */
-      #toast-root { bottom: 16px; right: 14px; left: 14px; }
-      .toast { max-width: 100%; width: 100%; }
+      /* ── TOAST ── */
+      #toast-root { bottom: 20px; right: 16px; left: 16px; }
+      .toast { max-width: 100%; width: 100%; font-size: 13px; }
 
-      /* Palette */
-      #palette-box { width: 95vw; }
-      #palette-input { font-size: 15px; }
+      /* ── PALETTE ── */
+      #palette-box { width: 96vw; }
+      #palette-input { font-size: 16px; padding: 16px 18px; }
+      .pal-item { padding: 11px 16px; font-size: 13px; }
     }
 
     /* ===== TINY (380px and under) ===== */
