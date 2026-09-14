@@ -1445,26 +1445,115 @@
     }
     .fade.in { opacity: 1; transform: none; }
 
-    /* ===== MOBILE ===== */
-    @media (max-width: 660px) {
-      nav { padding: 18px 22px; }
+    /* ===== TABLET ===== */
+    @media (max-width: 900px) {
       .hero { grid-template-columns: 1fr; }
       .hero-photo { display: none; }
-      #stars { width: 100%; }
-      .hero-text { padding: 80px 22px 72px; }
-      .section { padding: 72px 22px; }
-      .about-grid { grid-template-columns: 1fr; gap: 32px; }
-      .about-main { grid-column: 1; }
+      .hero-text { padding: 0 6vw 0 7vw; }
       .proj-split { grid-template-columns: 1fr; }
-      .proj-side { border-right: none; border-bottom: 1px solid var(--border); padding: 64px 22px; }
-      #orbital { min-height: 380px; }
-      .skills-row { grid-template-columns: 28px 1fr; }
-      .skills-chips { grid-column: 2; }
+      .proj-side { border-right: none; border-bottom: 1px solid var(--border); padding: 56px 7vw; }
       .contact-layout { grid-template-columns: 1fr; }
-      .tars-scene { min-height: 380px; margin-top: 48px; }
+      .tars-scene { min-height: 360px; margin-top: 40px; }
+    }
+
+    /* ===== MOBILE ===== */
+    @media (max-width: 660px) {
+      /* Nav */
+      nav { padding: 18px 20px; justify-content: space-between; }
+      .nav-links { gap: 20px; }
+      .nav-links a { font-size: 10px; letter-spacing: 0.08em; }
+
+      /* Theme button */
+      #theme-btn { top: 14px; left: 14px; width: 28px; height: 28px; }
+      #theme-btn svg { width: 12px; height: 12px; }
+
+      /* Hero */
+      .hero { grid-template-columns: 1fr; min-height: 100svh; }
+      .hero-photo { display: none; }
+      #stars { width: 100%; }
+      .hero-text { padding: 90px 22px 60px; }
+      .hero-label { font-size: 9px; letter-spacing: 0.2em; margin-bottom: 14px; }
+      h1 { font-size: clamp(38px, 12vw, 60px); margin-bottom: 18px; }
+      .hero-bio { font-size: 12px; max-width: 100%; margin-bottom: 28px; }
+      .hero-bio code { font-size: 12px; }
+      .hero-actions { gap: 14px; flex-wrap: wrap; }
+      .btn-light { padding: 10px 20px; font-size: 10px; }
+      .link-dim { font-size: 10px; }
+      .hero-socials { gap: 14px; margin-top: 4px; }
+      .social-link { font-size: 10px; gap: 5px; }
+      /* hide Cmd+K hint on mobile — no keyboard */
+      .hero-actions + * .cmdk-hint,
+      #hero-hint { display: none; }
+
+      /* Sections */
+      .section { padding: 60px 20px; }
+      .section-label { margin-bottom: 28px; }
+
+      /* About */
+      .about-tars-wrap { flex-direction: column; }
+      .tars-sidebar { display: none; }
+      .about-grid { grid-template-columns: 1fr; gap: 28px; margin-bottom: 16px; }
+      .about-main { grid-column: 1; font-size: 15px; line-height: 1.8; }
+      .about-main p + p { margin-top: 16px; }
+      /* Knicks CTA — collapse the side padding on mobile */
+      .knicks-cta-wrap { padding: 0 !important; }
+      .knicks-arrow { display: none; } /* hide hand-drawn arrows on small screens */
+
+      /* Experience */
+      .exp-row { grid-template-columns: 24px 1fr; gap: 0 14px; }
+      .exp-name { font-size: 13px; flex-wrap: wrap; }
+
+      /* Project filters — horizontal scroll, no wrap */
+      .proj-filters {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding: 14px 20px 0;
+        gap: 6px;
+      }
+      .proj-filters::-webkit-scrollbar { display: none; }
+      .pfbtn { flex-shrink: 0; font-size: 9px; padding: 4px 10px; }
+
+      /* Projects */
+      .proj-split { grid-template-columns: 1fr; }
+      .proj-side { border-right: none; border-bottom: 1px solid var(--border); padding: 40px 20px; }
+      #orbital { min-height: 300px; }
+      #projName { font-size: 18px; }
+
+      /* Skills */
+      .skill-filters { gap: 6px; margin: 20px 0 28px; }
+      .sfbtn { font-size: 9px; padding: 4px 10px; }
+      #skill-net { max-height: 340px; }
+
+      /* Contact */
+      .contact-layout { grid-template-columns: 1fr; }
       .form-row { grid-template-columns: 1fr; }
-      .footer-grid { grid-template-columns: 1fr; }
-      .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+      .tars-scene { min-height: 300px; margin-top: 36px; }
+      #tars-chat { padding: 10px; }
+      #tars-chat-log { max-height: 100px; }
+
+      /* Footer */
+      .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+      .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+
+      /* Toast full-width on mobile */
+      #toast-root { bottom: 16px; right: 14px; left: 14px; }
+      .toast { max-width: 100%; width: 100%; }
+
+      /* Palette */
+      #palette-box { width: 95vw; }
+      #palette-input { font-size: 15px; }
+    }
+
+    /* ===== TINY (380px and under) ===== */
+    @media (max-width: 380px) {
+      h1 { font-size: clamp(32px, 11vw, 46px); }
+      .nav-links { gap: 14px; }
+      .nav-links a { font-size: 9px; }
+      .hero-text { padding: 85px 18px 56px; }
+      .section { padding: 52px 18px; }
+      .proj-side { padding: 36px 18px; }
     }
     .anno-mark {
       position: relative;
@@ -1703,13 +1792,13 @@
           .arrow-tip-r { animation: nudge-right 1.1s ease-in-out infinite; transform-origin: 74px 30px; }
           .arrow-tip-l { animation: nudge-left  1.1s ease-in-out infinite 0.15s; transform-origin: 10px 30px; }
         </style>
-        <div style="position:relative;display:inline-flex;margin-top:16px;padding:0 88px;">
-          <svg style="position:absolute;left:0;top:50%;transform:translateY(-65%);width:84px;height:48px;overflow:visible;pointer-events:none;" viewBox="0 0 84 48">
+        <div class="knicks-cta-wrap" style="position:relative;display:inline-flex;margin-top:16px;padding:0 88px;">
+          <svg class="knicks-arrow" style="position:absolute;left:0;top:50%;transform:translateY(-65%);width:84px;height:48px;overflow:visible;pointer-events:none;" viewBox="0 0 84 48">
             <text x="0" y="11" font-family="Space Grotesk,sans-serif" font-size="9" fill="#F47B20" letter-spacing="1.5">TRY IT</text>
             <path d="M28,16 Q58,17 74,30" fill="none" stroke="#F47B20" stroke-width="2" stroke-linecap="round"/>
             <path class="arrow-tip-r" d="M67,23 L74,30 L67,35" fill="none" stroke="#F47B20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-          <svg style="position:absolute;right:0;top:50%;transform:translateY(-65%);width:84px;height:48px;overflow:visible;pointer-events:none;" viewBox="0 0 84 48">
+          <svg class="knicks-arrow" style="position:absolute;right:0;top:50%;transform:translateY(-65%);width:84px;height:48px;overflow:visible;pointer-events:none;" viewBox="0 0 84 48">
             <text x="84" y="11" font-family="Space Grotesk,sans-serif" font-size="9" fill="#4a8fd4" letter-spacing="1.5" text-anchor="end">SERIOUSLY</text>
             <path d="M56,16 Q26,17 10,30" fill="none" stroke="#4a8fd4" stroke-width="2" stroke-linecap="round"/>
             <path class="arrow-tip-l" d="M17,23 L10,30 L17,35" fill="none" stroke="#4a8fd4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -3224,14 +3313,17 @@ function showToast(msg, type = 'success') {
     if ((e.metaKey || e.ctrlKey) && e.key === 'k') { e.preventDefault(); overlay.classList.contains('open') ? close() : open(); }
   });
 
-  // Add kbd hint near hero
-  const hint = document.createElement('p');
-  hint.style.cssText = 'font-family:Inter,sans-serif;font-size:11px;color:#444;margin-top:8px;';
+  // Add kbd hint near hero — hide on touch/mobile devices
   const isMac = /Mac|iPhone|iPad|iPod/.test(navigator.platform || navigator.userAgent);
-  const shortcut = isMac ? '⌘K' : 'Ctrl+K';
-  hint.innerHTML = 'Press <kbd style="padding:1px 5px;background:#1e1f2a;border:1px solid #333;border-radius:4px;font-size:10px;color:#888;">' + shortcut + '</kbd> to search';
-  const heroActions = document.querySelector('.hero-actions');
-  if (heroActions) heroActions.after(hint);
+  const isMobile = window.matchMedia('(max-width:660px)').matches || ('ontouchstart' in window && window.innerWidth < 768);
+  if (!isMobile) {
+    const hint = document.createElement('p');
+    hint.style.cssText = 'font-family:Inter,sans-serif;font-size:11px;color:#444;margin-top:8px;';
+    const shortcut = isMac ? '⌘K' : 'Ctrl+K';
+    hint.innerHTML = 'Press <kbd style="padding:1px 5px;background:#1e1f2a;border:1px solid #333;border-radius:4px;font-size:10px;color:#888;">' + shortcut + '</kbd> to search';
+    const heroActions = document.querySelector('.hero-actions');
+    if (heroActions) heroActions.after(hint);
+  }
 })();
 
 /* ══════════════════════════════════════════════
