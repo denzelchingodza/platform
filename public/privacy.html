@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy — Denzel Chingodza</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      min-height: 100vh;
+      background: #0d0e12;
+      color: #dddbd2;
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      font-size: 15px;
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 48px;
+      border-bottom: 1px solid #1a1b22;
+    }
+
+    .nav-logo {
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #5a5a6a;
+      text-decoration: none;
+    }
+
+    .nav-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #5a5a6a;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: #dddbd2; }
+    .nav-back svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 1.8; }
+
+    .content {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 72px 32px 120px;
+    }
+
+    .page-label {
+      font-size: 10px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: #3a3a4a;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: clamp(26px, 4vw, 38px);
+      font-weight: 500;
+      color: #dddbd2;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    .updated {
+      font-size: 12px;
+      color: #3a3a4a;
+      margin-bottom: 56px;
+    }
+
+    h2 {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #5a5a6a;
+      margin-top: 48px;
+      margin-bottom: 14px;
+    }
+
+    p { color: #8a8a96; margin-bottom: 16px; }
+    p:last-child { margin-bottom: 0; }
+
+    a { color: #7a7aaa; text-decoration: none; border-bottom: 1px solid #2a2a3e; transition: color 0.2s, border-color 0.2s; }
+    a:hover { color: #dddbd2; border-color: #5a5a7a; }
+
+    hr { border: none; border-top: 1px solid #1a1b22; margin: 48px 0; }
+
+    footer {
+      text-align: center;
+      padding: 32px;
+      font-size: 11px;
+      color: #2a2b35;
+      border-top: 1px solid #1a1b22;
+    }
+
+    @media (max-width: 660px) {
+      nav { padding: 18px 20px; }
+      .content { padding: 48px 20px 80px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="nav-logo">Denzel Chingodza</a>
+    <a href="/" class="nav-back">
+      <svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      Back
+    </a>
+  </nav>
+
+  <div class="content">
+    <p class="page-label">Legal</p>
+    <h1>Privacy</h1>
+    <p class="updated">Last updated: September 2026</p>
+
+    <p>This is a personal portfolio website. I take your privacy seriously and keep data collection to the absolute minimum needed to run this site.</p>
+
+    <h2>What I collect</h2>
+    <p><strong style="color:#dddbd2">Contact form.</strong> When you send a message through the contact form, your name, email address, and message are submitted to <a href="https://formspree.io" target="_blank" rel="noopener">Formspree</a> and forwarded directly to my email inbox. I do not store this data myself. Formspree's own privacy policy applies to how they handle form submissions.</p>
+
+    <p><strong style="color:#dddbd2">Analytics.</strong> This site uses <a href="https://vercel.com/analytics" target="_blank" rel="noopener">Vercel Analytics</a> and Vercel Speed Insights to understand how the site is used and how fast it loads. These tools collect anonymised page view data and performance metrics — no cookies, no fingerprinting, no personal identifiers. Vercel's privacy policy governs this data.</p>
+
+    <h2>What I don't collect</h2>
+    <p>No cookies are set. No tracking pixels. No advertising networks. No third-party data sharing beyond the two services listed above. No accounts, no logins, no user profiles.</p>
+
+    <h2>Third-party services</h2>
+    <p>This site loads fonts from <a href="https://fonts.google.com" target="_blank" rel="noopener">Google Fonts</a>. When your browser requests a font, Google's servers see your IP address. You can find Google's privacy policy at <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>.</p>
+
+    <p>The site is hosted on <a href="https://vercel.com" target="_blank" rel="noopener">Vercel</a>. Vercel's infrastructure logs standard server access data (IP address, request path, browser type, timestamp) for security and operational purposes. These logs are retained according to Vercel's own data retention policy.</p>
+
+    <hr />
+
+    <h2>Contact</h2>
+    <p>If you have any questions about privacy on this site, you can reach me at <a href="mailto:denzel.chingodza@icloud.com">denzel.chingodza@icloud.com</a>.</p>
+  </div>
+
+  <footer>© 2026 Denzel Chingodza. All rights reserved.</footer>
+
+</body>
+</html>

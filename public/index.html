@@ -25,6 +25,7 @@
   <!-- Favicon -->
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="icon" href="/favicon.svg" sizes="any" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <!-- PWA -->
   <link rel="manifest" href="/manifest.json" />
   <!-- Theme -->
@@ -1262,6 +1263,39 @@
       color: #4a4a54;
     }
 
+    .footer-bottom-right {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .footer-privacy {
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      font-size: 11px;
+      color: #4a4a54;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+    .footer-privacy:hover { color: #8a8a96; }
+
+    .footer-share-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #4a4a54;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: color 0.2s;
+    }
+    .footer-share-btn:hover { color: #8a8a96; }
+
     /* ===== ENTRY OVERLAY ===== */
     #entry {
       position: fixed;
@@ -1616,7 +1650,8 @@
 
       /* ── FOOTER ── */
       .footer-grid { grid-template-columns: 1fr; gap: 32px; }
-      .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+      .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+      .footer-bottom-right { justify-content: center; }
 
       /* ── TOAST ── */
       #toast-root { bottom: 20px; right: 16px; left: 16px; }
@@ -2148,8 +2183,15 @@
   <canvas id="pacman-strip" aria-hidden="true"></canvas>
 
   <div class="footer-bottom">
-    <span class="footer-credit">Production made by Denzel Chingodza</span>
+    <span class="footer-credit">© 2026 Denzel Chingodza</span>
     <span class="footer-built">Built with HTML / CSS / JS</span>
+    <div class="footer-bottom-right">
+      <a href="/privacy.html" class="footer-privacy">Privacy</a>
+      <button class="footer-share-btn" id="share-btn" aria-label="Share this site">
+        <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        Share
+      </button>
+    </div>
   </div>
 </footer>
 
@@ -2162,6 +2204,22 @@
 </button>
 
 <script>
+/* ── GLOBAL ERROR BOUNDARY ── */
+window.addEventListener('error', function (e) {
+  // Suppress noisy canvas/animation errors — they don't affect the page
+  const msg = (e.message || '').toLowerCase();
+  const isCanvas = msg.includes('canvas') || msg.includes('context') || msg.includes('getcontext');
+  if (isCanvas) { e.preventDefault(); return; }
+  // For anything else that breaks visible UI, show a subtle banner once
+  if (window.__errShown) return;
+  window.__errShown = true;
+  const b = document.createElement('div');
+  b.style.cssText = 'position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#1a1b22;border:1px solid #2a2b35;color:#8a8a96;font-family:Space Grotesk,sans-serif;font-size:12px;padding:10px 20px;border-radius:8px;z-index:9999;letter-spacing:0.04em;';
+  b.textContent = 'Something didn\'t load — try refreshing.';
+  document.body.appendChild(b);
+  setTimeout(() => b.remove(), 5000);
+});
+
 /* STARFIELD */
 const canvas = document.getElementById('stars');
 const ctx    = canvas.getContext('2d');
@@ -3630,6 +3688,45 @@ function showToast(msg, type = 'success') {
     applyTheme(html.getAttribute('data-theme') !== 'dark');
   });
 })();
+</script>
+
+<script>
+/* ── WEB SHARE API ── */
+(function () {
+  const btn = document.getElementById('share-btn');
+  if (!btn) return;
+
+  const shareData = {
+    title: 'Denzel Chingodza — Software Developer',
+    text: 'Check out my portfolio — Sentinel, StackScope, Muzezuru and more.',
+    url: 'https://denzelchingodza.vercel.app/',
+  };
+
+  btn.addEventListener('click', async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share(shareData);
+      } catch (e) {
+        // user cancelled — do nothing
+      }
+    } else {
+      // clipboard fallback
+      try {
+        await navigator.clipboard.writeText(shareData.url);
+        showToast('Link copied to clipboard');
+      } catch (e) {
+        showToast('Copy failed — visit denzelchingodza.vercel.app', 'error');
+      }
+    }
+  });
+})();
+
+/* ── SERVICE WORKER ── */
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch(() => {});
+  });
+}
 </script>
 </body>
 </html>

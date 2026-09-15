@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Offline — Denzel Chingodza</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500&family=Orbitron:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      min-height: 100vh;
+      background: #0d0e12;
+      color: #dddbd2;
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      overflow: hidden;
+    }
+
+    canvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      gap: 0;
+    }
+
+    .icon {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 28px;
+      opacity: 0.2;
+    }
+
+    .code {
+      font-family: 'Orbitron', monospace;
+      font-size: clamp(60px, 14vw, 120px);
+      font-weight: 700;
+      color: #1a1b22;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      user-select: none;
+    }
+
+    .label {
+      font-size: 10px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: #3a3a4a;
+      margin-top: 4px;
+      margin-bottom: 28px;
+    }
+
+    h1 {
+      font-size: clamp(16px, 2.5vw, 22px);
+      font-weight: 400;
+      color: #c8c4bc;
+      letter-spacing: -0.01em;
+      margin-bottom: 8px;
+    }
+
+    p {
+      color: rgba(237,234,224,0.3);
+      font-size: 13px;
+      max-width: 320px;
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #9090a2;
+      font-size: 11px;
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid #2a2b35;
+      border-radius: 6px;
+      padding: 10px 22px;
+      cursor: pointer;
+      background: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn:hover { border-color: #5a5a6a; color: #dddbd2; }
+
+    .tars-line {
+      margin-top: 48px;
+      font-size: 11px;
+      color: #2a2b35;
+      letter-spacing: 0.04em;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="stars"></canvas>
+
+  <div class="content">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#dddbd2" stroke-width="1.5">
+      <line x1="1" y1="1" x2="23" y2="23"/>
+      <path d="M16.72 11.06A10.94 10.94 0 0 1 19 12.55M5 12.55a10.94 10.94 0 0 1 5.17-2.39M10.71 5.05A16 16 0 0 1 22.56 9M1.42 9a15.91 15.91 0 0 1 4.7-2.88M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01"/>
+    </svg>
+    <div class="code">---</div>
+    <p class="label">no connection</p>
+    <h1>You're offline.</h1>
+    <p>Looks like you've lost your connection. Check your network and try again.</p>
+    <button class="btn" onclick="window.location.reload()">
+      <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+      Try again
+    </button>
+    <p class="tars-line">TARS: "Signal lost. I'd check the router."</p>
+  </div>
+
+  <script>
+    const c = document.getElementById('stars');
+    const ctx = c.getContext('2d');
+    let W, H, stars = [];
+
+    function resize() {
+      W = c.width  = window.innerWidth;
+      H = c.height = window.innerHeight;
+      stars = Array.from({ length: 80 }, () => ({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        r: Math.random() * 0.9 + 0.1,
+        o: Math.random() * 0.35 + 0.05,
+        s: Math.random() * 0.003 + 0.001,
+        d: Math.random() > 0.5 ? 1 : -1,
+      }));
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+      stars.forEach(s => {
+        s.o += s.s * s.d;
+        if (s.o > 0.4 || s.o < 0.03) s.d *= -1;
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(184,180,168,${s.o})`;
+        ctx.fill();
+      });
+      requestAnimationFrame(draw);
+    }
+
+    resize();
+    draw();
+    window.addEventListener('resize', resize);
+  </script>
+</body>
+</html>
