@@ -707,6 +707,58 @@
     .about-btn svg { width: 13px; height: 13px; fill: none; stroke: currentColor; stroke-width: 1.8; }
     .about-btn:hover { border-color: var(--text); background: rgba(24,24,30,.04); }
 
+    /* ── Knicks CTA button ── */
+    .knicks-btn {
+      display: inline-flex;
+      flex-direction: column;
+      text-decoration: none;
+      background: linear-gradient(135deg, #F47B20 0%, #e06510 60%, #c8540a 100%);
+      border: none;
+      outline: 3px solid #006BB6;
+      outline-offset: 0px;
+      padding: 0;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: outline-offset 0.2s, box-shadow 0.2s, transform 0.15s;
+      box-shadow: 0 0 0 0 rgba(0,107,182,0), 0 4px 20px rgba(244,123,32,0.3);
+    }
+    .knicks-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(255,255,255,0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .knicks-btn:hover {
+      outline-offset: 3px;
+      box-shadow: 0 0 0 3px rgba(0,107,182,0.35), 0 8px 32px rgba(244,123,32,0.45);
+      transform: translateY(-1px);
+    }
+    .knicks-btn-inner {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 13px 32px 10px;
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: #fff;
+      text-transform: uppercase;
+    }
+    .knicks-btn-tag {
+      display: block;
+      padding: 4px 32px 6px;
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      font-size: 9px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      background: rgba(0,0,0,0.18);
+      border-top: 1px solid rgba(0,107,182,0.4);
+    }
+
     /* ===== EXPERIENCE LIST ===== */
     .exp-list { display: flex; flex-direction: column; }
     .exp-row {
@@ -1920,7 +1972,13 @@
             <path d="M56,16 Q26,17 10,30" fill="none" stroke="#4a8fd4" stroke-width="2" stroke-linecap="round"/>
             <path class="arrow-tip-l" d="M17,23 L10,30 L17,35" fill="none" stroke="#4a8fd4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-          <a href="https://msg-coral.vercel.app/" target="_blank" rel="noopener noreferrer" class="about-btn" style="background:#F47B20;border:2px solid #006BB6;color:#fff;">Click here if you dare</a>
+          <a href="https://msg-coral.vercel.app/" target="_blank" rel="noopener noreferrer" class="knicks-btn">
+            <span class="knicks-btn-inner">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M4.93 4.93C7.24 9.57 7.24 14.43 4.93 19.07M19.07 4.93C16.76 9.57 16.76 14.43 19.07 19.07M2 12h20M12 2c-2.76 4.5-2.76 15.5 0 20M12 2c2.76 4.5 2.76 15.5 0 20"/></svg>
+              Click here if you dare
+            </span>
+            <span class="knicks-btn-tag">MSG — New York</span>
+          </a>
         </div>
       </div>
     </div>
@@ -1928,12 +1986,12 @@
     <div class="about-grid" style="margin-bottom: 0; margin-top: 20px;">
       <div class="about-card fade">
         <p class="about-card-title">Currently</p>
-        <p class="about-card-body">Finishing my Software Engineering degree, open to roles and opportunities. I work well independently and in teams, and I bring real projects to the table, not just coursework.</p>
+        <p class="about-card-body">Final year Software Engineering student at Eduvos, actively looking for internships and junior roles. I want to be on a team where I can contribute from day one, ask good questions, and grow fast. I show up with shipped projects, genuine curiosity about how things work, and the drive to earn my place — not just fill a seat.</p>
       </div>
 
       <div class="about-card fade">
         <p class="about-card-title">Building into</p>
-        <p class="about-card-body">NLP, language models, RAG pipelines, vector databases, model fine tuning. Specifically QLoRA fine tuning of large language models for low resource languages BLOOMZ-3B for Shona is live. I study the engineering behind what I use, not just the output.</p>
+        <p class="about-card-body">Full-stack systems end to end — clean APIs, solid databases, maintainable frontend, reliable infrastructure. On top of that: NLP, RAG pipelines, and LLM fine-tuning (BLOOMZ-3B for Shona is live). I care about the engineering, not just the output. Every tool I use, I try to understand what's actually happening under the hood.</p>
       </div>
 
       <div class="about-card fade">
