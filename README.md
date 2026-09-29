@@ -8,7 +8,7 @@ A personal portfolio site built from scratch without frameworks, bundlers, or de
 
 ## What it is
 
-A single-page portfolio with an animated orbital system at its centre. Each orbiting planet is a project. Clicking one opens the full project breakdown. The site uses a canvas-based star field for the hero section, a comet cursor, and scroll-driven animations for everything else.
+A single page portfolio with an animated orbital system at its centre. Each orbiting planet is a project. Clicking one opens the full project breakdown. The site uses a canvas based star field for the hero section, a comet cursor, and scroll-driven animations for everything else.
 
 The Interstellar theme is intentional. The entry overlay with the TARS quote and ambient audio sets the tone before anything else loads. Built for the love of coding.
 
@@ -26,30 +26,6 @@ The Interstellar theme is intentional. The entry overlay with the TARS quote and
 
 No frameworks. No build step. No dependencies. One file.
 
----
 
-## Running locally
-
-```bash
-git clone https://github.com/denzelchingodza/platform.git
-cd platform
-open public/index.html
-```
-
-Or drag `public/index.html` into a browser. There is no build step.
-
----
-
-## Structure
-
-```
-platform/
-├── public/
-│   └── index.html    ← The entire site: HTML, CSS, and JS in one file
-├── vercel.json       ← Vercel routing config
-└── README.md
-```
-
----
 
 Built by Denzel Chingodza
