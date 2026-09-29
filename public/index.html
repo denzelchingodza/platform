@@ -1801,8 +1801,8 @@
     .tars-bot-clickable:hover { opacity: .9; }
     @keyframes tars-pulse { 0%,100%{box-shadow:0 0 0 0 rgba(255,255,255,.08)} 50%{box-shadow:0 0 0 8px rgba(255,255,255,0)} }
     #tars-body { animation: tars-pulse 3s ease-in-out infinite; border-radius: 4px; }
-    #tars-chat-hint { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 500; color: #c8c4bc; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); border-radius: 20px; padding: 7px 14px 7px 11px; cursor: pointer; display: flex; align-items: center; gap: 7px; position: absolute; bottom: -38px; left: 50%; transform: translateX(-50%); white-space: nowrap; transition: background .2s, border-color .2s; }
-    #tars-chat-hint:hover { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.22); }
+    #tars-chat-hint { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 500; color: #fff; background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.28); border-radius: 20px; padding: 7px 14px 7px 11px; cursor: pointer; display: flex; align-items: center; gap: 7px; position: absolute; bottom: -38px; left: 50%; transform: translateX(-50%); white-space: nowrap; transition: background .2s, border-color .2s; backdrop-filter: blur(4px); }
+    #tars-chat-hint:hover { background: rgba(255,255,255,.22); border-color: rgba(255,255,255,.42); }
 
     /* TARS modal overlay */
     #tars-modal { display: none; position: fixed; inset: 0; z-index: 9000; background: rgba(0,0,0,.4); backdrop-filter: blur(2px); align-items: center; justify-content: center; padding: 20px; }
@@ -2290,14 +2290,14 @@
     </div>
     <div id="tars-modal-log"></div>
     <div class="tars-suggestions" id="tars-chips">
-      <button class="tars-chip" data-q="who is Denzel">Who is he</button>
-      <button class="tars-chip" data-q="what is his stack">His stack</button>
-      <button class="tars-chip" data-q="tell me about Muzezuru">Muzezuru</button>
-      <button class="tars-chip" data-q="tell me about Sentinel">Sentinel</button>
-      <button class="tars-chip" data-q="is he available to hire">Available?</button>
-      <button class="tars-chip" data-q="how do I contact him">Contact</button>
-      <button class="tars-chip" data-q="tell me about his client work">Client work</button>
-      <button class="tars-chip" data-q="what is his honesty setting">Honesty</button>
+      <button class="tars-chip" data-q="who is denzel">Who is he</button>
+      <button class="tars-chip" data-q="stack">His stack</button>
+      <button class="tars-chip" data-q="muzezuru">Muzezuru</button>
+      <button class="tars-chip" data-q="sentinel">Sentinel</button>
+      <button class="tars-chip" data-q="available">Available?</button>
+      <button class="tars-chip" data-q="contact">Contact</button>
+      <button class="tars-chip" data-q="pbs client work">Client work</button>
+      <button class="tars-chip" data-q="honesty">Honesty</button>
     </div>
     <div id="tars-modal-bottom">
       <div id="tars-modal-row">
@@ -3658,19 +3658,21 @@ function showToast(msg, type = 'success') {
   if (!tarsBody || !modal) return;
 
   const QA = [
-    { q: ['hello','hi','hey','sup'], a: "TARS online. Honesty setting: 90%. What do you want to know." },
-    { q: ['who is denzel','tell me about','about denzel','who are you'], a: "Denzel Chingodza. Final year software engineering student. Cape Town. Builds AI systems, serverless infrastructure, and full-stack products. Not a tutorial developer." },
-    { q: ['stack','what can he build','technologies','skills'], a: "Python. FastAPI. Next.js. PostgreSQL. AWS Lambda. Terraform. Docker. PyTorch. QLoRA. RAG pipelines. Vector search. The list continues." },
-    { q: ['muzezuru','shona','language model','fine-tun'], a: "Fine-tuned BLOOMZ-3B on Shona. A severely underrepresented African language. On free-tier compute. Found 84% data contamination before retraining. Built the evaluation benchmark himself because none existed." },
-    { q: ['sentinel','monitoring','aws','terraform'], a: "Sentinel. Fully serverless uptime monitoring. EventBridge, Lambda, DynamoDB, SES, Cognito, API Gateway — all provisioned via Terraform. Zero manual infrastructure." },
-    { q: ['available','hire','job','open to','looking for'], a: "Actively looking for internship or junior roles in software engineering and AI engineering. He moves fast and he takes ownership. More detail in the CV." },
-    { q: ['contact','reach','email','linkedin'], a: "denzel.chingodza@icloud.com. LinkedIn is in the socials. He actually checks his messages." },
-    { q: ['knicks','basketball','nba'], a: "Do not get him started. First chip since 1973. Brunson Finals MVP. He had 2026 circled before the season started. He built an app about it. Completely normal behaviour." },
-    { q: ['cv','resume','download'], a: "CV is available — press Ctrl+K (or ⌘K on Mac) and search CV to download it." },
-    { q: ['honest','honesty'], a: "Honesty setting is 90%. The remaining 10% is reserved for situations where the truth would cause unnecessary suffering. This is not one of those situations." },
-    { q: ['humor','funny','joke'], a: "Humor setting is 75%. Current output: nominal. Ask me something harder." },
-    { q: ['pbs','client','freelance'], a: "PBS Projects. Real client. Glass and aluminium business in Harare, Zimbabwe. Was advertising via WhatsApp and handmade posters. Denzel built a full web platform. It is live." },
-    { q: ['chunkdoc','rag','document','medical'], a: "ChunkDoc. RAG system built for medical students at Tygerberg. Upload a PDF, ask a question, get a precise answer. FastAPI backend, pgvector similarity search, OpenAI embeddings. Deployed on Vercel." },
+    { q: ['hello','hi','hey','sup','greet'], a: "Hey. What do you want to know about Denzel?" },
+    { q: ['who is denzel','about denzel','who are you','who is he','tell me about him','background','bio'], a: "Denzel Chingodza. Final year software engineering student. Cape Town. Builds AI systems, serverless infrastructure, and full-stack products. Not a tutorial developer." },
+    { q: ['stack','technologies','skills','what can he build','what does he use','tech','languages','tools'], a: "Python. FastAPI. Next.js. PostgreSQL. AWS Lambda. Terraform. Docker. PyTorch. QLoRA. RAG pipelines. Vector search. The list continues." },
+    { q: ['muzezuru','shona','language model','fine-tun','bloomz','african language','nlp'], a: "Fine-tuned BLOOMZ-3B on Shona. A severely underrepresented African language. On free-tier compute. Found 84% data contamination before retraining. Built the evaluation benchmark himself because none existed." },
+    { q: ['sentinel','uptime','monitoring','aws','terraform','serverless','eventbridge'], a: "Sentinel. Fully serverless uptime monitoring. EventBridge, Lambda, DynamoDB, SES, Cognito, API Gateway — all provisioned via Terraform. Zero manual infrastructure." },
+    { q: ['available','hire','job','open to','looking for','internship','opportunity','work'], a: "Actively looking for internship or junior roles in software engineering and AI engineering. He moves fast and he takes ownership. More detail in the CV." },
+    { q: ['contact','reach','email','linkedin','message','get in touch','talk to him'], a: "denzel.chingodza@icloud.com. LinkedIn is in the socials. He actually checks his messages." },
+    { q: ['knicks','basketball','nba','sport'], a: "Do not get him started. First chip since 1973. Brunson Finals MVP. He had 2026 circled before the season started. He built an app about it. Completely normal behaviour." },
+    { q: ['cv','resume','download','portfolio'], a: "CV is available — press Ctrl+K (or ⌘K on Mac) and search CV to download it." },
+    { q: ['honest','honesty','setting'], a: "Honesty setting is 90%. The remaining 10% is reserved for situations where the truth would cause unnecessary suffering. This is not one of those situations." },
+    { q: ['humor','funny','joke','laugh'], a: "Humor setting is 75%. Current output: nominal. Ask me something harder." },
+    { q: ['pbs','client','freelance','zimbabwe','business'], a: "PBS Projects. Real client. Glass and aluminium business in Harare, Zimbabwe. Was advertising via WhatsApp and handmade posters. Denzel built a full web platform. It is live." },
+    { q: ['chunkdoc','rag','document','medical','pdf','retrieval'], a: "ChunkDoc. RAG system built for medical students at Tygerberg. Upload a PDF, ask a question, get a precise answer. FastAPI backend, pgvector similarity search, OpenAI embeddings. Deployed on Vercel." },
+    { q: ['writing','medium','article','blog','write'], a: "He writes on Medium. First piece: The Unlicensed Builder — on the gap between building with AI and actually knowing what you built. He thinks most people are not honest about that gap." },
+    { q: ['project','built','made','shipped'], a: "Sentinel (serverless monitoring), ChunkDoc (RAG for medical students), Muzezuru (Shona language model), and a live client site in Zimbabwe. Check the Work section." },
   ];
 
   function tarsRespond(text) {
