@@ -1722,9 +1722,9 @@
         letter-spacing: 0.14em;
       }
       .tars-scene { min-height: 280px; margin-top: 40px; }
-      #tars-chat { padding: 10px; }
-      #tars-chat-log { max-height: 110px; font-size: 11px; }
-      #tars-chat-input { font-size: 14px; }
+      #tars-modal-inner { max-height: 100vh; border-radius: 12px; }
+      #tars-modal-log { min-height: 180px; }
+      #tars-modal-input { font-size: 16px; }
 
       /* ── FOOTER ── */
       .footer-grid { grid-template-columns: 1fr; gap: 32px; }
@@ -1797,18 +1797,47 @@
     .pal-key { display: inline-block; padding: 1px 5px; background: #1e1f2a; border: 1px solid #333; border-radius: 4px; font-size: 10px; color: #666; }
 
     /* ── TARS chat ── */
-    #tars-chat { display: none; position: absolute; bottom: 0; left: 0; right: 0; z-index: 10; background: rgba(10,11,18,.93); border: 1px solid #1e2a3a; border-radius: 10px; padding: 12px; backdrop-filter: blur(6px); }
-    #tars-chat.open { display: block; }
-    #tars-chat-log { font-family: 'Inter', sans-serif; font-size: 12px; color: #9090a0; line-height: 1.7; max-height: 120px; overflow-y: auto; margin-bottom: 8px; }
-    #tars-chat-log .tars-line { margin-bottom: 6px; }
-    #tars-chat-log .tars-line.you { color: #6a9fff; }
-    #tars-chat-row { display: flex; gap: 6px; }
-    #tars-chat-input { flex: 1; background: #0d1017; border: 1px solid #2a2b35; border-radius: 6px; padding: 6px 10px; font-family: 'Inter', sans-serif; font-size: 12px; color: #e0e0e0; outline: none; }
-    #tars-chat-send { background: #1a3a5c; border: none; border-radius: 6px; padding: 6px 10px; color: #6aafff; font-family: 'Space Grotesk', sans-serif; font-size: 11px; cursor: pointer; }
-    #tars-chat-send:hover { background: #1e4a72; }
     .tars-bot-clickable { cursor: pointer; }
     .tars-bot-clickable:hover { opacity: .85; }
     #tars-chat-hint { font-family: 'Inter', sans-serif; font-size: 10px; color: #3a8fff; opacity: .5; text-align: center; position: absolute; bottom: -22px; left: 0; right: 0; }
+
+    /* TARS modal overlay */
+    #tars-modal { display: none; position: fixed; inset: 0; z-index: 9000; background: rgba(0,0,0,.55); backdrop-filter: blur(4px); align-items: center; justify-content: center; padding: 16px; }
+    #tars-modal.open { display: flex; }
+    #tars-modal-inner { background: #0d1017; border: 1px solid #1e2a3a; border-radius: 16px; width: 100%; max-width: 480px; max-height: 90vh; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 24px 64px rgba(0,0,0,.6); }
+    #tars-modal-header { display: flex; align-items: center; gap: 10px; padding: 16px 20px; border-bottom: 1px solid #141a24; flex-shrink: 0; }
+    #tars-modal-led { width: 8px; height: 8px; border-radius: 50%; background: #3a8fff; animation: tars-led 2.4s ease-in-out infinite; flex-shrink: 0; }
+    #tars-modal-title { font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 600; color: #c0cfe0; flex: 1; }
+    #tars-modal-sub { font-family: 'Inter', sans-serif; font-size: 11px; color: #3a4a5a; }
+    #tars-modal-close { background: none; border: none; color: #3a4a5a; cursor: pointer; font-size: 20px; line-height: 1; padding: 0 0 0 8px; }
+    #tars-modal-close:hover { color: #6e7a8a; }
+    #tars-modal-log { flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 12px; min-height: 240px; }
+    #tars-modal-log::-webkit-scrollbar { width: 4px; }
+    #tars-modal-log::-webkit-scrollbar-track { background: transparent; }
+    #tars-modal-log::-webkit-scrollbar-thumb { background: #1e2a3a; border-radius: 4px; }
+    .tars-msg { display: flex; gap: 10px; max-width: 88%; }
+    .tars-msg.tars { align-self: flex-start; }
+    .tars-msg.user { align-self: flex-end; flex-direction: row-reverse; }
+    .tars-msg-avatar { width: 28px; height: 28px; border-radius: 6px; background: #0a1220; border: 1px solid #1e2a3a; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: 'Space Grotesk', sans-serif; font-size: 9px; font-weight: 700; color: #3a8fff; letter-spacing: .04em; }
+    .tars-msg-bubble { font-family: 'Inter', sans-serif; font-size: 13px; line-height: 1.65; padding: 10px 14px; border-radius: 12px; }
+    .tars-msg.tars .tars-msg-bubble { background: #111827; border: 1px solid #1e2a3a; color: #9aacbe; border-top-left-radius: 4px; }
+    .tars-msg.user .tars-msg-bubble { background: #1a3a5c; color: #c8dff5; border-top-right-radius: 4px; }
+    .tars-suggestions { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 20px 16px; flex-shrink: 0; }
+    .tars-chip { font-family: 'Inter', sans-serif; font-size: 11px; color: #4a7aaa; background: #0a1220; border: 1px solid #1a2a3a; border-radius: 20px; padding: 5px 12px; cursor: pointer; transition: border-color .15s, color .15s; white-space: nowrap; }
+    .tars-chip:hover { border-color: #3a6a9a; color: #7aaad0; }
+    #tars-modal-bottom { padding: 14px 20px; border-top: 1px solid #141a24; flex-shrink: 0; }
+    #tars-modal-row { display: flex; gap: 8px; align-items: center; }
+    #tars-modal-input { flex: 1; background: #080d14; border: 1px solid #1e2a3a; border-radius: 10px; padding: 10px 14px; font-family: 'Inter', sans-serif; font-size: 13px; color: #c0cfe0; outline: none; transition: border-color .15s; }
+    #tars-modal-input:focus { border-color: #2a4a6a; }
+    #tars-modal-input::placeholder { color: #2a3a4a; }
+    #tars-modal-send { background: #1a3a5c; border: none; border-radius: 10px; width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0; transition: background .15s; }
+    #tars-modal-send:hover { background: #1e4a72; }
+    #tars-modal-send svg { width: 16px; height: 16px; }
+    .tars-typing { display: flex; gap: 4px; align-items: center; padding: 10px 14px; }
+    .tars-typing span { width: 5px; height: 5px; border-radius: 50%; background: #3a8fff; opacity: .4; animation: tars-dot 1.2s ease-in-out infinite; }
+    .tars-typing span:nth-child(2) { animation-delay: .2s; }
+    .tars-typing span:nth-child(3) { animation-delay: .4s; }
+    @keyframes tars-dot { 0%,80%,100%{opacity:.2} 40%{opacity:1} }
   </style>
   <!-- Structured data -->
   <script type="application/ld+json">
@@ -2209,17 +2238,41 @@
 
       <!-- TARS chat panel -->
       <p id="tars-chat-hint">click TARS to talk</p>
-      <div id="tars-chat">
-        <div id="tars-chat-log"></div>
-        <div id="tars-chat-row">
-          <input id="tars-chat-input" type="text" placeholder="Ask TARS anything...">
-          <button id="tars-chat-send">Send</button>
-        </div>
-      </div>
 
     </div>
   </div>
 </section>
+
+<!-- TARS MODAL (outside section, fixed overlay) -->
+<div id="tars-modal" role="dialog" aria-modal="true" aria-label="Chat with TARS">
+  <div id="tars-modal-inner">
+    <div id="tars-modal-header">
+      <div id="tars-modal-led"></div>
+      <div id="tars-modal-title">TARS</div>
+      <div id="tars-modal-sub">Honesty: 90% &nbsp;·&nbsp; Humor: 75%</div>
+      <button id="tars-modal-close" aria-label="Close">×</button>
+    </div>
+    <div id="tars-modal-log"></div>
+    <div class="tars-suggestions" id="tars-chips">
+      <button class="tars-chip" data-q="who is Denzel">Who is he?</button>
+      <button class="tars-chip" data-q="what is his stack">His stack</button>
+      <button class="tars-chip" data-q="tell me about Muzezuru">Muzezuru</button>
+      <button class="tars-chip" data-q="tell me about Sentinel">Sentinel</button>
+      <button class="tars-chip" data-q="is he available to hire">Available?</button>
+      <button class="tars-chip" data-q="how do I contact him">Contact</button>
+      <button class="tars-chip" data-q="tell me about his client work">Client work</button>
+      <button class="tars-chip" data-q="what is his honesty setting">Honesty</button>
+    </div>
+    <div id="tars-modal-bottom">
+      <div id="tars-modal-row">
+        <input id="tars-modal-input" type="text" placeholder="Ask TARS anything…" autocomplete="off">
+        <button id="tars-modal-send" aria-label="Send">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#6aafff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- ===== FOOTER (WHITE) ===== -->
 <footer>
@@ -3555,16 +3608,18 @@ function showToast(msg, type = 'success') {
 })();
 
 /* ══════════════════════════════════════════════
-   TARS INTERACTIVE CHAT
+   TARS INTERACTIVE CHAT — modal version
 ══════════════════════════════════════════════ */
 (function() {
-  const body   = document.getElementById('tars-body');
-  const chat   = document.getElementById('tars-chat');
-  const log    = document.getElementById('tars-chat-log');
-  const input  = document.getElementById('tars-chat-input');
-  const send   = document.getElementById('tars-chat-send');
-  const hint   = document.getElementById('tars-chat-hint');
-  if (!body || !chat) return;
+  const tarsBody = document.getElementById('tars-body');
+  const modal    = document.getElementById('tars-modal');
+  const closeBtn = document.getElementById('tars-modal-close');
+  const log      = document.getElementById('tars-modal-log');
+  const input    = document.getElementById('tars-modal-input');
+  const sendBtn  = document.getElementById('tars-modal-send');
+  const chips    = document.getElementById('tars-chips');
+  const hint     = document.getElementById('tars-chat-hint');
+  if (!tarsBody || !modal) return;
 
   const QA = [
     { q: ['hello','hi','hey','sup'], a: "TARS online. Honesty setting: 90%. What do you want to know." },
@@ -3579,48 +3634,105 @@ function showToast(msg, type = 'success') {
     { q: ['honest','honesty'], a: "Honesty setting is 90%. The remaining 10% is reserved for situations where the truth would cause unnecessary suffering. This is not one of those situations." },
     { q: ['humor','funny','joke'], a: "Humor setting is 75%. Current output: nominal. Ask me something harder." },
     { q: ['pbs','client','freelance'], a: "PBS Projects. Real client. Glass and aluminium business in Harare, Zimbabwe. Was advertising via WhatsApp and handmade posters. Denzel built a full web platform. It is live." },
+    { q: ['chunkdoc','rag','document','medical'], a: "ChunkDoc. RAG system built for medical students at Tygerberg. Upload a PDF, ask a question, get a precise answer. FastAPI backend, pgvector similarity search, OpenAI embeddings. Deployed on Vercel." },
   ];
 
-  function tarsRespond(input_text) {
-    const q = input_text.toLowerCase();
+  function tarsRespond(text) {
+    const q = text.toLowerCase();
     for (const pair of QA) {
       if (pair.q.some(k => q.includes(k))) return pair.a;
     }
     return "Insufficient data. Try asking about his projects, stack, availability, or Muzezuru.";
   }
 
-  function addLine(text, cls) {
-    const d = document.createElement('div');
-    d.className = 'tars-line' + (cls ? ' ' + cls : '');
-    d.textContent = text;
-    log.appendChild(d);
+  function addMsg(text, role) {
+    const wrap = document.createElement('div');
+    wrap.className = 'tars-msg ' + role;
+    const avatar = document.createElement('div');
+    avatar.className = 'tars-msg-avatar';
+    avatar.textContent = role === 'tars' ? 'T' : 'YOU';
+    const bubble = document.createElement('div');
+    bubble.className = 'tars-msg-bubble';
+    bubble.textContent = text;
+    wrap.appendChild(avatar);
+    wrap.appendChild(bubble);
+    log.appendChild(wrap);
     log.scrollTop = log.scrollHeight;
+    return wrap;
   }
 
-  function submit() {
-    const q = input.value.trim();
+  function showTyping() {
+    const wrap = document.createElement('div');
+    wrap.className = 'tars-msg tars';
+    wrap.id = 'tars-typing-indicator';
+    const avatar = document.createElement('div');
+    avatar.className = 'tars-msg-avatar';
+    avatar.textContent = 'T';
+    const bubble = document.createElement('div');
+    bubble.className = 'tars-msg-bubble tars-typing';
+    bubble.innerHTML = '<span></span><span></span><span></span>';
+    wrap.appendChild(avatar);
+    wrap.appendChild(bubble);
+    log.appendChild(wrap);
+    log.scrollTop = log.scrollHeight;
+    return wrap;
+  }
+
+  function submit(text) {
+    const q = (text || input.value).trim();
     if (!q) return;
-    addLine('You: ' + q, 'you');
     input.value = '';
-    setTimeout(() => addLine('TARS: ' + tarsRespond(q)), 420);
+    if (chips) chips.style.display = 'none';
+    addMsg(q, 'user');
+    const typing = showTyping();
+    setTimeout(() => {
+      typing.remove();
+      addMsg(tarsRespond(q), 'tars');
+    }, 600 + Math.random() * 300);
+  }
+
+  function openModal() {
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    if (hint) hint.textContent = 'click to close';
+    if (log.children.length === 0) {
+      setTimeout(() => {
+        addMsg('TARS online. Honesty setting: 90%. Ask me anything about Denzel.', 'tars');
+        input.focus();
+      }, 300);
+    } else {
+      setTimeout(() => input.focus(), 100);
+    }
+  }
+
+  function closeModal() {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+    if (hint) hint.textContent = 'click TARS to talk';
+  }
+
+  tarsBody.addEventListener('click', openModal);
+  closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  sendBtn.addEventListener('click', () => submit());
+  input.addEventListener('keydown', e => { if (e.key === 'Enter') submit(); });
+
+  if (chips) {
+    chips.querySelectorAll('.tars-chip').forEach(chip => {
+      chip.addEventListener('click', () => submit(chip.dataset.q));
+    });
   }
 
   const bubTR = document.querySelector('.tars-bub[style*="top:30px"]');
   const bubBL = document.getElementById('tars-bub-bl');
-
-  body.addEventListener('click', () => {
-    const isOpen = chat.classList.toggle('open');
-    hint.textContent = isOpen ? 'click to close' : 'click TARS to talk';
+  const observer = new MutationObserver(() => {
+    const isOpen = modal.classList.contains('open');
     if (bubTR) bubTR.style.opacity = isOpen ? '0' : '';
     if (bubBL) bubBL.style.opacity = isOpen ? '0' : '';
-    if (isOpen && log.children.length === 0) {
-      setTimeout(() => addLine('TARS: Online. Ask me about Denzel.'), 300);
-      setTimeout(() => input.focus(), 350);
-    }
   });
-
-  send.addEventListener('click', submit);
-  input.addEventListener('keydown', e => { if (e.key === 'Enter') submit(); });
+  observer.observe(modal, { attributes: true, attributeFilter: ['class'] });
 })();
 
 /* ══════════════════════════════════════════════
