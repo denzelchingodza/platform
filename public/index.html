@@ -1964,7 +1964,7 @@
         </p>
 
         <p>
-          I work mostly in Python across backend APIs, cloud infrastructure, and full-stack products. I built <a href="#work" onclick="setTimeout(()=>{showProject(0);},350)" style="color:inherit;text-decoration:none;"><span class="anno-mark underline" data-anno-group="0" data-anno-delay="0"><span>Sentinel</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q25,4 50,8 Q75,11 99,7" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span></a>, a fully serverless uptime monitoring platform on AWS: Lambda functions triggered by EventBridge, state stored in DynamoDB, email alerts through SES, user accounts via Cognito, and all of it provisioned from scratch using Terraform. I also took a real client in Zimbabwe from a WhatsApp-based operation to a live production platform. I know how to take something from zero to deployed.
+          I work mostly in Python across backend APIs, cloud infrastructure, and full-stack products. The project I am most proud of is <a href="#work" onclick="setTimeout(()=>{showProject(0);},350)" style="color:inherit;text-decoration:none;"><span class="anno-mark underline" data-anno-group="0" data-anno-delay="0"><span>Sentinel</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q25,4 50,8 Q75,11 99,7" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span></a>, a fully serverless uptime monitoring platform built on AWS. I chose Lambda over a traditional server because the workload is event-driven — a function that runs every 60 seconds and exits does not need a machine running around the clock. EventBridge schedules the checks. DynamoDB stores monitor state because the access pattern is simple key lookups with no relational joins, and the pay-per-request model fits a system that could sit idle for hours. SES handles the alerts. Cognito manages user accounts. None of it is wired together manually — every resource is defined in Terraform so the infrastructure is version-controlled, reviewable, and reproducible from a single command. I also took a real client in Zimbabwe from a WhatsApp-based operation to a live production platform. I know how to take something from zero to deployed.
         </p>
 
         <p>
@@ -2730,12 +2730,24 @@ function drawOrbital(ts) {
     const x     = CX + Math.cos(angle) * o.rx;
     const y     = CY + Math.sin(angle) * o.ry;
     const depth = (Math.sin(angle) + 1) / 2;
-    const r     = (3.5 + depth * 3) * Math.max(sc, 0.7);
+    const isSentinel = proj.name === 'Sentinel';
+    const r     = ((isSentinel ? 6 : 3.5) + depth * 3) * Math.max(sc, 0.7);
     const isActive = i === activeIdx;
     const isDimmed = activeFilter && !activeFilter(proj.stack);
     octx.globalAlpha = isDimmed ? 0.18 : 1;
 
     planets[i] = { x, y, r: r + 10 };
+
+    // Sentinel: always-on pulse ring
+    if (isSentinel && !isDimmed) {
+      octx.save();
+      octx.beginPath();
+      octx.arc(x, y, r + 6, 0, Math.PI * 2);
+      octx.strokeStyle = 'rgba(180,178,172,0.35)';
+      octx.lineWidth = 1.2;
+      octx.stroke();
+      octx.restore();
+    }
 
     if (isActive) {
       const glow = octx.createRadialGradient(x, y, 0, x, y, r * 3.5);
