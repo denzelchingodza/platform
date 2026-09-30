@@ -68,65 +68,73 @@
       background-attachment: fixed;
     }
 
-    /* sections */
-    [data-theme="dark"] .section,
-    [data-theme="dark"] .proj-section { background: #0d0e12; }
+    /* sections — lifted slightly above body so they're visually distinct */
+    [data-theme="dark"] .section { background: #0f1016; border-top-color: #1e1f2a; }
+    [data-theme="dark"] .proj-section { background: #0d0e13; border-top-color: #1e1f2a; }
+
+    /* section labels — more visible */
+    [data-theme="dark"] .section-label { color: #6a6a80; letter-spacing: 0.3em; }
+
+    /* about body text — warmer, more readable */
+    [data-theme="dark"] .about-main p { color: #c8c6be; line-height: 1.85; }
+    [data-theme="dark"] .about-main p[style*="uppercase"] { opacity: 0.55 !important; }
 
     /* form inputs */
     [data-theme="dark"] input,
     [data-theme="dark"] textarea {
-      background: #0f1018;
-      color: #dddbd2;
-      border-color: #22232e;
+      background: #10111a;
+      color: #d8d6ce;
+      border-color: #26273a;
     }
     [data-theme="dark"] input:focus,
-    [data-theme="dark"] textarea:focus { border-color: #44455a; }
+    [data-theme="dark"] textarea:focus { border-color: #4a4b62; }
     [data-theme="dark"] input::placeholder,
-    [data-theme="dark"] textarea::placeholder { color: #44445a; }
+    [data-theme="dark"] textarea::placeholder { color: #40415a; }
 
-    /* stack tags */
-    [data-theme="dark"] .stag { background: #13141c; color: #7a7a88; }
-
-    /* about buttons */
-    [data-theme="dark"] .about-btn { border-color: #22232e; color: #7a7a88; background: transparent; }
-    [data-theme="dark"] .about-btn:hover { border-color: #dddbd2; color: #dddbd2; background: transparent; }
+    /* stack tags — more contrast */
+    [data-theme="dark"] .stag { background: #161720; color: #8a8a9a; border: 1px solid #22233a; }
 
     /* skill filter chips */
-    [data-theme="dark"] .sfbtn { background: #0f1018; border-color: #22232e; color: #54545e; }
-    [data-theme="dark"] .sfbtn:hover { background: #14151e; color: #9090a2; border-color: #34354a; }
-    [data-theme="dark"] .sfbtn.active { background: #14151e; border-color: #44455a; color: #dddbd2; }
+    [data-theme="dark"] .sfbtn { background: #10111a; border-color: #22233a; color: #58586e; }
+    [data-theme="dark"] .sfbtn:hover { background: #14152a; color: #9a9ab0; border-color: #38395a; }
+    [data-theme="dark"] .sfbtn.active { background: #14152a; border-color: #5a5b78; color: #dddbd2; }
 
     /* project filter chips */
-    [data-theme="dark"] .pfbtn { border-color: #22232e; color: #44445a; }
-    [data-theme="dark"] .pfbtn:hover { border-color: #44455a; color: #9090a2; }
-    [data-theme="dark"] .pfbtn.active { border-color: #dddbd2; color: #dddbd2; background: rgba(221,219,210,.06); }
+    [data-theme="dark"] .pfbtn { border-color: #22233a; color: #50506a; }
+    [data-theme="dark"] .pfbtn:hover { border-color: #44455a; color: #9090b0; }
+    [data-theme="dark"] .pfbtn.active { border-color: #c8c6be; color: #c8c6be; background: rgba(200,198,190,.07); }
 
     /* experience */
-    [data-theme="dark"] .exp-role { color: #9a9aa8; }
+    [data-theme="dark"] .exp-role { color: #9a9ab0; }
 
-    /* project panel */
-    [data-theme="dark"] #projName { color: #dddbd2; }
-    [data-theme="dark"] #projDesc { color: #7a7a88; }
+    /* project panel — much more readable */
+    [data-theme="dark"] #projName { color: #e8e6de; font-size: inherit; }
+    [data-theme="dark"] #projDesc { color: #9090a0; line-height: 1.75; }
+    [data-theme="dark"] #projNum  { color: #50506a; }
+    [data-theme="dark"] .panel-hint { color: #3a3a50; }
+
+    /* proj side — subtle lift */
+    [data-theme="dark"] .proj-side { background: #0e0f15; }
 
     /* buttons */
-    /* btn-dark: dark bg + cream text in light, cream bg + dark text in dark */
-    [data-theme="dark"] .btn-dark { background: #dddbd2; color: #0d0e12; }
-    [data-theme="dark"] .btn-dark:hover { opacity: 0.8; }
+    [data-theme="dark"] .btn-dark { background: #d8d6ce; color: #0d0e12; }
+    [data-theme="dark"] .btn-dark:hover { opacity: 0.85; }
 
-    /* submit: outlined style, cream border/text in dark; hover flips */
-    [data-theme="dark"] .submit-btn { background: transparent; border-color: #6a6a7e; color: #9090a2; }
-    [data-theme="dark"] .submit-btn:hover { background: #dddbd2; color: #0d0e12; border-color: #dddbd2; }
+    /* submit */
+    [data-theme="dark"] .submit-btn { background: transparent; border-color: #6a6a82; color: #9090a8; }
+    [data-theme="dark"] .submit-btn:hover { background: #d8d6ce; color: #0d0e12; border-color: #d8d6ce; }
 
-    /* about buttons in dark */
-    [data-theme="dark"] .about-btn { border-color: #2a2b35; color: #8a8a96; background: transparent; }
-    [data-theme="dark"] .about-btn:hover { border-color: #dddbd2; color: #dddbd2; background: rgba(221,219,210,.04); }
+    /* about buttons */
+    [data-theme="dark"] .about-btn { border-color: #26273a; color: #8a8a9a; background: transparent; }
+    [data-theme="dark"] .about-btn:hover { border-color: #d8d6ce; color: #d8d6ce; background: rgba(216,214,206,.04); }
 
-    /* link-plain-sm in dark */
-    [data-theme="dark"] .link-plain-sm { color: #5a5a6a; }
-    [data-theme="dark"] .link-plain-sm:hover { color: #dddbd2; }
+    /* link-plain-sm */
+    [data-theme="dark"] .link-plain-sm { color: #5a5a72; }
+    [data-theme="dark"] .link-plain-sm:hover { color: #d8d6ce; }
 
-    /* anno underlines in dark */
-    [data-theme="dark"] .anno-mark.underline svg path { stroke: rgba(221,219,210,.35); }
+    /* anno underlines — more visible in dark */
+    [data-theme="dark"] .anno-mark.underline svg path { stroke: rgba(221,219,210,.5); }
+    [data-theme="dark"] .anno-mark.blue svg path    { stroke: rgba(100,140,255,.55); }
 
     /* theme toggle button */
     #theme-btn {
@@ -3996,6 +4004,25 @@ if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/sw.js').catch(() => {});
   });
 }
+</script>
+
+<script>
+/* ── SCROLL POSITION PERSISTENCE ── */
+(function () {
+  // Prevent browser from auto-jumping to top on reload
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+
+  // Restore position from last visit (same tab session)
+  const saved = sessionStorage.getItem('scrollY');
+  if (saved) {
+    window.scrollTo({ top: parseInt(saved, 10), behavior: 'instant' });
+  }
+
+  // Save position before leaving
+  window.addEventListener('beforeunload', () => {
+    sessionStorage.setItem('scrollY', Math.round(window.scrollY));
+  });
+})();
 </script>
 </body>
 </html>
