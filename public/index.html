@@ -1964,7 +1964,7 @@
         </p>
 
         <p>
-          I work mostly in Python across backend APIs, cloud infrastructure, and full-stack products. I built Sentinel, a fully serverless uptime monitoring platform on AWS: Lambda functions triggered by EventBridge, state stored in DynamoDB, email alerts through SES, user accounts via Cognito, and all of it provisioned from scratch using Terraform. I also took a real client in Zimbabwe from a WhatsApp-based operation to a live production platform. I know how to take something from zero to deployed.
+          I work mostly in Python across backend APIs, cloud infrastructure, and full-stack products. I built <a href="#work" onclick="setTimeout(()=>{showProject(0);},350)" style="color:inherit;text-decoration:none;"><span class="anno-mark underline" data-anno-group="0" data-anno-delay="0"><span>Sentinel</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q25,4 50,8 Q75,11 99,7" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span></a>, a fully serverless uptime monitoring platform on AWS: Lambda functions triggered by EventBridge, state stored in DynamoDB, email alerts through SES, user accounts via Cognito, and all of it provisioned from scratch using Terraform. I also took a real client in Zimbabwe from a WhatsApp-based operation to a live production platform. I know how to take something from zero to deployed.
         </p>
 
         <p>
@@ -2567,15 +2567,7 @@ window.addEventListener('scroll', () => {
 /* ORBITAL PROJECT SYSTEM */
 const PROJECTS = [
   {
-    num: '01', name: 'PBS Projects',
-    desc: 'Built for a real client. A friend runs a glass and aluminium business in Harare, Zimbabwe, and was advertising through posters and WhatsApp. I pitched a proper web app and built it: job gallery, quote request pipeline, testimonial moderation, full product catalogue, and bilingual English/Shona support.',
-    stack: ['Next.js', 'FastAPI', 'PostgreSQL', 'Cloudinary', 'Python'],
-    live: 'https://pbs-projects.vercel.app',
-    gh:   'https://github.com/denzelchingodza/pbs-projects',
-    color: '#3a6e4a',
-  },
-  {
-    num: '02', name: 'Sentinel',
+    num: '01', name: 'Sentinel',
     desc: 'Uptime monitoring system. Add a URL, it checks every 60 seconds, emails you when something goes down and again when it recovers. Real-time dashboard with response times, uptime percentage, and incident history.',
     stack: ['Next.js', 'AWS Lambda', 'DynamoDB', 'EventBridge', 'SES', 'Terraform'],
     live: 'https://sentinel-kappa-wine.vercel.app',
@@ -2583,15 +2575,15 @@ const PROJECTS = [
     color: '#8a8a94',
   },
   {
-    num: '03', name: 'AI Intelligence Layer',
-    desc: 'A natural language interface sitting on top of my own projects. You ask a plain English question "what skills are trending for backend devs?" or "what\'s in this clinical guideline?" and GPT-4o-mini routes it to the right service, StackScope or ChunkDoc, and returns the answer. One query endpoint to rule them all.',
-    stack: ['FastAPI', 'OpenAI', 'Python', 'Render', 'Vercel'],
-    live: 'https://ai-intelligence-layer.vercel.app',
-    gh:   'https://github.com/denzelchingodza/ai-intelligence-layer',
-    color: '#8B5E3C',
+    num: '02', name: 'Muzezuru',
+    desc: 'A Shona-language conversational AI fine-tuned from BLOOMZ-3B using QLoRA, built entirely on free tier compute: Google Colab, Kaggle notebooks, and Hugging Face ZeroGPU. Shona is one of Zimbabwe\'s main languages and severely underrepresented in mainstream AI training data, which is why this project exists. Discovered and fixed an 84% data contamination issue in the primary training dataset before retraining on the cleaned version. Built a custom 15-prompt evaluation scorecard across 7 categories since no standard Shona benchmark exists. Ships with a Next.js chat frontend deployed on Vercel. Active development: the pipeline is proven end-to-end, the next phase focuses on factual precision using curated Zimbabwean data.',
+    stack: ['Python', 'BLOOMZ-3B', 'QLoRA', 'PEFT', 'bitsandbytes', 'Hugging Face', 'Next.js'],
+    live: 'https://muzezuru.vercel.app',
+    gh:   'https://github.com/denzelchingodza/muzezuru',
+    color: '#006400',
   },
   {
-    num: '04', name: 'ChunkDoc',
+    num: '03', name: 'ChunkDoc',
     desc: 'RAG-powered document Q&A built for medical students at Stellenbosch University\'s Tygerberg campus. Upload a PDF or DOCX, ask a question in plain English, get a grounded answer with the exact page number it came from. Built after interviewing students who were spending 45 minutes finding a single clinical criterion in a 200-page guideline.',
     stack: ['FastAPI', 'Next.js', 'pgvector', 'PostgreSQL', 'OpenAI'],
     live: 'https://doc-analyzer-as5k.vercel.app',
@@ -2599,7 +2591,23 @@ const PROJECTS = [
     color: '#591030',
   },
   {
-    num: '05', name: 'StackScope',
+    num: '04', name: 'PBS Projects',
+    desc: 'Built for a real client. A friend runs a glass and aluminium business in Harare, Zimbabwe, and was advertising through posters and WhatsApp. I pitched a proper web app and built it: job gallery, quote request pipeline, testimonial moderation, full product catalogue, and bilingual English/Shona support.',
+    stack: ['Next.js', 'FastAPI', 'PostgreSQL', 'Cloudinary', 'Python'],
+    live: 'https://pbs-projects.vercel.app',
+    gh:   'https://github.com/denzelchingodza/pbs-projects',
+    color: '#3a6e4a',
+  },
+  {
+    num: '05', name: 'AI Intelligence Layer',
+    desc: 'A natural language interface sitting on top of my own projects. You ask a plain English question "what skills are trending for backend devs?" or "what\'s in this clinical guideline?" and GPT-4o-mini routes it to the right service, StackScope or ChunkDoc, and returns the answer. One query endpoint to rule them all.',
+    stack: ['FastAPI', 'OpenAI', 'Python', 'Render', 'Vercel'],
+    live: 'https://ai-intelligence-layer.vercel.app',
+    gh:   'https://github.com/denzelchingodza/ai-intelligence-layer',
+    color: '#8B5E3C',
+  },
+  {
+    num: '06', name: 'StackScope',
     desc: 'Job market intelligence for SA developers. Scrapes live job postings, extracts skill frequency across the corpus, tracks what\'s trending, and scores your stack against the market using TF-IDF vectorization and cosine similarity.',
     stack: ['Python', 'Flask', 'scikit-learn', 'SQLite', 'Docker', 'Vercel'],
     live: 'https://stack-scope-eight.vercel.app',
@@ -2607,20 +2615,12 @@ const PROJECTS = [
     color: '#3a6ea5',
   },
   {
-    num: '06', name: 'MSG',
+    num: '07', name: 'MSG',
     desc: 'Full stack shrine to the New York Knicks, your 2026 NBA Champions. Fact Roulette, the Rage Bait Machine, The Gauntlet, Trash Talk Generator, The Faith, and Championship 26. Pure, medically concerning fandom. Bing bong.',
     stack: ['Next.js', 'FastAPI'],
     live: 'https://msg-coral.vercel.app',
     gh:   'https://github.com/denzelchingodza/msg',
     color: '#F47B20',
-  },
-  {
-    num: '07', name: 'Muzezuru',
-    desc: 'A Shona-language conversational AI fine-tuned from BLOOMZ-3B using QLoRA, built entirely on free tier compute: Google Colab, Kaggle notebooks, and Hugging Face ZeroGPU. Shona is one of Zimbabwe\'s main languages and severely underrepresented in mainstream AI training data, which is why this project exists. Discovered and fixed an 84% data contamination issue in the primary training dataset before retraining on the cleaned version. Built a custom 15-prompt evaluation scorecard across 7 categories since no standard Shona benchmark exists. Ships with a Next.js chat frontend deployed on Vercel. Active development: the pipeline is proven end-to-end, the next phase focuses on factual precision using curated Zimbabwean data.',
-    stack: ['Python', 'BLOOMZ-3B', 'QLoRA', 'PEFT', 'bitsandbytes', 'Hugging Face', 'Next.js'],
-    live: 'https://muzezuru.vercel.app',
-    gh:   'https://github.com/denzelchingodza/muzezuru',
-    color: '#006400',
   },
 ];
 
