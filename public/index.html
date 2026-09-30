@@ -381,7 +381,7 @@
       gap: 16px;
       align-items: center;
       flex-wrap: wrap;
-      margin-bottom: 36px;
+      margin-bottom: 48px;
       opacity: 0;
       animation: up .9s .7s forwards;
     }
@@ -410,28 +410,23 @@
 
     .hero-socials {
       display: flex;
-      gap: 18px;
+      gap: 22px;
       align-items: center;
       opacity: 0;
       animation: up .9s .85s forwards;
     }
 
     .social-link {
-      font-family: 'Space Grotesk', system-ui, sans-serif;
-      font-size: 10px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: #5a5a6e;
+      color: #44445a;
       text-decoration: none;
       transition: color .2s;
       display: flex;
       align-items: center;
-      gap: 6px;
     }
-    .social-link svg { width: 13px; height: 13px; fill: none; stroke: currentColor; stroke-width: 1.8; }
-    .social-link:hover { color: #aaa; }
+    .social-link svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.6; }
+    .social-link:hover { color: #999; }
 
-    .social-sep { width: 1px; height: 14px; background: #2e2e3e; }
+    .social-sep { width: 1px; height: 14px; background: #222230; }
 
     /* ===== SCROLL HINT ===== */
     .scroll-hint {
@@ -1908,19 +1903,16 @@
       <a href="#contact" class="link-dim">Get in touch</a>
     </div>
     <div class="hero-socials">
-      <a href="https://github.com/denzelchingodza" target="_blank" rel="noopener" class="social-link">
+      <a href="https://github.com/denzelchingodza" target="_blank" rel="noopener" class="social-link" aria-label="GitHub">
         <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-        GitHub
       </a>
       <span class="social-sep"></span>
-      <a href="https://www.linkedin.com/in/denzel-chingodza-45b6ab3a0/" target="_blank" rel="noopener" class="social-link">
+      <a href="https://www.linkedin.com/in/denzel-chingodza-45b6ab3a0/" target="_blank" rel="noopener" class="social-link" aria-label="LinkedIn">
         <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-        LinkedIn
       </a>
       <span class="social-sep"></span>
-      <a href="mailto:denzel.chingodza@icloud.com" class="social-link">
+      <a href="mailto:denzel.chingodza@icloud.com" class="social-link" aria-label="Email">
         <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        Email
       </a>
     </div>
   </div>
@@ -3695,17 +3687,7 @@ function showToast(msg, type = 'success') {
     if ((e.metaKey || e.ctrlKey) && e.key === 'k') { e.preventDefault(); overlay.classList.contains('open') ? close() : open(); }
   });
 
-  // Add kbd hint near hero — hide on touch/mobile devices
-  const isMac = /Mac|iPhone|iPad|iPod/.test(navigator.platform || navigator.userAgent);
-  const isMobile = window.matchMedia('(max-width:660px)').matches || ('ontouchstart' in window && window.innerWidth < 768);
-  if (!isMobile) {
-    const hint = document.createElement('p');
-    hint.style.cssText = 'font-family:Inter,sans-serif;font-size:11px;color:#444;margin-top:8px;';
-    const shortcut = isMac ? '⌘K' : 'Ctrl+K';
-    hint.innerHTML = 'Press <kbd style="padding:1px 5px;background:#1e1f2a;border:1px solid #333;border-radius:4px;font-size:10px;color:#888;">' + shortcut + '</kbd> to search';
-    const heroActions = document.querySelector('.hero-actions');
-    if (heroActions) heroActions.after(hint);
-  }
+  // ⌘K hint moved out of hero to keep it uncluttered
 })();
 
 /* ══════════════════════════════════════════════
