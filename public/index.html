@@ -1964,7 +1964,11 @@
         </p>
 
         <p>
-          I work mostly in Python across backend APIs, cloud infrastructure, and full-stack products. The project I am most proud of is <a href="#work" onclick="setTimeout(()=>{showProject(0);},350)" style="color:inherit;text-decoration:none;"><span class="anno-mark underline" data-anno-group="0" data-anno-delay="0"><span>Sentinel</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q25,4 50,8 Q75,11 99,7" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span></a>, a fully serverless uptime monitoring platform built on AWS. I chose Lambda over a traditional server because the workload is event-driven — a function that runs every 60 seconds and exits does not need a machine running around the clock. EventBridge schedules the checks. DynamoDB stores monitor state because the access pattern is simple key lookups with no relational joins, and the pay-per-request model fits a system that could sit idle for hours. SES handles the alerts. Cognito manages user accounts. None of it is wired together manually — every resource is defined in Terraform so the infrastructure is version-controlled, reviewable, and reproducible from a single command. I also took a real client in Zimbabwe from a WhatsApp-based operation to a live production platform. I know how to take something from zero to deployed.
+          I work mostly in Python across backend APIs, cloud infrastructure, and full-stack products. The project I am most proud of is <a href="#work" onclick="setTimeout(()=>{showProject(0);},350)" style="color:inherit;text-decoration:none;"><span class="anno-mark underline" data-anno-group="0" data-anno-delay="0"><span>Sentinel</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q25,4 50,8 Q75,11 99,7" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span></a>, a fully serverless uptime monitoring platform built on AWS. I chose Lambda over a traditional server because the workload is event-driven — a function that runs every 60 seconds and exits does not need a machine running around the clock. EventBridge schedules the checks. DynamoDB stores monitor state because the access pattern is simple key lookups with no relational joins, and the pay-per-request model fits a system that could sit idle for hours. SES handles the alerts. Cognito manages user accounts. An SQS dead-letter queue sits behind the Lambda so no check is silently dropped. None of it is wired together manually — every resource is defined in Terraform so the infrastructure is version-controlled, reviewable, and reproducible from a single command. I also took a real client in Zimbabwe from a WhatsApp-based operation to a live production platform. I know how to take something from zero to deployed.
+        </p>
+
+        <p>
+          Sentinel is also the project I am actively building toward something bigger. The monitoring layer works. What comes next is the intelligence layer: anomaly detection that flags a URL degrading before it goes fully down, plain-language weekly digests of your uptime instead of a wall of numbers, and smart alerting that learns which failures are noise and which ones matter. The infrastructure is already designed to support it. The AI side is next.
         </p>
 
         <p>
@@ -2170,6 +2174,10 @@
           <span id="projAcademic" style="display:none;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:#8a8a94;border:1px solid rgba(138,138,148,0.25);border-radius:4px;padding:3px 8px;margin-bottom:10px;display:none;">Academic project</span>
           <p id="projDesc"></p>
           <div class="proj-stack" id="projStack"></div>
+          <div id="projComingSoon" style="display:none;margin-bottom:18px;padding:12px 14px;border-left:2px solid rgba(138,138,148,0.25);border-radius:0 6px 6px 0;background:rgba(138,138,148,0.04);">
+            <p style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin-bottom:6px;">Coming soon</p>
+            <p id="projComingSoonText" style="font-size:12px;color:var(--sub);line-height:1.7;margin:0;"></p>
+          </div>
           <div class="proj-actions">
             <a id="projLive" href="#" target="_blank" rel="noopener" class="btn-dark">
               Check it live
@@ -2568,11 +2576,12 @@ window.addEventListener('scroll', () => {
 const PROJECTS = [
   {
     num: '01', name: 'Sentinel',
-    desc: 'Uptime monitoring system. Add a URL, it checks every 60 seconds, emails you when something goes down and again when it recovers. Real-time dashboard with response times, uptime percentage, and incident history.',
-    stack: ['Next.js', 'AWS Lambda', 'DynamoDB', 'EventBridge', 'SES', 'Terraform'],
+    desc: 'Fully serverless URL monitoring on AWS. Add a URL and EventBridge fires a Lambda on a 60-second schedule — no server runs between checks. Lambda hits the URL, records status and response time to DynamoDB, and if the endpoint is down it triggers SES to email you. When recovery is detected, another email goes out. The access pattern is purely key-based so DynamoDB fits better than Postgres here, and the pay-per-request model means the system costs nothing when idle. Auth runs through Cognito — no password storage, no sessions to manage. An SQS dead-letter queue catches Lambda failures so no check is silently dropped. The frontend is a Next.js App Router app on Vercel with a live dashboard: uptime percentages, response time history, and incident tracking. Every AWS resource is provisioned in Terraform — reproducible from one command, version-controlled alongside the code.',
+    stack: ['Next.js', 'AWS Lambda', 'DynamoDB', 'EventBridge', 'SES', 'Cognito', 'API Gateway', 'SQS', 'Terraform'],
     live: 'https://sentinel-kappa-wine.vercel.app',
-    gh:   'https://github.com/denzelchingodza/sentinel',
+    gh:   'https://github.com/denzelchingodza/Sentinel',
     color: '#8a8a94',
+    comingSoon: 'AI incident prediction, natural language uptime digests, smart alerting that suppresses noise and surfaces what actually matters.',
   },
   {
     num: '02', name: 'Muzezuru',
@@ -2867,6 +2876,14 @@ function showProject(i) {
   const badge = document.getElementById('projAcademic');
   badge.style.display = p.academic ? 'inline-block' : 'none';
   document.getElementById('projGh').href = p.gh;
+  const csWrap = document.getElementById('projComingSoon');
+  const csText = document.getElementById('projComingSoonText');
+  if (p.comingSoon) {
+    csText.textContent = p.comingSoon;
+    csWrap.style.display = 'block';
+  } else {
+    csWrap.style.display = 'none';
+  }
 }
 
 oc.addEventListener('mousemove', e => {
