@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Denzel Chingodza — Software Developer</title>
-  <meta name="description" content="Software Engineering student at Eduvos, Cape Town, building full-stack applications, developer tools, and AI systems. Projects include Sentinel, StackScope, Muzezuru (Shona-language LLM), and more." />
+  <meta name="description" content="Software Engineering student at Eduvos, Cape Town, building full-stack applications, developer tools, and AI systems. Projects include Sentinel AI, StackScope, Muzezuru (Shona-language LLM), and more." />
   <meta name="author" content="Denzel Chingodza" />
   <meta name="keywords" content="Denzel Chingodza, Software Engineering, Eduvos, Cape Town, full-stack developer, AI engineer, StackScope, Sentinel, Muzezuru, Shona AI, QLoRA, LLM fine-tuning, South Africa, PyTorch, Python, Next.js" />
   <link rel="canonical" href="https://denzelchingodza.vercel.app/" />
@@ -1964,11 +1964,11 @@
         </p>
 
         <p>
-          I work mostly in Python across backend APIs, cloud infrastructure, and full-stack products. The project I am most proud of is <a href="#work" onclick="setTimeout(()=>{showProject(0);},350)" style="color:inherit;text-decoration:none;"><span class="anno-mark underline" data-anno-group="0" data-anno-delay="0"><span>Sentinel</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q25,4 50,8 Q75,11 99,7" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span></a>, a fully serverless uptime monitoring platform built on AWS. I chose Lambda over a traditional server because the workload is event-driven — a function that runs every 60 seconds and exits does not need a machine running around the clock. EventBridge schedules the checks. DynamoDB stores monitor state because the access pattern is simple key lookups with no relational joins, and the pay-per-request model fits a system that could sit idle for hours. SES handles the alerts. Cognito manages user accounts. An SQS dead-letter queue sits behind the Lambda so no check is silently dropped. None of it is wired together manually — every resource is defined in Terraform so the infrastructure is version-controlled, reviewable, and reproducible from a single command. I also took a real client in Zimbabwe from a WhatsApp-based operation to a live production platform. I know how to take something from zero to deployed.
+          I work mostly in Python across backend APIs, cloud infrastructure, and full-stack products. The project I am most proud of is <a href="#work" onclick="setTimeout(()=>{showProject(0);},350)" style="color:inherit;text-decoration:none;"><span class="anno-mark underline" data-anno-group="0" data-anno-delay="0"><span>Sentinel AI</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q25,4 50,8 Q75,11 99,7" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span></a>, a fully serverless uptime monitoring platform with an AI incident digest, built on AWS. I chose Lambda over a traditional server because the workload is event-driven — a function that runs every 60 seconds and exits does not need a machine running around the clock. EventBridge schedules the checks. DynamoDB stores monitor state because the access pattern is simple key lookups with no relational joins, and the pay-per-request model fits a system that could sit idle for hours. SES handles the alerts. Cognito manages user accounts. An SQS dead-letter queue sits behind the Lambda so no check is silently dropped. The AI layer reads the last 7 days of monitoring data, computes per-monitor downtime summaries, and returns a plain-English digest of what happened and what needs attention. None of it is wired together manually — every resource is defined in Terraform so the infrastructure is version-controlled, reviewable, and reproducible from a single command. I also took a real client in Zimbabwe from a WhatsApp-based operation to a live production platform. I know how to take something from zero to deployed.
         </p>
 
         <p>
-          Sentinel is also the project I am actively building toward something bigger. The monitoring layer works. What comes next is the intelligence layer: anomaly detection that flags a URL degrading before it goes fully down, plain-language weekly digests of your uptime instead of a wall of numbers, and smart alerting that learns which failures are noise and which ones matter. The infrastructure is already designed to support it. The AI side is next.
+          Sentinel AI now has a working intelligence layer. The monitoring runs. The AI digest reads the last 7 days of uptime data and returns a plain-English summary — incident counts, downtime durations, what needs attention — on demand from the dashboard. What comes next is anomaly detection that flags a URL degrading before it goes fully down, and smart alerting that learns which failures are noise and which ones matter. The foundation is already there.
         </p>
 
         <p>
@@ -2575,13 +2575,13 @@ window.addEventListener('scroll', () => {
 /* ORBITAL PROJECT SYSTEM */
 const PROJECTS = [
   {
-    num: '01', name: 'Sentinel',
-    desc: 'Fully serverless URL monitoring on AWS. Add a URL and EventBridge fires a Lambda on a 60-second schedule — no server runs between checks. Lambda hits the URL, records status and response time to DynamoDB, and if the endpoint is down it triggers SES to email you. When recovery is detected, another email goes out. The access pattern is purely key-based so DynamoDB fits better than Postgres here, and the pay-per-request model means the system costs nothing when idle. Auth runs through Cognito — no password storage, no sessions to manage. An SQS dead-letter queue catches Lambda failures so no check is silently dropped. The frontend is a Next.js App Router app on Vercel with a live dashboard: uptime percentages, response time history, and incident tracking. Every AWS resource is provisioned in Terraform — reproducible from one command, version-controlled alongside the code.',
-    stack: ['Next.js', 'AWS Lambda', 'DynamoDB', 'EventBridge', 'SES', 'Cognito', 'API Gateway', 'SQS', 'Terraform'],
+    num: '01', name: 'Sentinel AI',
+    desc: 'Serverless URL monitoring with an AI incident digest, built entirely on AWS. EventBridge fires a Lambda every 60 seconds — no server runs between checks. Lambda hits each URL, records status and response time to DynamoDB, and triggers SES alerts on downtime and recovery. The AI layer queries the last 7 days of monitoring data, computes per-monitor downtime summaries, and sends a structured prompt to a language model that returns a plain-English digest: what failed, for how long, and what needs attention. Auth runs through Cognito. An SQS dead-letter queue catches Lambda failures so no check is silently dropped. Every AWS resource is provisioned in Terraform — reproducible from one command, version-controlled alongside the code.',
+    stack: ['Next.js', 'AWS Lambda', 'DynamoDB', 'EventBridge', 'SES', 'Cognito', 'API Gateway', 'SQS', 'Terraform', 'OpenRouter', 'Mistral 7B'],
     live: 'https://sentinel-kappa-wine.vercel.app',
     gh:   'https://github.com/denzelchingodza/Sentinel',
     color: '#8a8a94',
-    comingSoon: 'AI incident prediction, natural language uptime digests, smart alerting that suppresses noise and surfaces what actually matters.',
+    comingSoon: 'Anomaly detection that flags degradation before a URL goes fully down. Smart alerting that learns which failures are noise and which ones matter.',
   },
   {
     num: '02', name: 'Muzezuru',
@@ -3734,7 +3734,7 @@ function showToast(msg, type = 'success') {
     { q: ['who is denzel','about denzel','who are you','who is he','tell me about him','background','bio'], a: "Denzel Chingodza. Final year software engineering student. Cape Town. Builds AI systems, serverless infrastructure, and full-stack products. Not a tutorial developer." },
     { q: ['stack','technologies','skills','what can he build','what does he use','tech','languages','tools'], a: "Python. FastAPI. Next.js. PostgreSQL. AWS Lambda. Terraform. Docker. PyTorch. QLoRA. RAG pipelines. Vector search. The list continues." },
     { q: ['muzezuru','shona','language model','fine-tun','bloomz','african language','nlp'], a: "Fine-tuned BLOOMZ-3B on Shona. A severely underrepresented African language. On free-tier compute. Found 84% data contamination before retraining. Built the evaluation benchmark himself because none existed." },
-    { q: ['sentinel','uptime','monitoring','aws','terraform','serverless','eventbridge'], a: "Sentinel. Fully serverless uptime monitoring. EventBridge, Lambda, DynamoDB, SES, Cognito, API Gateway — all provisioned via Terraform. Zero manual infrastructure." },
+    { q: ['sentinel','uptime','monitoring','aws','terraform','serverless','eventbridge'], a: "Sentinel AI. Serverless uptime monitoring with an AI incident digest. EventBridge, Lambda, DynamoDB, SES, Cognito, API Gateway, SQS — all provisioned via Terraform. The AI layer reads 7 days of monitoring data and returns a plain-English summary of what happened and what needs attention. Zero manual infrastructure." },
     { q: ['available','hire','job','open to','looking for','internship','opportunity','work'], a: "Actively looking for internship or junior roles in software engineering and AI engineering. He moves fast and he takes ownership. More detail in the CV." },
     { q: ['contact','reach','email','linkedin','message','get in touch','talk to him'], a: "denzel.chingodza@icloud.com. LinkedIn is in the socials. He actually checks his messages." },
     { q: ['knicks','basketball','nba','sport'], a: "Do not get him started. First chip since 1973. Brunson Finals MVP. He had 2026 circled before the season started. He built an app about it. Completely normal behaviour." },
@@ -3992,7 +3992,7 @@ function showToast(msg, type = 'success') {
 
   const shareData = {
     title: 'Denzel Chingodza — Software Developer',
-    text: 'Check out my portfolio — Sentinel, StackScope, Muzezuru and more.',
+    text: 'Check out my portfolio — Sentinel AI, StackScope, Muzezuru and more.',
     url: 'https://denzelchingodza.vercel.app/',
   };
 
