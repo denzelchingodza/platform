@@ -516,7 +516,6 @@
     }
 
     .section-inner { max-width: 680px; }
-    #about .section-inner { max-width: none; }
 
     .section-label {
       font-family: 'Space Grotesk', system-ui, sans-serif;
@@ -528,18 +527,6 @@
     }
 
     /* ===== TARS ===== */
-    .about-tars-wrap {
-      width: 100%;
-    }
-    .tars-sidebar {
-      float: right;
-      flex-shrink: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      margin-left: 48px;
-      margin-bottom: 32px;
-    }
     .tars-label {
       font-family: 'Space Grotesk', system-ui, sans-serif;
       font-size: 8px;
@@ -1938,8 +1925,7 @@
 
 <!-- ===== ABOUT ===== -->
 <section class="section" id="about">
-  <div class="about-tars-wrap">
-  <div class="section-inner" style="width:100%">
+  <div class="section-inner">
     <p class="section-label fade">About</p>
 
     <div class="about-grid">
@@ -2103,32 +2089,6 @@
 
     </div>
   </div><!-- /.section-inner -->
-
-  <!-- TARS -->
-  <div class="tars-sidebar fade">
-    <p class="tars-label">T · A · R · S</p>
-    <div class="tars-body-wrap">
-      <div class="tars-bot">
-        <div class="tars-seg tars-seg-top">
-          <div class="tars-eye"></div>
-        </div>
-        <div class="tars-seam"></div>
-        <div class="tars-seg tars-seg-mid"></div>
-        <div class="tars-seam"></div>
-        <div class="tars-seg tars-seg-bot"></div>
-      </div>
-      <div class="tars-bubbles">
-        <div class="tars-bubble" id="tarsBubble">
-          <span class="tars-bubble-tag" id="tarsBubbleTag"></span>
-          <p id="tarsBubbleText"><span id="tarsTyped"></span><span class="tars-cursor" id="tarsCursor"></span></p>
-        </div>
-        <p class="tars-stat">HONESTY: <span>90%</span> &nbsp;·&nbsp; HUMOR: <span>75%</span></p>
-      </div>
-    </div>
-
-  </div>
-
-  </div><!-- /.about-tars-wrap -->
 </section>
 
 <!-- ===== PROJECTS (orbital) ===== -->
