@@ -1951,85 +1951,71 @@
         <p style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.13em;opacity:.4;margin-bottom:16px;">Software Engineering</p>
 
         <p>
-          I was a maths and physics guy in high school. When I got to college I did not know exactly what I wanted, but I knew it had to involve building something real. Software pulled me in the moment I realised you cannot touch it but you can feel the effect of it. Code is how I turn what is in my head into something that works in the world.
+          I am a software engineer working across
+          <span class="anno-mark underline orange" data-anno-group="0" data-anno-delay="0"><span>backend systems, cloud infrastructure and applied AI</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q25,4 50,8 Q75,11 99,7" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span>.
+          I build in Python first, design infrastructure as code, and focus on systems that are
+          <span class="anno-mark underline orange" data-anno-group="0" data-anno-delay="300"><span>reliable, observable and understood</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q50,4 99,8" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span>,
+          not just shipped.
+        </p>
+
+        <p style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.13em;opacity:.4;margin-top:28px;margin-bottom:12px;">Currently</p>
+
+        <p>
+          <span class="anno-mark underline orange" data-anno-group="0" data-anno-delay="0"><span>Software Engineering Fellow at Funema</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q25,4 50,8 Q75,11 99,7" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span>.
+          Funema is a venture capital firm that invests in and co-builds technology with founders across emerging markets. I work across backend and AI on a live, AI-powered product: mapping how its services, APIs and data fit together, improving the stability and quality of the codebase, reviewing AI-assisted code with care, and documenting changes for future development and handover.
+        </p>
+
+        <p style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.13em;opacity:.4;margin-top:28px;margin-bottom:12px;">Selected Work</p>
+
+        <p>
+          <span class="anno-mark underline orange" data-anno-group="1" data-anno-delay="0"><span>Sentinel AI</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q50,4 99,8" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span>
+          is serverless uptime monitoring on AWS. EventBridge triggers Lambda checks every 60 seconds. DynamoDB stores monitor state, chosen for simple key lookups and pay-per-request pricing on a system that can sit idle for hours. SES handles alerts, Cognito handles auth, and an SQS dead-letter queue makes sure no check is silently dropped. Every resource is defined in Terraform, so the stack is version-controlled and reproducible from a single command. The
+          <span class="anno-mark underline orange" data-anno-group="1" data-anno-delay="400"><span>AI layer reads 7 days of monitoring data and returns a plain-English incident digest</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q25,4 50,8 Q75,11 99,7" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span>.
+          Next: anomaly detection and alerting that separates noise from real failures.
         </p>
 
         <p>
-          I am
-          <span class="anno-mark underline" data-anno-group="0" data-anno-delay="0"><span>curious by nature</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q50,4 99,8" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span>,
-          and the best engineering I have done started before I opened an editor.
-          Before I write a line of code I want to understand the actual problem, which usually means
-          <span class="anno-mark underline" data-anno-group="0" data-anno-delay="300"><span>talking to people about it</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q25,4 50,8 Q75,11 99,7" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span>.
-          I ask questions before I make assumptions. I bring findings back to the table. That instinct is something I carry into every team I work with.
+          <span class="anno-mark underline orange" data-anno-group="1" data-anno-delay="0"><span>ChunkDoc</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q50,4 99,8" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span>
+          is a production RAG system built after finding that medical students at Stellenbosch University's Tygerberg campus spent up to 45 minutes searching a 200-page PDF for a single clinical criterion. Semantic retrieval with pgvector cosine similarity, answers grounded entirely in the uploaded document, with page-level citations.
         </p>
 
         <p>
-          I work mostly in Python across backend APIs, cloud infrastructure, and full-stack products. The project I am most proud of is <a href="#work" onclick="setTimeout(()=>{showProject(0);},350)" style="color:inherit;text-decoration:none;"><span class="anno-mark underline" data-anno-group="0" data-anno-delay="0"><span>Sentinel AI</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q25,4 50,8 Q75,11 99,7" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span></a>, a fully serverless uptime monitoring platform with an AI incident digest, built on AWS. I chose Lambda over a traditional server because the workload is event-driven — a function that runs every 60 seconds and exits does not need a machine running around the clock. EventBridge schedules the checks. DynamoDB stores monitor state because the access pattern is simple key lookups with no relational joins, and the pay-per-request model fits a system that could sit idle for hours. SES handles the alerts. Cognito manages user accounts. An SQS dead-letter queue sits behind the Lambda so no check is silently dropped. The AI layer reads the last 7 days of monitoring data, computes per-monitor downtime summaries, and returns a plain-English digest of what happened and what needs attention. None of it is wired together manually — every resource is defined in Terraform so the infrastructure is version-controlled, reviewable, and reproducible from a single command. I also took a real client in Zimbabwe from a WhatsApp-based operation to a live production platform. I know how to take something from zero to deployed.
+          <a href="https://muzezuru.vercel.app" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;"><span class="anno-mark underline orange" data-anno-group="1" data-anno-delay="0"><span>Muzezuru</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q50,5 99,8" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span></a>
+          is a Shona language model built on zero compute budget. Fine-tuned BLOOMZ-3B using QLoRA with 4-bit quantization on free-tier compute only. Found and fixed an
+          <span class="anno-mark underline orange" data-anno-group="1" data-anno-delay="300"><span>84% data contamination issue</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q50,4 99,8" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span>
+          in the training set, and designed a 15-prompt, 7-category evaluation scorecard because no standard Shona benchmark exists. Shipped with a full chat frontend and still in active development with a small team.
         </p>
 
         <p>
-          Sentinel AI now has a working intelligence layer. The monitoring runs. The AI digest reads the last 7 days of uptime data and returns a plain-English summary — incident counts, downtime durations, what needs attention — on demand from the dashboard. What comes next is anomaly detection that flags a URL degrading before it goes fully down, and smart alerting that learns which failures are noise and which ones matter. The foundation is already there.
+          I also built an
+          <span class="anno-mark underline orange" data-anno-group="1" data-anno-delay="0"><span>AI Intelligence Layer</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q50,5 99,8" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span>
+          that routes plain-English questions across my own services, decides which system to call, and returns the answer. And took a client in Zimbabwe from a WhatsApp-based operation to a live production platform, from requirements through to deployment.
+        </p>
+
+        <p style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.13em;opacity:.4;margin-top:28px;margin-bottom:12px;">How I Work</p>
+
+        <p>
+          I understand the problem before I write code, which usually means
+          <span class="anno-mark underline orange" data-anno-group="2" data-anno-delay="0"><span>talking to the people who have it</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q25,4 50,8 Q75,11 99,7" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span>.
+          In existing systems I learn the patterns first, ask before I change, and document what I find. I use AI tools daily to move faster, but
+          <span class="anno-mark underline orange" data-anno-group="2" data-anno-delay="400"><span>the goal is always to understand what I build, not outsource the thinking</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q25,4 50,8 Q75,11 99,7" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span>.
+        </p>
+
+        <p style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.13em;opacity:.4;margin-top:28px;margin-bottom:12px;">Writing</p>
+
+        <p>
+          I write on
+          <a href="https://medium.com/@pwmndpvhj" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;"><span class="anno-mark underline orange" data-anno-group="2" data-anno-delay="0"><span>Medium</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q50,5 99,8" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span></a>
+          about building with AI. My first piece argues that
+          <span class="anno-mark underline orange" data-anno-group="2" data-anno-delay="300"><span>the output is not the understanding</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q25,4 50,8 Q75,11 99,7" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span>:
+          you can ship something and still not know what you built.
         </p>
 
         <p>
-          But I am not only someone who builds from scratch. I am equally comfortable
-          <span class="anno-mark underline" data-anno-group="1" data-anno-delay="0"><span>joining something that already exists</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q50,5 99,8" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span>.
-          I pick up patterns in a codebase quickly,
-          <span class="anno-mark underline" data-anno-group="1" data-anno-delay="400"><span>learn how the team has structured things</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q25,4 50,8 Q75,11 99,7" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span>,
-          and contribute without breaking what is already working. I ask before I change. I document what I find.
-          <span class="anno-mark underline" data-anno-group="1" data-anno-delay="800"><span>I want to be in rooms with engineers who are further along than me.</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q20,4 50,9 Q80,4 99,8" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span>
-          That is where I grow fastest.
-        </p>
-
-        <p style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.13em;opacity:.4;margin-top:32px;margin-bottom:16px;">AI &amp; Machine Learning</p>
-
-        <p>
-          The area I am deepening into is
-          <span class="anno-mark underline blue" data-anno-group="0" data-anno-delay="0"><span>language models and applied AI</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q25,4 50,8 Q75,11 99,7" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span>:
-          how to build real systems on top of them, how retrieval augmented generation makes models useful on actual documents, and what it takes to fine-tune a model when the data is messy and the compute budget is zero.
-        </p>
-
-        <p>
-          I built
-          <span class="anno-mark underline blue" data-anno-group="0" data-anno-delay="200"><span>ChunkDoc</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q50,4 99,8" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span>
-          after sitting with medical students at Stellenbosch University's Tygerberg campus and finding out they were spending 45 minutes searching for a single clinical criterion inside a 200-page PDF. That
-          <span class="anno-mark underline blue" data-anno-group="0" data-anno-delay="500"><span>conversation shaped every technical decision</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q25,4 50,8 Q75,11 99,7" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span>
-          in the build: a production RAG system with semantic retrieval, pgvector cosine similarity search, and page-level citations, grounded entirely in the uploaded document. I also built an
-          <span class="anno-mark underline blue" data-anno-group="0" data-anno-delay="800"><span>AI Intelligence Layer</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q50,5 99,8" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span>
-          that routes plain English questions across my own services, deciding which system to call and returning the answer.
-        </p>
-
-        <p>
-          More recently I fine-tuned BLOOMZ-3B for Shona, one of Zimbabwe's main languages and almost entirely absent from mainstream AI, using QLoRA with 4-bit quantization on free-tier compute only. I found and fixed an 84% data contamination issue in the training set,
-          <span class="anno-mark underline blue" data-anno-group="0" data-anno-delay="400"><span>built a 15-prompt evaluation scorecard across 7 categories</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q25,4 50,8 Q75,11 99,7" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span>
-          because no standard Shona benchmark exists, and shipped a full chat frontend. The project is called
-          <a href="https://muzezuru.vercel.app" target="_blank" rel="noopener" style="text-decoration:none"><span class="anno-mark underline blue" data-anno-group="0" data-anno-delay="700"><span>Muzezuru</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q50,5 99,8" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span></a>,
-          named after the Zezuru dialect, and it is something I am
-          <span class="anno-mark underline blue" data-anno-group="0" data-anno-delay="1000"><span>continuing to develop with a small team</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q50,4 99,8" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span>.
-          That gap — technology that exists but does not reach certain people — is what pulls me most.
-        </p>
-
-        <p>
-          I use AI tools as part of my daily workflow to learn faster, move with more precision, and ship better work. The point is always to understand what I am building, not to outsource the thinking.
-        </p>
-
-        <p style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.13em;opacity:.4;margin-top:32px;margin-bottom:16px;">Writing</p>
-
-        <p>
-          Writing is how I slow down and actually understand something. When a project surprises me, breaks in a way I did not expect, or teaches me something I thought I already knew, I write about it. Not to perform expertise but to figure out what actually happened and what it means.
-        </p>
-
-        <p>
-          My first piece was about the gap between
-          <span class="anno-mark underline" data-anno-group="2" data-anno-delay="0"><span>building with AI and actually knowing what you built</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q25,4 50,8 Q75,11 99,7" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span>.
-          The argument was simple: the output is not the understanding. You can ship something and still not know what you did. I think that gap matters, and I think most people working with AI right now are not being honest about it. I write on
-          <a href="https://medium.com/@pwmndpvhj" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;"><span class="anno-mark underline" data-anno-group="2" data-anno-delay="400"><span>Medium</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q50,5 99,8" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span></a>.
-        </p>
-
-        <p>
-          I play basketball seriously. I try things before I form an opinion on them. I am
-          <span class="anno-mark underline" data-anno-group="2" data-anno-delay="200"><span>genuinely energised by people</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q50,4 99,8" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span>
-          and by conversations that go somewhere real. My faith through Christ Jesus shapes how I think about almost everything else.
+          Serious basketball player. Faith in Christ Jesus shapes how I think.
+          And a
+          <span class="anno-mark underline orange" data-anno-group="2" data-anno-delay="200"><span>New York Knicks fan</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q50,4 99,8" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span>
+          who built an entire app about the 2026 championship. It is on the site if you want to see what happens when engineering meets unhinged fandom.
         </p>
 
         <p>
