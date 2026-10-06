@@ -2714,7 +2714,7 @@ function drawOrbital(ts) {
     const x     = CX + Math.cos(angle) * o.rx;
     const y     = CY + Math.sin(angle) * o.ry;
     const depth = (Math.sin(angle) + 1) / 2;
-    const isSentinel  = proj.name === 'Sentinel';
+    const isSentinel  = proj.name === 'Sentinel AI';
     const isMuzezuru  = proj.name === 'Muzezuru';
     const isChunkDoc  = proj.name === 'ChunkDoc';
     const baseR = isSentinel ? 6.5 : (isMuzezuru || isChunkDoc ? 5 : 3.5);
