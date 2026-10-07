@@ -1977,7 +1977,7 @@
           <span class="anno-mark underline orange" data-anno-group="2" data-anno-delay="400"><span>the goal is always to understand what I build, not outsource the thinking</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q25,4 50,8 Q75,11 99,7" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span>.
         </p>
 
-        <p style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.13em;opacity:.4;margin-top:28px;margin-bottom:12px;">Writing</p>
+        <p style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.13em;opacity:.4;margin-top:28px;margin-bottom:12px;">Outside the code</p>
 
         <p>
           I write on
@@ -1985,24 +1985,11 @@
           about building with AI. My first piece argues that
           <span class="anno-mark underline orange" data-anno-group="2" data-anno-delay="300"><span>the output is not the understanding</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q25,4 50,8 Q75,11 99,7" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span>:
           you can ship something and still not know what you built.
-        </p>
-
-        <p>
-          Serious basketball player. Faith in Christ Jesus shapes how I think.
-          And a
-          <span class="anno-mark underline orange" data-anno-group="2" data-anno-delay="200"><span>New York Knicks fan</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q50,4 99,8" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span>
-          who built an entire app about the 2026 championship. It is on the site if you want to see what happens when engineering meets unhinged fandom.
-        </p>
-
-        <p>
-          Oh, one more thing. I'm a
-          <span class="anno-mark underline orange" data-anno-group="2" data-anno-delay="400"><span>New York Knicks fan</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q50,4 99,8" stroke-width="2.8" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span>.
-          Not a casual one. The kind that had 2026 circled before the season started and was
-          insufferable about it the entire time. First chip since 1973. Brunson Finals MVP.
-          First Cup and title double in league history.
+          Serious basketball player. Faith in Christ Jesus shapes how I think. And a
+          <span class="anno-mark underline orange" data-anno-group="2" data-anno-delay="500"><span>New York Knicks fan</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q50,4 99,8" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span>
+          — not a casual one. The kind that had 2026 circled before the season started and was insufferable about it the entire time. First chip since 1973. Brunson Finals MVP.
           <span class="anno-mark underline orange" data-anno-group="2" data-anno-delay="900"><span>I built an entire app</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q33,4 66,9 Q83,6 99,8" stroke-width="2.8" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span>
-          about it because apparently that is a normal thing to do when your team wins. If you want
-          to see what happens when software engineering meets completely unhinged fandom, that is on you.
+          about it because apparently that is a normal thing to do when your team wins. If you want to see what happens when software engineering meets completely unhinged fandom, that is on you.
         </p>
         <style>
           @keyframes nudge-right {
@@ -3978,47 +3965,15 @@ if ('serviceWorker' in navigator) {
 </script>
 
 <!-- Cookie consent banner -->
-<div id="cookie-banner" style="
-  display: none;
-  position: fixed;
-  bottom: 24px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #111;
-  color: #ccc;
-  border: 1px solid #2a2a2a;
-  border-radius: 12px;
-  padding: 16px 20px;
-  max-width: 480px;
-  width: calc(100% - 48px);
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  font-family: inherit;
-  font-size: 13px;
-  line-height: 1.5;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
-">
-  <span style="flex: 1;">This site uses cookies to remember your preferences and improve your experience.</span>
-  <button id="cookie-accept" style="
-    background: #FF9900;
-    color: #000;
-    border: none;
-    border-radius: 6px;
-    padding: 8px 16px;
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-    white-space: nowrap;
-    font-family: inherit;
-  ">Accept</button>
+<div id="cookie-banner" style="display:none;position:fixed;bottom:20px;right:20px;z-index:9999;max-width:320px;width:calc(100% - 40px);background:#16161a;border:1px solid #2a2a2a;border-radius:10px;padding:14px 16px;font-family:inherit;box-shadow:0 4px 24px rgba(0,0,0,0.6);">
+  <p style="margin:0 0 12px;font-size:12px;color:#888;line-height:1.5;">This site uses cookies to remember your preferences.</p>
+  <button id="cookie-accept" style="background:transparent;border:1px solid #FF9900;color:#FF9900;border-radius:6px;padding:6px 14px;font-size:12px;font-family:inherit;cursor:pointer;letter-spacing:0.03em;">Got it</button>
 </div>
 <script>
 (function() {
   if (!localStorage.getItem('cookies_accepted')) {
     var banner = document.getElementById('cookie-banner');
-    banner.style.display = 'flex';
+    banner.style.display = 'block';
     document.getElementById('cookie-accept').addEventListener('click', function() {
       localStorage.setItem('cookies_accepted', '1');
       banner.style.display = 'none';
