@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Denzel Chingodza — CV</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 10.5pt;
+      line-height: 1.55;
+      color: #111;
+      background: #fff;
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 40px 48px 56px;
+    }
+
+    /* ── Header ── */
+    .cv-name {
+      font-family: 'Arial', 'Helvetica', sans-serif;
+      font-size: 22pt;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: #0d0d0d;
+      margin-bottom: 4px;
+    }
+    .cv-title {
+      font-family: 'Arial', 'Helvetica', sans-serif;
+      font-size: 11pt;
+      font-weight: 400;
+      color: #444;
+      margin-bottom: 10px;
+    }
+    .cv-contact {
+      font-family: 'Arial', 'Helvetica', sans-serif;
+      font-size: 9.5pt;
+      color: #444;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px 16px;
+    }
+    .cv-contact a { color: #222; text-decoration: none; }
+    .cv-contact a:hover { text-decoration: underline; }
+
+    /* ── Divider ── */
+    hr {
+      border: none;
+      border-top: 1.5px solid #111;
+      margin: 14px 0 18px;
+    }
+    .hr-light {
+      border-top: 0.5px solid #ccc;
+      margin: 10px 0 12px;
+    }
+
+    /* ── Section headings ── */
+    h2 {
+      font-family: 'Arial', 'Helvetica', sans-serif;
+      font-size: 9pt;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #111;
+      margin-bottom: 10px;
+    }
+
+    /* ── Experience / Project rows ── */
+    .entry { margin-bottom: 14px; }
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 2px 12px;
+    }
+    .entry-title {
+      font-family: 'Arial', 'Helvetica', sans-serif;
+      font-size: 10.5pt;
+      font-weight: 700;
+      color: #111;
+    }
+    .entry-sub {
+      font-family: 'Arial', 'Helvetica', sans-serif;
+      font-size: 9.5pt;
+      color: #444;
+      margin-top: 1px;
+      margin-bottom: 5px;
+    }
+    .entry-date {
+      font-family: 'Arial', 'Helvetica', sans-serif;
+      font-size: 9.5pt;
+      color: #555;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    ul.cv-list {
+      margin: 4px 0 0 16px;
+      padding: 0;
+    }
+    ul.cv-list li {
+      margin-bottom: 3px;
+      font-size: 10pt;
+      color: #222;
+    }
+
+    /* ── Skills ── */
+    .skills-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .skills-table td {
+      padding: 2px 0;
+      vertical-align: top;
+      font-size: 10pt;
+    }
+    .skills-table td:first-child {
+      font-family: 'Arial', 'Helvetica', sans-serif;
+      font-weight: 700;
+      font-size: 9.5pt;
+      white-space: nowrap;
+      padding-right: 16px;
+      color: #111;
+      width: 160px;
+    }
+
+    /* ── Profile ── */
+    .profile-text {
+      font-size: 10.5pt;
+      color: #222;
+      line-height: 1.65;
+    }
+
+    /* ── Writing ── */
+    .writing-entry {
+      font-size: 10.5pt;
+      color: #222;
+    }
+    .writing-entry strong {
+      font-family: 'Arial', 'Helvetica', sans-serif;
+    }
+
+    /* ── Print ── */
+    @media print {
+      body { padding: 24px 36px 36px; font-size: 10pt; }
+      @page { size: A4; margin: 14mm 16mm 14mm 16mm; }
+      a { color: #111 !important; text-decoration: none !important; }
+    }
+
+    /* ── Download button (screen only) ── */
+    .cv-download-bar {
+      text-align: right;
+      margin-bottom: 20px;
+    }
+    .cv-download-btn {
+      display: inline-block;
+      font-family: 'Arial', 'Helvetica', sans-serif;
+      font-size: 10pt;
+      font-weight: 700;
+      color: #fff;
+      background: #111;
+      padding: 8px 18px;
+      border-radius: 5px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .cv-download-btn:hover { background: #333; }
+    @media print { .cv-download-bar { display: none; } }
+  </style>
+</head>
+<body>
+
+  <div class="cv-download-bar">
+    <button class="cv-download-btn" onclick="window.print()">Download / Print</button>
+  </div>
+
+  <!-- ── NAME & CONTACT ── -->
+  <p class="cv-name">Denzel Chingodza</p>
+  <p class="cv-title">Software Engineer &mdash; Backend, Cloud and Applied AI</p>
+  <div class="cv-contact">
+    <span>Cape Town, South Africa</span>
+    <a href="tel:0649837714">0649837714</a>
+    <a href="mailto:denzel.chingodza@icloud.com">denzel.chingodza@icloud.com</a>
+    <a href="https://denz-platform.vercel.app" target="_blank">denz-platform.vercel.app</a>
+    <a href="https://github.com/denzelchingodza" target="_blank">github.com/denzelchingodza</a>
+    <a href="https://www.linkedin.com/in/denzel-chingodza-45b6ab3a0/" target="_blank">linkedin.com/in/denzel-chingodza-45b6ab3a0</a>
+  </div>
+
+  <hr>
+
+  <!-- ── PROFILE ── -->
+  <h2>Profile</h2>
+  <p class="profile-text">
+    Software engineer finishing a BSc in Software Engineering, working across backend systems, cloud infrastructure and applied AI. I build in Python first, define infrastructure as code, and care about systems that are reliable, observable and tested, not just shipped. Currently a Software Engineering Fellow at Funema, working on a production multi-agent AI platform. Focused on evaluation: proving an AI system works instead of assuming it does.
+  </p>
+
+  <div style="margin-top:18px;"></div>
+
+  <!-- ── EXPERIENCE ── -->
+  <h2>Experience</h2>
+
+  <div class="entry">
+    <div class="entry-header">
+      <span class="entry-title">Software Engineering Fellow &mdash; Funema</span>
+      <span class="entry-date">Oct 2026 &ndash; Dec 2026</span>
+    </div>
+    <p class="entry-sub">Venture capital, Remote</p>
+    <ul class="cv-list">
+      <li>Work on Funema's multi-agent AI platform across backend and AI, with a focus on code stability, reviewing AI-assisted code and documentation.</li>
+      <li>Designed and built a press-coverage harvest pipeline in Python that finds news about a company, verifies it is the right company using evidence clues, and labels who is speaking (independent press or the company itself).</li>
+      <li>Improved results for a test company from 20 to 35 independent stories by adding country-specific news search, while keeping wrong-company matches at zero across test runs.</li>
+      <li>Packaged the service with Docker and FastAPI (job queue, health check, JSON results for the platform), backed by 86 automated tests.</li>
+      <li>Added a rejection log and run-to-run comparison tooling, turning unclear quality issues into measured, fixable ones.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry-header">
+      <span class="entry-title">Mathematics Tutor</span>
+      <span class="entry-date">Apr 2022 &ndash; Oct 2026</span>
+    </div>
+    <p class="entry-sub">Cape Town (4.5 years)</p>
+    <ul class="cv-list">
+      <li>Tutored high school mathematics across all grades, including NSC Grade 12 exam preparation in Mathematics and Physical Sciences.</li>
+    </ul>
+  </div>
+
+  <!-- ── PROJECTS ── -->
+  <h2>Projects</h2>
+
+  <div class="entry">
+    <div class="entry-header">
+      <span class="entry-title">Sentinel AI</span>
+      <span class="entry-date"><a href="https://sentinel-kappa-wine.vercel.app">Live</a> &nbsp; <a href="https://github.com/denzelchingodza/Sentinel">GitHub</a></span>
+    </div>
+    <p class="entry-sub">Serverless uptime monitoring on AWS with an AI incident digest</p>
+    <ul class="cv-list">
+      <li>EventBridge triggers Lambda checks every 60 seconds; DynamoDB stores state; SES sends alerts; Cognito handles auth; SQS dead-letter queue ensures no check is silently dropped.</li>
+      <li>All infrastructure defined in Terraform, reproducible from one command.</li>
+      <li>AI layer reads 7 days of monitoring data and returns a plain-English incident digest via an LLM.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry-header">
+      <span class="entry-title">Muzezuru</span>
+      <span class="entry-date"><a href="https://muzezuru.vercel.app">Live</a> &nbsp; <a href="https://github.com/denzelchingodza/muzezuru">GitHub</a></span>
+    </div>
+    <p class="entry-sub">Shona-language conversational AI</p>
+    <ul class="cv-list">
+      <li>Fine-tuned BLOOMZ-3B with QLoRA (4-bit) on free compute (Colab, Kaggle, Hugging Face).</li>
+      <li>Found and fixed an 84% data contamination issue in the training set.</li>
+      <li>Designed a 15-prompt, 7-category evaluation scorecard, since no standard Shona benchmark exists.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry-header">
+      <span class="entry-title">ChunkDoc</span>
+      <span class="entry-date"><a href="https://doc-analyzer-as5k.vercel.app">Live</a> &nbsp; <a href="https://github.com/denz-os/doc-analyzer">GitHub</a></span>
+    </div>
+    <p class="entry-sub">RAG document Q&amp;A for medical students, Stellenbosch University Tygerberg campus</p>
+    <ul class="cv-list">
+      <li>Students spent up to 45 minutes searching a 200-page PDF for one answer; now they get a grounded answer with page-level citations.</li>
+      <li>Semantic search with pgvector; answers grounded entirely in the uploaded document.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry-header">
+      <span class="entry-title">AI Intelligence Layer</span>
+    </div>
+    <p class="entry-sub">Routes plain-English questions to the right service and returns the answer</p>
+  </div>
+
+  <!-- ── SKILLS ── -->
+  <h2>Skills</h2>
+  <table class="skills-table">
+    <tr>
+      <td>Languages</td>
+      <td>Python, TypeScript, JavaScript, SQL</td>
+    </tr>
+    <tr>
+      <td>Backend</td>
+      <td>FastAPI, Flask, Next.js, REST APIs</td>
+    </tr>
+    <tr>
+      <td>Cloud and DevOps</td>
+      <td>AWS (Lambda, EventBridge, DynamoDB, SES, Cognito, SQS, API Gateway), Terraform, Docker, Vercel</td>
+    </tr>
+    <tr>
+      <td>AI</td>
+      <td>RAG, pgvector, LLM fine-tuning (QLoRA), LLM evaluation, OpenAI API, Hugging Face, LangChain</td>
+    </tr>
+    <tr>
+      <td>Practices</td>
+      <td>Automated testing, infrastructure as code, technical documentation</td>
+    </tr>
+  </table>
+
+  <div style="margin-top:18px;"></div>
+
+  <!-- ── EDUCATION ── -->
+  <h2>Education</h2>
+  <div class="entry">
+    <div class="entry-header">
+      <span class="entry-title">BSc Information Technology (Software Engineering)</span>
+      <span class="entry-date">Graduating Nov 2026</span>
+    </div>
+    <p class="entry-sub">Eduvos, Cape Town</p>
+  </div>
+  <div class="entry" style="margin-bottom:0;">
+    <div class="entry-header">
+      <span class="entry-title">ZIMSEC A-Level: Mathematics (A)</span>
+    </div>
+  </div>
+
+  <div style="margin-top:18px;"></div>
+
+  <!-- ── WRITING ── -->
+  <h2>Writing</h2>
+  <p class="writing-entry">
+    <strong>The Unlicensed Builder</strong> (Medium) &mdash; On building with AI, and the gap between shipping output and understanding what you built.
+    <a href="https://medium.com/@pwmndpvhj" target="_blank">medium.com/@pwmndpvhj</a>
+  </p>
+
+</body>
+</html>

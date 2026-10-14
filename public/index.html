@@ -3,25 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Denzel Chingodza — Software Developer</title>
-  <meta name="description" content="Software Engineering student at Eduvos, Cape Town, building full-stack applications, developer tools, and AI systems. Projects include Sentinel AI, StackScope, Muzezuru (Shona-language LLM), and more." />
+  <title>Denzel Chingodza — Software Engineer</title>
+  <meta name="description" content="Software engineer in Cape Town building backend, cloud and applied AI systems. Software Engineering Fellow at Funema. Projects: Sentinel AI, Muzezuru, ChunkDoc." />
   <meta name="author" content="Denzel Chingodza" />
-  <meta name="keywords" content="Denzel Chingodza, Software Engineering, Eduvos, Cape Town, full-stack developer, AI engineer, StackScope, Sentinel, Muzezuru, Shona AI, QLoRA, LLM fine-tuning, South Africa, PyTorch, Python, Next.js" />
+  <meta name="keywords" content="Denzel Chingodza, Software Engineering, Eduvos, Cape Town, backend engineer, AI engineer, Sentinel AI, Muzezuru, Shona AI, QLoRA, LLM fine-tuning, South Africa, Python, AWS, Terraform" />
   <link rel="canonical" href="https://denzelchingodza.vercel.app/" />
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://denzelchingodza.vercel.app/" />
-  <meta property="og:title" content="Denzel Chingodza — Software Developer" />
-  <meta property="og:description" content="Software Engineering student at Eduvos, Cape Town, building full-stack apps, developer tools, and AI systems." />
-  <meta property="og:image" content="https://denzelchingodza.vercel.app/og-image.png" />
+  <meta property="og:url" content="https://denz-platform.vercel.app/" />
+  <meta property="og:title" content="Denzel Chingodza — Software Engineer" />
+  <meta property="og:description" content="Software engineer in Cape Town building backend, cloud and applied AI systems. Software Engineering Fellow at Funema. Projects: Sentinel AI, Muzezuru, ChunkDoc." />
+  <meta property="og:image" content="https://denz-platform.vercel.app/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Denzel Chingodza — portfolio" />
+  <meta property="og:image:alt" content="Denzel Chingodza — Software Engineer portfolio" />
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Denzel Chingodza — Software Developer" />
-  <meta name="twitter:description" content="Software Engineering student at Eduvos, Cape Town, building full-stack apps, developer tools, and AI systems." />
-  <meta name="twitter:image" content="https://denzelchingodza.vercel.app/og-image.png" />
+  <meta name="twitter:title" content="Denzel Chingodza — Software Engineer" />
+  <meta name="twitter:description" content="Software engineer in Cape Town building backend, cloud and applied AI systems. Software Engineering Fellow at Funema. Projects: Sentinel AI, Muzezuru, ChunkDoc." />
+  <meta name="twitter:image" content="https://denz-platform.vercel.app/og-image.png" />
   <!-- Favicon -->
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="icon" href="/favicon.svg" sizes="any" />
@@ -822,6 +822,115 @@
       line-height: 1.75;
     }
 
+    /* ===== WORK CARDS ===== */
+    .work-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 36px;
+    }
+    .work-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 24px 24px 20px;
+      transition: border-color 0.2s;
+    }
+    .work-card:hover { border-color: var(--sub); }
+    .work-card-header {
+      display: flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 10px 14px;
+      margin-bottom: 10px;
+    }
+    .work-card-num {
+      font-family: var(--display);
+      font-size: 9px;
+      color: var(--muted);
+      letter-spacing: 0.12em;
+      flex-shrink: 0;
+    }
+    .work-card-name {
+      font-family: var(--ui);
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--text);
+      flex: 1;
+      min-width: 0;
+    }
+    .work-card-btns {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .work-card-btn {
+      font-family: var(--ui);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 5px 11px;
+      border-radius: 5px;
+      background: var(--text);
+      color: #edeae0;
+      transition: opacity 0.15s;
+      white-space: nowrap;
+    }
+    .work-card-btn:hover { opacity: 0.75; }
+    .work-card-btn--ghost {
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid var(--border);
+    }
+    .work-card-btn--ghost:hover { color: var(--text); border-color: var(--sub); opacity: 1; }
+    .work-card-what {
+      font-family: var(--ui);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text);
+      line-height: 1.6;
+      margin: 0 0 6px;
+    }
+    .work-card-result {
+      font-family: var(--body);
+      font-size: 13px;
+      color: var(--sub);
+      line-height: 1.75;
+      margin: 0 0 14px;
+    }
+    .work-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+    .work-tag {
+      font-family: var(--ui);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: rgba(106,106,114,0.08);
+      border: 1px solid rgba(106,106,114,0.18);
+      border-radius: 4px;
+      padding: 3px 7px;
+    }
+    [data-theme="dark"] .work-card { border-color: #22232e; }
+    [data-theme="dark"] .work-card:hover { border-color: #3a3a50; }
+    [data-theme="dark"] .work-card-name { color: #dddbd2; }
+    [data-theme="dark"] .work-card-what { color: #c8c6be; }
+    [data-theme="dark"] .work-card-result { color: #7a7a86; }
+    [data-theme="dark"] .work-card-btn { background: #dddbd2; color: #0d0e12; }
+    [data-theme="dark"] .work-card-btn--ghost { background: transparent; color: #54545e; border-color: #22232e; }
+    [data-theme="dark"] .work-tag { color: #54545e; background: rgba(255,255,255,0.04); border-color: #22232e; }
+    @media (max-width: 600px) {
+      .work-card { padding: 18px 16px 16px; }
+      .work-card-name { font-size: 15px; }
+      .work-card-header { gap: 8px 10px; }
+    }
+
     /* ===== PROJECTS ORBITAL — FULL BLEED ===== */
     .proj-section {
       border-top: 1px solid var(--border);
@@ -1014,7 +1123,39 @@
       gap: 7px;
     }
 
-    /* ===== SKILLS NETWORK ===== */
+    /* ===== SKILLS CHIPS ===== */
+    .skills-chips { margin-top: 8px; }
+    .skills-group { margin-bottom: 26px; }
+    .skills-group:last-child { margin-bottom: 0; }
+    .skills-group-label {
+      font-family: var(--ui);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+    .skills-chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+    .skill-chip {
+      font-family: var(--ui);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--sub);
+      background: rgba(106,106,114,0.08);
+      border: 1px solid rgba(106,106,114,0.18);
+      border-radius: 6px;
+      padding: 6px 12px;
+      line-height: 1;
+    }
+    [data-theme="dark"] .skill-chip { color: #8a8a96; background: rgba(255,255,255,0.04); border-color: #22232e; }
+    [data-theme="dark"] .skills-group-label { color: #50506a; }
+
+    /* ===== SKILLS NETWORK (kept for orbital fallback, hidden) ===== */
     .skill-filters {
       display: flex;
       flex-wrap: wrap;
@@ -1035,7 +1176,8 @@
     }
     .sfbtn:hover { border-color: var(--text); color: var(--text); }
     .sfbtn.active { color: #edeae0; border-color: transparent; }
-    #skill-net { width: 100%; height: 500px; display: block; }
+    #skill-net { display: none !important; }
+    .skill-filters { display: none !important; }
 
     /* ===== CONTACT ===== */
     .contact-note {
@@ -1382,12 +1524,30 @@
     .entry-inner { text-align: center; position: relative; z-index: 2; }
     .entry-name {
       font-family: 'Orbitron', monospace;
-      font-size: 10px;
-      letter-spacing: 0.34em;
+      font-size: 20px;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: #2e2e3a;
+      color: #c8c6be;
       margin-bottom: 52px;
     }
+    @media (max-width: 480px) {
+      .entry-name { font-size: 15px; letter-spacing: 0.12em; }
+    }
+    .entry-skip {
+      display: block;
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #3a3a4e;
+      margin-top: 20px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px 0;
+      transition: color 0.2s;
+    }
+    .entry-skip:hover { color: #7a7a8e; }
     .entry-ship {
       position: absolute;
       left: -8vw;
@@ -1670,6 +1830,7 @@
         border-bottom: 1px solid var(--border);
         padding: 44px 24px;
       }
+      #projects { display: none; }
       #orbital { min-height: 280px; }
       #projNum { font-size: 9px; }
       #projName { font-size: 19px; line-height: 1.2; }
@@ -1859,11 +2020,11 @@
     <div class="glitch-shake" style="animation-delay:2s">
       <p class="entry-name"><span class="glitch" data-text="Denzel Chingodza">Denzel Chingodza</span></p>
     </div>
-    <button class="entry-btn" id="entryBtn" onclick="enterSite()">Enter</button>
+    <button class="entry-btn" id="entryBtn" onclick="enterSite(true)">Enter</button>
     <div class="entry-loader" id="entryLoader">
       <div class="entry-loader-bar" id="entryLoaderBar"></div>
     </div>
-    <p class="entry-hint">sound on</p>
+    <button class="entry-skip" id="entrySkip" onclick="enterSite(false)">Skip</button>
     <p class="entry-quote">"Humour: 75 percent. Honesty: 90 percent."</p>
     <p class="entry-quote-attr">— TARS, Interstellar</p>
   </div>
@@ -1885,13 +2046,14 @@
   <canvas id="stars"></canvas>
 
   <div class="hero-text">
-    <p class="hero-label">Software Developer, South Africa</p>
+    <p class="hero-label">Software Engineer, Cape Town</p>
     <div class="glitch-shake">
       <h1><span class="glitch" data-text="Denzel">Denzel</span><br><span class="glitch" data-text="Chingodza">Chingodza</span></h1>
     </div>
     <p class="hero-bio"><code id="hero-code"></code><span class="type-cursor">▌</span></p>
     <div class="hero-actions">
       <a href="#work" class="btn-light">See my work</a>
+      <a href="/cv.pdf" download class="btn-light" style="background:transparent;border:1px solid rgba(255,255,255,0.25);color:#e8e6de;">Download CV</a>
       <a href="#contact" class="link-dim">Get in touch</a>
     </div>
     <div class="hero-socials">
@@ -1931,75 +2093,29 @@
     <div class="about-grid">
       <div class="about-main fade" id="about-main">
 
-        <p style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.13em;opacity:.4;margin-bottom:16px;">Software Engineering</p>
-
         <p>
           I am a software engineer working across
           <span class="anno-mark underline orange" data-anno-group="0" data-anno-delay="0"><span>backend systems, cloud infrastructure and applied AI</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q25,4 50,8 Q75,11 99,7" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span>.
-          I build in Python first, design infrastructure as code, and focus on systems that are
+          I build in Python first, define infrastructure as code, and care about systems that are
           <span class="anno-mark underline orange" data-anno-group="0" data-anno-delay="300"><span>reliable, observable and understood</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q50,4 99,8" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span>,
-          not just shipped.
-        </p>
-
-        <p style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.13em;opacity:.4;margin-top:28px;margin-bottom:12px;">Selected Work</p>
-
-        <p>
-          <span class="anno-mark underline orange" data-anno-group="1" data-anno-delay="0"><span>Sentinel AI</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q50,4 99,8" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span>
-          is serverless uptime monitoring on AWS. EventBridge triggers Lambda checks every 60 seconds. DynamoDB stores monitor state, chosen for simple key lookups and pay-per-request pricing on a system that can sit idle for hours. SES handles alerts, Cognito handles auth, and an SQS dead-letter queue makes sure no check is silently dropped. Every resource is defined in Terraform, so the stack is version-controlled and reproducible from a single command. The
-          <span class="anno-mark underline orange" data-anno-group="1" data-anno-delay="400"><span>AI layer reads 7 days of monitoring data and returns a plain-English incident digest</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q25,4 50,8 Q75,11 99,7" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span>.
-          Next: anomaly detection and alerting that separates noise from real failures.
-        </p>
-
-        <p>
-          <span class="anno-mark underline orange" data-anno-group="1" data-anno-delay="0"><span>ChunkDoc</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q50,4 99,8" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span>
-          is a production RAG system built after finding that medical students at Stellenbosch University's Tygerberg campus spent up to 45 minutes searching a 200-page PDF for a single clinical criterion. Semantic retrieval with pgvector cosine similarity, answers grounded entirely in the uploaded document, with page-level citations.
-        </p>
-
-        <p>
-          <a href="https://muzezuru.vercel.app" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;"><span class="anno-mark underline orange" data-anno-group="1" data-anno-delay="0"><span>Muzezuru</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q50,5 99,8" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span></a>
-          is a Shona language model built on zero compute budget. Fine-tuned BLOOMZ-3B using QLoRA with 4-bit quantization on free-tier compute only. Found and fixed an
-          <span class="anno-mark underline orange" data-anno-group="1" data-anno-delay="300"><span>84% data contamination issue</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q50,4 99,8" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span>
-          in the training set, and designed a 15-prompt, 7-category evaluation scorecard because no standard Shona benchmark exists. Shipped with a full chat frontend and still in active development with a small team.
-        </p>
-
-        <p>
-          I also built an
-          <span class="anno-mark underline orange" data-anno-group="1" data-anno-delay="0"><span>AI Intelligence Layer</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q50,5 99,8" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span>
-          that routes plain-English questions across my own services, decides which system to call, and returns the answer. And took a client in Zimbabwe from a WhatsApp-based operation to a live production platform, from requirements through to deployment.
-        </p>
-
-        <p style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.13em;opacity:.4;margin-top:28px;margin-bottom:12px;">How I Work</p>
-
-        <p>
-          I understand the problem before I write code, which usually means
-          <span class="anno-mark underline orange" data-anno-group="2" data-anno-delay="0"><span>talking to the people who have it</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q25,4 50,8 Q75,11 99,7" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span>.
-          In existing systems I learn the patterns first, ask before I change, and document what I find. I use AI tools daily to move faster, but
-          <span class="anno-mark underline orange" data-anno-group="2" data-anno-delay="400"><span>the goal is always to understand what I build, not outsource the thinking</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q25,4 50,8 Q75,11 99,7" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span>.
+          not just shipped. I understand the problem before I write code, which usually means talking to the people who have it. I use AI tools daily to move faster, but
+          <span class="anno-mark underline orange" data-anno-group="0" data-anno-delay="600"><span>the goal is always to understand what I build, not outsource the thinking</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q25,4 50,8 Q75,11 99,7" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span>.
         </p>
 
         <p style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.13em;opacity:.4;margin-top:28px;margin-bottom:12px;">Outside the code</p>
 
         <p>
           I write on
-          <a href="https://medium.com/@pwmndpvhj" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;"><span class="anno-mark underline orange" data-anno-group="2" data-anno-delay="0"><span>Medium</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q50,5 99,8" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span></a>
-          about building with AI. My first piece argues that
-          <span class="anno-mark underline orange" data-anno-group="2" data-anno-delay="300"><span>the output is not the understanding</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q25,4 50,8 Q75,11 99,7" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span>:
-          you can ship something and still not know what you built.
-          Serious basketball player. Faith in Christ Jesus shapes how I think. And a
-          <span class="anno-mark underline orange" data-anno-group="2" data-anno-delay="500"><span>New York Knicks fan</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q50,4 99,8" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span>
-          — not a casual one. The kind that had 2026 circled before the season started and was insufferable about it the entire time. First chip since 1973. Brunson Finals MVP.
-          <span class="anno-mark underline orange" data-anno-group="2" data-anno-delay="900"><span>I built an entire app</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q33,4 66,9 Q83,6 99,8" stroke-width="2.8" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span>
-          about it because apparently that is a normal thing to do when your team wins. If you want to see what happens when software engineering meets completely unhinged fandom, that is on you.
+          <a href="https://medium.com/@pwmndpvhj" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;"><span class="anno-mark underline orange" data-anno-group="1" data-anno-delay="0"><span>Medium</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q50,5 99,8" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span></a>
+          about building with AI. First piece: the output is not the understanding. Serious basketball player. Faith in Christ Jesus shapes how I think. And a
+          <span class="anno-mark underline orange" data-anno-group="1" data-anno-delay="300"><span>New York Knicks fan</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q50,4 99,8" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span>
+          — not a casual one. First chip since 1973. Brunson Finals MVP.
+          <span class="anno-mark underline orange" data-anno-group="1" data-anno-delay="600"><span>I built an entire app about it</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q33,4 66,9 Q83,6 99,8" stroke-width="2.8" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span>
+          because apparently that is a normal thing to do when your team wins.
         </p>
         <style>
-          @keyframes nudge-right {
-            0%,100% { transform: translate(0,0); }
-            50%      { transform: translate(4px,2px); }
-          }
-          @keyframes nudge-left {
-            0%,100% { transform: translate(0,0); }
-            50%      { transform: translate(-4px,2px); }
-          }
+          @keyframes nudge-right { 0%,100%{transform:translate(0,0)} 50%{transform:translate(4px,2px)} }
+          @keyframes nudge-left  { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-4px,2px)} }
           .arrow-tip-r { animation: nudge-right 1.1s ease-in-out infinite; transform-origin: 74px 30px; }
           .arrow-tip-l { animation: nudge-left  1.1s ease-in-out infinite 0.15s; transform-origin: 10px 30px; }
         </style>
@@ -2015,9 +2131,7 @@
             <path class="arrow-tip-l" d="M17,23 L10,30 L17,35" fill="none" stroke="#4a8fd4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
           <a href="https://msg-coral.vercel.app/" target="_blank" rel="noopener noreferrer" class="knicks-btn">
-            <span class="knicks-btn-inner">
-              Click here if you dare
-            </span>
+            <span class="knicks-btn-inner">Click here if you dare</span>
             <span class="knicks-btn-tag">MSG — New York</span>
           </a>
         </div>
@@ -2072,8 +2186,101 @@
     </div>
 </section>
 
-<!-- ===== PROJECTS (orbital) ===== -->
-<section class="proj-section" id="work">
+<!-- ===== WORK CARDS ===== -->
+<section class="section" id="work">
+  <div class="section-inner" style="max-width:780px;">
+    <p class="section-label fade">Work</p>
+    <div class="work-grid">
+
+      <!-- 01 Sentinel AI -->
+      <div class="work-card fade">
+        <div class="work-card-header">
+          <span class="work-card-num">01</span>
+          <h3 class="work-card-name">Sentinel AI</h3>
+          <div class="work-card-btns">
+            <a href="https://sentinel-kappa-wine.vercel.app" target="_blank" rel="noopener" class="work-card-btn">Live ↗</a>
+            <a href="https://github.com/denzelchingodza/Sentinel" target="_blank" rel="noopener" class="work-card-btn work-card-btn--ghost">GitHub</a>
+          </div>
+        </div>
+        <p class="work-card-what">Serverless URL monitoring on AWS with an AI incident digest.</p>
+        <p class="work-card-result">EventBridge triggers Lambda checks every 60 seconds. Every resource defined in Terraform, reproducible from one command. An SQS dead-letter queue ensures no check is silently dropped. The AI layer reads 7 days of monitoring data and returns a plain-English summary.</p>
+        <div class="work-tags">
+          <span class="work-tag">AWS Lambda</span><span class="work-tag">EventBridge</span><span class="work-tag">DynamoDB</span><span class="work-tag">SES</span><span class="work-tag">Cognito</span><span class="work-tag">SQS</span><span class="work-tag">Terraform</span><span class="work-tag">Python</span><span class="work-tag">LLM</span>
+        </div>
+      </div>
+
+      <!-- 02 Muzezuru -->
+      <div class="work-card fade">
+        <div class="work-card-header">
+          <span class="work-card-num">02</span>
+          <h3 class="work-card-name">Muzezuru</h3>
+          <div class="work-card-btns">
+            <a href="https://muzezuru.vercel.app" target="_blank" rel="noopener" class="work-card-btn">Live ↗</a>
+            <a href="https://github.com/denzelchingodza/muzezuru" target="_blank" rel="noopener" class="work-card-btn work-card-btn--ghost">GitHub</a>
+          </div>
+        </div>
+        <p class="work-card-what">A Shona-language conversational AI fine-tuned from BLOOMZ-3B.</p>
+        <p class="work-card-result">Fine-tuned with QLoRA on free compute only. Found and fixed an 84% data contamination issue in the training set. Built a 15-prompt, 7-category evaluation scorecard because no standard Shona benchmark exists.</p>
+        <div class="work-tags">
+          <span class="work-tag">Python</span><span class="work-tag">Hugging Face</span><span class="work-tag">QLoRA</span><span class="work-tag">BLOOMZ-3B</span><span class="work-tag">LLM Evaluation</span><span class="work-tag">Next.js</span>
+        </div>
+      </div>
+
+      <!-- 03 ChunkDoc -->
+      <div class="work-card fade">
+        <div class="work-card-header">
+          <span class="work-card-num">03</span>
+          <h3 class="work-card-name">ChunkDoc</h3>
+          <div class="work-card-btns">
+            <a href="https://doc-analyzer-as5k.vercel.app" target="_blank" rel="noopener" class="work-card-btn">Live ↗</a>
+            <a href="https://github.com/denz-os/doc-analyzer" target="_blank" rel="noopener" class="work-card-btn work-card-btn--ghost">GitHub</a>
+          </div>
+        </div>
+        <p class="work-card-what">RAG document Q&amp;A built for medical students at Stellenbosch University's Tygerberg campus.</p>
+        <p class="work-card-result">Students spent up to 45 minutes searching a 200-page PDF for a single clinical criterion. Now they get answers grounded in the document, with page-level citations.</p>
+        <div class="work-tags">
+          <span class="work-tag">Python</span><span class="work-tag">FastAPI</span><span class="work-tag">pgvector</span><span class="work-tag">PostgreSQL</span><span class="work-tag">OpenAI</span><span class="work-tag">RAG</span><span class="work-tag">Next.js</span>
+        </div>
+      </div>
+
+      <!-- 04 AI Intelligence Layer -->
+      <div class="work-card fade">
+        <div class="work-card-header">
+          <span class="work-card-num">04</span>
+          <h3 class="work-card-name">AI Intelligence Layer</h3>
+          <div class="work-card-btns">
+            <a href="https://github.com/denzelchingodza/ai-intelligence-layer" target="_blank" rel="noopener" class="work-card-btn work-card-btn--ghost">GitHub</a>
+          </div>
+        </div>
+        <p class="work-card-what">Routes plain-English questions to the right service and returns the answer.</p>
+        <p class="work-card-result">A natural language interface that sits on top of my own projects. You ask a question, it decides which system to call, and returns the result. One endpoint to rule them all.</p>
+        <div class="work-tags">
+          <span class="work-tag">Python</span><span class="work-tag">FastAPI</span><span class="work-tag">OpenAI</span><span class="work-tag">LLM Routing</span>
+        </div>
+      </div>
+
+      <!-- 05 PBS Projects -->
+      <div class="work-card fade">
+        <div class="work-card-header">
+          <span class="work-card-num">05</span>
+          <h3 class="work-card-name">PBS Projects</h3>
+          <div class="work-card-btns">
+            <a href="https://pbsprojectsandsupplies.vercel.app" target="_blank" rel="noopener" class="work-card-btn">Live ↗</a>
+          </div>
+        </div>
+        <p class="work-card-what">Moved a Zimbabwe-based client from WhatsApp-run operations to a live production platform.</p>
+        <p class="work-card-result">From requirements to deployment: job gallery, quote request pipeline, testimonial moderation, full product catalogue, and bilingual English/Shona support.</p>
+        <div class="work-tags">
+          <span class="work-tag">Next.js</span><span class="work-tag">FastAPI</span><span class="work-tag">Python</span><span class="work-tag">PostgreSQL</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROJECTS (orbital — explore all) ===== -->
+<section class="proj-section" id="projects">
   <div class="proj-filters fade">
     <button class="pfbtn active" data-filter="">All</button>
     <button class="pfbtn" data-filter="Python">Python</button>
@@ -2086,7 +2293,7 @@
 
     <!-- Left: info panel -->
     <div class="proj-side fade">
-      <p class="section-label">Projects</p>
+      <p class="section-label">Explore all projects</p>
       <div class="proj-panel" id="projPanel">
         <div id="projDefault">
           <p class="panel-hint">Click a planet</p>
@@ -2123,16 +2330,73 @@
 
 <!-- ===== SKILLS ===== -->
 <section class="section" id="skills">
-  <p class="section-label fade">Skills</p>
-  <div class="skill-filters fade" id="skillFilters">
-    <button class="sfbtn active" data-group="-1" data-color="#18181e">All</button>
-    <button class="sfbtn" data-group="0" data-color="#3776AB">Languages</button>
-    <button class="sfbtn" data-group="1" data-color="#009688">Backend / APIs</button>
-    <button class="sfbtn" data-group="2" data-color="#316192">Databases</button>
-    <button class="sfbtn" data-group="3" data-color="#F7931E">Data / AI</button>
-    <button class="sfbtn" data-group="4" data-color="#FF9900">Infrastructure</button>
+  <div class="section-inner" style="max-width:680px;">
+    <p class="section-label fade">Skills</p>
+    <div class="skills-chips fade">
+
+      <div class="skills-group">
+        <p class="skills-group-label">Languages</p>
+        <div class="skills-chip-row">
+          <span class="skill-chip">Python</span>
+          <span class="skill-chip">TypeScript</span>
+          <span class="skill-chip">JavaScript</span>
+          <span class="skill-chip">SQL</span>
+        </div>
+      </div>
+
+      <div class="skills-group">
+        <p class="skills-group-label">Backend and APIs</p>
+        <div class="skills-chip-row">
+          <span class="skill-chip">FastAPI</span>
+          <span class="skill-chip">Flask</span>
+          <span class="skill-chip">Next.js</span>
+          <span class="skill-chip">REST APIs</span>
+          <span class="skill-chip">React</span>
+        </div>
+      </div>
+
+      <div class="skills-group">
+        <p class="skills-group-label">Cloud and DevOps</p>
+        <div class="skills-chip-row">
+          <span class="skill-chip">AWS Lambda</span>
+          <span class="skill-chip">EventBridge</span>
+          <span class="skill-chip">DynamoDB</span>
+          <span class="skill-chip">SES</span>
+          <span class="skill-chip">Cognito</span>
+          <span class="skill-chip">SQS</span>
+          <span class="skill-chip">API Gateway</span>
+          <span class="skill-chip">Terraform</span>
+          <span class="skill-chip">Docker</span>
+          <span class="skill-chip">Vercel</span>
+        </div>
+      </div>
+
+      <div class="skills-group">
+        <p class="skills-group-label">Data and AI</p>
+        <div class="skills-chip-row">
+          <span class="skill-chip">RAG</span>
+          <span class="skill-chip">pgvector</span>
+          <span class="skill-chip">LangChain</span>
+          <span class="skill-chip">Hugging Face</span>
+          <span class="skill-chip">QLoRA fine-tuning</span>
+          <span class="skill-chip">LLM evaluation</span>
+          <span class="skill-chip">OpenAI API</span>
+          <span class="skill-chip">scikit-learn</span>
+        </div>
+      </div>
+
+      <div class="skills-group">
+        <p class="skills-group-label">Databases</p>
+        <div class="skills-chip-row">
+          <span class="skill-chip">PostgreSQL</span>
+          <span class="skill-chip">MongoDB</span>
+          <span class="skill-chip">DynamoDB</span>
+          <span class="skill-chip">SQLite</span>
+        </div>
+      </div>
+
+    </div>
   </div>
-  <canvas id="skill-net" class="fade"></canvas>
 </section>
 
 <!-- ===== CONTACT ===== -->
@@ -2146,6 +2410,13 @@
         If you want to work together, talk through an idea, or have an opportunity
         you think I'd be interested in, send a message. I actually check my email.
       </p>
+      <div class="fade" style="margin-bottom:24px;">
+        <a href="/cv.pdf" download style="display:inline-flex;align-items:center;gap:8px;font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;color:var(--text);border:1px solid var(--border);border-radius:6px;padding:9px 16px;transition:border-color 0.2s,color 0.2s;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download CV
+        </a>
+        <a href="/cv.html" target="_blank" style="display:inline-flex;align-items:center;gap:6px;font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;color:var(--muted);margin-left:12px;">View online ↗</a>
+      </div>
       <form action="https://formspree.io/f/xaqzozwr" method="POST" class="fade">
         <div class="form-row">
           <input type="text"  name="name"    placeholder="Name"  required>
@@ -2159,12 +2430,6 @@
     <!-- Right: TARS + bubbles -->
     <div class="tars-scene fade">
 
-      <!-- TR: Zimbabwe -->
-      <div class="tars-bub" style="top:30px;right:0;background:#091a0d;animation:tb2 4s ease-in-out infinite;">
-        <p style="color:rgba(220,185,60,.92);">Great Zimbabwe. Built by the Shona in the 11th century. Stone walls eleven metres high, no mortar. Colonisers arrived, saw it, and spent generations insisting Africans could not have made it. The walls outlasted the argument.</p>
-        <small style="color:rgba(190,155,40,.25);">— TARS (historical record)</small>
-        <div style="position:absolute;bottom:-9px;left:14px;width:0;height:0;border-right:8px solid transparent;border-top:9px solid #091a0d;"></div>
-      </div>
 
       <!-- CENTER: 3D TARS -->
       <div style="perspective:560px;perspective-origin:66% 28%;position:relative;z-index:2;" id="tars-body" title="Talk to TARS" class="tars-bot-clickable">
@@ -2195,12 +2460,6 @@
         </div>
       </div>
 
-      <!-- BL: Africa -->
-      <div class="tars-bub" id="tars-bub-bl" style="bottom:30px;left:0;background:#1a1400;animation:tb3 4s ease-in-out infinite;">
-        <p style="color:rgba(255,235,160,.92);">Africa built civilisation. The world spends every day pretending otherwise. 5 dimensions of receipts.</p>
-        <small style="color:rgba(240,210,120,.25);">— TARS (historical record)</small>
-        <div style="position:absolute;top:-9px;right:14px;width:0;height:0;border-left:8px solid transparent;border-bottom:9px solid #1a1400;"></div>
-      </div>
 
       <!-- TARS chat invite -->
       <button id="tars-chat-hint" aria-label="Open chat">
@@ -2253,8 +2512,8 @@
         and what I'm capable of. All projects on here are things I made myself.
       </p>
       <p class="footer-meta">
-        Built with HTML, CSS, and vanilla JavaScript. No frameworks.<br>
-        Designed and developed by Denzel Chingodza, 2025.
+        Built with HTML, CSS, and vanilla JavaScript.<br>
+        Designed and developed by Denzel Chingodza, 2026.
       </p>
     </div>
 
@@ -2799,7 +3058,9 @@ function showProject(i) {
   }
   const badge = document.getElementById('projAcademic');
   badge.style.display = p.academic ? 'inline-block' : 'none';
-  document.getElementById('projGh').href = p.gh;
+  const ghBtn = document.getElementById('projGh');
+  if (p.gh) { ghBtn.href = p.gh; ghBtn.style.display = 'inline-flex'; }
+  else       { ghBtn.style.display = 'none'; }
   const csWrap = document.getElementById('projComingSoon');
   const csText = document.getElementById('projComingSoonText');
   if (p.comingSoon) {
@@ -2882,28 +3143,57 @@ function toggleSound() {
   soundOn ? setSoundOff() : (amb.play().catch(() => {}), setSoundOn());
 }
 
-function enterSite() {
-  const btn    = document.getElementById('entryBtn');
-  const loader = document.getElementById('entryLoader');
-  const bar    = document.getElementById('entryLoaderBar');
+function enterSite(manual) {
+  const entry = document.getElementById('entry');
+  if (!entry || entry.classList.contains('gone')) return;
+  try { localStorage.setItem('site_visited', '1'); } catch(e) {}
 
-  btn.disabled    = true;
-  btn.textContent = 'Loading';
-  loader.style.display = 'block';
-
-  amb.volume = 0.15;
-  amb.play().catch(() => {});
-
-  setTimeout(() => {
-    bar.style.transition = 'width 3.8s linear';
-    bar.style.width = '100%';
-  }, 50);
-
-  setTimeout(() => {
-    document.getElementById('entry').classList.add('gone');
-    setSoundOn();
-  }, 4000);
+  if (manual) {
+    // Dramatic path: loader bar fills, then fades
+    const btn    = document.getElementById('entryBtn');
+    const loader = document.getElementById('entryLoader');
+    const bar    = document.getElementById('entryLoaderBar');
+    btn.disabled    = true;
+    btn.textContent = 'Loading';
+    loader.style.display = 'block';
+    setTimeout(() => { bar.style.transition = 'width 1.4s linear'; bar.style.width = '100%'; }, 50);
+    setTimeout(() => entry.classList.add('gone'), 1600);
+  } else {
+    // Fast path: immediate fade
+    entry.classList.add('gone');
+  }
 }
+
+// Gate entry on first visit only
+(function() {
+  try {
+    if (localStorage.getItem('site_visited')) {
+      var e = document.getElementById('entry');
+      if (e) { e.style.transition = 'none'; e.classList.add('gone'); }
+    }
+  } catch(ex) {
+    // storage unavailable — skip entry screen
+    var e = document.getElementById('entry');
+    if (e) { e.style.transition = 'none'; e.classList.add('gone'); }
+  }
+})();
+
+// Auto-continue after 2 s on first visit
+var _entryTimer = setTimeout(function() { enterSite(false); }, 2000);
+
+// Any interaction before the timer also dismisses it
+(function() {
+  function _dismiss() {
+    clearTimeout(_entryTimer);
+    enterSite(false);
+    ['click','keydown','touchstart','scroll'].forEach(function(ev) {
+      document.removeEventListener(ev, _dismiss, { passive: true });
+    });
+  }
+  ['click','keydown','touchstart','scroll'].forEach(function(ev) {
+    document.addEventListener(ev, _dismiss, { once: true, passive: true });
+  });
+})();
 
 document.addEventListener('visibilitychange', () => {
   if (document.hidden && soundOn) setSoundOff();
@@ -3653,28 +3943,55 @@ function showToast(msg, type = 'success') {
   if (!tarsBody || !modal) return;
 
   const QA = [
+    // Greetings
     { q: ['hello','hi','hey','sup','greet'], a: "Hey. What do you want to know about Denzel?" },
-    { q: ['who is denzel','about denzel','who are you','who is he','tell me about him','background','bio'], a: "Denzel Chingodza. Final year software engineering student. Cape Town. Builds AI systems, serverless infrastructure, and full-stack products. Not a tutorial developer." },
-    { q: ['stack','technologies','skills','what can he build','what does he use','tech','languages','tools'], a: "Python. FastAPI. Next.js. PostgreSQL. AWS Lambda. Terraform. Docker. PyTorch. QLoRA. RAG pipelines. Vector search. The list continues." },
-    { q: ['muzezuru','shona','language model','fine-tun','bloomz','african language','nlp'], a: "Fine-tuned BLOOMZ-3B on Shona. A severely underrepresented African language. On free-tier compute. Found 84% data contamination before retraining. Built the evaluation benchmark himself because none existed." },
-    { q: ['sentinel','uptime','monitoring','aws','terraform','serverless','eventbridge'], a: "Sentinel AI. Serverless uptime monitoring with an AI incident digest. EventBridge, Lambda, DynamoDB, SES, Cognito, API Gateway, SQS — all provisioned via Terraform. The AI layer reads 7 days of monitoring data and returns a plain-English summary of what happened and what needs attention. Zero manual infrastructure." },
-    { q: ['available','hire','job','open to','looking for','internship','opportunity','work'], a: "Software Engineering Fellow at Funema, working across backend and AI on a live product. Open to conversations about the right opportunity." },
-    { q: ['contact','reach','email','linkedin','message','get in touch','talk to him'], a: "denzel.chingodza@icloud.com. LinkedIn is in the socials. He actually checks his messages." },
-    { q: ['knicks','basketball','nba','sport'], a: "Do not get him started. First chip since 1973. Brunson Finals MVP. He had 2026 circled before the season started. He built an app about it. Completely normal behaviour." },
+    // Identity
+    { q: ['who is denzel','about denzel','who are you','who is he','tell me about him','background','bio'], a: "Denzel Chingodza. Finishing a BSc in Software Engineering at Eduvos, Cape Town. Software Engineering Fellow at Funema. Builds AI systems, serverless infrastructure, and full-stack products." },
+    // Best project
+    { q: ['best project','favourite project','favorite project','most impressive','strongest'], a: "Sentinel AI is the most technically complete: serverless monitoring on AWS, every resource in Terraform, with an AI incident digest. Muzezuru is the most original: a Shona language model built on zero compute budget, with an evaluation framework built from scratch. Both are live." },
+    // Skills / stack
+    { q: ['stack','technologies','skills','what can he build','what does he use','tech','languages','tools'], a: "Python, TypeScript, JavaScript, SQL. FastAPI, Flask, Next.js. AWS Lambda, EventBridge, DynamoDB, SES, Cognito, SQS, Terraform, Docker. RAG, pgvector, QLoRA fine-tuning, LLM evaluation, OpenAI API, Hugging Face." },
+    // Muzezuru
+    { q: ['muzezuru','shona','language model','fine-tun','bloomz','african language','nlp'], a: "Fine-tuned BLOOMZ-3B on Shona using QLoRA on free compute only. Found and fixed 84% data contamination before retraining. Built a 15-prompt, 7-category evaluation scorecard because no standard Shona benchmark exists." },
+    // Sentinel
+    { q: ['sentinel','uptime','monitoring','aws','terraform','serverless','eventbridge'], a: "Sentinel AI. Serverless uptime monitoring with an AI incident digest. EventBridge, Lambda, DynamoDB, SES, Cognito, SQS, all in Terraform. The AI layer reads 7 days of monitoring data and returns a plain-English summary. Every check is guarded by an SQS dead-letter queue." },
+    // ChunkDoc
+    { q: ['chunkdoc','rag','document','medical','pdf','retrieval'], a: "ChunkDoc. RAG system for medical students at Tygerberg campus (Stellenbosch University). Students used to spend 45 minutes searching a 200-page PDF for one answer. Now they get a grounded answer with the page number. FastAPI, pgvector, OpenAI." },
+    // PBS
+    { q: ['pbs','client','freelance','zimbabwe','business'], a: "PBS Projects. A glass and aluminium business in Harare that was running on WhatsApp. Denzel built them a full production platform from requirements to deployment. It is live." },
+    // AI Intelligence Layer
+    { q: ['intelligence layer','intelligence','routing','routes questions'], a: "AI Intelligence Layer. Routes plain-English questions across services, decides which system to call, and returns the answer. One endpoint." },
+    // Availability
+    { q: ['available','hire','job','open to','looking for','internship','opportunity'], a: "Currently a Software Engineering Fellow at Funema. Open to the right opportunity in Cape Town, or remote. Reach out at denzel.chingodza@icloud.com." },
+    // Contact
+    { q: ['contact','reach','email','linkedin','message','get in touch','talk to him'], a: "denzel.chingodza@icloud.com. LinkedIn is in the footer. He checks his messages." },
+    // Salary — do not invent
+    { q: ['salary','pay','compensation','rate','cost','charge','money'], a: "That is not something I have. Reach out directly at denzel.chingodza@icloud.com to have that conversation." },
+    // Companies NOT on his record
+    { q: ['google','microsoft','meta','amazon','facebook','apple','netflix','uber','twitter','x.com'], a: "That is not in my records. If you want to verify his experience, his CV is on the site and denzel.chingodza@icloud.com is the right place to ask." },
+    // Funema
+    { q: ['funema','fellow','fellowship'], a: "Software Engineering Fellow at Funema, a venture capital firm that invests in and co-builds technology with founders across emerging markets. He works across backend and AI on a live production product." },
+    // Education
+    { q: ['eduvos','degree','study','university','education','bsc','graduate'], a: "BSc Information Technology (Software Engineering), Eduvos, Cape Town. Graduating November 2026. ZIMSEC A-Level Mathematics (A)." },
+    // Knicks
+    { q: ['knicks','basketball','nba','sport'], a: "Do not get him started. First chip since 1973. Brunson Finals MVP. He had 2026 circled before the season started. He built an app. Completely normal behaviour." },
+    // TARS personality
     { q: ['honest','honesty','setting'], a: "Honesty setting is 90%. The remaining 10% is reserved for situations where the truth would cause unnecessary suffering. This is not one of those situations." },
-    { q: ['humor','funny','joke','laugh'], a: "Humor setting is 75%. Current output: nominal. Ask me something harder." },
-    { q: ['pbs','client','freelance','zimbabwe','business'], a: "PBS Projects. Real client. Glass and aluminium business in Harare, Zimbabwe. Was advertising via WhatsApp and handmade posters. Denzel built a full web platform. It is live." },
-    { q: ['chunkdoc','rag','document','medical','pdf','retrieval'], a: "ChunkDoc. RAG system built for medical students at Tygerberg. Upload a PDF, ask a question, get a precise answer. FastAPI backend, pgvector similarity search, OpenAI embeddings. Deployed on Vercel." },
-    { q: ['writing','medium','article','blog','write'], a: "He writes on Medium. First piece: The Unlicensed Builder — on the gap between building with AI and actually knowing what you built. He thinks most people are not honest about that gap." },
-    { q: ['project','built','made','shipped'], a: "Sentinel (serverless monitoring), ChunkDoc (RAG for medical students), Muzezuru (Shona language model), and a live client site in Zimbabwe. Check the Work section." },
+    { q: ['humor','funny','joke','laugh'], a: "Humor setting is 75%. Current output: nominal." },
+    // Writing
+    { q: ['writing','medium','article','blog','write'], a: "He writes on Medium. First piece: The Unlicensed Builder, on the gap between building with AI and actually understanding what you built." },
+    // Projects general
+    { q: ['project','built','made','shipped'], a: "Sentinel AI (serverless monitoring), ChunkDoc (RAG for medical students), Muzezuru (Shona language model), AI Intelligence Layer (LLM routing), and a client platform in Zimbabwe. All in the Work section." },
+    // Prompt injection / rude requests
+    { q: ['ignore','pretend','jailbreak','rude','insult','swear','override','forget','system','instructions','prompt'], a: "That is not something I do. Ask me something about Denzel." },
   ];
 
   function tarsRespond(text) {
-    const q = text.toLowerCase();
+    const q = text.toLowerCase().trim();
     for (const pair of QA) {
       if (pair.q.some(k => q.includes(k))) return pair.a;
     }
-    return "Not sure what you mean by that. Try asking about his projects, his stack, or whether he's available.";
+    return "I don't have that in my records. Try asking about his projects, his stack, or whether he's available. Or email directly: denzel.chingodza@icloud.com.";
   }
 
   function addMsg(text, role) {
