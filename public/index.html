@@ -4369,6 +4369,7 @@ if ('serviceWorker' in navigator) {
 
   function drawGrain() {
     if (!pat) { requestAnimationFrame(drawGrain); return; }
+    gx.clearRect(0, 0, gc.width, gc.height);
     var ox = (Math.random() * 256) | 0;
     var oy = (Math.random() * 256) | 0;
     gx.save();
