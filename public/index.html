@@ -686,13 +686,14 @@
       border: 1px solid var(--border);
       padding: 10px 22px;
       text-decoration: none;
-      transition: border-color .2s, background .2s;
+      transition: border-color .2s, background .2s, transform .12s;
       display: inline-flex;
       align-items: center;
       gap: 7px;
     }
     .about-btn svg { width: 13px; height: 13px; fill: none; stroke: currentColor; stroke-width: 1.8; }
     .about-btn:hover { border-color: var(--text); background: rgba(24,24,30,.04); }
+    .about-btn:active { transform: scale(0.97); }
 
     /* ── Knicks CTA button — 90s NBA card energy ── */
     .knicks-btn {
@@ -833,9 +834,10 @@
       border: 1px solid var(--border);
       border-radius: 10px;
       padding: 24px 24px 20px;
-      transition: border-color 0.2s;
+      transition: border-color 0.2s, transform 0.28s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.28s;
+      will-change: transform;
     }
-    .work-card:hover { border-color: var(--sub); }
+    .work-card:hover { border-color: var(--sub); transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,0.07); }
     .work-card-header {
       display: flex;
       align-items: baseline;
@@ -918,7 +920,7 @@
       padding: 3px 7px;
     }
     [data-theme="dark"] .work-card { border-color: #22232e; }
-    [data-theme="dark"] .work-card:hover { border-color: #3a3a50; }
+    [data-theme="dark"] .work-card:hover { border-color: #3a3a50; box-shadow: 0 12px 32px rgba(0,0,0,0.45); }
     [data-theme="dark"] .work-card-name { color: #dddbd2; }
     [data-theme="dark"] .work-card-what { color: #c8c6be; }
     [data-theme="dark"] .work-card-result { color: #7a7a86; }
@@ -1057,12 +1059,13 @@
       background: var(--text);
       text-decoration: none;
       padding: 10px 22px;
-      transition: opacity .2s;
+      transition: opacity .2s, transform .12s;
       display: inline-flex;
       align-items: center;
       gap: 6px;
     }
     .btn-dark:hover { opacity: 0.7; }
+    .btn-dark:active { transform: scale(0.97); }
     .btn-dark svg { width: 11px; height: 11px; stroke: currentColor; fill: none; stroke-width: 2; }
 
     .link-plain-sm {
@@ -1699,10 +1702,14 @@
 
     .fade {
       opacity: 0;
-      transform: translateY(12px);
-      transition: opacity .7s ease, transform .7s ease;
+      transform: translateY(18px);
+      transition: opacity .75s ease, transform .75s ease;
+      transition-delay: var(--fade-delay, 0ms);
     }
     .fade.in { opacity: 1; transform: none; }
+    .fade-left  { transform: translateX(-24px); }
+    .fade-right { transform: translateX(24px); }
+    .fade-left.in, .fade-right.in { transform: none; }
 
     /* ===== TABLET ===== */
     @media (max-width: 900px) {
@@ -1987,6 +1994,43 @@
     .tars-typing span:nth-child(2) { animation-delay: .2s; }
     .tars-typing span:nth-child(3) { animation-delay: .4s; }
     @keyframes tars-dot { 0%,80%,100%{opacity:.2} 40%{opacity:1} }
+
+    /* ===== WEIGHT: PAGE GRAIN ===== */
+    #page-grain {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 9997;
+    }
+
+    /* ===== WEIGHT: BUTTON PRESS ===== */
+    .work-card-btn { transition: background .15s, color .15s, border-color .15s, transform .1s; }
+    .work-card-btn:active { transform: scale(0.97); }
+    .work-card-btn--ghost:active { transform: scale(0.97); }
+    .submit-btn { transition: background .2s, color .2s, border-color .2s, transform .1s !important; }
+    .submit-btn:active { transform: scale(0.97); }
+    .knicks-btn:active { transform: scale(0.97) !important; }
+
+    /* ===== WEIGHT: SECTION DEPTH ===== */
+    .section, .proj-section {
+      position: relative;
+    }
+    .section::before, .proj-section::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 90px;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.025), transparent);
+      pointer-events: none;
+      z-index: 0;
+    }
+    [data-theme="dark"] .section::before,
+    [data-theme="dark"] .proj-section::before {
+      background: linear-gradient(to bottom, rgba(0,0,0,0.18), transparent);
+    }
+
   </style>
   <!-- Structured data -->
   <script type="application/ld+json">
@@ -2006,6 +2050,8 @@
   </script>
 </head>
 <body>
+
+<canvas id="page-grain" aria-hidden="true"></canvas>
 
 <!-- ===== ENTRY OVERLAY ===== -->
 <div id="entry">
@@ -3206,12 +3252,16 @@ document.addEventListener('visibilitychange', () => {
 });
 
 
-/* SCROLL REVEAL */
+/* SCROLL REVEAL — with stagger on work cards */
 const io = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
   });
 }, { threshold: 0.08 });
+// Stagger work cards
+document.querySelectorAll('.work-card.fade').forEach((card, i) => {
+  card.style.setProperty('--fade-delay', `${i * 70}ms`);
+});
 document.querySelectorAll('.fade').forEach(el => io.observe(el));
 
 /* FOOTER STARS */
@@ -4285,6 +4335,87 @@ if ('serviceWorker' in navigator) {
     sessionStorage.setItem('scrollY', Math.round(window.scrollY));
   });
 })();
+</script>
+
+<script>
+/* ===== WEIGHT ENHANCEMENTS ===== */
+
+/* 1. FULL-PAGE GRAIN OVERLAY */
+(function() {
+  var gc = document.getElementById('page-grain');
+  if (!gc) return;
+  var gx = gc.getContext('2d');
+
+  // Pre-bake a 256x256 grain tile
+  var tile = document.createElement('canvas');
+  tile.width = tile.height = 256;
+  var tx = tile.getContext('2d');
+  var id = tx.createImageData(256, 256);
+  for (var i = 0; i < id.data.length; i += 4) {
+    var v = Math.random() * 255 | 0;
+    id.data[i] = id.data[i+1] = id.data[i+2] = v;
+    id.data[i+3] = Math.random() < 0.45 ? (Math.random() * 14 | 0) : 0;
+  }
+  tx.putImageData(id, 0, 0);
+  var pat = null;
+
+  function resizeGrain() {
+    gc.width  = window.innerWidth;
+    gc.height = window.innerHeight;
+    pat = gx.createPattern(tile, 'repeat');
+  }
+  resizeGrain();
+  window.addEventListener('resize', resizeGrain);
+
+  function drawGrain() {
+    if (!pat) { requestAnimationFrame(drawGrain); return; }
+    var ox = (Math.random() * 256) | 0;
+    var oy = (Math.random() * 256) | 0;
+    gx.save();
+    gx.globalAlpha = 0.52;
+    gx.translate(ox, oy);
+    gx.fillStyle = pat;
+    gx.fillRect(-ox, -oy, gc.width + 256, gc.height + 256);
+    gx.restore();
+    requestAnimationFrame(drawGrain);
+  }
+  requestAnimationFrame(drawGrain);
+})();
+
+/* 2. MAGNETIC BUTTONS — .btn-dark and .about-btn */
+(function() {
+  var MAG_STRENGTH = 0.3;
+  var MAG_RADIUS   = 80; // px outside button that still pulls
+
+  document.querySelectorAll('.btn-dark, .about-btn').forEach(function(btn) {
+    var mx = 0, my = 0;
+
+    btn.addEventListener('mousemove', function(e) {
+      var r = btn.getBoundingClientRect();
+      mx = (e.clientX - (r.left + r.width  / 2)) * MAG_STRENGTH;
+      my = (e.clientY - (r.top  + r.height / 2)) * MAG_STRENGTH;
+      btn.style.transition = 'transform 0.1s, opacity 0.2s';
+      btn.style.transform  = 'translate(' + mx + 'px,' + my + 'px)';
+    });
+
+    btn.addEventListener('mouseleave', function() {
+      mx = my = 0;
+      btn.style.transition = 'transform 0.5s cubic-bezier(0.23,1,0.32,1), opacity 0.2s';
+      btn.style.transform  = '';
+    });
+
+    btn.addEventListener('mousedown', function() {
+      btn.style.transition = 'transform 0.08s, opacity 0.2s';
+      btn.style.transform  = 'translate(' + mx + 'px,' + my + 'px) scale(0.96)';
+    });
+
+    btn.addEventListener('mouseup', function() {
+      btn.style.transition = 'transform 0.1s, opacity 0.2s';
+      btn.style.transform  = 'translate(' + mx + 'px,' + my + 'px)';
+    });
+  });
+})();
+
 </script>
 
 <!-- Cookie consent banner -->
