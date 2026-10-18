@@ -2265,19 +2265,19 @@
         </div>
       </div>
 
-      <!-- 05 PBS Projects -->
+      <!-- 05 SaaS Metrics DB -->
       <div class="work-card fade">
         <div class="work-card-header">
           <span class="work-card-num">05</span>
-          <h3 class="work-card-name">PBS Projects</h3>
+          <h3 class="work-card-name">SaaS Metrics DB</h3>
           <div class="work-card-btns">
-            <a href="https://pbs-projects.vercel.app" target="_blank" rel="noopener" class="work-card-btn">Live ↗</a>
+            <a href="https://saas-metric-db.onrender.com" target="_blank" rel="noopener" class="work-card-btn">Live ↗</a>
           </div>
         </div>
-        <p class="work-card-what">Moved a Zimbabwe-based client from WhatsApp-run operations to a live production platform.</p>
-        <p class="work-card-result">From requirements to deployment: job gallery, quote request pipeline, testimonial moderation, full product catalogue, and bilingual English/Shona support.</p>
+        <p class="work-card-what">Built to understand the cross-section of business and software — where financial metrics live in the database.</p>
+        <p class="work-card-result">Models the full subscription lifecycle — MRR, ARR, churn, LTV, ARPU, NRR — with real SQL, 100 seeded customers, a FastAPI layer, and a live dashboard. Built to understand how the numbers a business runs on actually live in a database.</p>
         <div class="work-tags">
-          <span class="work-tag">Next.js</span><span class="work-tag">FastAPI</span><span class="work-tag">Python</span><span class="work-tag">PostgreSQL</span>
+          <span class="work-tag">PostgreSQL</span><span class="work-tag">FastAPI</span><span class="work-tag">Python</span><span class="work-tag">Docker</span>
         </div>
       </div>
 
@@ -2789,12 +2789,12 @@ const PROJECTS = [
     color: '#591030',
   },
   {
-    num: '04', name: 'PBS Projects',
-    desc: 'Built for a real client. A friend runs a glass and aluminium business in Harare, Zimbabwe, and was advertising through posters and WhatsApp. I pitched a proper web app and built it: job gallery, quote request pipeline, testimonial moderation, full product catalogue, and bilingual English/Shona support.',
-    stack: ['Next.js', 'FastAPI', 'PostgreSQL', 'Cloudinary', 'Python'],
-    live: 'https://pbs-projects.vercel.app',
-    gh:   'https://github.com/denzelchingodza/pbs-projects',
-    color: '#3a6e4a',
+    num: '04', name: 'SaaS Metrics DB',
+    desc: 'Built to understand the cross-section of business and software — specifically, where financial metrics live in the database. Models the full subscription lifecycle of a SaaS company: MRR, ARR, churn, LTV, ARPU, NRR, cohort retention, and MRR movement, all calculated in PostgreSQL against 100 seeded customers across Basic, Pro, and Business plans. FastAPI serves the data through six clean endpoints. A live dashboard with animated counters, a retention heatmap, and clickable detail modals sits on top. Deployed on Render with Docker.',
+    stack: ['PostgreSQL', 'FastAPI', 'asyncpg', 'Python', 'Docker', 'pytest'],
+    live: 'https://saas-metric-db.onrender.com',
+    gh:   'https://github.com/denzelchingodza/saas-metric-db',
+    color: '#2563eb',
   },
   {
     num: '05', name: 'AI Intelligence Layer',
@@ -3964,7 +3964,7 @@ function showToast(msg, type = 'success') {
     // ChunkDoc
     { q: ['chunkdoc','rag','document','medical','pdf','retrieval'], a: "ChunkDoc. RAG system for medical students at Tygerberg campus (Stellenbosch University). Students used to spend 45 minutes searching a 200-page PDF for one answer. Now they get a grounded answer with the page number. FastAPI, pgvector, OpenAI." },
     // PBS
-    { q: ['pbs','client','freelance','zimbabwe','business'], a: "PBS Projects. A glass and aluminium business in Harare that was running on WhatsApp. Denzel built them a full production platform from requirements to deployment. It is live." },
+    { q: ['saas','metrics','mrr','arr','churn','ltv','arpu','nrr','subscription','database','analytics'], a: "SaaS Metrics DB. Built to understand the cross-section of business and software. Models the full SaaS subscription lifecycle in PostgreSQL — MRR, ARR, churn, LTV, ARPU, NRR, cohort retention — against 100 seeded customers. FastAPI serves the data, a live dashboard sits on top. Deployed on Render with Docker. saas-metric-db.onrender.com" },
     // AI Intelligence Layer
     { q: ['intelligence layer','intelligence','routing','routes questions'], a: "AI Intelligence Layer. Routes plain-English questions across services, decides which system to call, and returns the answer. One endpoint." },
     // Availability
