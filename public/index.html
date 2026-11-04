@@ -3085,9 +3085,7 @@ function drawOrbital(ts) {
       octx.arc(x, y, r, 0, Math.PI * 2);
       octx.fillStyle = isActive
         ? '#18181e'
-        : proj.color
-        ? proj.color
-        : `rgba(88,88,96,${0.45 + depth * 0.45})`;
+        : `rgba(90,88,98,${0.55 + depth * 0.35})`;
       octx.fill();
     }
 
