@@ -4,10 +4,10 @@ CS student at Stellenbosch University, South Africa. Builds full-stack applicati
 
 ## Projects
 
-- **Sentinel** — serverless uptime monitoring and incident alerting built on AWS Lambda and DynamoDB. https://sentinel-kappa-wine.vercel.app
-- **StackScope** — job market intelligence tool for South African developers. Tracks skills demand, salary ranges, and hiring trends. https://stack-scope-eight.vercel.app
-- **ChunkDoc** — AI-powered document analyser for medical students. Upload a PDF and ask questions in plain English. Uses RAG with pgvector and GPT-4o-mini. https://doc-analyzer-as5k.vercel.app
-- **AI Intelligence Layer** — FastAPI service that routes plain-English questions across all projects using GPT-4o-mini function calling. https://ai-intelligence-layer.vercel.app
+- **Sentinel**: serverless uptime monitoring and incident alerting built on AWS Lambda and DynamoDB. https://sentinel-kappa-wine.vercel.app
+- **StackScope**: job market intelligence tool for South African developers. Tracks skills demand, salary ranges, and hiring trends. https://stack-scope-eight.vercel.app
+- **ChunkDoc**: AI-powered document analyser for medical students. Upload a PDF and ask questions in plain English. Uses RAG with pgvector and GPT-4o-mini. https://doc-analyzer-as5k.vercel.app
+- **AI Intelligence Layer**: FastAPI service that routes plain-English questions across all projects using GPT-4o-mini function calling. https://ai-intelligence-layer.vercel.app
 
 ## Stack
 

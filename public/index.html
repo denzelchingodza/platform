@@ -3,23 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Denzel Chingodza — Software Engineer / Writer</title>
+  <title>Denzel Chingodza | Software Engineer</title>
   <meta name="description" content="Software engineer in Cape Town building backend, cloud and applied AI systems. Software Engineering Fellow at Funema. Projects: Sentinel AI, Muzezuru, ChunkDoc." />
   <meta name="author" content="Denzel Chingodza" />
   <meta name="keywords" content="Denzel Chingodza, Software Engineering, Eduvos, Cape Town, backend engineer, AI engineer, Sentinel AI, Muzezuru, Shona AI, QLoRA, LLM fine-tuning, South Africa, Python, AWS, Terraform" />
-  <link rel="canonical" href="https://denzelchingodza.com/" />
+  <link rel="canonical" href="https://www.denzelchingodza.com/" />
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://denzelchingodza.com/" />
-  <meta property="og:title" content="Denzel Chingodza — Software Engineer / Writer" />
+  <meta property="og:url" content="https://www.denzelchingodza.com/" />
+  <meta property="og:title" content="Denzel Chingodza | Software Engineer" />
   <meta property="og:description" content="Software engineer in Cape Town building backend, cloud and applied AI systems. Software Engineering Fellow at Funema. Projects: Sentinel AI, Muzezuru, ChunkDoc." />
   <meta property="og:image" content="https://denzelchingodza.com/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Denzel Chingodza — Software Engineer portfolio" />
+  <meta property="og:image:alt" content="Denzel Chingodza, Software Engineer portfolio" />
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Denzel Chingodza — Software Engineer / Writer" />
+  <meta name="twitter:title" content="Denzel Chingodza | Software Engineer" />
   <meta name="twitter:description" content="Software engineer in Cape Town building backend, cloud and applied AI systems. Software Engineering Fellow at Funema. Projects: Sentinel AI, Muzezuru, ChunkDoc." />
   <meta name="twitter:image" content="https://denzelchingodza.com/og-image.png" />
   <!-- Favicon -->
@@ -507,7 +507,14 @@
     }
 
     /* ===== DARK TO LIGHT TRANSITION ===== */
-    .dark-to-light { display: none; }
+    .dark-to-light {
+      height: 100px;
+      background: linear-gradient(to bottom, #0d0e12, #edeae0);
+      display: block;
+    }
+    [data-theme="dark"] .dark-to-light {
+      background: linear-gradient(to bottom, #0d0e12, #0f1016);
+    }
 
     /* ===== SHARED SECTION ===== */
     .section {
@@ -1542,15 +1549,16 @@
       font-size: 11px;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: #3a3a4e;
+      color: rgba(255,255,255,0.38);
       margin-top: 20px;
       cursor: pointer;
       background: none;
       border: none;
       padding: 4px 0;
       transition: color 0.2s;
+      text-decoration: none;
     }
-    .entry-skip:hover { color: #7a7a8e; }
+    .entry-skip:hover { color: rgba(255,255,255,0.72); text-decoration: underline; }
     .entry-ship {
       position: absolute;
       left: -8vw;
@@ -2038,7 +2046,7 @@
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Denzel Chingodza",
-    "url": "https://denzelchingodza.com/",
+    "url": "https://www.denzelchingodza.com/",
     "jobTitle": "Software Developer",
     "alumniOf": {
       "@type": "CollegeOrUniversity",
@@ -2107,7 +2115,7 @@
         <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
       </a>
       <span class="social-sep"></span>
-      <a href="https://www.linkedin.com/in/denzel-chingodza-45b6ab3a0/" target="_blank" rel="noopener" class="social-link" aria-label="LinkedIn">
+      <a href="https://www.linkedin.com/in/denzelchingodza/" target="_blank" rel="noopener" class="social-link" aria-label="LinkedIn">
         <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
       </a>
       <span class="social-sep"></span>
@@ -2142,9 +2150,9 @@
         <p>
           I am a software engineer working across
           <span class="anno-mark underline orange" data-anno-group="0" data-anno-delay="0"><span>backend systems, cloud infrastructure and applied AI</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q25,4 50,8 Q75,11 99,7" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span>.
-          I build in Python first, define infrastructure as code, and care about systems that are
-          <span class="anno-mark underline orange" data-anno-group="0" data-anno-delay="300"><span>reliable, observable and understood</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q50,4 99,8" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span>,
-          not just shipped. I understand the problem before I write code, which usually means talking to the people who have it. Using AI tools to move faster is a habit now, and I love the research that comes before and alongside the build. But
+          I build in Python first, define infrastructure as code, and I prove my systems are
+          <span class="anno-mark underline orange" data-anno-group="0" data-anno-delay="300"><span>reliable and observable</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q50,4 99,8" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span>
+          with tests and measurement before they ship. I understand the problem before I write code, which usually means talking to the people who have it. Using AI tools to move faster is a habit now, and I love the research that comes before and alongside the build. But
           <span class="anno-mark underline orange" data-anno-group="0" data-anno-delay="600"><span>the goal is always to understand what I build, not outsource the thinking</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M1,8 Q25,4 50,8 Q75,11 99,7" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="120"/></svg></span>.
           One day I want to build my own AI company, one that's more careful about where it sits in law and society (haha, we'll get there).
         </p>
@@ -2179,7 +2187,7 @@
           </svg>
           <a href="https://msg-coral.vercel.app/" target="_blank" rel="noopener noreferrer" class="knicks-btn">
             <span class="knicks-btn-inner">Click here if you dare</span>
-            <span class="knicks-btn-tag">MSG — New York</span>
+            <span class="knicks-btn-tag">MSG, New York</span>
           </a>
         </div>
       </div>
@@ -2190,7 +2198,7 @@
   <div class="about-grid" style="margin-bottom: 0; margin-top: 20px;">
       <div class="about-card fade" style="grid-column: 1 / -1;">
         <p class="about-card-title">Currently</p>
-        <p class="about-card-body">Software Engineering Fellow at Funema. Funema is a venture capital firm that invests in and co-builds technology with founders across emerging markets. I work across backend and AI on a live, AI-powered product: mapping how its services, APIs and data fit together, improving the stability and quality of the codebase, reviewing AI-assisted code with care, and documenting changes for future development and handover.</p>
+        <p class="about-card-body">Software Engineering Fellow at Funema, a venture capital firm that invests in and co-builds technology with founders across emerging markets. I designed and shipped a production microservice for its AI platform end to end: a containerised Python API with authenticated, safe-to-retry jobs, an evidence-based model that decides what is relevant, and a health report so failures are always reported, never hidden. Every change is proven with offline replay tests and pass marks written before the results come in.</p>
       </div>
 
       <div class="about-card fade">
@@ -2224,7 +2232,7 @@
             <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
             GitHub
           </a>
-          <a href="https://www.linkedin.com/in/denzel-chingodza-45b6ab3a0/" target="_blank" rel="noopener" class="about-btn">
+          <a href="https://www.linkedin.com/in/denzelchingodza/" target="_blank" rel="noopener" class="about-btn">
             <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
             LinkedIn
           </a>
@@ -2321,8 +2329,8 @@
             <a href="https://github.com/denzelchingodza/saas-metric-db" target="_blank" rel="noopener" class="work-card-btn work-card-btn--ghost">GitHub ↗</a>
           </div>
         </div>
-        <p class="work-card-what">Built to understand the cross-section of business and software — where financial metrics live in the database.</p>
-        <p class="work-card-result">Models the full subscription lifecycle — MRR, ARR, churn, LTV, ARPU, NRR — with real SQL, 100 seeded customers, a FastAPI layer, and a live dashboard. Built to understand how the numbers a business runs on actually live in a database.</p>
+        <p class="work-card-what">Built to understand the cross-section of business and software: where financial metrics live in the database.</p>
+        <p class="work-card-result">Models the full subscription lifecycle (MRR, ARR, churn, LTV, ARPU, NRR) with real SQL, 100 seeded customers, a FastAPI layer, and a live dashboard.</p>
         <div class="work-tags">
           <span class="work-tag">PostgreSQL</span><span class="work-tag">FastAPI</span><span class="work-tag">Python</span><span class="work-tag">Docker</span>
         </div>
@@ -2402,8 +2410,14 @@
         <div class="skills-chip-row">
           <span class="skill-chip">FastAPI</span>
           <span class="skill-chip">Flask</span>
-          <span class="skill-chip">Next.js</span>
           <span class="skill-chip">REST APIs</span>
+        </div>
+      </div>
+
+      <div class="skills-group">
+        <p class="skills-group-label">Frontend</p>
+        <div class="skills-chip-row">
+          <span class="skill-chip">Next.js</span>
           <span class="skill-chip">React</span>
         </div>
       </div>
@@ -2578,7 +2592,7 @@
             <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
             github.com/denzelchingodza
           </a>
-          <a href="https://www.linkedin.com/in/denzel-chingodza-45b6ab3a0/" target="_blank" rel="noopener" class="footer-link">
+          <a href="https://www.linkedin.com/in/denzelchingodza/" target="_blank" rel="noopener" class="footer-link">
             <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
             linkedin.com/in/denzelchingodza
           </a>
@@ -2589,7 +2603,7 @@
         </div>
       </div>
 
-      <a href="https://www.linkedin.com/in/denzel-chingodza-45b6ab3a0/" target="_blank" rel="noopener" class="btn-connect">
+      <a href="https://www.linkedin.com/in/denzelchingodza/" target="_blank" rel="noopener" class="btn-connect">
         <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
         Connect on LinkedIn
       </a>
@@ -2631,7 +2645,7 @@ window.addEventListener('error', function (e) {
   window.__errShown = true;
   const b = document.createElement('div');
   b.style.cssText = 'position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#1a1b22;border:1px solid #2a2b35;color:#8a8a96;font-family:Space Grotesk,sans-serif;font-size:12px;padding:10px 20px;border-radius:8px;z-index:9999;letter-spacing:0.04em;';
-  b.textContent = 'Something didn\'t load — try refreshing.';
+  b.textContent = 'Something didn\'t load. Try refreshing.';
   document.body.appendChild(b);
   setTimeout(() => b.remove(), 5000);
 });
@@ -2812,7 +2826,7 @@ window.addEventListener('scroll', () => {
 const PROJECTS = [
   {
     num: '01', name: 'Sentinel AI',
-    desc: 'Serverless URL monitoring with an AI incident digest, built entirely on AWS. EventBridge fires a Lambda every 60 seconds — no server runs between checks. Lambda hits each URL, records status and response time to DynamoDB, and triggers SES alerts on downtime and recovery. The AI layer queries the last 7 days of monitoring data, computes per-monitor downtime summaries, and sends a structured prompt to a language model that returns a plain-English digest: what failed, for how long, and what needs attention. Auth runs through Cognito. An SQS dead-letter queue catches Lambda failures so no check is silently dropped. Every AWS resource is provisioned in Terraform — reproducible from one command, version-controlled alongside the code.',
+    desc: 'Serverless URL monitoring with an AI incident digest, built entirely on AWS. EventBridge fires a Lambda every 60 seconds; no server runs between checks. Lambda hits each URL, records status and response time to DynamoDB, and triggers SES alerts on downtime and recovery. The AI layer queries the last 7 days of monitoring data, computes per-monitor downtime summaries, and sends a structured prompt to a language model that returns a plain-English digest: what failed, for how long, and what needs attention. Auth runs through Cognito. An SQS dead-letter queue catches Lambda failures so no check is silently dropped. Every AWS resource is provisioned in Terraform: reproducible from one command, version-controlled alongside the code.',
     stack: ['Next.js', 'AWS Lambda', 'DynamoDB', 'EventBridge', 'SES', 'Cognito', 'API Gateway', 'SQS', 'Terraform', 'OpenRouter', 'Mistral 7B'],
     live: 'https://sentinel-kappa-wine.vercel.app',
     gh:   'https://github.com/denzelchingodza/Sentinel',
@@ -2837,7 +2851,7 @@ const PROJECTS = [
   },
   {
     num: '04', name: 'SaaS Metrics DB',
-    desc: 'Built to understand the cross-section of business and software — specifically, where financial metrics live in the database. Models the full subscription lifecycle of a SaaS company: MRR, ARR, churn, LTV, ARPU, NRR, cohort retention, and MRR movement, all calculated in PostgreSQL against 100 seeded customers across Basic, Pro, and Business plans. FastAPI serves the data through six clean endpoints. A live dashboard with animated counters, a retention heatmap, and clickable detail modals sits on top. Deployed on Render with Docker.',
+    desc: 'Built to understand the cross-section of business and software: specifically, where financial metrics live in the database. Models the full subscription lifecycle of a SaaS company: MRR, ARR, churn, LTV, ARPU, NRR, cohort retention, and MRR movement, all calculated in PostgreSQL against 100 seeded customers across Basic, Pro, and Business plans. FastAPI serves the data through six clean endpoints. A live dashboard with animated counters, a retention heatmap, and clickable detail modals sits on top. Deployed on Render with Docker.',
     stack: ['PostgreSQL', 'FastAPI', 'asyncpg', 'Python', 'Docker', 'pytest'],
     live: 'https://saas-metric-db.onrender.com',
     gh:   'https://github.com/denzelchingodza/saas-metric-db',
@@ -3231,22 +3245,7 @@ function enterSite(manual) {
   }
 })();
 
-// Auto-continue after 2 s on first visit
-var _entryTimer = setTimeout(function() { enterSite(false); }, 2000);
-
-// Any interaction before the timer also dismisses it
-(function() {
-  function _dismiss() {
-    clearTimeout(_entryTimer);
-    enterSite(false);
-    ['click','keydown','touchstart','scroll'].forEach(function(ev) {
-      document.removeEventListener(ev, _dismiss, { passive: true });
-    });
-  }
-  ['click','keydown','touchstart','scroll'].forEach(function(ev) {
-    document.addEventListener(ev, _dismiss, { once: true, passive: true });
-  });
-})();
+// Entry stays open until Enter or Skip is clicked (returning visitors bypass via site_visited check above)
 
 document.addEventListener('visibilitychange', () => {
   if (document.hidden && soundOn) setSoundOff();
@@ -3750,26 +3749,27 @@ document.querySelectorAll('.fade').forEach(el => io.observe(el));
   if (!el) return;
 
   const roles = [
-    { t: '"Python Developer"', c: '#9ecbff' },
-    { t: '"Backend Engineer"', c: '#d2a8ff' },
-    { t: '"Full-Stack Dev"',   c: '#7ee787' },
+    { t: '"Backend Engineer"',       c: '#a8b4be' },
+    { t: '"Applied AI"',             c: '#a8b4be' },
+    { t: '"Cloud & Infrastructure"', c: '#a8b4be' },
   ];
 
   const prefixSegs = [
-    { t: 'def ', c: '#79b8ff' },
-    { t: 'me',   c: '#b392f0' },
-    { t: '(',    c: '#e1e4e8' },
-    { t: 'role', c: '#ffab70' },
-    { t: '):',   c: '#e1e4e8' },
-    { t: '\n',   c: null },
-    { t: '    ', c: null },
-    { t: 'print',c: '#b392f0' },
-    { t: '(',    c: '#e1e4e8' },
-    { t: 'role', c: '#ffab70' },
-    { t: ')',    c: '#e1e4e8' },
-    { t: '\n\n', c: null },
-    { t: 'me',   c: '#b392f0' },
-    { t: '(',    c: '#e1e4e8' },
+    { t: 'def ',   c: '#7a8a9e' },
+    { t: 'build',  c: '#c8c4b8' },
+    { t: '(',      c: '#52525e' },
+    { t: 'focus',  c: '#c8c4b8' },
+    { t: '):',     c: '#52525e' },
+    { t: '\n',     c: null },
+    { t: '    ',   c: null },
+    { t: 'return ',c: '#7a8a9e' },
+    { t: 'ship',   c: '#c8c4b8' },
+    { t: '(',      c: '#52525e' },
+    { t: 'focus',  c: '#c8c4b8' },
+    { t: ')',      c: '#52525e' },
+    { t: '\n\n',   c: null },
+    { t: 'build',  c: '#c8c4b8' },
+    { t: '(',      c: '#52525e' },
   ];
 
   const prefixChars = [];
@@ -3921,7 +3921,7 @@ function showToast(msg, type = 'success') {
     { label: 'Go to Contact',    tag: 'nav',     href: '#contact', icon: '<svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>' },
     { label: 'Copy email',       tag: 'action',  action: 'copy-email', icon: '<svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>' },
     { label: 'GitHub',           tag: 'link',    href: 'https://github.com/denzelchingodza', ext: true, icon: '<svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>' },
-    { label: 'LinkedIn',         tag: 'link',    href: 'https://www.linkedin.com/in/denzel-chingodza-45b6ab3a0/', ext: true, icon: '<svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>' },
+    { label: 'LinkedIn',         tag: 'link',    href: 'https://www.linkedin.com/in/denzelchingodza/', ext: true, icon: '<svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>' },
     { label: 'Sentinel',         tag: 'project', href: 'https://sentinel-kappa-wine.vercel.app', ext: true, icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>' },
     { label: 'Muzezuru',         tag: 'project', href: 'https://muzezuru.vercel.app', ext: true, icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>' },
     { label: 'DocuZen',          tag: 'project', href: 'https://doc-analyzer-as5k.vercel.app', ext: true, icon: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>' },
@@ -4015,7 +4015,7 @@ function showToast(msg, type = 'success') {
     // ChunkDoc
     { q: ['chunkdoc','rag','document','medical','pdf','retrieval'], a: "ChunkDoc. RAG system for medical students at Tygerberg campus (Stellenbosch University). Students used to spend 45 minutes searching a 200-page PDF for one answer. Now they get a grounded answer with the page number. FastAPI, pgvector, OpenAI." },
     // PBS
-    { q: ['saas','metrics','mrr','arr','churn','ltv','arpu','nrr','subscription','database','analytics'], a: "SaaS Metrics DB. Built to understand the cross-section of business and software. Models the full SaaS subscription lifecycle in PostgreSQL — MRR, ARR, churn, LTV, ARPU, NRR, cohort retention — against 100 seeded customers. FastAPI serves the data, a live dashboard sits on top. Deployed on Render with Docker. saas-metric-db.onrender.com" },
+    { q: ['saas','metrics','mrr','arr','churn','ltv','arpu','nrr','subscription','database','analytics'], a: "SaaS Metrics DB. Built to understand the cross-section of business and software. Models the full SaaS subscription lifecycle in PostgreSQL: MRR, ARR, churn, LTV, ARPU, NRR, cohort retention, against 100 seeded customers. FastAPI serves the data, a live dashboard sits on top. Deployed on Render with Docker. saas-metric-db.onrender.com" },
     // AI Intelligence Layer
     { q: ['intelligence layer','intelligence','routing','routes questions'], a: "AI Intelligence Layer. Routes plain-English questions across services, decides which system to call, and returns the answer. One endpoint." },
     // Availability
@@ -4130,54 +4130,6 @@ function showToast(msg, type = 'success') {
   observer.observe(modal, { attributes: true, attributeFilter: ['class'] });
 })();
 
-/* ══════════════════════════════════════════════
-   GITHUB ACTIVITY FEED
-══════════════════════════════════════════════ */
-(function() {
-  const container = document.querySelector('.about-card[data-gh]') || (() => {
-    // Inject into the second about-grid (the cards grid, not the text grid)
-    const grids = document.querySelectorAll('.about-grid');
-    const grid = grids[grids.length - 1];
-    if (!grid) return null;
-    const card = document.createElement('div');
-    card.className = 'about-card fade';
-    card.innerHTML = '<p class="about-card-title">Recent activity</p><div id="gh-feed" style="font-family:Inter,sans-serif;font-size:12px;color:var(--sub);line-height:1.8;"></div>';
-    grid.appendChild(card);
-    return card;
-  })();
-
-  const feed = document.getElementById('gh-feed');
-  if (!feed) return;
-
-  fetch('https://api.github.com/users/denzelchingodza/events/public?per_page=20')
-    .then(r => r.json())
-    .then(events => {
-      const seen = new Set();
-      const lines = [];
-      for (const ev of events) {
-        if (lines.length >= 5) break;
-        let text = '';
-        if (ev.type === 'PushEvent') {
-          const repo = ev.repo.name.split('/')[1];
-          const msg  = ev.payload.commits?.[0]?.message?.split('\n')[0] || 'pushed';
-          const key  = repo + msg;
-          if (seen.has(key)) continue;
-          seen.add(key);
-          text = `Pushed to <b>${repo}</b>: ${msg.slice(0, 52)}${msg.length > 52 ? '…' : ''}`;
-        } else if (ev.type === 'CreateEvent' && ev.payload.ref_type === 'repository') {
-          text = `Created repo <b>${ev.repo.name.split('/')[1]}</b>`;
-        } else if (ev.type === 'WatchEvent') {
-          text = `Starred <b>${ev.repo.name}</b>`;
-        } else { continue; }
-        const date = new Date(ev.created_at);
-        const rel  = Math.floor((Date.now() - date) / 86400000);
-        const when = rel === 0 ? 'today' : rel === 1 ? 'yesterday' : rel + 'd ago';
-        lines.push(`<div style="margin-bottom:6px;">${text} <span style="opacity:.4;font-size:11px;">${when}</span></div>`);
-      }
-      feed.innerHTML = lines.length ? lines.join('') : '<span style="opacity:.4;">No recent public activity.</span>';
-    })
-    .catch(() => { feed.innerHTML = '<span style="opacity:.4;">Could not load activity.</span>'; });
-})();
 </script>
 
 <script>
@@ -4287,9 +4239,9 @@ function showToast(msg, type = 'success') {
   if (!btn) return;
 
   const shareData = {
-    title: 'Denzel Chingodza — Software Developer',
-    text: 'Check out my portfolio — Sentinel AI, StackScope, Muzezuru and more.',
-    url: 'https://denzelchingodza.com/',
+    title: 'Denzel Chingodza | Software Developer',
+    text: 'Check out my portfolio: Sentinel AI, StackScope, Muzezuru and more.',
+    url: 'https://www.denzelchingodza.com/',
   };
 
   btn.addEventListener('click', async () => {
@@ -4305,7 +4257,7 @@ function showToast(msg, type = 'success') {
         await navigator.clipboard.writeText(shareData.url);
         showToast('Link copied to clipboard');
       } catch (e) {
-        showToast('Copy failed — visit denzelchingodza.com', 'error');
+        showToast('Copy failed. Visit denzelchingodza.com', 'error');
       }
     }
   });
@@ -4420,23 +4372,6 @@ if ('serviceWorker' in navigator) {
 
 </script>
 
-<!-- Cookie consent banner -->
-<div id="cookie-banner" style="display:none;position:fixed;bottom:20px;right:20px;z-index:9999;max-width:320px;width:calc(100% - 40px);background:#16161a;border:1px solid #2a2a2a;border-radius:10px;padding:14px 16px;font-family:inherit;box-shadow:0 4px 24px rgba(0,0,0,0.6);">
-  <p style="margin:0 0 12px;font-size:12px;color:#888;line-height:1.5;">This site uses cookies to remember your preferences.</p>
-  <button id="cookie-accept" style="background:transparent;border:1px solid #FF9900;color:#FF9900;border-radius:6px;padding:6px 14px;font-size:12px;font-family:inherit;cursor:pointer;letter-spacing:0.03em;">Got it</button>
-</div>
-<script>
-(function() {
-  if (!localStorage.getItem('cookies_accepted')) {
-    var banner = document.getElementById('cookie-banner');
-    banner.style.display = 'block';
-    document.getElementById('cookie-accept').addEventListener('click', function() {
-      localStorage.setItem('cookies_accepted', '1');
-      banner.style.display = 'none';
-    });
-  }
-})();
-</script>
 </body>
 </html>
 
