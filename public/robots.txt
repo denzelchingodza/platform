@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://denzelchingodza.vercel.app/sitemap.xml
+Sitemap: https://denzelchingodza.com/sitemap.xml

@@ -8,7 +8,7 @@ Polish and harden four personal projects (Platform, DocuZen, StackScope, Sentine
 
 ## 2. Current State
 
-**Platform** — Live at [denz-platform.vercel.app](https://denz-platform.vercel.app). Comet cursor working, TARS quote visible on entry overlay, body text darkened for readability on white sections. README simplified to a personal note.
+**Platform** — Live at [denzelchingodza.com](https://denzelchingodza.com). Comet cursor working, TARS quote visible on entry overlay, body text darkened for readability on white sections. README simplified to a personal note.
 
 **DocuZen** — Live at [doc-analyzer-as5k.vercel.app](https://doc-analyzer-as5k.vercel.app). Password gate removed entirely. Backend has slowapi rate limiting (60 requests/hour per IP). Steps section removed from landing. README cleaned up.
 

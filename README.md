@@ -2,7 +2,7 @@
 
 A personal portfolio site built from scratch without frameworks, bundlers, or dependencies. The goal was to make something that actually feels like me rather than a generic developer template.
 
-**Live:** [denz-platform.vercel.app](https://denz-platform.vercel.app)
+**Live:** [denzelchingodza.com](https://denzelchingodza.com)
 
 ---
 
