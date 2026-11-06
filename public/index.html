@@ -1189,13 +1189,23 @@
     .skill-filters { display: none !important; }
 
     /* ===== CONTACT ===== */
+    .contact-headline {
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      font-size: clamp(36px, 4.5vw, 58px);
+      font-weight: 400;
+      color: var(--text);
+      letter-spacing: -0.025em;
+      line-height: 1.08;
+      margin-bottom: 20px;
+    }
+
     .contact-note {
       font-size: 15px;
       font-weight: 300;
       color: var(--sub);
-      max-width: 400px;
+      max-width: 420px;
       line-height: 1.85;
-      margin-bottom: 38px;
+      margin-bottom: 32px;
     }
 
     form {
@@ -1251,7 +1261,23 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 440px;
+      min-height: 500px;
+    }
+
+    .tars-glow {
+      position: absolute;
+      width: 180px;
+      height: 420px;
+      background: radial-gradient(ellipse at center, rgba(28,28,46,0.22) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    #tars-body {
+      transform: scale(2.2);
+      transform-origin: center center;
+      position: relative;
+      z-index: 2;
     }
 
     .tars-bub {
@@ -1884,6 +1910,7 @@
 
       /* ── CONTACT ── */
       .contact-layout { grid-template-columns: 1fr; gap: 0; }
+      .contact-headline { font-size: 36px; margin-bottom: 16px; }
       .contact-note { font-size: 14px; line-height: 1.75; margin-bottom: 28px; }
       .form-row { grid-template-columns: 1fr; }
       input, textarea { font-size: 15px; padding: 13px 16px; }
@@ -1896,7 +1923,8 @@
         font-size: 11px;
         letter-spacing: 0.14em;
       }
-      .tars-scene { min-height: 280px; margin-top: 40px; }
+      .tars-scene { min-height: 300px; margin-top: 48px; }
+      #tars-body { transform: scale(1.6); }
       #tars-modal-inner { max-height: 96vh; border-radius: 12px; }
       #tars-modal-log { min-height: 160px; }
       #tars-modal-input { font-size: 16px; }
@@ -2469,6 +2497,7 @@
     <!-- Left: form -->
     <div>
       <p class="section-label fade">Contact</p>
+      <h2 class="contact-headline fade">Let's build<br>something.</h2>
       <p class="contact-note fade">
         If you want to work together, talk through an idea, or have an opportunity
         you think I'd be interested in, send a message. I actually check my email.
@@ -2493,6 +2522,7 @@
     <!-- Right: TARS + bubbles -->
     <div class="tars-scene fade">
 
+      <div class="tars-glow"></div>
 
       <!-- CENTER: 3D TARS -->
       <div style="perspective:560px;perspective-origin:66% 28%;position:relative;z-index:2;" id="tars-body" title="Talk to TARS" class="tars-bot-clickable">
