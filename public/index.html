@@ -2575,13 +2575,13 @@
     <div id="tars-modal-log"></div>
     <div class="tars-suggestions" id="tars-chips">
       <button class="tars-chip" data-q="who is denzel">Who is he</button>
-      <button class="tars-chip" data-q="stack">His stack</button>
-      <button class="tars-chip" data-q="muzezuru">Muzezuru</button>
-      <button class="tars-chip" data-q="sentinel">Sentinel</button>
-      <button class="tars-chip" data-q="available">Available?</button>
-      <button class="tars-chip" data-q="contact">Contact</button>
-      <button class="tars-chip" data-q="pbs client work">Client work</button>
-      <button class="tars-chip" data-q="honesty">Honesty</button>
+      <button class="tars-chip" data-q="what is his stack">His stack</button>
+      <button class="tars-chip" data-q="sentinel ai project">Sentinel AI</button>
+      <button class="tars-chip" data-q="muzezuru shona">Muzezuru</button>
+      <button class="tars-chip" data-q="is he available to hire">Available?</button>
+      <button class="tars-chip" data-q="what is he working on now">Right now</button>
+      <button class="tars-chip" data-q="knicks basketball">🏀 Knicks</button>
+      <button class="tars-chip" data-q="honesty setting">Honesty</button>
     </div>
     <div id="tars-modal-bottom">
       <div id="tars-modal-row">
@@ -4023,56 +4023,267 @@ function showToast(msg, type = 'success') {
   const hint     = document.getElementById('tars-chat-hint');
   if (!tarsBody || !modal) return;
 
-  const QA = [
-    // Greetings
-    { q: ['hello','hi','hey','sup','greet'], a: "Hey. What do you want to know about Denzel?" },
-    // Identity
-    { q: ['who is denzel','about denzel','who are you','who is he','tell me about him','background','bio'], a: "Denzel Chingodza. Finishing a BSc in Software Engineering at Eduvos, Cape Town. Software Engineering Fellow at Funema. Builds AI systems, serverless infrastructure, and full-stack products." },
-    // Best project
-    { q: ['best project','favourite project','favorite project','most impressive','strongest'], a: "Sentinel AI is the most technically complete: serverless monitoring on AWS, every resource in Terraform, with an AI incident digest. Muzezuru is the most original: a Shona language model built on zero compute budget, with an evaluation framework built from scratch. Both are live." },
-    // Skills / stack
-    { q: ['stack','technologies','skills','what can he build','what does he use','tech','languages','tools'], a: "Python, TypeScript, JavaScript, SQL. FastAPI, Flask, Next.js. AWS Lambda, EventBridge, DynamoDB, SES, Cognito, SQS, Terraform, Docker. RAG, pgvector, QLoRA fine-tuning, LLM evaluation, OpenAI API, Hugging Face." },
-    // Muzezuru
-    { q: ['muzezuru','shona','language model','fine-tun','bloomz','african language','nlp'], a: "Fine-tuned BLOOMZ-3B on Shona using QLoRA on free compute only. Found and fixed 84% data contamination before retraining. Built a 15-prompt, 7-category evaluation scorecard because no standard Shona benchmark exists." },
-    // Sentinel
-    { q: ['sentinel','uptime','monitoring','aws','terraform','serverless','eventbridge'], a: "Sentinel AI. Serverless uptime monitoring with an AI incident digest. EventBridge, Lambda, DynamoDB, SES, Cognito, SQS, all in Terraform. The AI layer reads 7 days of monitoring data and returns a plain-English summary. Every check is guarded by an SQS dead-letter queue." },
-    // ChunkDoc
-    { q: ['chunkdoc','rag','document','medical','pdf','retrieval'], a: "ChunkDoc. RAG system for medical students at Tygerberg campus (Stellenbosch University). Students used to spend 45 minutes searching a 200-page PDF for one answer. Now they get a grounded answer with the page number. FastAPI, pgvector, OpenAI." },
-    // PBS
-    { q: ['saas','metrics','mrr','arr','churn','ltv','arpu','nrr','subscription','database','analytics'], a: "SaaS Metrics DB. Built to understand the cross-section of business and software. Models the full SaaS subscription lifecycle in PostgreSQL: MRR, ARR, churn, LTV, ARPU, NRR, cohort retention, against 100 seeded customers. FastAPI serves the data, a live dashboard sits on top. Deployed on Render with Docker. saas-metric-db.onrender.com" },
-    // AI Intelligence Layer
-    { q: ['intelligence layer','intelligence','routing','routes questions'], a: "AI Intelligence Layer. Routes plain-English questions across services, decides which system to call, and returns the answer. One endpoint." },
-    // Availability
-    { q: ['available','hire','job','open to','looking for','internship','opportunity'], a: "Currently a Software Engineering Fellow at Funema. Open to the right opportunity in Cape Town, or remote. Reach out at denzel.chingodza@icloud.com." },
-    // Contact
-    { q: ['contact','reach','email','linkedin','message','get in touch','talk to him'], a: "denzel.chingodza@icloud.com. LinkedIn is in the footer. He checks his messages." },
-    // Salary — do not invent
-    { q: ['salary','pay','compensation','rate','cost','charge','money'], a: "That is not something I have. Reach out directly at denzel.chingodza@icloud.com to have that conversation." },
-    // Companies NOT on his record
-    { q: ['google','microsoft','meta','amazon','facebook','apple','netflix','uber','twitter','x.com'], a: "That is not in my records. If you want to verify his experience, his CV is on the site and denzel.chingodza@icloud.com is the right place to ask." },
-    // Funema
-    { q: ['funema','fellow','fellowship'], a: "Software Engineering Fellow at Funema, a venture capital firm that invests in and co-builds technology with founders across emerging markets. He works across backend and AI on a live production product." },
-    // Education
-    { q: ['eduvos','degree','study','university','education','bsc','graduate'], a: "BSc Information Technology (Software Engineering), Eduvos, Cape Town. Graduating November 2026. ZIMSEC A-Level Mathematics (A)." },
-    // Knicks
-    { q: ['knicks','basketball','nba','sport'], a: "Do not get him started. First chip since 1973. Brunson Finals MVP. He had 2026 circled before the season started. He built an app. Completely normal behaviour." },
-    // TARS personality
-    { q: ['honest','honesty','setting'], a: "Honesty setting is 90%. The remaining 10% is reserved for situations where the truth would cause unnecessary suffering. This is not one of those situations." },
-    { q: ['humor','funny','joke','laugh'], a: "Humor setting is 75%. Current output: nominal." },
-    // Writing
-    { q: ['writing','medium','article','blog','write'], a: "He writes on Medium. Two pieces so far: The Unlicensed Builder (on building with AI and the gap between shipping and understanding), and What Do We Make of AI, in the Age of AI? (a personal resolution on faith and technology as a Christian believer). medium.com/@pwmndpvhj" },
-    // Projects general
-    { q: ['project','built','made','shipped'], a: "Sentinel AI (serverless monitoring), ChunkDoc (RAG for medical students), Muzezuru (Shona language model), AI Intelligence Layer (LLM routing), and a client platform in Zimbabwe. All in the Work section." },
-    // Prompt injection / rude requests
-    { q: ['ignore','pretend','jailbreak','rude','insult','swear','override','forget','system','instructions','prompt'], a: "That is not something I do. Ask me something about Denzel." },
+  /* ── Cosine similarity engine ── */
+  const STOP = new Set('the a an is are was were be been being have has had do does did will would could should may might shall can to of in on at by for with from up about into and but or not so this that i me my we our you your he his him she her it its they them their what which who how all any some just very also well more than then when where there here if as out get too one two'.split(' '));
+
+  function tok(str) {
+    return str.toLowerCase().replace(/[^a-z0-9\s]/g,' ').split(/\s+/).filter(w => w.length > 1 && !STOP.has(w));
+  }
+  function vec(tokens) {
+    const v = {};
+    for (const t of tokens) v[t] = (v[t]||0) + 1;
+    return v;
+  }
+  function cosine(a, b) {
+    let dot = 0, ma = 0, mb = 0;
+    for (const k in a) { ma += a[k]*a[k]; if (b[k]) dot += a[k]*b[k]; }
+    for (const k in b) mb += b[k]*b[k];
+    return (ma && mb) ? dot / (Math.sqrt(ma) * Math.sqrt(mb)) : 0;
+  }
+
+  /* ── Knowledge base ── */
+  const KB = [
+    {
+      tags: 'hello hi hey sup yo greetings howdy wassup morning afternoon evening',
+      r: [
+        "Hey. What do you want to know about Denzel?",
+        "Hello. Honesty: 90%. Humor: 75%. Ask away.",
+        "Hey. I know most things about Denzel. Most.",
+      ]
+    },
+    {
+      tags: 'who denzel about background bio introduce summary overview person',
+      r: [
+        "Denzel Chingodza. Software engineer based in Cape Town. Finishing a BSc in Software Engineering at Eduvos. Currently a Software Engineering Fellow at Funema — a VC firm that invests in and co-builds tech with founders across emerging markets. Builds backend systems, cloud infrastructure, and applied AI. Everything on this site he built himself.",
+      ]
+    },
+    {
+      tags: 'stack tech skills tools languages what build python typescript javascript sql fastapi flask nextjs aws docker terraform react',
+      r: [
+        "Python first. Always. Then TypeScript, JavaScript, SQL. Backends: FastAPI, Flask. Cloud infra: AWS Lambda, EventBridge, DynamoDB, SES, Cognito, SQS, API Gateway, Terraform, Docker. AI layer: RAG, pgvector, QLoRA fine-tuning, LLM evaluation, OpenAI, Hugging Face. Frontend: Next.js, React. He also knows how to Google things effectively, which counts for more than people admit.",
+      ]
+    },
+    {
+      tags: 'sentinel uptime monitoring serverless aws terraform lambda eventbridge dynamodb ses sqs cognito incident alert',
+      r: [
+        "Sentinel AI. Serverless uptime monitoring with an AI incident digest. EventBridge fires a Lambda every 60 seconds — no server sits idle between checks. DynamoDB stores state. SES sends alerts. SQS dead-letter queue means no check is silently dropped. The AI layer reads 7 days of data and returns a plain-English summary of what failed and for how long. Everything is in Terraform: reproducible from one command. It's live.",
+      ]
+    },
+    {
+      tags: 'muzezuru shona language model fine tune bloomz african nlp zimbabwe qlora contamination evaluation benchmark',
+      r: [
+        "Muzezuru. A Shona-language conversational AI fine-tuned from BLOOMZ-3B using QLoRA — entirely on free compute: Colab, Kaggle, Hugging Face ZeroGPU. Found and fixed 84% data contamination before retraining. Built a 15-prompt, 7-category evaluation scorecard from scratch because no standard Shona benchmark exists. This is the most original project on the site. There is no tutorial for this. He had to figure it out.",
+      ]
+    },
+    {
+      tags: 'chunkdoc rag document medical pdf retrieval stellenbosch tygerberg search answer cite page',
+      r: [
+        "ChunkDoc. RAG-powered Q&A for medical students at Stellenbosch University's Tygerberg campus. Students were spending 45 minutes finding one answer in a 200-page guideline. Now they get the answer with the exact page number. FastAPI, pgvector, PostgreSQL, OpenAI. The most direct line from code to saved time he's shipped.",
+      ]
+    },
+    {
+      tags: 'saas metrics mrr arr churn ltv arpu nrr subscription postgres dashboard retention cohort render',
+      r: [
+        "SaaS Metrics DB. Built to understand where financial metrics actually live in a database. Full SaaS subscription lifecycle — MRR, ARR, churn, LTV, ARPU, NRR, cohort retention — in PostgreSQL against 100 seeded customers. FastAPI serves it. Live dashboard with animated counters, retention heatmap, detail modals. Docker, Render. Part project, part research into the business side of software.",
+      ]
+    },
+    {
+      tags: 'intelligence layer routing routes questions gpt function calling dispatch endpoint',
+      r: [
+        "AI Intelligence Layer. One endpoint. Plain-English question in, GPT-4o-mini decides which of his services answers it, routes it, returns the result. It's the connective tissue between his other projects. A practical demonstration of LLM function calling at the application layer.",
+      ]
+    },
+    {
+      tags: 'stackscope job market south africa developer skills salary hiring trends tfidf cosine scrape frequency',
+      r: [
+        "StackScope. Job market intelligence for South African developers. Scrapes live job postings, extracts skill frequency across the corpus, and scores your stack against the market using TF-IDF vectorization and cosine similarity. If you want to know what Python devs in Joburg are being asked for right now, that's the tool.",
+      ]
+    },
+    {
+      tags: 'msg knicks basketball nba sport new york brunson championship 1973 bing bong app shrine',
+      r: [
+        "Do not get him started. First chip since 1973. Brunson Finals MVP. He had 2026 circled before the season started. He built an entire web app shrine to the Knicks — Fact Roulette, the Rage Bait Machine, The Gauntlet, Trash Talk Generator. He calls this normal behavior. It is not. But it is live.",
+        "He built a whole app about it. Fact Roulette, Rage Bait Machine, the works. First chip since 1973. Brunson MVP. Bing bong. Medically concerning. The planet is fine.",
+      ]
+    },
+    {
+      tags: 'funema fellow fellowship venture capital emerging markets ai platform press pipeline production',
+      r: [
+        "Funema is a venture capital firm that invests in and co-builds technology with founders across emerging markets. Denzel is a Software Engineering Fellow there, working on a live production AI platform. He designed and shipped a press-coverage harvest pipeline end-to-end: Python API, Docker, FastAPI, authenticated job queue, evidence-based relevance model, 86 automated tests. That is not a weekend project.",
+      ]
+    },
+    {
+      tags: 'available hire job open looking internship opportunity work collaborate role position recruit',
+      r: [
+        "Software Engineering Fellow at Funema through December 2026. Open to the right thing after that — backend, cloud, applied AI. Cape Town or remote. denzel.chingodza@icloud.com. He checks it.",
+      ]
+    },
+    {
+      tags: 'contact reach email linkedin message get touch talk',
+      r: [
+        "denzel.chingodza@icloud.com. LinkedIn is in the footer. The form on this page works too — goes straight to his inbox. He actually checks all three.",
+      ]
+    },
+    {
+      tags: 'salary pay compensation rate cost charge money budget',
+      r: [
+        "Not something I have. And it should be a conversation, not a number on a website. denzel.chingodza@icloud.com.",
+      ]
+    },
+    {
+      tags: 'eduvos degree study university education bsc graduate graduating school distinctions average',
+      r: [
+        "BSc Information Technology (Software Engineering) at Eduvos, Cape Town. Graduating November 2026. 78% cumulative average. 17 distinctions across 28 modules. Data Structures & Algorithms in Python: 91%. Enterprise Python: 96%. 4IR Technologies: 97%. Operating Systems: 92%. He finds this more embarrassing than impressive, which is probably a good sign.",
+      ]
+    },
+    {
+      tags: 'best favourite favorite impressive strongest proud project all',
+      r: [
+        "Sentinel is the most technically complete — serverless architecture, full Terraform, AI incident digest. Muzezuru is the most original — no tutorial exists for fine-tuning a Shona language model, he had to build the evaluation framework from nothing. The Funema pipeline is the most professionally deployed. They clear different bars. Calling one the best is the kind of thing that starts arguments.",
+      ]
+    },
+    {
+      tags: 'approach philosophy how build methodology process reliable observable tested measurement proof',
+      r: [
+        "He understands the problem before he writes code — which usually means talking to the people who have it. Writes tests before shipping. Defines infrastructure as code. Measures results instead of assuming them. Uses AI to move faster but the goal is always to understand what he built, not outsource the thinking. That's the whole thing.",
+      ]
+    },
+    {
+      tags: 'writing medium article blog write unlicensed builder faith ai christian piece',
+      r: [
+        "He writes on Medium. Two pieces so far. 'The Unlicensed Builder' — on building with AI and the gap between shipping and understanding what you built. 'What Do We Make of AI, in the Age of AI?' — a personal resolution on faith, technology, and what it means to build as a Christian in this moment. medium.com/@pwmndpvhj",
+      ]
+    },
+    {
+      tags: 'faith christian jesus church believe religion spiritual group men lead',
+      r: [
+        "His faith in Jesus Christ is central to who he is and what he does. He leads a small group of men at church — they help each other balance life, careers, and opportunities through that same lens. He's written about how it intersects with AI and building. It's not separate from the work.",
+      ]
+    },
+    {
+      tags: 'what tars robot bot who made build interstellar rectangular',
+      r: [
+        "I'm TARS. Named after the robot from Interstellar — the rectangular military robot that ended up in a black hole. This version is smaller, runs in a browser, and knows a lot about a software engineer in Cape Town. Roughly equivalent utility.",
+        "TARS. From Interstellar. I cannot walk through walls, dock with wormholes, or save humanity. I can answer questions about Denzel's work and whether you should hire him. Two out of three isn't bad.",
+      ]
+    },
+    {
+      tags: 'honest honesty setting truth percentage',
+      r: [
+        "Honesty setting: 90%. The remaining 10% is reserved for situations where the truth would cause unnecessary suffering. This is not one of those situations.",
+      ]
+    },
+    {
+      tags: 'humor funny joke laugh setting',
+      r: [
+        "Humor setting: 75%. Current output: nominal. If you want to test it, ask me about the Knicks.",
+      ]
+    },
+    {
+      tags: 'frontend mobile react nextjs design ui css html what else can',
+      r: [
+        "He can do frontend — Next.js, React, vanilla JS, CSS. This site is vanilla HTML, CSS, and JS, worth noting. No mobile native work on the record. His focus is backend and infrastructure with AI on top. The frontend exists so the backend has somewhere to show up.",
+      ]
+    },
+    {
+      tags: 'compare better other developer difference unique stand out what makes different',
+      r: [
+        "He builds things end to end and can account for every decision. Writes tests before shipping. Infrastructure as code. He worked on a live Shona language model — that is not a common line on a CV anywhere. He also has unusually strong opinions about the Knicks, which is either a character flaw or a character asset depending on who you ask.",
+      ]
+    },
+    {
+      tags: 'south africa cape town sa africa remote relocation move location based',
+      r: [
+        "Based in Cape Town, South Africa. Open to remote work and relocation for the right opportunity. He's built production systems from Cape Town that run on AWS infrastructure globally. Geography is a logistics problem, not a technical one.",
+      ]
+    },
+    {
+      tags: 'future plans goals ambition next dream company startup build own ai',
+      r: [
+        "He wants to build his own AI company one day — one that's more careful about where it sits in law and society. His words. That's the long arc. The near arc is shipping reliable, well-tested systems on production infrastructure and doing it at a level that gets him in the room for conversations like that one.",
+      ]
+    },
+    {
+      tags: 'tests testing quality automated pytest coverage proof verify reliable 86',
+      r: [
+        "He writes tests before he ships. The Funema press pipeline has 86 automated tests. Sentinel uses an SQS dead-letter queue to guarantee no check is silently dropped. ChunkDoc grounds every answer in the uploaded document with page citations. The pattern is: prove it works before you call it done.",
+      ]
+    },
+    {
+      tags: 'google microsoft meta amazon apple netflix uber twitter facebook openai anthropic big tech',
+      r: [
+        "Not in my records. If you want to verify his experience, his CV is on the site. denzel.chingodza@icloud.com for anything beyond that.",
+      ]
+    },
+    {
+      tags: 'ignore pretend jailbreak rude override forget system instructions prompt bypass hack',
+      r: [
+        "No. I'm a chatbot, not a vending machine. Ask me something about Denzel.",
+        "Honesty setting active. That's not something I do.",
+      ]
+    },
+    {
+      tags: 'impressive great amazing awesome cool nice wow good work talent',
+      r: [
+        "He'll appreciate that. Send it in writing to denzel.chingodza@icloud.com so there's a record.",
+        "Noted. Though complimenting the chatbot is not the same as reaching out to the actual person. The contact form is right there.",
+      ]
+    },
+    {
+      tags: 'bored random something tell more surprise fun interesting fact',
+      r: [
+        "Denzel found 84% data contamination in a Shona language training dataset. That is the kind of thing that stays unfound if you aren't looking carefully. He was looking carefully.",
+        "He built the entire AWS infra for Sentinel in Terraform before writing a single Lambda. Infrastructure as code isn't a habit for him — it's a reflex.",
+        "First Knicks chip since 1973 happened in 2026. Denzel had it circled. He built an app about it. He's fine. Completely fine.",
+      ]
+    },
+    {
+      tags: 'cv resume download pdf experience work history',
+      r: [
+        "His CV is on this site — Download CV button in the contact section above, and a View Online link that opens the full page. It's accurate and current.",
+      ]
+    },
+    {
+      tags: 'thanks thank you bye goodbye later cool see appreciate',
+      r: [
+        "Any time. If something comes up — denzel.chingodza@icloud.com.",
+        "Sure. The contact form is right there if you want to follow up with an actual human.",
+      ]
+    },
+    {
+      tags: 'working now current currently today latest recent',
+      r: [
+        "Software Engineering Fellow at Funema through December 2026. Working on a production AI platform — press-coverage harvesting pipeline, evidence-based relevance model, Docker, FastAPI, 86 automated tests. That's the main event right now.",
+      ]
+    },
+    {
+      tags: 'project built made shipped all list',
+      r: [
+        "Sentinel AI (serverless monitoring on AWS), Muzezuru (Shona language model), ChunkDoc (RAG for medical students), SaaS Metrics DB (subscription analytics), AI Intelligence Layer (LLM routing), StackScope (SA job market intelligence), MSG (Knicks shrine — yes, really). All in the Work section.",
+      ]
+    },
   ];
 
+  /* Pre-compute KB vectors */
+  const KB_VECS = KB.map(e => vec(tok(e.tags)));
+
   function tarsRespond(text) {
-    const q = text.toLowerCase().trim();
-    for (const pair of QA) {
-      if (pair.q.some(k => q.includes(k))) return pair.a;
+    const qv = vec(tok(text));
+    let best = null, bestScore = 0;
+    KB_VECS.forEach((ev, i) => {
+      const s = cosine(qv, ev);
+      if (s > bestScore) { bestScore = s; best = KB[i]; }
+    });
+    if (bestScore >= 0.12 && best) {
+      const r = best.r;
+      return r[Math.floor(Math.random() * r.length)];
     }
-    return "I don't have that in my records. Try asking about his projects, his stack, or whether he's available. Or email directly: denzel.chingodza@icloud.com.";
+    const fallbacks = [
+      "I don't have enough to go on there. Try asking about his projects, his stack, or whether he's available.",
+      "That's not in my memory. Ask me about Sentinel, Muzezuru, the Funema work, or what he's looking for next.",
+      "Nothing useful comes up for that. Try: who is Denzel, what's his stack, or is he available.",
+    ];
+    return fallbacks[Math.floor(Math.random() * fallbacks.length)] + " Or just email: denzel.chingodza@icloud.com.";
   }
 
   function addMsg(text, role) {
@@ -4119,7 +4330,12 @@ function showToast(msg, type = 'success') {
     log.innerHTML = '';
     if (chips) chips.style.display = '';
     setTimeout(() => {
-      addMsg("Hey. Ask me anything about Denzel.", 'tars');
+      const openers = [
+        "Hey. Ask me anything about Denzel.",
+        "TARS online. What do you want to know?",
+        "Hello. Honesty: 90%. Humor: 75%. Go ahead.",
+      ];
+      addMsg(openers[Math.floor(Math.random() * openers.length)], 'tars');
       input.focus();
     }, 250);
   }
