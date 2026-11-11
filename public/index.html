@@ -1276,6 +1276,7 @@
     #tars-body {
       transform: scale(2.2);
       transform-origin: center center;
+      filter: drop-shadow(0 16px 32px rgba(0,0,0,0.65)) drop-shadow(0 2px 8px rgba(0,0,0,0.5));
       position: relative;
       z-index: 2;
     }
@@ -2536,25 +2537,75 @@
         <div style="display:inline-block;animation:tars-sway 4s ease-in-out infinite;">
           <div style="display:inline-block;transform-style:preserve-3d;animation:tars3d 6s ease-in-out infinite;">
             <div style="position:relative;width:52px;height:216px;transform-style:preserve-3d;">
-              <div style="position:absolute;inset:0;background:#1c1c2e;border:1px solid #2e2e4e;">
-                <div style="position:absolute;left:50%;transform:translateX(-50%);top:11px;width:30px;height:7px;background:#02060e;border:1px solid #081828;border-radius:1px;"></div>
-                <div style="position:absolute;left:50%;transform:translateX(-50%);top:23px;width:6px;height:6px;border-radius:50%;animation:tars-led 2.4s ease-in-out infinite;"></div>
-                <div style="position:absolute;left:0;right:0;top:48px;height:3px;background:#111126;border-top:1px solid #242440;border-bottom:1px solid #242440;"></div>
-                <div style="position:absolute;left:0;right:0;top:112px;height:3px;background:#111126;border-top:1px solid #242440;border-bottom:1px solid #242440;"></div>
-                <div style="position:absolute;left:0;right:0;top:164px;height:3px;background:#111126;border-top:1px solid #242440;border-bottom:1px solid #242440;"></div>
-                <div style="position:absolute;left:6px;right:6px;top:53px;height:54px;border:1px solid rgba(255,255,255,0.04);"></div>
-                <div style="position:absolute;left:6px;right:6px;top:117px;height:43px;border:1px solid rgba(255,255,255,0.04);"></div>
-                <div style="position:absolute;left:6px;right:6px;top:169px;height:40px;border:1px solid rgba(255,255,255,0.04);"></div>
-                <div style="position:absolute;left:4px;top:44px;width:3px;height:3px;background:#20203a;border-radius:50%;"></div>
-                <div style="position:absolute;right:4px;top:44px;width:3px;height:3px;background:#20203a;border-radius:50%;"></div>
-                <div style="position:absolute;left:4px;top:108px;width:3px;height:3px;background:#20203a;border-radius:50%;"></div>
-                <div style="position:absolute;right:4px;top:108px;width:3px;height:3px;background:#20203a;border-radius:50%;"></div>
-                <div style="position:absolute;left:4px;top:160px;width:3px;height:3px;background:#20203a;border-radius:50%;"></div>
-                <div style="position:absolute;right:4px;top:160px;width:3px;height:3px;background:#20203a;border-radius:50%;"></div>
+
+              <!-- Left edge lighting — simulates ambient light from upper-left -->
+              <div style="position:absolute;top:0;left:0;width:1px;height:216px;background:linear-gradient(to bottom,rgba(180,190,210,0.18),rgba(180,190,210,0.07),rgba(180,190,210,0.13));z-index:3;pointer-events:none;"></div>
+
+              <!-- SEGMENT 1 — top panel, houses the sensor slit -->
+              <div style="position:absolute;left:0;right:0;top:0;height:52px;background:linear-gradient(140deg,#2e3038 0%,#23252e 45%,#1c1e26 100%);border:1px solid #13141a;">
+                <!-- Sensor slit — wide recessed slot, the defining TARS feature -->
+                <div style="position:absolute;left:5px;right:5px;top:50%;transform:translateY(-50%);height:7px;background:#03030a;border-top:1px solid #090a12;border-bottom:1px solid #090a12;box-shadow:inset 0 2px 4px rgba(0,0,0,1),0 0 4px rgba(30,70,160,0.08);"></div>
+                <!-- LED indicator -->
+                <div style="position:absolute;right:7px;top:8px;width:4px;height:4px;border-radius:50%;background:#183860;box-shadow:0 0 6px rgba(30,90,200,0.55);animation:tars-led 2.4s ease-in-out infinite;"></div>
+                <!-- Corner bolts -->
+                <div style="position:absolute;left:3px;top:3px;width:2px;height:2px;border-radius:50%;background:#0c0e14;box-shadow:inset 0 0 1px rgba(0,0,0,0.9);"></div>
+                <div style="position:absolute;right:3px;top:3px;width:2px;height:2px;border-radius:50%;background:#0c0e14;"></div>
+                <div style="position:absolute;left:3px;bottom:3px;width:2px;height:2px;border-radius:50%;background:#0c0e14;"></div>
+                <div style="position:absolute;right:3px;bottom:3px;width:2px;height:2px;border-radius:50%;background:#0c0e14;"></div>
               </div>
-              <div style="position:absolute;width:18px;height:216px;top:0;left:52px;background:#08081a;border:1px solid #121228;transform-origin:0 50%;transform:rotateY(90deg);"></div>
-              <div style="position:absolute;width:52px;height:18px;top:0;left:0;background:#12122a;border:1px solid #1c1c3a;transform-origin:50% 0;transform:rotateX(-90deg);"></div>
-              <div style="position:absolute;width:52px;height:18px;top:216px;left:0;background:#080818;border:1px solid #101024;transform-origin:50% 0;transform:rotateX(90deg);"></div>
+
+              <!-- MECHANICAL GAP 1 -->
+              <div style="position:absolute;left:0;right:0;top:52px;height:5px;background:#04050a;box-shadow:inset 0 1px 3px rgba(0,0,0,0.9);"></div>
+
+              <!-- SEGMENT 2 -->
+              <div style="position:absolute;left:0;right:0;top:57px;height:50px;background:linear-gradient(140deg,#2a2c34 0%,#20222a 45%,#191b22 100%);border:1px solid #111318;">
+                <div style="position:absolute;left:5px;right:5px;top:15px;height:1px;background:rgba(255,255,255,0.03);"></div>
+                <div style="position:absolute;left:5px;right:5px;top:33px;height:1px;background:rgba(255,255,255,0.03);"></div>
+                <div style="position:absolute;left:3px;top:3px;width:2px;height:2px;border-radius:50%;background:#0a0c12;"></div>
+                <div style="position:absolute;right:3px;top:3px;width:2px;height:2px;border-radius:50%;background:#0a0c12;"></div>
+                <div style="position:absolute;left:3px;bottom:3px;width:2px;height:2px;border-radius:50%;background:#0a0c12;"></div>
+                <div style="position:absolute;right:3px;bottom:3px;width:2px;height:2px;border-radius:50%;background:#0a0c12;"></div>
+              </div>
+
+              <!-- MECHANICAL GAP 2 -->
+              <div style="position:absolute;left:0;right:0;top:107px;height:5px;background:#04050a;box-shadow:inset 0 1px 3px rgba(0,0,0,0.9);"></div>
+
+              <!-- SEGMENT 3 -->
+              <div style="position:absolute;left:0;right:0;top:112px;height:50px;background:linear-gradient(140deg,#28292e 0%,#1e2028 45%,#171920 100%);border:1px solid #101116;">
+                <div style="position:absolute;left:5px;right:5px;top:15px;height:1px;background:rgba(255,255,255,0.025);"></div>
+                <div style="position:absolute;left:5px;right:5px;top:33px;height:1px;background:rgba(255,255,255,0.025);"></div>
+                <div style="position:absolute;left:3px;top:3px;width:2px;height:2px;border-radius:50%;background:#090b11;"></div>
+                <div style="position:absolute;right:3px;top:3px;width:2px;height:2px;border-radius:50%;background:#090b11;"></div>
+                <div style="position:absolute;left:3px;bottom:3px;width:2px;height:2px;border-radius:50%;background:#090b11;"></div>
+                <div style="position:absolute;right:3px;bottom:3px;width:2px;height:2px;border-radius:50%;background:#090b11;"></div>
+              </div>
+
+              <!-- MECHANICAL GAP 3 -->
+              <div style="position:absolute;left:0;right:0;top:162px;height:5px;background:#04050a;box-shadow:inset 0 1px 3px rgba(0,0,0,0.9);"></div>
+
+              <!-- SEGMENT 4 — bottom panel -->
+              <div style="position:absolute;left:0;right:0;top:167px;height:49px;background:linear-gradient(140deg,#262730 0%,#1c1e26 45%,#151720 100%);border:1px solid #0e1015;">
+                <div style="position:absolute;left:5px;right:5px;top:15px;height:1px;background:rgba(255,255,255,0.02);"></div>
+                <div style="position:absolute;left:5px;right:5px;top:33px;height:1px;background:rgba(255,255,255,0.02);"></div>
+                <div style="position:absolute;left:3px;top:3px;width:2px;height:2px;border-radius:50%;background:#08090f;"></div>
+                <div style="position:absolute;right:3px;top:3px;width:2px;height:2px;border-radius:50%;background:#08090f;"></div>
+                <div style="position:absolute;left:3px;bottom:3px;width:2px;height:2px;border-radius:50%;background:#08090f;"></div>
+                <div style="position:absolute;right:3px;bottom:3px;width:2px;height:2px;border-radius:50%;background:#08090f;"></div>
+              </div>
+
+              <!-- SIDE FACE — in shadow, shows thickness + segment lines -->
+              <div style="position:absolute;width:16px;height:216px;top:0;left:52px;background:linear-gradient(to right,#0a0c10,#06080c);border:1px solid #08090e;transform-origin:0 50%;transform:rotateY(90deg);">
+                <div style="position:absolute;left:0;right:0;top:52px;height:5px;background:#020306;"></div>
+                <div style="position:absolute;left:0;right:0;top:107px;height:5px;background:#020306;"></div>
+                <div style="position:absolute;left:0;right:0;top:162px;height:5px;background:#020306;"></div>
+              </div>
+
+              <!-- TOP FACE — catches ambient light -->
+              <div style="position:absolute;width:52px;height:16px;top:0;left:0;background:linear-gradient(to bottom,#30323c,#20222c);border:1px solid #1a1c24;transform-origin:50% 0;transform:rotateX(-90deg);"></div>
+
+              <!-- BOTTOM FACE — in shadow -->
+              <div style="position:absolute;width:52px;height:16px;top:216px;left:0;background:linear-gradient(to bottom,#0c0e14,#06080c);border:1px solid #08090e;transform-origin:50% 0;transform:rotateX(90deg);"></div>
+
             </div>
           </div>
         </div>
