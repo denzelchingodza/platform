@@ -215,6 +215,7 @@
       <li>Improved results for a test company from 20 to 35 independent stories by adding country-specific news search, while keeping wrong-company matches at zero across test runs.</li>
       <li>Packaged the service with Docker and FastAPI (job queue, health check, JSON results for the platform), backed by 86 automated tests.</li>
       <li>Added a rejection log and run-to-run comparison tooling, turning unclear quality issues into measured, fixable ones.</li>
+      <li>Wrote a durability test for the Dockerised service that caught a production storage bug blocking every new job before an investor beta; fixed it with a privilege-dropping container entrypoint and test-first fixes for 3 related failure modes, proven by showing the old build fail and the new build pass on identical root-owned storage.</li>
     </ul>
   </div>
 
