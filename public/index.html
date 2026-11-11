@@ -1926,9 +1926,10 @@
       }
       .tars-scene { min-height: 300px; margin-top: 48px; }
       #tars-body { transform: scale(1.6); }
-      #tars-modal-inner { max-height: 96vh; border-radius: 12px; }
-      #tars-modal-log { min-height: 160px; }
+      #tars-modal-inner { max-height: 92vh; border-radius: 14px; }
+      #tars-modal-log { min-height: 180px; }
       #tars-modal-input { font-size: 16px; }
+      .tars-msg { max-width: 88%; }
 
       /* ── FOOTER ── */
       .footer-grid { grid-template-columns: 1fr; gap: 32px; }
@@ -2009,41 +2010,44 @@
     #tars-chat-hint:hover { background: #2a2a2a; border-color: #2a2a2a; }
 
     /* TARS modal overlay */
-    #tars-modal { display: none; position: fixed; inset: 0; z-index: 9000; background: rgba(0,0,0,.72); backdrop-filter: blur(6px); align-items: center; justify-content: center; padding: 20px; }
+    #tars-modal { display: none; position: fixed; inset: 0; z-index: 9000; background: rgba(0,0,0,.65); backdrop-filter: blur(8px); align-items: center; justify-content: center; padding: 16px; }
     #tars-modal.open { display: flex; }
-    #tars-modal-inner { background: #05060b; border: 1px solid #141926; border-radius: 3px; width: 100%; max-width: 440px; max-height: 88vh; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 0 80px rgba(0,0,0,.85), 0 0 0 1px rgba(255,255,255,.02); }
-    #tars-modal-header { display: flex; align-items: center; padding: 14px 18px 12px; border-bottom: 1px solid #0e1320; flex-shrink: 0; background: #030408; }
-    #tars-modal-title { font-family: 'Space Mono', 'Courier New', monospace; font-size: 11px; font-weight: 400; color: #8aaac6; flex: 1; letter-spacing: 0.28em; text-transform: uppercase; }
-    #tars-modal-sub { font-family: 'Space Mono', 'Courier New', monospace; font-size: 9px; color: #243048; letter-spacing: 0.14em; text-transform: uppercase; margin-right: 12px; }
-    #tars-modal-close { background: none; border: none; color: #243048; cursor: pointer; font-size: 18px; line-height: 1; padding: 0; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; border-radius: 2px; transition: background .15s, color .15s; }
-    #tars-modal-close:hover { background: #0d1120; color: #5a7090; }
-    #tars-modal-log { flex: 1; overflow-y: auto; padding: 20px 18px; display: flex; flex-direction: column; gap: 14px; min-height: 220px; background: #05060b; background-image: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(255,255,255,.006) 3px, rgba(255,255,255,.006) 4px); }
-    #tars-modal-log::-webkit-scrollbar { width: 2px; }
+    #tars-modal-inner { background: #0d0f16; border: 1px solid #1c2130; border-radius: 16px; width: 100%; max-width: 420px; max-height: 90vh; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 24px 80px rgba(0,0,0,.7); }
+    #tars-modal-header { display: flex; align-items: center; gap: 12px; padding: 16px 18px 14px; border-bottom: 1px solid #161c28; flex-shrink: 0; background: #0a0c14; }
+    .tars-header-avatar { width: 36px; height: 36px; border-radius: 8px; background: #111828; border: 1px solid #1c2a3e; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .tars-header-avatar svg { width: 18px; height: 18px; }
+    .tars-header-info { flex: 1; display: flex; flex-direction: column; gap: 2px; }
+    #tars-modal-title { font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 600; color: #d8e4f0; letter-spacing: 0.04em; }
+    #tars-modal-sub { font-family: 'Inter', sans-serif; font-size: 11px; color: #3c5070; letter-spacing: 0.02em; }
+    #tars-modal-close { background: none; border: none; color: #2e3e56; cursor: pointer; font-size: 20px; line-height: 1; padding: 0; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; border-radius: 6px; transition: background .15s, color .15s; flex-shrink: 0; }
+    #tars-modal-close:hover { background: #141c2c; color: #7090b0; }
+    #tars-modal-log { flex: 1; overflow-y: auto; padding: 18px 16px; display: flex; flex-direction: column; gap: 12px; min-height: 240px; background: #0d0f16; }
+    #tars-modal-log::-webkit-scrollbar { width: 3px; }
     #tars-modal-log::-webkit-scrollbar-track { background: transparent; }
-    #tars-modal-log::-webkit-scrollbar-thumb { background: #141926; border-radius: 2px; }
-    .tars-msg { max-width: 90%; }
+    #tars-modal-log::-webkit-scrollbar-thumb { background: #1c2538; border-radius: 3px; }
+    .tars-msg { max-width: 80%; display: flex; flex-direction: column; gap: 4px; }
     .tars-msg.tars { align-self: flex-start; }
     .tars-msg.user { align-self: flex-end; }
-    .tars-msg-bubble { font-family: 'Inter', sans-serif; font-size: 13px; line-height: 1.6; }
-    .tars-msg.tars .tars-msg-bubble { background: transparent; color: #7a9cbc; font-family: 'Space Mono', 'Courier New', monospace; font-size: 11.5px; line-height: 1.8; padding: 2px 0 2px 14px; border-left: 2px solid #1a3050; border-radius: 0; }
-    .tars-sender { display: block; font-family: 'Space Mono', 'Courier New', monospace; font-size: 8.5px; color: #243a58; letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 6px; }
-    .tars-msg.user .tars-msg-bubble { background: #08090f; color: #c8d4e4; font-family: 'Inter', sans-serif; font-size: 12.5px; border: 1px solid #131c2c; border-radius: 2px; padding: 9px 13px; }
-    .tars-suggestions { display: flex; flex-wrap: wrap; gap: 6px; padding: 10px 18px 12px; flex-shrink: 0; border-top: 1px solid #0e1320; background: #030408; }
-    .tars-chip { font-family: 'Space Mono', 'Courier New', monospace; font-size: 9px; color: #283a58; background: transparent; border: 1px solid #101828; border-radius: 2px; padding: 5px 10px; cursor: pointer; transition: border-color .15s, background .15s, color .15s; white-space: nowrap; letter-spacing: 0.08em; text-transform: uppercase; }
-    .tars-chip:hover { border-color: #1e3050; color: #4a6888; background: #080c16; }
-    #tars-modal-bottom { padding: 12px 18px; border-top: 1px solid #0e1320; flex-shrink: 0; background: #030408; }
+    .tars-sender { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 500; color: #3c5070; letter-spacing: 0.06em; text-transform: uppercase; padding-left: 2px; }
+    .tars-msg-bubble { font-family: 'Inter', sans-serif; font-size: 13.5px; line-height: 1.6; padding: 10px 14px; }
+    .tars-msg.tars .tars-msg-bubble { background: #111828; color: #c4d8f0; border-radius: 4px 16px 16px 16px; border: 1px solid #1c2a40; }
+    .tars-msg.user .tars-msg-bubble { background: #1a3a6a; color: #e4f0ff; border-radius: 16px 4px 16px 16px; border: 1px solid #244880; }
+    .tars-suggestions { display: flex; flex-wrap: wrap; gap: 7px; padding: 10px 16px 14px; flex-shrink: 0; border-top: 1px solid #161c28; background: #0a0c14; }
+    .tars-chip { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 500; color: #5a7898; background: #0f1620; border: 1px solid #1c2a3e; border-radius: 20px; padding: 6px 14px; cursor: pointer; transition: all .15s; white-space: nowrap; }
+    .tars-chip:hover { border-color: #2a4868; color: #88aad0; background: #141e30; }
+    #tars-modal-bottom { padding: 12px 16px 14px; border-top: 1px solid #161c28; flex-shrink: 0; background: #0a0c14; }
     #tars-modal-row { display: flex; gap: 8px; align-items: center; }
-    #tars-modal-input { flex: 1; background: #07080e; border: 1px solid #121a2a; border-radius: 2px; padding: 9px 12px; font-family: 'Space Mono', 'Courier New', monospace; font-size: 11.5px; color: #8aaac6; outline: none; transition: border-color .15s; }
-    #tars-modal-input:focus { border-color: #1a304e; background: #090a12; }
-    #tars-modal-input::placeholder { color: #1c2a3e; letter-spacing: 0.1em; }
-    #tars-modal-send { background: #080a12; border: 1px solid #121a2a; border-radius: 2px; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0; transition: background .15s, border-color .15s; }
-    #tars-modal-send:hover { background: #0d1420; border-color: #1a304e; }
+    #tars-modal-input { flex: 1; background: #111828; border: 1px solid #1c2a3e; border-radius: 24px; padding: 10px 16px; font-family: 'Inter', sans-serif; font-size: 13.5px; color: #c4d8f0; outline: none; transition: border-color .15s, background .15s; }
+    #tars-modal-input:focus { border-color: #2a4868; background: #131c2e; }
+    #tars-modal-input::placeholder { color: #2a3c54; }
+    #tars-modal-send { background: #1a3a6a; border: 1px solid #244880; border-radius: 50%; width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0; transition: background .15s, border-color .15s; }
+    #tars-modal-send:hover { background: #1e4478; border-color: #2e5898; }
     #tars-modal-send svg { width: 14px; height: 14px; }
-    .tars-typing { display: flex; gap: 5px; align-items: center; padding: 2px 0 2px 14px; }
-    .tars-typing span { width: 4px; height: 4px; border-radius: 50%; background: #1e3050; opacity: .5; animation: tars-dot 1.2s ease-in-out infinite; }
+    .tars-typing { display: flex; gap: 5px; align-items: center; padding: 10px 14px; }
+    .tars-typing span { width: 6px; height: 6px; border-radius: 50%; background: #3a5878; animation: tars-dot 1.2s ease-in-out infinite; }
     .tars-typing span:nth-child(2) { animation-delay: .2s; }
     .tars-typing span:nth-child(3) { animation-delay: .4s; }
-    @keyframes tars-dot { 0%,80%,100%{opacity:.15} 40%{opacity:.7} }
+    @keyframes tars-dot { 0%,80%,100%{opacity:.25} 40%{opacity:.9} }
 
     /* ===== WEIGHT: PAGE GRAIN ===== */
     #page-grain {
@@ -2627,9 +2631,19 @@
 <div id="tars-modal" role="dialog" aria-modal="true" aria-label="Chat with TARS">
   <div id="tars-modal-inner">
     <div id="tars-modal-header">
-      <div style="flex:1;display:flex;flex-direction:column;gap:4px;">
-        <div id="tars-modal-title">T&thinsp;A&thinsp;R&thinsp;S</div>
-        <div id="tars-modal-sub">HONESTY: 90% &middot; HUMOR: 75% &middot; UNIT 01</div>
+      <div class="tars-header-avatar">
+        <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="4" y="1" width="10" height="16" rx="1.5" fill="#1c2a40" stroke="#2e4468" stroke-width="1"/>
+          <rect x="6" y="4" width="6" height="2" rx="0.5" fill="#0a1828"/>
+          <circle cx="13" cy="3.5" r="1" fill="#1e4a80" opacity="0.8"/>
+          <line x1="4" y1="8" x2="14" y2="8" stroke="#1c2a40" stroke-width="1"/>
+          <line x1="4" y1="11.5" x2="14" y2="11.5" stroke="#1c2a40" stroke-width="1"/>
+          <line x1="4" y1="14.5" x2="14" y2="14.5" stroke="#1c2a40" stroke-width="1"/>
+        </svg>
+      </div>
+      <div class="tars-header-info">
+        <div id="tars-modal-title">TARS</div>
+        <div id="tars-modal-sub">Honesty 90% &middot; Humor 75%</div>
       </div>
       <button id="tars-modal-close" aria-label="Close">×</button>
     </div>
@@ -2646,7 +2660,7 @@
     </div>
     <div id="tars-modal-bottom">
       <div id="tars-modal-row">
-        <input id="tars-modal-input" type="text" placeholder="ENTER QUERY..." autocomplete="off">
+        <input id="tars-modal-input" type="text" placeholder="Message TARS..." autocomplete="off">
         <button id="tars-modal-send" aria-label="Send">
           <svg viewBox="0 0 24 24" fill="none" stroke="#6aafff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
         </button>
